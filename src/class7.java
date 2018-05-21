@@ -1,28 +1,27 @@
 import java.util.Comparator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("x")
 final class class7 implements Comparator {
-
    @ObfuscatedName("kw")
    @ObfuscatedSignature(
       signature = "Lhl;"
    )
-   static class230 field42;
-
+   static Widget field42;
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(Lq;Lq;I)I",
       garbageValue = "-641386920"
    )
-   int method79(class2 var1, class2 var2) {
+   int method79(GrandExchangeEvent var1, GrandExchangeEvent var2) {
       return var1.field10 < var2.field10?-1:(var1.field10 == var2.field10?0:1);
    }
 
    public int compare(Object var1, Object var2) {
-      return this.method79((class2)var1, (class2)var2);
+      return this.method79((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
    }
 
    public boolean equals(Object var1) {
@@ -34,12 +33,13 @@ final class class7 implements Comparator {
       signature = "([Lgk;IB)Lgk;",
       garbageValue = "64"
    )
-   public static class188 method89(class188[] var0, int var1) {
-      class188[] var2 = var0;
+   @Export("forOrdinal")
+   public static Enumerated forOrdinal(Enumerated[] var0, int var1) {
+      Enumerated[] var2 = var0;
 
       for(int var3 = 0; var3 < var2.length; ++var3) {
-         class188 var4 = var2[var3];
-         if(var1 == var4.vmethod5860()) {
+         Enumerated var4 = var2[var3];
+         if(var1 == var4.rsOrdinal()) {
             return var4;
          }
       }
@@ -72,7 +72,7 @@ final class class7 implements Comparator {
             var1 = 126;
          }
 
-         return (var0 & '\uff80') + var1;
+         return (var0 & 65408) + var1;
       }
    }
 
@@ -81,29 +81,29 @@ final class class7 implements Comparator {
       signature = "(Lbl;B)V",
       garbageValue = "121"
    )
-   static final void method85(class62 var0) {
+   static final void method85(PendingSpawn var0) {
       long var1 = 0L;
       int var3 = -1;
       int var4 = 0;
       int var5 = 0;
-      if(var0.field869 == 0) {
-         var1 = class56.field523.method2927(var0.field873, var0.field868, var0.field880);
+      if(var0.type == 0) {
+         var1 = ScriptEvent.region.method2927(var0.level, var0.x, var0.y);
       }
 
-      if(var0.field869 == 1) {
-         var1 = class56.field523.method2928(var0.field873, var0.field868, var0.field880);
+      if(var0.type == 1) {
+         var1 = ScriptEvent.region.method2928(var0.level, var0.x, var0.y);
       }
 
-      if(var0.field869 == 2) {
-         var1 = class56.field523.method3045(var0.field873, var0.field868, var0.field880);
+      if(var0.type == 2) {
+         var1 = ScriptEvent.region.method3045(var0.level, var0.x, var0.y);
       }
 
-      if(var0.field869 == 3) {
-         var1 = class56.field523.method2930(var0.field873, var0.field868, var0.field880);
+      if(var0.type == 3) {
+         var1 = ScriptEvent.region.method2930(var0.level, var0.x, var0.y);
       }
 
       if(var1 != 0L) {
-         int var6 = class56.field523.method2931(var0.field873, var0.field868, var0.field880, var1);
+         int var6 = ScriptEvent.region.method2931(var0.level, var0.x, var0.y, var1);
          var3 = class8.method93(var1);
          var4 = var6 & 31;
          var5 = var6 >> 6 & 3;

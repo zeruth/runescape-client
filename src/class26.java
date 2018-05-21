@@ -3,21 +3,19 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ai")
 public class class26 {
-
    @ObfuscatedName("n")
    @ObfuscatedSignature(
       signature = "Liv;"
    )
-   static class247 field236;
-
+   static IndexDataBase field236;
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(B)[Lbq;",
       garbageValue = "-32"
    )
-   static class77[] method471() {
-      return new class77[]{class77.field1098, class77.field1094, class77.field1096, class77.field1097};
+   static AttackOption[] method471() {
+      return new AttackOption[]{AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_hidden, AttackOption.AttackOption_leftClickWhereAvailable, AttackOption.AttackOption_alwaysRightClick};
    }
 
    @ObfuscatedName("u")
@@ -26,7 +24,7 @@ public class class26 {
       garbageValue = "-2073149876"
    )
    static final boolean method470(int var0, int var1) {
-      class268 var2 = class40.method766(var0);
+      ObjectComposition var2 = SoundTaskDataProvider.getObjectDefinition(var0);
       if(var1 == 11) {
          var1 = 10;
       }

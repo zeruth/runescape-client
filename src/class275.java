@@ -1,16 +1,16 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jr")
 public class class275 {
-
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 745313375
    )
-   static int field3574;
-
+   @Export("indexedSpriteHeight")
+   static int indexedSpriteHeight;
 
    @ObfuscatedName("jc")
    @ObfuscatedSignature(
@@ -18,6 +18,6 @@ public class class275 {
       garbageValue = "1931787566"
    )
    static boolean method5250() {
-      return client.field669;
+      return Client.field669;
    }
 }

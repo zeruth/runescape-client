@@ -4,7 +4,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("fu")
 public abstract class class166 {
-
    @ObfuscatedName("pf")
    @ObfuscatedGetter(
       intValue = 968568857
@@ -31,13 +30,12 @@ public abstract class class166 {
    )
    public int field2069;
 
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(IIILfm;I)Z",
       garbageValue = "1081805803"
    )
-   public abstract boolean vmethod3457(int var1, int var2, int var3, class164 var4);
+   public abstract boolean vmethod3457(int var1, int var2, int var3, CollisionData var4);
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(

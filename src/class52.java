@@ -4,7 +4,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("bc")
 public class class52 {
-
    @ObfuscatedName("pi")
    @ObfuscatedGetter(
       intValue = -1783747673
@@ -14,7 +13,7 @@ public class class52 {
    @ObfuscatedSignature(
       signature = "Lic;"
    )
-   final class249 field474;
+   final IndexData field474;
    @ObfuscatedName("m")
    @ObfuscatedGetter(
       intValue = -963730673
@@ -24,15 +23,15 @@ public class class52 {
    @ObfuscatedGetter(
       intValue = -474374751
    )
-   int field475 = 0;
-
+   int field475;
 
    @ObfuscatedSignature(
       signature = "(Lic;Ljava/lang/String;)V"
    )
-   class52(class249 var1, String var2) {
+   class52(IndexData var1, String var2) {
+      this.field475 = 0;
       this.field474 = var1;
-      this.field473 = var1.method4645();
+      this.field473 = var1.size();
    }
 
    @ObfuscatedName("w")
@@ -63,9 +62,9 @@ public class class52 {
          throw new IllegalArgumentException("");
       } else {
          if(var1 >= 128 && var1 < 160) {
-            char var2 = class301.field3726[var1 - 128];
+            char var2 = class301.cp1252AsciiExtension[var1 - 128];
             if(var2 == 0) {
-               var2 = 63;
+               var2 = '?';
             }
 
             var1 = var2;
@@ -80,52 +79,52 @@ public class class52 {
       signature = "(ILcs;ZI)I",
       garbageValue = "135918739"
    )
-   static int method1066(int var0, class84 var1, boolean var2) {
-      class230 var3 = var2?class184.field2379:class67.field996;
+   static int method1066(int var0, Script var1, boolean var2) {
+      Widget var3 = var2?class184.field2379:FriendManager.field996;
       if(var0 == 1600) {
-         class69.field1026[++class45.field377 - 1] = var3.field2644;
+         class69.intStack[++class45.intStackSize - 1] = var3.scrollX;
          return 1;
       } else if(var0 == 1601) {
-         class69.field1026[++class45.field377 - 1] = var3.field2611;
+         class69.intStack[++class45.intStackSize - 1] = var3.scrollY;
          return 1;
       } else if(var0 == 1602) {
-         class69.field1021[++class83.field1207 - 1] = var3.field2684;
+         class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3.text;
          return 1;
       } else if(var0 == 1603) {
-         class69.field1026[++class45.field377 - 1] = var3.field2674;
+         class69.intStack[++class45.intStackSize - 1] = var3.scrollWidth;
          return 1;
       } else if(var0 == 1604) {
-         class69.field1026[++class45.field377 - 1] = var3.field2647;
+         class69.intStack[++class45.intStackSize - 1] = var3.scrollHeight;
          return 1;
       } else if(var0 == 1605) {
-         class69.field1026[++class45.field377 - 1] = var3.field2701;
+         class69.intStack[++class45.intStackSize - 1] = var3.modelZoom;
          return 1;
       } else if(var0 == 1606) {
-         class69.field1026[++class45.field377 - 1] = var3.field2675;
+         class69.intStack[++class45.intStackSize - 1] = var3.rotationX;
          return 1;
       } else if(var0 == 1607) {
-         class69.field1026[++class45.field377 - 1] = var3.field2676;
+         class69.intStack[++class45.intStackSize - 1] = var3.rotationY;
          return 1;
       } else if(var0 == 1608) {
-         class69.field1026[++class45.field377 - 1] = var3.field2707;
+         class69.intStack[++class45.intStackSize - 1] = var3.rotationZ;
          return 1;
       } else if(var0 == 1609) {
-         class69.field1026[++class45.field377 - 1] = var3.field2638;
+         class69.intStack[++class45.intStackSize - 1] = var3.opacity;
          return 1;
       } else if(var0 == 1610) {
-         class69.field1026[++class45.field377 - 1] = var3.field2649;
+         class69.intStack[++class45.intStackSize - 1] = var3.field2649;
          return 1;
       } else if(var0 == 1611) {
-         class69.field1026[++class45.field377 - 1] = var3.field2648;
+         class69.intStack[++class45.intStackSize - 1] = var3.textColor;
          return 1;
       } else if(var0 == 1612) {
-         class69.field1026[++class45.field377 - 1] = var3.field2640;
+         class69.intStack[++class45.intStackSize - 1] = var3.field2640;
          return 1;
       } else if(var0 == 1613) {
-         class69.field1026[++class45.field377 - 1] = var3.field2700.vmethod5860();
+         class69.intStack[++class45.intStackSize - 1] = var3.field2700.rsOrdinal();
          return 1;
       } else if(var0 == 1614) {
-         class69.field1026[++class45.field377 - 1] = var3.field2679?1:0;
+         class69.intStack[++class45.intStackSize - 1] = var3.field2679?1:0;
          return 1;
       } else {
          return 2;

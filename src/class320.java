@@ -1,35 +1,37 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("lq")
 public class class320 {
-
    @ObfuscatedName("p")
    @ObfuscatedSignature(
       signature = "Lil;"
    )
-   public static class246 field3816;
+   @Export("currentRequest")
+   public static FileRequest currentRequest;
    @ObfuscatedName("n")
    String field3813;
    @ObfuscatedName("h")
    @ObfuscatedSignature(
       signature = "Liv;"
    )
-   class247 field3814;
+   IndexDataBase field3814;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
       intValue = 1362180319
    )
-   int field3810 = 0;
+   int field3810;
    @ObfuscatedName("j")
-   boolean field3812 = false;
-
+   boolean field3812;
 
    @ObfuscatedSignature(
       signature = "(Liv;)V"
    )
-   class320(class247 var1) {
+   class320(IndexDataBase var1) {
+      this.field3810 = 0;
+      this.field3812 = false;
       this.field3814 = var1;
    }
 
@@ -56,7 +58,7 @@ public class class320 {
    )
    int method6034() {
       if(this.field3810 < 25) {
-         if(!this.field3814.method4688(class29.field261.field262, this.field3813)) {
+         if(!this.field3814.tryLoadRecordByNames(MapCacheArchiveNames.COMPOSITE_MAP.name, this.field3813)) {
             return this.field3810;
          }
 
@@ -64,15 +66,15 @@ public class class320 {
       }
 
       if(this.field3810 == 25) {
-         if(!this.field3814.method4688(this.field3813, class29.field260.field262)) {
-            return 25 + this.field3814.method4651(this.field3813) * 25 / 100;
+         if(!this.field3814.tryLoadRecordByNames(this.field3813, MapCacheArchiveNames.AREA.name)) {
+            return 25 + this.field3814.archiveLoadPercentByName(this.field3813) * 25 / 100;
          }
 
          this.field3810 = 50;
       }
 
       if(this.field3810 == 50) {
-         if(this.field3814.method4689(class29.field259.field262, this.field3813) && !this.field3814.method4688(class29.field259.field262, this.field3813)) {
+         if(this.field3814.method4689(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, this.field3813) && !this.field3814.tryLoadRecordByNames(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, this.field3813)) {
             return 50;
          }
 
@@ -80,7 +82,7 @@ public class class320 {
       }
 
       if(this.field3810 == 75) {
-         if(!this.field3814.method4688(this.field3813, class29.field258.field262)) {
+         if(!this.field3814.tryLoadRecordByNames(this.field3813, MapCacheArchiveNames.LABELS.name)) {
             return 75;
          }
 

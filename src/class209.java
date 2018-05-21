@@ -3,7 +3,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hm")
 public class class209 {
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "Lhm;"
@@ -14,7 +13,6 @@ public class class209 {
       signature = "Lhm;"
    )
    class209 field2459;
-
 
    @ObfuscatedName("w")
    public void method4156() {

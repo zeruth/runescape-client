@@ -1,5 +1,6 @@
 import java.applet.Applet;
 import java.net.URL;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -7,15 +8,14 @@ import netscape.javascript.JSObject;
 
 @ObfuscatedName("fx")
 public class class178 {
-
    @ObfuscatedName("l")
    static boolean field2317;
    @ObfuscatedName("en")
    @ObfuscatedGetter(
       intValue = 1430708189
    )
-   static int field2315;
-
+   @Export("baseX")
+   static int baseX;
 
    @ObfuscatedName("q")
    @ObfuscatedSignature(

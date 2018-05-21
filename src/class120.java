@@ -1,24 +1,28 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dn")
 public class class120 {
-
    @ObfuscatedName("w")
-   static boolean field1687 = false;
+   @Export("Viewport_containsMouse")
+   static boolean Viewport_containsMouse;
    @ObfuscatedName("m")
    @ObfuscatedGetter(
       intValue = 1071935907
    )
-   static int field1681 = 0;
+   @Export("Viewport_mouseX")
+   static int Viewport_mouseX;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = -831543585
    )
-   static int field1680 = 0;
+   @Export("Viewport_mouseY")
+   static int Viewport_mouseY;
    @ObfuscatedName("b")
-   static boolean field1683 = false;
+   @Export("Viewport_false0")
+   static boolean Viewport_false0;
    @ObfuscatedName("f")
    @ObfuscatedGetter(
       intValue = 1611736783
@@ -38,10 +42,19 @@ public class class120 {
    @ObfuscatedGetter(
       intValue = -817355445
    )
-   public static int field1686 = 0;
+   @Export("Viewport_entityCountAtMouse")
+   public static int Viewport_entityCountAtMouse;
    @ObfuscatedName("g")
-   public static long[] field1688 = new long[1000];
+   public static long[] field1688;
 
+   static {
+      Viewport_containsMouse = false;
+      Viewport_mouseX = 0;
+      Viewport_mouseY = 0;
+      Viewport_false0 = false;
+      Viewport_entityCountAtMouse = 0;
+      field1688 = new long[1000];
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -57,57 +70,58 @@ public class class120 {
       signature = "(IB)Ljm;",
       garbageValue = "60"
    )
-   public static class269 method2784(int var0) {
-      class269 var1 = (class269)class269.field3444.method4023((long)var0);
+   @Export("getItemDefinition")
+   public static ItemComposition getItemDefinition(int var0) {
+      ItemComposition var1 = (ItemComposition)ItemComposition.items.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {
-         byte[] var2 = class269.field3443.method4626(10, var0);
-         var1 = new class269();
-         var1.field3484 = var0;
+         byte[] var2 = ItemComposition.item_ref.getConfigData(10, var0);
+         var1 = new ItemComposition();
+         var1.id = var0;
          if(var2 != null) {
-            var1.method5100(new class182(var2));
+            var1.loadBuffer(new Buffer(var2));
          }
 
-         var1.method5099();
-         if(var1.field3460 != -1) {
-            var1.method5118(method2784(var1.field3460), method2784(var1.field3447));
+         var1.post();
+         if(var1.notedTemplate != -1) {
+            var1.updateNote(getItemDefinition(var1.notedTemplate), getItemDefinition(var1.note));
          }
 
-         if(var1.field3491 != -1) {
-            var1.method5106(method2784(var1.field3491), method2784(var1.field3490));
+         if(var1.notedId != -1) {
+            var1.method5106(getItemDefinition(var1.notedId), getItemDefinition(var1.unnotedId));
          }
 
-         if(var1.field3440 != -1) {
-            var1.method5137(method2784(var1.field3440), method2784(var1.field3492));
+         if(var1.placeholderTemplateId != -1) {
+            var1.method5137(getItemDefinition(var1.placeholderTemplateId), getItemDefinition(var1.placeholderId));
          }
 
-         if(!class4.field31 && var1.field3462) {
-            var1.field3449 = "Members object";
-            var1.field3489 = false;
-            var1.field3463 = null;
-            var1.field3464 = null;
-            var1.field3465 = -1;
-            var1.field3439 = 0;
-            if(var1.field3488 != null) {
+         if(!GrandExchangeOffer.isMembersWorld && var1.isMembers) {
+            var1.name = "Members object";
+            var1.isTradable = false;
+            var1.groundActions = null;
+            var1.inventoryActions = null;
+            var1.shiftClickIndex = -1;
+            var1.team = 0;
+            if(var1.params != null) {
                boolean var3 = false;
 
-               for(class204 var4 = var1.field3488.method3996(); var4 != null; var4 = var1.field3488.method3995()) {
-                  class264 var5 = class182.method3811((int)var4.field2449);
+               for(Node var4 = var1.params.getHead(); var4 != null; var4 = var1.params.getTail()) {
+                  class264 var5 = Buffer.method3811((int)var4.hash);
                   if(var5.field3349) {
-                     var4.method4098();
+                     var4.unlink();
                   } else {
                      var3 = true;
                   }
                }
 
                if(!var3) {
-                  var1.field3488 = null;
+                  var1.params = null;
                }
             }
          }
 
-         class269.field3444.method4028(var1, (long)var0);
+         ItemComposition.items.put(var1, (long)var0);
          return var1;
       }
    }
@@ -118,7 +132,7 @@ public class class120 {
       garbageValue = "1058200071"
    )
    public static void method2815() {
-      class269.field3459.method4024();
+      ItemComposition.itemSpriteCache.reset();
    }
 
    @ObfuscatedName("gx")
@@ -127,23 +141,23 @@ public class class120 {
       garbageValue = "780822000"
    )
    static final void method2813(boolean var0) {
-      for(int var1 = 0; var1 < client.field635; ++var1) {
-         class72 var2 = client.field807[client.field636[var1]];
-         if(var2 != null && var2.vmethod1828() && var2.field1058.field3524 == var0 && var2.field1058.method5194()) {
-            int var3 = var2.field900 >> 7;
-            int var4 = var2.field918 >> 7;
+      for(int var1 = 0; var1 < Client.npcIndexesCount; ++var1) {
+         NPC var2 = Client.cachedNPCs[Client.npcIndices[var1]];
+         if(var2 != null && var2.hasConfig() && var2.composition.isVisible == var0 && var2.composition.method5194()) {
+            int var3 = var2.x >> 7;
+            int var4 = var2.y >> 7;
             if(var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
-               if(var2.field885 == 1 && (var2.field900 & 127) == 64 && (var2.field918 & 127) == 64) {
-                  if(client.field689[var3][var4] == client.field690) {
+               if(var2.field885 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
+                  if(Client.field689[var3][var4] == Client.field690) {
                      continue;
                   }
 
-                  client.field689[var3][var4] = client.field690;
+                  Client.field689[var3][var4] = Client.field690;
                }
 
-               long var5 = class59.method1129(0, 0, 1, !var2.field1058.field3535, client.field636[var1]);
-               var2.field905 = client.field679;
-               class56.field523.method2945(class192.field2415, var2.field900, var2.field918, class264.method4955(var2.field885 * 64 - 64 + var2.field900, var2.field885 * 64 - 64 + var2.field918, class192.field2415), var2.field885 * 64 - 64 + 60, var2, var2.field883, var5, var2.field884);
+               long var5 = class59.method1129(0, 0, 1, !var2.composition.field3535, Client.npcIndices[var1]);
+               var2.field905 = Client.gameCycle;
+               ScriptEvent.region.method2945(class192.plane, var2.x, var2.y, class264.getTileHeight(var2.field885 * 64 - 64 + var2.x, var2.field885 * 64 - 64 + var2.y, class192.plane), var2.field885 * 64 - 64 + 60, var2, var2.angle, var5, var2.field884);
             }
          }
       }

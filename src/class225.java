@@ -1,25 +1,28 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 
 @ObfuscatedName("ha")
 public class class225 {
-
    @ObfuscatedName("w")
-   static int[] field2579 = new int[32];
+   @Export("varpsMasks")
+   static int[] varpsMasks;
    @ObfuscatedName("m")
-   public static int[] field2576;
+   @Export("serverVarps")
+   public static int[] serverVarps;
    @ObfuscatedName("q")
-   public static int[] field2578;
-
+   @Export("clientVarps")
+   public static int[] clientVarps;
 
    static {
+      varpsMasks = new int[32];
       int var0 = 2;
 
       for(int var1 = 0; var1 < 32; ++var1) {
-         field2579[var1] = var0 - 1;
+         varpsMasks[var1] = var0 - 1;
          var0 += var0;
       }
 
-      field2576 = new int[2000];
-      field2578 = new int[2000];
+      serverVarps = new int[2000];
+      clientVarps = new int[2000];
    }
 }

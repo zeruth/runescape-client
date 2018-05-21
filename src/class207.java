@@ -3,10 +3,8 @@ import net.runelite.mapping.ObfuscatedName;
 
 @ObfuscatedName("gr")
 public class class207 extends class212 {
-
    @ObfuscatedName("w")
    SoftReference field2455;
-
 
    class207(Object var1, int var2) {
       super(var2);

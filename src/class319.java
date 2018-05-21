@@ -1,26 +1,31 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
 @ObfuscatedName("lr")
 public class class319 {
-
    @ObfuscatedName("w")
    @ObfuscatedGetter(
       intValue = -484453619
    )
-   static int field3809;
+   @Export("indexedSpriteCount")
+   static int indexedSpriteCount;
    @ObfuscatedName("m")
    @ObfuscatedGetter(
       intValue = 587759029
    )
-   static int field3805;
+   @Export("indexedSpriteWidth")
+   static int indexedSpriteWidth;
    @ObfuscatedName("b")
-   static int[] field3808;
+   @Export("indexedSpriteOffsetXs")
+   static int[] indexedSpriteOffsetXs;
    @ObfuscatedName("f")
-   static int[] field3807;
+   @Export("indexedSpriteOffsetYs")
+   static int[] indexedSpriteOffsetYs;
    @ObfuscatedName("h")
-   static int[] field3804;
+   @Export("indexedSpriteHeights")
+   static int[] indexedSpriteHeights;
    @ObfuscatedName("x")
-   static int[] field3806;
-
+   @Export("indexedSpritePalette")
+   static int[] indexedSpritePalette;
 }

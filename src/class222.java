@@ -2,8 +2,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hg")
-public class class222 extends class105 {
-
+public class class222 extends TaskDataNode {
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lho;"
@@ -13,18 +12,19 @@ public class class222 extends class105 {
    @ObfuscatedSignature(
       signature = "Lgz;"
    )
-   class205 field2565 = new class205();
+   Deque field2565;
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lcp;"
    )
-   class88 field2564 = new class88();
-
+   class88 field2564;
 
    @ObfuscatedSignature(
       signature = "(Lho;)V"
    )
    class222(class218 var1) {
+      this.field2565 = new Deque();
+      this.field2564 = new class88();
       this.field2566 = var1;
    }
 
@@ -35,7 +35,7 @@ public class class222 extends class105 {
    )
    void method4426(class219 var1, int[] var2, int var3, int var4, int var5) {
       if((this.field2566.field2503[var1.field2518] & 4) != 0 && var1.field2532 < 0) {
-         int var6 = this.field2566.field2516[var1.field2518] / class95.field1330;
+         int var6 = this.field2566.field2516[var1.field2518] / AbstractSoundSystem.sampleRate;
 
          while(true) {
             int var7 = (var6 + 1048575 - var1.field2538) / var6;
@@ -48,7 +48,7 @@ public class class222 extends class105 {
             var3 += var7;
             var4 -= var7;
             var1.field2538 += var6 * var7 - 1048576;
-            int var8 = class95.field1330 / 100;
+            int var8 = AbstractSoundSystem.sampleRate / 100;
             int var9 = 262144 / var6;
             if(var9 < var8) {
                var8 = var9;
@@ -85,7 +85,7 @@ public class class222 extends class105 {
    )
    void method4427(class219 var1, int var2) {
       if((this.field2566.field2503[var1.field2518] & 4) != 0 && var1.field2532 < 0) {
-         int var3 = this.field2566.field2516[var1.field2518] / class95.field1330;
+         int var3 = this.field2566.field2516[var1.field2518] / AbstractSoundSystem.sampleRate;
          int var4 = (var3 + 1048575 - var1.field2538) / var3;
          var1.field2538 = var3 * var2 + var1.field2538 & 1048575;
          if(var4 <= var2) {
@@ -111,19 +111,19 @@ public class class222 extends class105 {
    @ObfuscatedSignature(
       signature = "()Ldu;"
    )
-   protected class105 vmethod4421() {
-      class219 var1 = (class219)this.field2565.method4113();
-      return (class105)(var1 == null?null:(var1.field2536 != null?var1.field2536:this.vmethod4422()));
+   protected TaskDataNode vmethod4421() {
+      class219 var1 = (class219)this.field2565.getFront();
+      return (TaskDataNode)(var1 == null?null:(var1.field2536 != null?var1.field2536:this.vmethod4422()));
    }
 
    @ObfuscatedName("l")
    @ObfuscatedSignature(
       signature = "()Ldu;"
    )
-   protected class105 vmethod4422() {
+   protected TaskDataNode vmethod4422() {
       class219 var1;
       do {
-         var1 = (class219)this.field2565.method4104();
+         var1 = (class219)this.field2565.getNext();
          if(var1 == null) {
             return null;
          }
@@ -141,7 +141,7 @@ public class class222 extends class105 {
    protected void vmethod4424(int[] var1, int var2, int var3) {
       this.field2564.vmethod4424(var1, var2, var3);
 
-      for(class219 var6 = (class219)this.field2565.method4113(); var6 != null; var6 = (class219)this.field2565.method4104()) {
+      for(class219 var6 = (class219)this.field2565.getFront(); var6 != null; var6 = (class219)this.field2565.getNext()) {
          if(!this.field2566.method4260(var6)) {
             int var4 = var2;
             int var5 = var3;
@@ -166,7 +166,7 @@ public class class222 extends class105 {
    protected void vmethod4425(int var1) {
       this.field2564.vmethod4425(var1);
 
-      for(class219 var3 = (class219)this.field2565.method4113(); var3 != null; var3 = (class219)this.field2565.method4104()) {
+      for(class219 var3 = (class219)this.field2565.getFront(); var3 != null; var3 = (class219)this.field2565.getNext()) {
          if(!this.field2566.method4260(var3)) {
             int var2 = var1;
 
@@ -191,7 +191,7 @@ public class class222 extends class105 {
       garbageValue = "-105"
    )
    public static boolean method4445(int var0) {
-      return var0 >= class233.field2772.field2779 && var0 <= class233.field2793.field2779;
+      return var0 >= WorldMapDecorationType.field2772.rsOrdinal && var0 <= WorldMapDecorationType.field2793.rsOrdinal;
    }
 
    @ObfuscatedName("w")
@@ -271,29 +271,29 @@ public class class222 extends class105 {
       garbageValue = "-26"
    )
    static final void method4447(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-      class62 var9 = null;
+      PendingSpawn var9 = null;
 
-      for(class62 var10 = (class62)client.field721.method4113(); var10 != null; var10 = (class62)client.field721.method4104()) {
-         if(var0 == var10.field873 && var10.field868 == var1 && var2 == var10.field880 && var3 == var10.field869) {
+      for(PendingSpawn var10 = (PendingSpawn)Client.pendingSpawns.getFront(); var10 != null; var10 = (PendingSpawn)Client.pendingSpawns.getNext()) {
+         if(var0 == var10.level && var10.x == var1 && var2 == var10.y && var3 == var10.type) {
             var9 = var10;
             break;
          }
       }
 
       if(var9 == null) {
-         var9 = new class62();
-         var9.field873 = var0;
-         var9.field869 = var3;
-         var9.field868 = var1;
-         var9.field880 = var2;
+         var9 = new PendingSpawn();
+         var9.level = var0;
+         var9.type = var3;
+         var9.x = var1;
+         var9.y = var2;
          class7.method85(var9);
-         client.field721.method4126(var9);
+         Client.pendingSpawns.addFront(var9);
       }
 
-      var9.field866 = var4;
+      var9.id = var4;
       var9.field875 = var5;
-      var9.field874 = var6;
-      var9.field867 = var7;
-      var9.field877 = var8;
+      var9.orientation = var6;
+      var9.delay = var7;
+      var9.hitpoints = var8;
    }
 }

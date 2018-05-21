@@ -4,13 +4,11 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("fw")
 public class class177 {
-
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Liv;"
    )
-   static class247 field2314;
-
+   static IndexDataBase field2314;
 
    static {
       new HashMap();
@@ -22,7 +20,7 @@ public class class177 {
       garbageValue = "-6587"
    )
    public static int method3533(int var0) {
-      return class5.method59(class120.field1688[var0]);
+      return UnitPriceComparator.method59(class120.field1688[var0]);
    }
 
    @ObfuscatedName("d")
@@ -52,14 +50,14 @@ public class class177 {
                class217.field2486 = 0;
             }
 
-            class286.field3644 = null;
+            Ignore.field3644 = null;
             class59.field557 = null;
          }
       } catch (Exception var2) {
          var2.printStackTrace();
          class217.field2485.method4236();
          class217.field2486 = 0;
-         class286.field3644 = null;
+         Ignore.field3644 = null;
          class59.field557 = null;
          class26.field236 = null;
       }

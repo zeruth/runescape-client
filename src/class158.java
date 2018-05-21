@@ -5,21 +5,24 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("fz")
 public class class158 {
-
    @ObfuscatedName("w")
-   public static boolean field2001 = false;
+   public static boolean field2001;
    @ObfuscatedName("m")
    public static File field2000;
    @ObfuscatedName("q")
-   static Hashtable field2002 = new Hashtable(16);
+   static Hashtable field2002;
 
+   static {
+      field2001 = false;
+      field2002 = new Hashtable(16);
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(Lla;I)I",
       garbageValue = "1139858817"
    )
-   static final int method3317(class322 var0) {
+   static final int method3317(JagexLoginType var0) {
       if(var0 == null) {
          return 12;
       } else {
@@ -38,16 +41,16 @@ public class class158 {
       garbageValue = "-1579994359"
    )
    static void method3313() {
-      Object var0 = class248.field3194;
-      synchronized(class248.field3194) {
-         if(class248.field3191 == 0) {
-            class248.field3195 = new Thread(new class248());
-            class248.field3195.setDaemon(true);
-            class248.field3195.start();
-            class248.field3195.setPriority(5);
+      Object var0 = IndexStoreActionHandler.IndexStoreActionHandler_lock;
+      synchronized(IndexStoreActionHandler.IndexStoreActionHandler_lock) {
+         if(IndexStoreActionHandler.field3191 == 0) {
+            IndexStoreActionHandler.IndexStoreActionHandler_thread = new Thread(new IndexStoreActionHandler());
+            IndexStoreActionHandler.IndexStoreActionHandler_thread.setDaemon(true);
+            IndexStoreActionHandler.IndexStoreActionHandler_thread.start();
+            IndexStoreActionHandler.IndexStoreActionHandler_thread.setPriority(5);
          }
 
-         class248.field3191 = 600;
+         IndexStoreActionHandler.field3191 = 600;
       }
    }
 
@@ -66,7 +69,7 @@ public class class158 {
       garbageValue = "-463701689"
    )
    static final int method3316(int var0, int var1, int var2, int var3) {
-      int var4 = 65536 - class122.field1708[var2 * 1024 / var3] >> 1;
+      int var4 = 65536 - Graphics3D.COSINE[var2 * 1024 / var3] >> 1;
       return ((65536 - var4) * var0 >> 16) + (var4 * var1 >> 16);
    }
 

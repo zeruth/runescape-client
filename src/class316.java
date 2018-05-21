@@ -3,33 +3,33 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ly")
-public enum class316 implements class188 {
-
+public enum class316 implements Enumerated {
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "Lly;"
    )
-   field3781("runelite", 0, 0, 0),
+   field3781(0, 0),
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lly;"
    )
-   field3777("runelite", 1, 1, 1),
+   field3777(1, 1),
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lly;"
    )
-   field3778("runelite", 2, 2, 2),
+   field3778(2, 2),
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lly;"
    )
-   field3779("runelite", 3, 3, 3),
+   field3779(3, 3),
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Lly;"
    )
-   field3780("runelite", 4, 4, 4);
+   field3780(4, 4);
+
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = 109639589
@@ -41,8 +41,7 @@ public enum class316 implements class188 {
    )
    final int field3783;
 
-
-   class316(String var1, int var2, int var3, int var4) {
+   class316(int var3, int var4) {
       this.field3776 = var3;
       this.field3783 = var4;
    }
@@ -52,7 +51,7 @@ public enum class316 implements class188 {
       signature = "(B)I",
       garbageValue = "60"
    )
-   public int vmethod5860() {
+   public int rsOrdinal() {
       return this.field3783;
    }
 }

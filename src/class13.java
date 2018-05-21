@@ -1,10 +1,10 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("p")
 public class class13 {
-
    @ObfuscatedName("pa")
    @ObfuscatedGetter(
       intValue = -186313731
@@ -14,17 +14,20 @@ public class class13 {
    @ObfuscatedSignature(
       signature = "[Llh;"
    )
-   static class317[] field104;
+   @Export("slFlagSprites")
+   static IndexedSprite[] slFlagSprites;
    @ObfuscatedName("dn")
    @ObfuscatedGetter(
       intValue = -865738607
    )
-   static int field101;
+   @Export("port2")
+   static int port2;
    @ObfuscatedName("ge")
    @ObfuscatedGetter(
       intValue = 2008638169
    )
-   static int field102;
+   @Export("cameraY")
+   static int cameraY;
    @ObfuscatedName("w")
    @ObfuscatedGetter(
       intValue = 1880010131
@@ -34,13 +37,12 @@ public class class13 {
    @ObfuscatedSignature(
       signature = "Lhh;"
    )
-   class226 field100;
-
+   Coordinates field100;
 
    @ObfuscatedSignature(
       signature = "(ILhh;)V"
    )
-   class13(int var1, class226 var2) {
+   class13(int var1, Coordinates var2) {
       this.field103 = var1;
       this.field100 = var2;
    }
@@ -50,13 +52,13 @@ public class class13 {
       signature = "(Lge;IB)V",
       garbageValue = "32"
    )
-   static final void method125(class189 var0, int var1) {
-      int var2 = var0.field2359;
+   static final void method125(PacketBuffer var0, int var1) {
+      int var2 = var0.offset;
       class81.field1176 = 0;
-      class245.method4619(var0);
-      class295.method5521(var0);
-      if(var0.field2359 - var2 != var1) {
-         throw new RuntimeException(var0.field2359 - var2 + " " + var1);
+      FileSystem.method4619(var0);
+      FontName.method5521(var0);
+      if(var0.offset - var2 != var1) {
+         throw new RuntimeException(var0.offset - var2 + " " + var1);
       }
    }
 }

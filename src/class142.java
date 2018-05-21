@@ -4,7 +4,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ev")
 public class class142 extends class283 {
-
    @ObfuscatedName("ky")
    @ObfuscatedGetter(
       intValue = 946956583
@@ -12,7 +11,6 @@ public class class142 extends class283 {
    static int field1911;
    @ObfuscatedName("w")
    final boolean field1909;
-
 
    public class142(boolean var1) {
       this.field1909 = var1;
@@ -23,12 +21,12 @@ public class class142 extends class283 {
       signature = "(Lkd;Lkd;I)I",
       garbageValue = "1971585662"
    )
-   int method3181(class287 var1, class287 var2) {
-      if(var1.field3648 != 0) {
-         if(var2.field3648 == 0) {
+   int method3181(ChatPlayer var1, ChatPlayer var2) {
+      if(var1.world != 0) {
+         if(var2.world == 0) {
             return this.field1909?-1:1;
          }
-      } else if(var2.field3648 != 0) {
+      } else if(var2.world != 0) {
          return this.field1909?1:-1;
       }
 
@@ -36,7 +34,7 @@ public class class142 extends class283 {
    }
 
    public int compare(Object var1, Object var2) {
-      return this.method3181((class287)var1, (class287)var2);
+      return this.method3181((ChatPlayer)var1, (ChatPlayer)var2);
    }
 
    @ObfuscatedName("p")
@@ -44,27 +42,27 @@ public class class142 extends class283 {
       signature = "(B)[Llh;",
       garbageValue = "18"
    )
-   static class317[] method3182() {
-      class317[] var0 = new class317[class319.field3809];
+   static IndexedSprite[] method3182() {
+      IndexedSprite[] var0 = new IndexedSprite[class319.indexedSpriteCount];
 
-      for(int var1 = 0; var1 < class319.field3809; ++var1) {
-         class317 var2 = var0[var1] = new class317();
-         var2.field3790 = class319.field3805;
-         var2.field3791 = class275.field3574;
-         var2.field3784 = class319.field3808[var1];
-         var2.field3789 = class319.field3807[var1];
-         var2.field3786 = class192.field2413[var1];
-         var2.field3787 = class319.field3804[var1];
-         var2.field3788 = class319.field3806;
-         var2.field3785 = class294.field3678[var1];
+      for(int var1 = 0; var1 < class319.indexedSpriteCount; ++var1) {
+         IndexedSprite var2 = var0[var1] = new IndexedSprite();
+         var2.originalWidth = class319.indexedSpriteWidth;
+         var2.originalHeight = class275.indexedSpriteHeight;
+         var2.offsetX = class319.indexedSpriteOffsetXs[var1];
+         var2.offsetY = class319.indexedSpriteOffsetYs[var1];
+         var2.width = class192.indexSpriteWidths[var1];
+         var2.height = class319.indexedSpriteHeights[var1];
+         var2.palette = class319.indexedSpritePalette;
+         var2.pixels = class294.spritePixels[var1];
       }
 
-      class319.field3808 = null;
-      class319.field3807 = null;
-      class192.field2413 = null;
-      class319.field3804 = null;
-      class319.field3806 = null;
-      class294.field3678 = null;
+      class319.indexedSpriteOffsetXs = null;
+      class319.indexedSpriteOffsetYs = null;
+      class192.indexSpriteWidths = null;
+      class319.indexedSpriteHeights = null;
+      class319.indexedSpritePalette = null;
+      class294.spritePixels = null;
       return var0;
    }
 }

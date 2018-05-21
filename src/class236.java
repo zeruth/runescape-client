@@ -3,7 +3,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("im")
 public class class236 {
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "([BIII)I",
@@ -13,7 +12,7 @@ public class class236 {
       int var3 = -1;
 
       for(int var4 = var1; var4 < var2; ++var4) {
-         var3 = var3 >>> 8 ^ class182.field2360[(var3 ^ var0[var4]) & 255];
+         var3 = var3 >>> 8 ^ Buffer.crc32Table[(var3 ^ var0[var4]) & 255];
       }
 
       var3 = ~var3;

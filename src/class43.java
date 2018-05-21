@@ -5,19 +5,18 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
 import javax.imageio.ImageIO;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ae")
 public class class43 {
-
    @ObfuscatedName("cl")
    @ObfuscatedGetter(
       longValue = -2995709194999384083L
    )
    static long field362;
-
 
    static {
       ImageIO.setUseCache(false);
@@ -28,7 +27,8 @@ public class class43 {
       signature = "(Ljava/lang/String;Ljava/lang/Throwable;I)V",
       garbageValue = "-1859985399"
    )
-   public static void method786(String var0, Throwable var1) {
+   @Export("processClientError")
+   public static void processClientError(String var0, Throwable var1) {
       if(var1 != null) {
          var1.printStackTrace();
       } else {
@@ -37,10 +37,10 @@ public class class43 {
             if(var1 != null) {
                Throwable var4 = var1;
                String var5;
-               if(var1 instanceof class152) {
-                  class152 var6 = (class152)var1;
+               if(var1 instanceof RunException) {
+                  RunException var6 = (RunException)var1;
                   var5 = var6.field1960 + " | ";
-                  var4 = var6.field1961;
+                  var4 = var6.parent;
                } else {
                   var5 = "";
                }
@@ -53,32 +53,35 @@ public class class43 {
                BufferedReader var9 = new BufferedReader(new StringReader(var8));
                String var10 = var9.readLine();
 
+               label61:
                while(true) {
-                  String var11 = var9.readLine();
-                  if(var11 == null) {
-                     var5 = var5 + "| " + var10;
-                     var2 = var5;
-                     break;
-                  }
-
-                  int var12 = var11.indexOf(40);
-                  int var13 = var11.indexOf(41, var12 + 1);
-                  if(var12 >= 0 && var13 >= 0) {
-                     String var14 = var11.substring(var12 + 1, var13);
-                     int var15 = var14.indexOf(".java:");
-                     if(var15 >= 0) {
-                        var14 = var14.substring(0, var15) + var14.substring(var15 + 5);
-                        var5 = var5 + var14 + ' ';
-                        continue;
+                  while(true) {
+                     String var11 = var9.readLine();
+                     if(var11 == null) {
+                        var5 = var5 + "| " + var10;
+                        var2 = var5;
+                        break label61;
                      }
 
-                     var11 = var11.substring(0, var12);
-                  }
+                     int var12 = var11.indexOf(40);
+                     int var13 = var11.indexOf(41, var12 + 1);
+                     if(var12 >= 0 && var13 >= 0) {
+                        String var14 = var11.substring(var12 + 1, var13);
+                        int var15 = var14.indexOf(".java:");
+                        if(var15 >= 0) {
+                           var14 = var14.substring(0, var15) + var14.substring(var15 + 5);
+                           var5 = var5 + var14 + ' ';
+                           continue;
+                        }
 
-                  var11 = var11.trim();
-                  var11 = var11.substring(var11.lastIndexOf(32) + 1);
-                  var11 = var11.substring(var11.lastIndexOf(9) + 1);
-                  var5 = var5 + var11 + ' ';
+                        var11 = var11.substring(0, var12);
+                     }
+
+                     var11 = var11.trim();
+                     var11 = var11.substring(var11.lastIndexOf(32) + 1);
+                     var11 = var11.substring(var11.lastIndexOf(9) + 1);
+                     var5 = var5 + var11 + ' ';
+                  }
                }
             }
 
@@ -95,11 +98,11 @@ public class class43 {
             var2 = var2.replace('@', '_');
             var2 = var2.replace('&', '_');
             var2 = var2.replace('#', '_');
-            if(class152.field1957 == null) {
+            if(RunException.field1957 == null) {
                return;
             }
 
-            URL var3 = new URL(class152.field1957.getCodeBase(), "clienterror.ws?c=" + class54.field485 + "&u=" + class152.field1958 + "&v1=" + class154.field1972 + "&v2=" + class154.field1971 + "&ct=" + class152.field1959 + "&e=" + var2);
+            URL var3 = new URL(RunException.field1957.getCodeBase(), "clienterror.ws?c=" + class54.revision + "&u=" + RunException.field1958 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&ct=" + RunException.field1959 + "&e=" + var2);
             DataInputStream var17 = new DataInputStream(var3.openStream());
             var17.read();
             var17.close();
@@ -115,7 +118,7 @@ public class class43 {
       signature = "(Llh;I)V",
       garbageValue = "1936312734"
    )
-   static final void method790(class317 var0) {
+   static final void method790(IndexedSprite var0) {
       short var1 = 256;
 
       int var2;
@@ -147,11 +150,11 @@ public class class43 {
       if(var0 != null) {
          var2 = 0;
 
-         for(var3 = 0; var3 < var0.field3787; ++var3) {
-            for(var4 = 0; var4 < var0.field3786; ++var4) {
-               if(var0.field3785[var2++] != 0) {
-                  var5 = var4 + var0.field3784 + 16;
-                  int var6 = var3 + var0.field3789 + 16;
+         for(var3 = 0; var3 < var0.height; ++var3) {
+            for(var4 = 0; var4 < var0.width; ++var4) {
+               if(var0.pixels[var2++] != 0) {
+                  var5 = var4 + var0.offsetX + 16;
+                  int var6 = var3 + var0.offsetY + 16;
                   int var7 = var5 + (var6 << 7);
                   class8.field51[var7] = 0;
                }
@@ -173,7 +176,7 @@ public class class43 {
       if(class78.field1116 > class8.field51.length) {
          class78.field1116 -= class8.field51.length;
          var2 = (int)(Math.random() * 12.0D);
-         method790(class192.field2416[var2]);
+         method790(class192.runeSprites[var2]);
       }
 
       var2 = 0;
@@ -235,7 +238,7 @@ public class class43 {
       }
 
       class78.field1103 += var0;
-      var5 = (var0 + (client.field679 & 1)) / 2;
+      var5 = (var0 + (Client.gameCycle & 1)) / 2;
       if(var5 > 0) {
          for(var6 = 0; var6 < class78.field1103 * 100; ++var6) {
             var7 = (int)(Math.random() * 124.0D) + 2;

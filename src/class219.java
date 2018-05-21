@@ -3,8 +3,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hy")
-public class class219 extends class204 {
-
+public class class219 extends Node {
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "Lhe;"
@@ -24,7 +23,7 @@ public class class219 extends class204 {
    @ObfuscatedSignature(
       signature = "Lcg;"
    )
-   class93 field2524;
+   RawAudioNode field2524;
    @ObfuscatedName("f")
    @ObfuscatedGetter(
       intValue = 590821665
@@ -111,7 +110,6 @@ public class class219 extends class204 {
    )
    int field2538;
 
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(I)V",
@@ -129,10 +127,10 @@ public class class219 extends class204 {
       signature = "(Lbb;Lbb;IZB)I",
       garbageValue = "74"
    )
-   static int method4361(class65 var0, class65 var1, int var2, boolean var3) {
+   static int method4361(World var0, World var1, int var2, boolean var3) {
       if(var2 == 1) {
-         int var4 = var0.field957;
-         int var5 = var1.field957;
+         int var4 = var0.playerCount;
+         int var5 = var1.playerCount;
          if(!var3) {
             if(var4 == -1) {
                var4 = 2001;
@@ -145,7 +143,7 @@ public class class219 extends class204 {
 
          return var4 - var5;
       } else {
-         return var2 == 2?var0.field952 - var1.field952:(var2 == 3?(var0.field964.equals("-")?(var1.field964.equals("-")?0:(var3?-1:1)):(var1.field964.equals("-")?(var3?1:-1):var0.field964.compareTo(var1.field964))):(var2 == 4?(var0.method1606()?(var1.method1606()?0:1):(var1.method1606()?-1:0)):(var2 == 5?(var0.method1629()?(var1.method1629()?0:1):(var1.method1629()?-1:0)):(var2 == 6?(var0.method1605()?(var1.method1605()?0:1):(var1.method1605()?-1:0)):(var2 == 7?(var0.method1603()?(var1.method1603()?0:1):(var1.method1603()?-1:0)):var0.field960 - var1.field960)))));
+         return var2 == 2?var0.location - var1.location:(var2 == 3?(var0.activity.equals("-")?(var1.activity.equals("-")?0:(var3?-1:1)):(var1.activity.equals("-")?(var3?1:-1):var0.activity.compareTo(var1.activity))):(var2 == 4?(var0.method1606()?(var1.method1606()?0:1):(var1.method1606()?-1:0)):(var2 == 5?(var0.method1629()?(var1.method1629()?0:1):(var1.method1629()?-1:0)):(var2 == 6?(var0.method1605()?(var1.method1605()?0:1):(var1.method1605()?-1:0)):(var2 == 7?(var0.method1603()?(var1.method1603()?0:1):(var1.method1603()?-1:0)):var0.id - var1.id)))));
       }
    }
 
@@ -155,7 +153,7 @@ public class class219 extends class204 {
       garbageValue = "-868634685"
    )
    public static final void method4362() {
-      class120.field1687 = false;
-      class120.field1686 = 0;
+      class120.Viewport_containsMouse = false;
+      class120.Viewport_entityCountAtMouse = 0;
    }
 }

@@ -1,18 +1,18 @@
 import java.util.Comparator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jl")
 public abstract class class283 implements Comparator {
-
    @ObfuscatedName("oc")
    @ObfuscatedSignature(
       signature = "Llc;"
    )
-   static class318 field3633;
+   @Export("minimapSprite")
+   static SpritePixels minimapSprite;
    @ObfuscatedName("m")
    Comparator field3632;
-
 
    @ObfuscatedName("l")
    @ObfuscatedSignature(
@@ -33,7 +33,7 @@ public abstract class class283 implements Comparator {
       signature = "(Ljn;Ljn;B)I",
       garbageValue = "-20"
    )
-   protected final int method5320(class282 var1, class282 var2) {
+   protected final int method5320(Nameable var1, Nameable var2) {
       return this.field3632 == null?0:this.field3632.compare(var1, var2);
    }
 

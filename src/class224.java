@@ -5,8 +5,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hr")
-public class class224 extends class206 {
-
+public class class224 extends CacheableNode {
    @ObfuscatedName("w")
    @ObfuscatedGetter(
       intValue = 1466502535
@@ -21,7 +20,6 @@ public class class224 extends class206 {
    public final int[] field2572;
    @ObfuscatedName("b")
    public final int[] field2573;
-
 
    class224(int var1, int var2, int[] var3, int[] var4, int var5) {
       this.field2570 = var1;
@@ -52,7 +50,7 @@ public class class224 extends class206 {
       garbageValue = "-385243999"
    )
    public static int method4460(CharSequence var0, int var1) {
-      return class1.method13(var0, var1, true);
+      return GrandExchangeEvents.parseInt(var0, var1, true);
    }
 
    @ObfuscatedName("w")
@@ -106,22 +104,22 @@ public class class224 extends class206 {
       signature = "(I)Llh;",
       garbageValue = "44372009"
    )
-   static class317 method4461() {
-      class317 var0 = new class317();
-      var0.field3790 = class319.field3805;
-      var0.field3791 = class275.field3574;
-      var0.field3784 = class319.field3808[0];
-      var0.field3789 = class319.field3807[0];
-      var0.field3786 = class192.field2413[0];
-      var0.field3787 = class319.field3804[0];
-      var0.field3788 = class319.field3806;
-      var0.field3785 = class294.field3678[0];
-      class319.field3808 = null;
-      class319.field3807 = null;
-      class192.field2413 = null;
-      class319.field3804 = null;
-      class319.field3806 = null;
-      class294.field3678 = null;
+   static IndexedSprite method4461() {
+      IndexedSprite var0 = new IndexedSprite();
+      var0.originalWidth = class319.indexedSpriteWidth;
+      var0.originalHeight = class275.indexedSpriteHeight;
+      var0.offsetX = class319.indexedSpriteOffsetXs[0];
+      var0.offsetY = class319.indexedSpriteOffsetYs[0];
+      var0.width = class192.indexSpriteWidths[0];
+      var0.height = class319.indexedSpriteHeights[0];
+      var0.palette = class319.indexedSpritePalette;
+      var0.pixels = class294.spritePixels[0];
+      class319.indexedSpriteOffsetXs = null;
+      class319.indexedSpriteOffsetYs = null;
+      class192.indexSpriteWidths = null;
+      class319.indexedSpriteHeights = null;
+      class319.indexedSpritePalette = null;
+      class294.spritePixels = null;
       return var0;
    }
 }

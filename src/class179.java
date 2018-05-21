@@ -3,16 +3,15 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("fj")
 public class class179 {
-
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "(Liv;IIIZB)V",
       garbageValue = "1"
    )
-   public static void method3537(class247 var0, int var1, int var2, int var3, boolean var4) {
+   public static void method3537(IndexDataBase var0, int var1, int var2, int var3, boolean var4) {
       class217.field2486 = 1;
       class26.field236 = var0;
-      class19.field167 = var1;
+      WorldMapDecoration.field167 = var1;
       class217.field2487 = var2;
       class21.field185 = var3;
       class178.field2317 = var4;

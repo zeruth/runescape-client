@@ -4,7 +4,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ag")
 public class class34 extends class16 {
-
    @ObfuscatedName("d")
    @ObfuscatedGetter(
       intValue = -1700730667
@@ -26,41 +25,40 @@ public class class34 extends class16 {
    )
    int field298;
 
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(Lgy;Lgy;I)V",
       garbageValue = "48186777"
    )
-   void method611(class182 var1, class182 var2) {
-      int var3 = var2.method3742();
+   void method611(Buffer var1, Buffer var2) {
+      int var3 = var2.readUnsignedByte();
       if(var3 != class25.field233.field228) {
          throw new IllegalStateException("");
       } else {
-         super.field133 = var2.method3742();
-         super.field134 = var2.method3742();
-         super.field131 = var2.method3574();
-         super.field135 = var2.method3574();
-         this.field295 = var2.method3742();
-         this.field296 = var2.method3742();
-         super.field141 = var2.method3574();
-         super.field132 = var2.method3574();
-         this.field297 = var2.method3742();
-         this.field298 = var2.method3742();
+         super.field133 = var2.readUnsignedByte();
+         super.field134 = var2.readUnsignedByte();
+         super.field131 = var2.readUnsignedShort();
+         super.field135 = var2.readUnsignedShort();
+         this.field295 = var2.readUnsignedByte();
+         this.field296 = var2.readUnsignedByte();
+         super.field141 = var2.readUnsignedShort();
+         super.field132 = var2.readUnsignedShort();
+         this.field297 = var2.readUnsignedByte();
+         this.field298 = var2.readUnsignedByte();
          super.field134 = Math.min(super.field134, 4);
          super.field129 = new short[1][64][64];
          super.field130 = new short[super.field134][64][64];
          super.field137 = new byte[super.field134][64][64];
          super.field138 = new byte[super.field134][64][64];
-         super.field139 = new class19[super.field134][64][64][];
-         var3 = var1.method3742();
+         super.decorations = new WorldMapDecoration[super.field134][64][64][];
+         var3 = var1.readUnsignedByte();
          if(var3 != class24.field217.field219) {
             throw new IllegalStateException("");
          } else {
-            int var4 = var1.method3742();
-            int var5 = var1.method3742();
-            int var6 = var1.method3742();
-            int var7 = var1.method3742();
+            int var4 = var1.readUnsignedByte();
+            int var5 = var1.readUnsignedByte();
+            int var6 = var1.readUnsignedByte();
+            int var7 = var1.readUnsignedByte();
             if(var4 == super.field141 && var5 == super.field132 && var6 == this.field297 && var7 == this.field298) {
                for(int var8 = 0; var8 < 8; ++var8) {
                   for(int var9 = 0; var9 < 8; ++var9) {
@@ -139,8 +137,8 @@ public class class34 extends class16 {
       garbageValue = "-591826488"
    )
    public static void method635() {
-      class271.field3501.method4024();
-      class271.field3502.method4024();
+      NPCComposition.npcs.reset();
+      NPCComposition.npcModelCache.reset();
    }
 
    @ObfuscatedName("hs")
@@ -149,9 +147,9 @@ public class class34 extends class16 {
       garbageValue = "-47"
    )
    static final void method626(int var0, int var1, int var2, int var3) {
-      for(int var4 = 0; var4 < client.field793; ++var4) {
-         if(client.field800[var4] + client.field798[var4] > var0 && client.field798[var4] < var0 + var2 && client.field604[var4] + client.field799[var4] > var1 && client.field799[var4] < var3 + var1) {
-            client.field795[var4] = true;
+      for(int var4 = 0; var4 < Client.widgetCount; ++var4) {
+         if(Client.widgetBoundsWidth[var4] + Client.widgetPositionX[var4] > var0 && Client.widgetPositionX[var4] < var0 + var2 && Client.widgetBoundsHeight[var4] + Client.widgetPositionY[var4] > var1 && Client.widgetPositionY[var4] < var3 + var1) {
+            Client.field795[var4] = true;
          }
       }
 
@@ -164,10 +162,10 @@ public class class34 extends class16 {
    )
    static final void method633(String var0) {
       if(!var0.equals("")) {
-         class172 var1 = class133.method3115(class169.field2176, client.field739.field1250);
-         var1.field2279.method3552(class12.method123(var0));
-         var1.field2279.method3549(var0);
-         client.field739.method2019(var1);
+         PacketNode var1 = DecorativeObject.method3115(ClientPacket.field2176, Client.field739.field1250);
+         var1.packetBuffer.putByte(Size.getLength(var0));
+         var1.packetBuffer.putString(var0);
+         Client.field739.method2019(var1);
       }
    }
 }

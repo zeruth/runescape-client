@@ -3,14 +3,13 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hk")
 public class class220 {
-
    @ObfuscatedName("a")
-   static final byte[] field2543 = new byte[]{(byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)0, (byte)1, (byte)2, (byte)1, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0};
+   static final byte[] field2543;
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "Lgy;"
    )
-   class182 field2548 = new class182((byte[])null);
+   Buffer field2548;
    @ObfuscatedName("m")
    int field2540;
    @ObfuscatedName("q")
@@ -26,29 +25,35 @@ public class class220 {
    @ObfuscatedName("j")
    long field2547;
 
+   static {
+      field2543 = new byte[]{(byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)0, (byte)1, (byte)2, (byte)1, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0};
+   }
 
    class220(byte[] var1) {
+      this.field2548 = new Buffer((byte[])null);
       this.method4364(var1);
    }
 
-   class220() {}
+   class220() {
+      this.field2548 = new Buffer((byte[])null);
+   }
 
    @ObfuscatedName("w")
    void method4364(byte[] var1) {
-      this.field2548.field2365 = var1;
-      this.field2548.field2359 = 10;
-      int var2 = this.field2548.method3574();
-      this.field2540 = this.field2548.method3574();
+      this.field2548.payload = var1;
+      this.field2548.offset = 10;
+      int var2 = this.field2548.readUnsignedShort();
+      this.field2540 = this.field2548.readUnsignedShort();
       this.field2544 = 500000;
       this.field2539 = new int[var2];
 
       int var3;
       int var5;
-      for(var3 = 0; var3 < var2; this.field2548.field2359 += var5) {
-         int var4 = this.field2548.method3573();
-         var5 = this.field2548.method3573();
+      for(var3 = 0; var3 < var2; this.field2548.offset += var5) {
+         int var4 = this.field2548.readInt();
+         var5 = this.field2548.readInt();
          if(var4 == 1297379947) {
-            this.field2539[var3] = this.field2548.field2359;
+            this.field2539[var3] = this.field2548.offset;
             ++var3;
          }
       }
@@ -66,7 +71,7 @@ public class class220 {
 
    @ObfuscatedName("m")
    void method4365() {
-      this.field2548.field2365 = null;
+      this.field2548.payload = null;
       this.field2539 = null;
       this.field2542 = null;
       this.field2541 = null;
@@ -75,7 +80,7 @@ public class class220 {
 
    @ObfuscatedName("q")
    boolean method4406() {
-      return this.field2548.field2365 != null;
+      return this.field2548.payload != null;
    }
 
    @ObfuscatedName("x")
@@ -85,22 +90,22 @@ public class class220 {
 
    @ObfuscatedName("j")
    void method4411(int var1) {
-      this.field2548.field2359 = this.field2542[var1];
+      this.field2548.offset = this.field2542[var1];
    }
 
    @ObfuscatedName("a")
    void method4402(int var1) {
-      this.field2542[var1] = this.field2548.field2359;
+      this.field2542[var1] = this.field2548.offset;
    }
 
    @ObfuscatedName("l")
    void method4370() {
-      this.field2548.field2359 = -1;
+      this.field2548.offset = -1;
    }
 
    @ObfuscatedName("d")
    void method4371(int var1) {
-      int var2 = this.field2548.method3586();
+      int var2 = this.field2548.readVarInt();
       this.field2541[var1] += var2;
    }
 
@@ -112,12 +117,12 @@ public class class220 {
 
    @ObfuscatedName("p")
    int method4373(int var1) {
-      byte var2 = this.field2548.field2365[this.field2548.field2359];
+      byte var2 = this.field2548.payload[this.field2548.offset];
       int var5;
       if(var2 < 0) {
          var5 = var2 & 255;
          this.field2545[var1] = var5;
-         ++this.field2548.field2359;
+         ++this.field2548.offset;
       } else {
          var5 = this.field2545[var1];
       }
@@ -125,17 +130,17 @@ public class class220 {
       if(var5 != 240 && var5 != 247) {
          return this.method4374(var1, var5);
       } else {
-         int var3 = this.field2548.method3586();
+         int var3 = this.field2548.readVarInt();
          if(var5 == 247 && var3 > 0) {
-            int var4 = this.field2548.field2365[this.field2548.field2359] & 255;
+            int var4 = this.field2548.payload[this.field2548.offset] & 255;
             if(var4 >= 241 && var4 <= 243 || var4 == 246 || var4 == 248 || var4 >= 250 && var4 <= 252 || var4 == 254) {
-               ++this.field2548.field2359;
+               ++this.field2548.offset;
                this.field2545[var1] = var4;
                return this.method4374(var1, var4);
             }
          }
 
-         this.field2548.field2359 += var3;
+         this.field2548.offset += var3;
          return 0;
       }
    }
@@ -144,32 +149,32 @@ public class class220 {
    int method4374(int var1, int var2) {
       int var4;
       if(var2 == 255) {
-         int var7 = this.field2548.method3742();
-         var4 = this.field2548.method3586();
+         int var7 = this.field2548.readUnsignedByte();
+         var4 = this.field2548.readVarInt();
          if(var7 == 47) {
-            this.field2548.field2359 += var4;
+            this.field2548.offset += var4;
             return 1;
          } else if(var7 == 81) {
-            int var5 = this.field2548.method3572();
+            int var5 = this.field2548.read24BitInt();
             var4 -= 3;
             int var6 = this.field2541[var1];
             this.field2547 += (long)var6 * (long)(this.field2544 - var5);
             this.field2544 = var5;
-            this.field2548.field2359 += var4;
+            this.field2548.offset += var4;
             return 2;
          } else {
-            this.field2548.field2359 += var4;
+            this.field2548.offset += var4;
             return 3;
          }
       } else {
          byte var3 = field2543[var2 - 128];
          var4 = var2;
          if(var3 >= 1) {
-            var4 = var2 | this.field2548.method3742() << 8;
+            var4 = var2 | this.field2548.readUnsignedByte() << 8;
          }
 
          if(var3 >= 2) {
-            var4 |= this.field2548.method3742() << 16;
+            var4 |= this.field2548.readUnsignedByte() << 16;
          }
 
          return var4;
@@ -218,9 +223,9 @@ public class class220 {
       for(int var4 = 0; var4 < var3; ++var4) {
          this.field2541[var4] = 0;
          this.field2545[var4] = 0;
-         this.field2548.field2359 = this.field2539[var4];
+         this.field2548.offset = this.field2539[var4];
          this.method4371(var4);
-         this.field2542[var4] = this.field2548.field2359;
+         this.field2542[var4] = this.field2548.offset;
       }
 
    }

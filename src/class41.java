@@ -5,7 +5,6 @@ import netscape.javascript.JSObject;
 
 @ObfuscatedName("aq")
 public class class41 {
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(Ljava/applet/Applet;Ljava/lang/String;B)Ljava/lang/Object;",

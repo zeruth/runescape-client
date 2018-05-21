@@ -7,7 +7,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ee")
 public class class151 implements Runnable {
-
    @ObfuscatedName("w")
    Thread field1950;
    @ObfuscatedName("m")
@@ -23,17 +22,18 @@ public class class151 implements Runnable {
    @ObfuscatedGetter(
       intValue = -1603981301
    )
-   int field1953 = 0;
+   int field1953;
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = -1202012067
    )
-   int field1949 = 0;
+   int field1949;
    @ObfuscatedName("h")
    IOException field1955;
 
-
    class151(InputStream var1, int var2) {
+      this.field1953 = 0;
+      this.field1949 = 0;
       this.field1956 = var1;
       this.field1951 = var2 + 1;
       this.field1952 = new byte[this.field1951];
@@ -247,38 +247,38 @@ public class class151 implements Runnable {
    )
    static final void method3234(String var0) {
       if(var0.equalsIgnoreCase("toggleroof")) {
-         class51.field468.field981 = !class51.field468.field981;
-         class266.method5008();
-         if(class51.field468.field981) {
-            class61.method1189(99, "", "Roofs are now all hidden");
+         ScriptState.preferences.hideRoofs = !ScriptState.preferences.hideRoofs;
+         Enum.method5008();
+         if(ScriptState.preferences.hideRoofs) {
+            OwnWorldComparator.sendGameMessage(99, "", "Roofs are now all hidden");
          } else {
-            class61.method1189(99, "", "Roofs will only be removed selectively");
+            OwnWorldComparator.sendGameMessage(99, "", "Roofs will only be removed selectively");
          }
       }
 
       if(var0.equalsIgnoreCase("displayfps")) {
-         client.field610 = !client.field610;
+         Client.displayFps = !Client.displayFps;
       }
 
       if(var0.equalsIgnoreCase("renderself")) {
-         client.field711 = !client.field711;
+         Client.field711 = !Client.field711;
       }
 
       if(var0.equalsIgnoreCase("mouseovertext")) {
-         client.field740 = !client.field740;
+         Client.field740 = !Client.field740;
       }
 
-      if(client.field729 >= 2) {
+      if(Client.rights >= 2) {
          if(var0.equalsIgnoreCase("showcoord")) {
-            class66.field987.field3846 = !class66.field987.field3846;
+            Preferences.renderOverview.field3846 = !Preferences.renderOverview.field3846;
          }
 
          if(var0.equalsIgnoreCase("fpson")) {
-            client.field610 = true;
+            Client.displayFps = true;
          }
 
          if(var0.equalsIgnoreCase("fpsoff")) {
-            client.field610 = false;
+            Client.displayFps = false;
          }
 
          if(var0.equalsIgnoreCase("gc")) {
@@ -286,13 +286,13 @@ public class class151 implements Runnable {
          }
 
          if(var0.equalsIgnoreCase("clientdrop")) {
-            class86.method2018();
+            ChatLineBuffer.method2018();
          }
       }
 
-      class172 var1 = class133.method3115(class169.field2201, client.field739.field1250);
-      var1.field2279.method3552(var0.length() + 1);
-      var1.field2279.method3549(var0);
-      client.field739.method2019(var1);
+      PacketNode var1 = DecorativeObject.method3115(ClientPacket.field2201, Client.field739.field1250);
+      var1.packetBuffer.putByte(var0.length() + 1);
+      var1.packetBuffer.putString(var0);
+      Client.field739.method2019(var1);
    }
 }

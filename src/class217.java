@@ -1,25 +1,25 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hn")
 public class class217 {
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "Liv;"
    )
-   public static class247 field2484;
+   public static IndexDataBase field2484;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Liv;"
    )
-   public static class247 field2482;
+   public static IndexDataBase field2482;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Liv;"
    )
-   public static class247 field2490;
+   public static IndexDataBase field2490;
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lho;"
@@ -29,7 +29,7 @@ public class class217 {
    @ObfuscatedGetter(
       intValue = -908068121
    )
-   static int field2486 = 0;
+   static int field2486;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
       intValue = -2009173685
@@ -39,12 +39,15 @@ public class class217 {
    @ObfuscatedSignature(
       signature = "Liv;"
    )
-   static class247 field2489;
+   static IndexDataBase field2489;
    @ObfuscatedName("fd")
    @ObfuscatedSignature(
       signature = "[Llc;"
    )
-   static class318[] field2488;
+   @Export("mapMarkers")
+   static SpritePixels[] mapMarkers;
 
-
+   static {
+      field2486 = 0;
+   }
 }

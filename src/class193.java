@@ -2,7 +2,6 @@ import net.runelite.mapping.ObfuscatedName;
 
 @ObfuscatedName("gs")
 public class class193 {
-
    @ObfuscatedName("w")
    public static void method3951(byte[] var0, int var1, byte[] var2, int var3, int var4) {
       if(var2 == var0) {

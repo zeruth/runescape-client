@@ -5,13 +5,11 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ft")
 public abstract class class157 {
-
    @ObfuscatedName("py")
    @ObfuscatedGetter(
       intValue = 200599753
    )
    static int field1999;
-
 
    @ObfuscatedName("m")
    @ObfuscatedSignature(
@@ -60,18 +58,18 @@ public abstract class class157 {
       signature = "(Liv;Liv;Liv;Liv;B)V",
       garbageValue = "8"
    )
-   public static void method3310(class247 var0, class247 var1, class247 var2, class247 var3) {
-      class130.field1824 = var0;
-      class230.field2613 = var1;
-      class39.field354 = var2;
+   public static void method3310(IndexDataBase var0, IndexDataBase var1, IndexDataBase var2, IndexDataBase var3) {
+      Frames.widgetIndex = var0;
+      Widget.field2613 = var1;
+      KeyFocusListener.field354 = var2;
       class217.field2489 = var3;
-      class230.field2615 = new class230[class130.field1824.method4645()][];
-      class80.field1173 = new boolean[class130.field1824.method4645()];
+      Widget.widgets = new Widget[Frames.widgetIndex.size()][];
+      Item.validInterfaces = new boolean[Frames.widgetIndex.size()];
    }
 
    @ObfuscatedName("m")
    public static double method3303(double var0, double var2, double var4) {
-      return class110.method2581((var0 - var2) / var4) / var4;
+      return FileOnDisk.method2581((var0 - var2) / var4) / var4;
    }
 
    @ObfuscatedName("q")
@@ -80,6 +78,6 @@ public abstract class class157 {
       garbageValue = "-6"
    )
    public static void method3307() {
-      class254.field3252.method4024();
+      VarPlayerType.varplayers.reset();
    }
 }

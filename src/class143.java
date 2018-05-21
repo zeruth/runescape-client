@@ -1,17 +1,17 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("eh")
 public class class143 extends class283 {
-
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "[Lbb;"
    )
-   static class65[] field1914;
+   @Export("worldList")
+   static World[] worldList;
    @ObfuscatedName("w")
    final boolean field1913;
-
 
    public class143(boolean var1) {
       this.field1913 = var1;
@@ -22,12 +22,12 @@ public class class143 extends class283 {
       signature = "(Lkd;Lkd;I)I",
       garbageValue = "-737922169"
    )
-   int method3187(class287 var1, class287 var2) {
-      return var2.field3648 != var1.field3648?(this.field1913?var1.field3648 - var2.field3648:var2.field3648 - var1.field3648):this.method5320(var1, var2);
+   int method3187(ChatPlayer var1, ChatPlayer var2) {
+      return var2.world != var1.world?(this.field1913?var1.world - var2.world:var2.world - var1.world):this.method5320(var1, var2);
    }
 
    public int compare(Object var1, Object var2) {
-      return this.method3187((class287)var1, (class287)var2);
+      return this.method3187((ChatPlayer)var1, (ChatPlayer)var2);
    }
 
    @ObfuscatedName("q")
@@ -35,51 +35,52 @@ public class class143 extends class283 {
       signature = "([BI)Lcs;",
       garbageValue = "311466444"
    )
-   static class84 method3186(byte[] var0) {
-      class84 var1 = new class84();
-      class182 var2 = new class182(var0);
-      var2.field2359 = var2.field2365.length - 2;
-      int var3 = var2.method3574();
-      int var4 = var2.field2365.length - 2 - var3 - 12;
-      var2.field2359 = var4;
-      int var5 = var2.method3573();
-      var1.field1213 = var2.method3574();
-      var1.field1210 = var2.method3574();
-      var1.field1215 = var2.method3574();
-      var1.field1209 = var2.method3574();
-      int var6 = var2.method3742();
+   @Export("newScript")
+   static Script newScript(byte[] var0) {
+      Script var1 = new Script();
+      Buffer var2 = new Buffer(var0);
+      var2.offset = var2.payload.length - 2;
+      int var3 = var2.readUnsignedShort();
+      int var4 = var2.payload.length - 2 - var3 - 12;
+      var2.offset = var4;
+      int var5 = var2.readInt();
+      var1.localIntCount = var2.readUnsignedShort();
+      var1.localStringCount = var2.readUnsignedShort();
+      var1.intStackCount = var2.readUnsignedShort();
+      var1.stringStackCount = var2.readUnsignedShort();
+      int var6 = var2.readUnsignedByte();
       int var7;
       int var8;
       if(var6 > 0) {
-         var1.field1217 = var1.method1989(var6);
+         var1.switches = var1.method1989(var6);
 
          for(var7 = 0; var7 < var6; ++var7) {
-            var8 = var2.method3574();
-            class197 var9 = new class197(var8 > 0?class81.method1922(var8):1);
-            var1.field1217[var7] = var9;
+            var8 = var2.readUnsignedShort();
+            IterableHashTable var9 = new IterableHashTable(var8 > 0?class81.nextPowerOfTwo(var8):1);
+            var1.switches[var7] = var9;
 
             while(var8-- > 0) {
-               int var10 = var2.method3573();
-               int var11 = var2.method3573();
-               var9.method3992(new class211(var11), (long)var10);
+               int var10 = var2.readInt();
+               int var11 = var2.readInt();
+               var9.put(new IntegerNode(var11), (long)var10);
             }
          }
       }
 
-      var2.field2359 = 0;
-      var2.method3576();
-      var1.field1211 = new int[var5];
-      var1.field1216 = new int[var5];
-      var1.field1212 = new String[var5];
+      var2.offset = 0;
+      var2.getNullString();
+      var1.instructions = new int[var5];
+      var1.intOperands = new int[var5];
+      var1.stringOperands = new String[var5];
 
-      for(var7 = 0; var2.field2359 < var4; var1.field1211[var7++] = var8) {
-         var8 = var2.method3574();
+      for(var7 = 0; var2.offset < var4; var1.instructions[var7++] = var8) {
+         var8 = var2.readUnsignedShort();
          if(var8 == 3) {
-            var1.field1212[var7] = var2.method3577();
+            var1.stringOperands[var7] = var2.readString();
          } else if(var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
-            var1.field1216[var7] = var2.method3573();
+            var1.intOperands[var7] = var2.readInt();
          } else {
-            var1.field1216[var7] = var2.method3742();
+            var1.intOperands[var7] = var2.readUnsignedByte();
          }
       }
 

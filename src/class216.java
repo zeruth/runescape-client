@@ -1,15 +1,16 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("he")
 public class class216 {
-
    @ObfuscatedName("cx")
    @ObfuscatedSignature(
       signature = "Lic;"
    )
-   static class249 field2477;
+   @Export("indexModels")
+   static IndexData indexModels;
    @ObfuscatedName("w")
    byte[] field2478;
    @ObfuscatedName("m")
@@ -49,6 +50,4 @@ public class class216 {
       intValue = -1138233763
    )
    int field2480;
-
-
 }

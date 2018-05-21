@@ -9,7 +9,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("fh")
 public final class class161 extends class157 implements Runnable {
-
    @ObfuscatedName("w")
    InputStream field2017;
    @ObfuscatedName("m")
@@ -17,31 +16,31 @@ public final class class161 extends class157 implements Runnable {
    @ObfuscatedName("q")
    Socket field2022;
    @ObfuscatedName("b")
-   boolean field2012 = false;
+   boolean field2012;
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Lea;"
    )
-   class154 field2010;
+   Signlink field2010;
    @ObfuscatedName("n")
    @ObfuscatedSignature(
       signature = "Led;"
    )
-   class153 field2014;
+   Task field2014;
    @ObfuscatedName("h")
    byte[] field2011;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
       intValue = -1306170743
    )
-   int field2016 = 0;
+   int field2016;
    @ObfuscatedName("j")
    @ObfuscatedGetter(
       intValue = -1028476947
    )
-   int field2009 = 0;
+   int field2009;
    @ObfuscatedName("a")
-   boolean field2018 = false;
+   boolean field2018;
    @ObfuscatedName("l")
    @ObfuscatedGetter(
       intValue = -1256523181
@@ -53,11 +52,14 @@ public final class class161 extends class157 implements Runnable {
    )
    final int field2020;
 
-
    @ObfuscatedSignature(
       signature = "(Ljava/net/Socket;Lea;I)V"
    )
-   public class161(Socket var1, class154 var2, int var3) throws IOException {
+   public class161(Socket var1, Signlink var2, int var3) throws IOException {
+      this.field2012 = false;
+      this.field2016 = 0;
+      this.field2009 = 0;
+      this.field2018 = false;
       this.field2010 = var2;
       this.field2022 = var1;
       this.field2019 = var3;
@@ -143,13 +145,13 @@ public final class class161 extends class157 implements Runnable {
          }
 
          if(this.field2014 != null) {
-            while(this.field2014.field1966 == 0) {
-               class18.method218(1L);
+            while(this.field2014.status == 0) {
+               WorldMapType1.method218(1L);
             }
 
-            if(this.field2014.field1966 == 1) {
+            if(this.field2014.status == 1) {
                try {
-                  ((Thread)this.field2014.field1970).join();
+                  ((Thread)this.field2014.value).join();
                } catch (InterruptedException var3) {
                   ;
                }
@@ -185,7 +187,7 @@ public final class class161 extends class157 implements Runnable {
                }
 
                if(this.field2014 == null) {
-                  this.field2014 = this.field2010.method3252(this, 3);
+                  this.field2014 = this.field2010.createRunnable(this, 3);
                }
 
                this.notifyAll();
@@ -195,15 +197,15 @@ public final class class161 extends class157 implements Runnable {
    }
 
    public void run() {
-      while(true) {
-         try {
-            label83: {
+      try {
+         while(true) {
+            label84: {
                int var1;
                int var2;
                synchronized(this) {
                   if(this.field2009 == this.field2016) {
                      if(this.field2012) {
-                        break label83;
+                        break label84;
                      }
 
                      try {
@@ -260,12 +262,12 @@ public final class class161 extends class157 implements Runnable {
             }
 
             this.field2011 = null;
-         } catch (Exception var12) {
-            class43.method786((String)null, var12);
+            break;
          }
-
-         return;
+      } catch (Exception var12) {
+         class43.processClientError((String)null, var12);
       }
+
    }
 
    protected void finalize() {

@@ -1,45 +1,56 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("cb")
-public class class92 extends class204 {
-
+public class class92 extends Node {
    @ObfuscatedName("h")
-   static byte[] field1293;
+   @Export("payload")
+   static byte[] payload;
    @ObfuscatedName("x")
-   static int field1301;
+   @Export("position")
+   static int position;
    @ObfuscatedName("j")
-   static int field1277;
+   @Export("bitPosition")
+   static int bitPosition;
    @ObfuscatedName("a")
-   static int field1278;
+   @Export("blockSize0")
+   static int blockSize0;
    @ObfuscatedName("l")
-   static int field1276;
+   @Export("blockSize1")
+   static int blockSize1;
    @ObfuscatedName("d")
    @ObfuscatedSignature(
       signature = "[Lca;"
    )
-   static class90[] field1270;
+   @Export("codeBooks")
+   static CodeBook[] codeBooks;
    @ObfuscatedName("s")
    @ObfuscatedSignature(
       signature = "[Lcl;"
    )
-   static class94[] field1281;
+   @Export("floors")
+   static Floor1[] floors;
    @ObfuscatedName("p")
    @ObfuscatedSignature(
       signature = "[Lcu;"
    )
-   static class101[] field1282;
+   @Export("residues")
+   static Residue[] residues;
    @ObfuscatedName("g")
    @ObfuscatedSignature(
       signature = "[Lda;"
    )
-   static class106[] field1275;
+   @Export("mappings")
+   static Mapping[] mappings;
    @ObfuscatedName("y")
-   static boolean[] field1269;
+   @Export("modeBlockFlags")
+   static boolean[] modeBlockFlags;
    @ObfuscatedName("c")
-   static int[] field1285;
+   @Export("modeMappings")
+   static int[] modeMappings;
    @ObfuscatedName("e")
-   static boolean field1284 = false;
+   static boolean field1284;
    @ObfuscatedName("k")
    static float[] field1291;
    @ObfuscatedName("r")
@@ -85,6 +96,9 @@ public class class92 extends class204 {
    @ObfuscatedName("aw")
    int field1271;
 
+   static {
+      field1284 = false;
+   }
 
    class92(byte[] var1) {
       this.method2122(var1);
@@ -92,17 +106,17 @@ public class class92 extends class204 {
 
    @ObfuscatedName("j")
    void method2122(byte[] var1) {
-      class182 var2 = new class182(var1);
-      this.field1273 = var2.method3573();
-      this.field1302 = var2.method3573();
-      this.field1272 = var2.method3573();
-      this.field1292 = var2.method3573();
+      Buffer var2 = new Buffer(var1);
+      this.field1273 = var2.readInt();
+      this.field1302 = var2.readInt();
+      this.field1272 = var2.readInt();
+      this.field1292 = var2.readInt();
       if(this.field1292 < 0) {
          this.field1292 = ~this.field1292;
          this.field1274 = true;
       }
 
-      int var3 = var2.method3573();
+      int var3 = var2.readInt();
       this.field1280 = new byte[var3][];
 
       for(int var4 = 0; var4 < var3; ++var4) {
@@ -110,12 +124,12 @@ public class class92 extends class204 {
 
          int var6;
          do {
-            var6 = var2.method3742();
+            var6 = var2.readUnsignedByte();
             var5 += var6;
          } while(var6 >= 255);
 
          byte[] var7 = new byte[var5];
-         var2.method3580(var7, 0, var5);
+         var2.readBytes(var7, 0, var5);
          this.field1280[var4] = var7;
       }
 
@@ -123,16 +137,16 @@ public class class92 extends class204 {
 
    @ObfuscatedName("l")
    float[] method2125(int var1) {
-      method2120(this.field1280[var1], 0);
-      method2121();
-      int var2 = method2141(class11.method113(field1285.length - 1));
-      boolean var3 = field1269[var2];
-      int var4 = var3?field1276:field1278;
+      setBytes(this.field1280[var1], 0);
+      getBit();
+      int var2 = getInt(class11.ilog(modeMappings.length - 1));
+      boolean var3 = modeBlockFlags[var2];
+      int var4 = var3?blockSize1:blockSize0;
       boolean var5 = false;
       boolean var6 = false;
       if(var3) {
-         var5 = method2121() != 0;
-         var6 = method2121() != 0;
+         var5 = getBit() != 0;
+         var6 = getBit() != 0;
       }
 
       int var7 = var4 >> 1;
@@ -140,9 +154,9 @@ public class class92 extends class204 {
       int var9;
       int var10;
       if(var3 && !var5) {
-         var8 = (var4 >> 2) - (field1278 >> 2);
-         var9 = (field1278 >> 2) + (var4 >> 2);
-         var10 = field1278 >> 1;
+         var8 = (var4 >> 2) - (blockSize0 >> 2);
+         var9 = (blockSize0 >> 2) + (var4 >> 2);
+         var10 = blockSize0 >> 1;
       } else {
          var8 = 0;
          var9 = var7;
@@ -153,32 +167,32 @@ public class class92 extends class204 {
       int var12;
       int var13;
       if(var3 && !var6) {
-         var11 = var4 - (var4 >> 2) - (field1278 >> 2);
-         var12 = (field1278 >> 2) + (var4 - (var4 >> 2));
-         var13 = field1278 >> 1;
+         var11 = var4 - (var4 >> 2) - (blockSize0 >> 2);
+         var12 = (blockSize0 >> 2) + (var4 - (var4 >> 2));
+         var13 = blockSize0 >> 1;
       } else {
          var11 = var7;
          var12 = var4;
          var13 = var4 >> 1;
       }
 
-      class106 var14 = field1275[field1285[var2]];
-      int var16 = var14.field1411;
-      int var17 = var14.field1412[var16];
-      boolean var15 = !field1281[var17].method2179();
+      Mapping var14 = mappings[modeMappings[var2]];
+      int var16 = var14.mux;
+      int var17 = var14.submapFloors[var16];
+      boolean var15 = !floors[var17].decodedFloor();
       boolean var45 = var15;
 
       for(var17 = 0; var17 < var14.field1413; ++var17) {
-         class101 var18 = field1282[var14.field1410[var17]];
+         Residue var18 = residues[var14.field1410[var17]];
          float[] var19 = field1291;
-         var18.method2301(var19, var4 >> 1, var45);
+         var18.decodeResidue(var19, var4 >> 1, var45);
       }
 
       int var40;
       if(!var15) {
-         var17 = var14.field1411;
-         var40 = var14.field1412[var17];
-         field1281[var40].method2165(field1291, var4 >> 1);
+         var17 = var14.mux;
+         var40 = var14.submapFloors[var17];
+         floors[var40].computeFloor(field1291, var4 >> 1);
       }
 
       int var42;
@@ -235,7 +249,7 @@ public class class92 extends class204 {
             var43[var25 * 4 + 1] = (var27 - var29) * var30 + (var26 - var28) * var31;
          }
 
-         var25 = class11.method113(var4 - 1);
+         var25 = class11.ilog(var4 - 1);
 
          int var47;
          int var48;
@@ -376,13 +390,13 @@ public class class92 extends class204 {
    @ObfuscatedSignature(
       signature = "([I)Lcg;"
    )
-   class93 method2128(int[] var1) {
+   RawAudioNode method2128(int[] var1) {
       if(var1 != null && var1[0] <= 0) {
          return null;
       } else {
          if(this.field1300 == null) {
             this.field1288 = 0;
-            this.field1287 = new float[field1276];
+            this.field1287 = new float[blockSize1];
             this.field1300 = new byte[this.field1302];
             this.field1295 = 0;
             this.field1271 = 0;
@@ -421,12 +435,13 @@ public class class92 extends class204 {
          this.field1287 = null;
          byte[] var7 = this.field1300;
          this.field1300 = null;
-         return new class93(this.field1273, var7, this.field1272, this.field1292, this.field1274);
+         return new RawAudioNode(this.field1273, var7, this.field1272, this.field1292, this.field1274);
       }
    }
 
    @ObfuscatedName("w")
-   static float method2124(int var0) {
+   @Export("float32Unpack")
+   static float float32Unpack(int var0) {
       int var1 = var0 & 2097151;
       int var2 = var0 & Integer.MIN_VALUE;
       int var3 = (var0 & 2145386496) >> 21;
@@ -438,40 +453,43 @@ public class class92 extends class204 {
    }
 
    @ObfuscatedName("m")
-   static void method2120(byte[] var0, int var1) {
-      field1293 = var0;
-      field1301 = var1;
-      field1277 = 0;
+   @Export("setBytes")
+   static void setBytes(byte[] var0, int var1) {
+      payload = var0;
+      position = var1;
+      bitPosition = 0;
    }
 
    @ObfuscatedName("q")
-   static int method2121() {
-      int var0 = field1293[field1301] >> field1277 & 1;
-      ++field1277;
-      field1301 += field1277 >> 3;
-      field1277 &= 7;
+   @Export("getBit")
+   static int getBit() {
+      int var0 = payload[position] >> bitPosition & 1;
+      ++bitPosition;
+      position += bitPosition >> 3;
+      bitPosition &= 7;
       return var0;
    }
 
    @ObfuscatedName("x")
-   static int method2141(int var0) {
+   @Export("getInt")
+   static int getInt(int var0) {
       int var1 = 0;
 
       int var2;
       int var3;
-      for(var2 = 0; var0 >= 8 - field1277; var0 -= var3) {
-         var3 = 8 - field1277;
+      for(var2 = 0; var0 >= 8 - bitPosition; var0 -= var3) {
+         var3 = 8 - bitPosition;
          int var4 = (1 << var3) - 1;
-         var1 += (field1293[field1301] >> field1277 & var4) << var2;
-         field1277 = 0;
-         ++field1301;
+         var1 += (payload[position] >> bitPosition & var4) << var2;
+         bitPosition = 0;
+         ++position;
          var2 += var3;
       }
 
       if(var0 > 0) {
          var3 = (1 << var0) - 1;
-         var1 += (field1293[field1301] >> field1277 & var3) << var2;
-         field1277 += var0;
+         var1 += (payload[position] >> bitPosition & var3) << var2;
+         bitPosition += var0;
       }
 
       return var1;
@@ -479,10 +497,10 @@ public class class92 extends class204 {
 
    @ObfuscatedName("a")
    static void method2129(byte[] var0) {
-      method2120(var0, 0);
-      field1278 = 1 << method2141(4);
-      field1276 = 1 << method2141(4);
-      field1291 = new float[field1276];
+      setBytes(var0, 0);
+      blockSize0 = 1 << getInt(4);
+      blockSize1 = 1 << getInt(4);
+      field1291 = new float[blockSize1];
 
       int var1;
       int var2;
@@ -490,7 +508,7 @@ public class class92 extends class204 {
       int var4;
       int var5;
       for(var1 = 0; var1 < 2; ++var1) {
-         var2 = var1 != 0?field1276:field1278;
+         var2 = var1 != 0?blockSize1:blockSize0;
          var3 = var2 >> 1;
          var4 = var2 >> 2;
          var5 = var2 >> 3;
@@ -516,10 +534,10 @@ public class class92 extends class204 {
          }
 
          int[] var14 = new int[var5];
-         int var10 = class11.method113(var5 - 1);
+         int var10 = class11.ilog(var5 - 1);
 
          for(int var11 = 0; var11 < var5; ++var11) {
-            var14[var11] = class36.method690(var11, var10);
+            var14[var11] = MapIconReference.method690(var11, var10);
          }
 
          if(var1 != 0) {
@@ -535,49 +553,49 @@ public class class92 extends class204 {
          }
       }
 
-      var1 = method2141(8) + 1;
-      field1270 = new class90[var1];
+      var1 = getInt(8) + 1;
+      codeBooks = new CodeBook[var1];
 
       for(var2 = 0; var2 < var1; ++var2) {
-         field1270[var2] = new class90();
+         codeBooks[var2] = new CodeBook();
       }
 
-      var2 = method2141(6) + 1;
+      var2 = getInt(6) + 1;
 
       for(var3 = 0; var3 < var2; ++var3) {
-         method2141(16);
+         getInt(16);
       }
 
-      var2 = method2141(6) + 1;
-      field1281 = new class94[var2];
+      var2 = getInt(6) + 1;
+      floors = new Floor1[var2];
 
       for(var3 = 0; var3 < var2; ++var3) {
-         field1281[var3] = new class94();
+         floors[var3] = new Floor1();
       }
 
-      var3 = method2141(6) + 1;
-      field1282 = new class101[var3];
+      var3 = getInt(6) + 1;
+      residues = new Residue[var3];
 
       for(var4 = 0; var4 < var3; ++var4) {
-         field1282[var4] = new class101();
+         residues[var4] = new Residue();
       }
 
-      var4 = method2141(6) + 1;
-      field1275 = new class106[var4];
+      var4 = getInt(6) + 1;
+      mappings = new Mapping[var4];
 
       for(var5 = 0; var5 < var4; ++var5) {
-         field1275[var5] = new class106();
+         mappings[var5] = new Mapping();
       }
 
-      var5 = method2141(6) + 1;
-      field1269 = new boolean[var5];
-      field1285 = new int[var5];
+      var5 = getInt(6) + 1;
+      modeBlockFlags = new boolean[var5];
+      modeMappings = new int[var5];
 
       for(int var15 = 0; var15 < var5; ++var15) {
-         field1269[var15] = method2121() != 0;
-         method2141(16);
-         method2141(16);
-         field1285[var15] = method2141(8);
+         modeBlockFlags[var15] = getBit() != 0;
+         getInt(16);
+         getInt(16);
+         modeMappings[var15] = getInt(8);
       }
 
    }
@@ -586,9 +604,9 @@ public class class92 extends class204 {
    @ObfuscatedSignature(
       signature = "(Liv;)Z"
    )
-   static boolean method2132(class247 var0) {
+   static boolean method2132(IndexDataBase var0) {
       if(!field1284) {
-         byte[] var1 = var0.method4626(0, 0);
+         byte[] var1 = var0.getConfigData(0, 0);
          if(var1 == null) {
             return false;
          }
@@ -604,12 +622,13 @@ public class class92 extends class204 {
    @ObfuscatedSignature(
       signature = "(Liv;II)Lcb;"
    )
-   static class92 method2127(class247 var0, int var1, int var2) {
+   @Export("getInstrument")
+   static class92 getInstrument(IndexDataBase var0, int var1, int var2) {
       if(!method2132(var0)) {
-         var0.method4708(var1, var2);
+         var0.tryLoadRecord(var1, var2);
          return null;
       } else {
-         byte[] var3 = var0.method4626(var1, var2);
+         byte[] var3 = var0.getConfigData(var1, var2);
          return var3 == null?null:new class92(var3);
       }
    }

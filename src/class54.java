@@ -1,21 +1,21 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("bx")
 public class class54 {
-
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 711754047
    )
-   public static int field485;
+   @Export("revision")
+   public static int revision;
    @ObfuscatedName("ee")
    @ObfuscatedGetter(
       intValue = 159407655
    )
    static int field495;
-
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(

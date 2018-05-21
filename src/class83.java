@@ -1,47 +1,56 @@
 import java.util.HashMap;
 import java.util.Map;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("cf")
 public class class83 {
-
    @ObfuscatedName("w")
-   static final Map field1204 = new HashMap();
+   @Export("chatLineMap")
+   static final Map chatLineMap;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lgx;"
    )
-   static final class197 field1203 = new class197(1024);
+   @Export("messages")
+   static final IterableHashTable messages;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lhq;"
    )
-   static final class215 field1205 = new class215();
+   static final IterableDualNodeQueue field1205;
    @ObfuscatedName("b")
    @ObfuscatedGetter(
       intValue = 2021624217
    )
-   static int field1208 = 0;
+   static int field1208;
    @ObfuscatedName("a")
    @ObfuscatedGetter(
       intValue = -2076105995
    )
-   static int field1207;
+   @Export("scriptStringStackSize")
+   static int scriptStringStackSize;
    @ObfuscatedName("ad")
    static int[] field1206;
 
+   static {
+      chatLineMap = new HashMap();
+      messages = new IterableHashTable(1024);
+      field1205 = new IterableDualNodeQueue();
+      field1208 = 0;
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(Liv;Liv;I)V",
       garbageValue = "-927941967"
    )
-   public static void method1986(class247 var0, class247 var1) {
-      class260.field3309 = var0;
-      class260.field3320 = var1;
-      class260.field3319 = class260.field3309.method4638(3);
+   public static void method1986(IndexDataBase var0, IndexDataBase var1) {
+      KitDefinition.identKit_ref = var0;
+      KitDefinition.field3320 = var1;
+      KitDefinition.field3319 = KitDefinition.identKit_ref.fileCount(3);
    }
 
    @ObfuscatedName("w")
@@ -49,44 +58,45 @@ public class class83 {
       signature = "(Lge;I)V",
       garbageValue = "1737338095"
    )
-   static final void method1987(class189 var0) {
-      var0.method3898();
-      int var1 = client.field709;
-      class60 var2 = class150.field1948 = client.field806[var1] = new class60();
-      var2.field583 = var1;
-      int var3 = var0.method3871(30);
+   @Export("initializeGPI")
+   static final void initializeGPI(PacketBuffer var0) {
+      var0.bitAccess();
+      int var1 = Client.localInteractingIndex;
+      Player var2 = MilliTimer.localPlayer = Client.cachedPlayers[var1] = new Player();
+      var2.playerId = var1;
+      int var3 = var0.getBits(30);
       byte var4 = (byte)(var3 >> 28);
       int var5 = var3 >> 14 & 16383;
       int var6 = var3 & 16383;
-      var2.field928[0] = var5 - class178.field2315;
-      var2.field900 = (var2.field928[0] << 7) + (var2.method1141() << 6);
-      var2.field939[0] = var6 - class71.field1051;
-      var2.field918 = (var2.field939[0] << 7) + (var2.method1141() << 6);
-      class192.field2415 = var2.field581 = var4;
+      var2.pathX[0] = var5 - class178.baseX;
+      var2.x = (var2.pathX[0] << 7) + (var2.getSize() << 6);
+      var2.pathY[0] = var6 - CombatInfoListHolder.baseY;
+      var2.y = (var2.pathY[0] << 7) + (var2.getSize() << 6);
+      class192.plane = var2.field581 = var4;
       if(class81.field1179[var1] != null) {
-         var2.method1132(class81.field1179[var1]);
+         var2.decodeApperance(class81.field1179[var1]);
       }
 
-      class81.field1180 = 0;
-      class81.field1181[++class81.field1180 - 1] = var1;
+      class81.playerIndexesCount = 0;
+      class81.playerIndices[++class81.playerIndexesCount - 1] = var1;
       class81.field1183[var1] = 0;
       class81.field1182 = 0;
 
       for(int var7 = 1; var7 < 2048; ++var7) {
          if(var1 != var7) {
-            int var8 = var0.method3871(18);
+            int var8 = var0.getBits(18);
             int var9 = var8 >> 16;
             int var10 = var8 >> 8 & 597;
             int var11 = var8 & 597;
-            class81.field1184[var7] = (var10 << 14) + var11 + (var9 << 28);
-            class81.field1185[var7] = 0;
-            class81.field1186[var7] = -1;
+            class81.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
+            class81.Players_orientations[var7] = 0;
+            class81.Players_targetIndices[var7] = -1;
             class81.field1175[++class81.field1182 - 1] = var7;
             class81.field1183[var7] = 0;
          }
       }
 
-      var0.method3872();
+      var0.byteAccess();
    }
 
    @ObfuscatedName("d")
@@ -95,7 +105,7 @@ public class class83 {
       garbageValue = "-709266034"
    )
    static final int method1985(int var0, int var1) {
-      int var2 = class5.method68(var0 + '\ub135', 91923 + var1, 4) - 128 + (class5.method68(10294 + var0, var1 + '\u93bd', 2) - 128 >> 1) + (class5.method68(var0, var1, 1) - 128 >> 2);
+      int var2 = UnitPriceComparator.getSmoothNoise(var0 + 45365, 91923 + var1, 4) - 128 + (UnitPriceComparator.getSmoothNoise(10294 + var0, var1 + 37821, 2) - 128 >> 1) + (UnitPriceComparator.getSmoothNoise(var0, var1, 1) - 128 >> 2);
       var2 = (int)(0.3D * (double)var2) + 35;
       if(var2 < 10) {
          var2 = 10;

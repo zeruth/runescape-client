@@ -3,18 +3,16 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ju")
 public class class274 {
-
    @ObfuscatedName("ay")
    static int[] field3569;
-
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(B)[Lik;",
       garbageValue = "-20"
    )
-   public static class242[] method5249() {
-      return new class242[]{class242.field3139, class242.field3140, class242.field3137, class242.field3145, class242.field3135, class242.field3138};
+   public static Permission[] method5249() {
+      return new Permission[]{Permission.field3139, Permission.field3140, Permission.field3137, Permission.field3145, Permission.field3135, Permission.field3138};
    }
 
    @ObfuscatedName("j")
@@ -23,10 +21,10 @@ public class class274 {
       garbageValue = "479413406"
    )
    static void method5248() {
-      if(class78.field1129 && class78.field1127 != null && class78.field1127.length() > 0) {
-         class78.field1126 = 1;
+      if(class78.Login_isUsernameRemembered && class78.username != null && class78.username.length() > 0) {
+         class78.currentLoginField = 1;
       } else {
-         class78.field1126 = 0;
+         class78.currentLoginField = 0;
       }
 
    }

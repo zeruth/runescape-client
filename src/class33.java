@@ -5,8 +5,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("aw")
-public class class33 extends class20 {
-
+public class class33 extends WorldMapData {
    @ObfuscatedName("s")
    HashSet field292;
    @ObfuscatedName("p")
@@ -14,15 +13,14 @@ public class class33 extends class20 {
    @ObfuscatedName("g")
    List field291;
 
-
    @ObfuscatedName("bz")
    @ObfuscatedSignature(
       signature = "(Lgy;Lgy;Lgy;IZI)V",
       garbageValue = "-2045505294"
    )
-   void method603(class182 var1, class182 var2, class182 var3, int var4, boolean var5) {
-      this.method224(var1, var4);
-      int var6 = var3.method3574();
+   void method603(Buffer var1, Buffer var2, Buffer var3, int var4, boolean var5) {
+      this.loadMapData(var1, var4);
+      int var6 = var3.readUnsignedShort();
       this.field292 = new HashSet(var6);
 
       int var7;
@@ -38,7 +36,7 @@ public class class33 extends class20 {
          this.field292.add(var8);
       }
 
-      var7 = var3.method3574();
+      var7 = var3.readUnsignedShort();
       this.field293 = new HashSet(var7);
 
       for(int var11 = 0; var11 < var7; ++var11) {
@@ -61,14 +59,14 @@ public class class33 extends class20 {
       signature = "(Lgy;ZI)V",
       garbageValue = "1936398162"
    )
-   void method604(class182 var1, boolean var2) {
+   void method604(Buffer var1, boolean var2) {
       this.field291 = new LinkedList();
-      int var3 = var1.method3574();
+      int var3 = var1.readUnsignedShort();
 
       for(int var4 = 0; var4 < var3; ++var4) {
          int var5 = var1.method3585();
-         class226 var6 = new class226(var1.method3573());
-         boolean var7 = var1.method3742() == 1;
+         Coordinates var6 = new Coordinates(var1.readInt());
+         boolean var7 = var1.readUnsignedByte() == 1;
          if(var2 || !var7) {
             this.field291.add(new class13(var5, var6));
          }
@@ -83,9 +81,9 @@ public class class33 extends class20 {
    )
    static void method608(int var0, int var1) {
       long var2 = (long)((var0 << 16) + var1);
-      class246 var4 = (class246)class250.field3216.method4064(var2);
+      FileRequest var4 = (FileRequest)class250.NetCache_pendingWrites.get(var2);
       if(var4 != null) {
-         class250.field3215.method3965(var4);
+         class250.NetCache_pendingWritesQueue.setHead(var4);
       }
    }
 
@@ -94,94 +92,94 @@ public class class33 extends class20 {
       signature = "(Lbs;I)V",
       garbageValue = "1744977178"
    )
-   static final void method605(class63 var0) {
+   static final void method605(Actor var0) {
       var0.field884 = false;
-      class273 var1;
-      if(var0.field912 != -1) {
-         var1 = class137.method3151(var0.field912);
-         if(var1 != null && var1.field3553 != null) {
-            ++var0.field914;
-            if(var0.field911 < var1.field3553.length && var0.field914 > var1.field3562[var0.field911]) {
-               var0.field914 = 1;
-               ++var0.field911;
-               class173.method3491(var1, var0.field911, var0.field900, var0.field918);
+      Sequence var1;
+      if(var0.poseAnimation != -1) {
+         var1 = class137.getAnimation(var0.poseAnimation);
+         if(var1 != null && var1.frameIDs != null) {
+            ++var0.poseFrameCycle;
+            if(var0.poseFrame < var1.frameIDs.length && var0.poseFrameCycle > var1.frameLengths[var0.poseFrame]) {
+               var0.poseFrameCycle = 1;
+               ++var0.poseFrame;
+               class173.queueAnimationSound(var1, var0.poseFrame, var0.x, var0.y);
             }
 
-            if(var0.field911 >= var1.field3553.length) {
-               var0.field914 = 0;
-               var0.field911 = 0;
-               class173.method3491(var1, var0.field911, var0.field900, var0.field918);
+            if(var0.poseFrame >= var1.frameIDs.length) {
+               var0.poseFrameCycle = 0;
+               var0.poseFrame = 0;
+               class173.queueAnimationSound(var1, var0.poseFrame, var0.x, var0.y);
             }
          } else {
-            var0.field912 = -1;
+            var0.poseAnimation = -1;
          }
       }
 
-      if(var0.field920 != -1 && client.field679 >= var0.field923) {
-         if(var0.field921 < 0) {
-            var0.field921 = 0;
+      if(var0.graphic != -1 && Client.gameCycle >= var0.graphicsDelay) {
+         if(var0.spotAnimFrame < 0) {
+            var0.spotAnimFrame = 0;
          }
 
-         int var3 = class51.method1064(var0.field920).field3292;
+         int var3 = ScriptState.getSpotAnimType(var0.graphic).field3292;
          if(var3 != -1) {
-            class273 var2 = class137.method3151(var3);
-            if(var2 != null && var2.field3553 != null) {
-               ++var0.field903;
-               if(var0.field921 < var2.field3553.length && var0.field903 > var2.field3562[var0.field921]) {
-                  var0.field903 = 1;
-                  ++var0.field921;
-                  class173.method3491(var2, var0.field921, var0.field900, var0.field918);
+            Sequence var2 = class137.getAnimation(var3);
+            if(var2 != null && var2.frameIDs != null) {
+               ++var0.spotAnimFrameCycle;
+               if(var0.spotAnimFrame < var2.frameIDs.length && var0.spotAnimFrameCycle > var2.frameLengths[var0.spotAnimFrame]) {
+                  var0.spotAnimFrameCycle = 1;
+                  ++var0.spotAnimFrame;
+                  class173.queueAnimationSound(var2, var0.spotAnimFrame, var0.x, var0.y);
                }
 
-               if(var0.field921 >= var2.field3553.length && (var0.field921 < 0 || var0.field921 >= var2.field3553.length)) {
-                  var0.field920 = -1;
+               if(var0.spotAnimFrame >= var2.frameIDs.length && (var0.spotAnimFrame < 0 || var0.spotAnimFrame >= var2.frameIDs.length)) {
+                  var0.graphic = -1;
                }
             } else {
-               var0.field920 = -1;
+               var0.graphic = -1;
             }
          } else {
-            var0.field920 = -1;
+            var0.graphic = -1;
          }
       }
 
-      if(var0.field915 != -1 && var0.field913 <= 1) {
-         var1 = class137.method3151(var0.field915);
-         if(var1.field3564 == 1 && var0.field942 > 0 && var0.field896 <= client.field679 && var0.field901 < client.field679) {
-            var0.field913 = 1;
+      if(var0.animation != -1 && var0.actionAnimationDisable <= 1) {
+         var1 = class137.getAnimation(var0.animation);
+         if(var1.precedenceAnimating == 1 && var0.field942 > 0 && var0.field896 <= Client.gameCycle && var0.field901 < Client.gameCycle) {
+            var0.actionAnimationDisable = 1;
             return;
          }
       }
 
-      if(var0.field915 != -1 && var0.field913 == 0) {
-         var1 = class137.method3151(var0.field915);
-         if(var1 != null && var1.field3553 != null) {
-            ++var0.field917;
-            if(var0.field916 < var1.field3553.length && var0.field917 > var1.field3562[var0.field916]) {
-               var0.field917 = 1;
-               ++var0.field916;
-               class173.method3491(var1, var0.field916, var0.field900, var0.field918);
+      if(var0.animation != -1 && var0.actionAnimationDisable == 0) {
+         var1 = class137.getAnimation(var0.animation);
+         if(var1 != null && var1.frameIDs != null) {
+            ++var0.actionFrameCycle;
+            if(var0.actionFrame < var1.frameIDs.length && var0.actionFrameCycle > var1.frameLengths[var0.actionFrame]) {
+               var0.actionFrameCycle = 1;
+               ++var0.actionFrame;
+               class173.queueAnimationSound(var1, var0.actionFrame, var0.x, var0.y);
             }
 
-            if(var0.field916 >= var1.field3553.length) {
-               var0.field916 -= var1.field3557;
+            if(var0.actionFrame >= var1.frameIDs.length) {
+               var0.actionFrame -= var1.frameStep;
                ++var0.field919;
-               if(var0.field919 >= var1.field3552) {
-                  var0.field915 = -1;
-               } else if(var0.field916 >= 0 && var0.field916 < var1.field3553.length) {
-                  class173.method3491(var1, var0.field916, var0.field900, var0.field918);
+               if(var0.field919 >= var1.maxLoops) {
+                  var0.animation = -1;
+               } else if(var0.actionFrame >= 0 && var0.actionFrame < var1.frameIDs.length) {
+                  class173.queueAnimationSound(var1, var0.actionFrame, var0.x, var0.y);
                } else {
-                  var0.field915 = -1;
+                  var0.animation = -1;
                }
             }
 
-            var0.field884 = var1.field3559;
+            var0.field884 = var1.stretches;
          } else {
-            var0.field915 = -1;
+            var0.animation = -1;
          }
       }
 
-      if(var0.field913 > 0) {
-         --var0.field913;
+      if(var0.actionAnimationDisable > 0) {
+         --var0.actionAnimationDisable;
       }
 
    }

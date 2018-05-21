@@ -3,20 +3,19 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hi")
 public class class208 {
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "Lhm;"
    )
-   class209 field2456 = new class209();
+   class209 field2456;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lhm;"
    )
    class209 field2457;
 
-
    public class208() {
+      this.field2456 = new class209();
       this.field2456.field2458 = this.field2456;
       this.field2456.field2459 = this.field2456;
    }

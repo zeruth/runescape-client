@@ -1,9 +1,9 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("j")
 public class class8 {
-
    @ObfuscatedName("rc")
    @ObfuscatedSignature(
       signature = "Lir;"
@@ -12,10 +12,10 @@ public class class8 {
    @ObfuscatedName("at")
    static int[] field51;
    @ObfuscatedName("ce")
-   static boolean field57;
+   @Export("middleMouseMovesCamera")
+   static boolean middleMouseMovesCamera;
    @ObfuscatedName("fh")
    static byte[][] field58;
-
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -32,17 +32,17 @@ public class class8 {
       garbageValue = "43"
    )
    public static class267 method92(int var0) {
-      class267 var1 = (class267)class267.field3367.method4023((long)var0);
+      class267 var1 = (class267)class267.field3367.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {
-         byte[] var2 = class267.field3386.method4626(32, var0);
+         byte[] var2 = class267.field3386.getConfigData(32, var0);
          var1 = new class267();
          if(var2 != null) {
-            var1.method5010(new class182(var2));
+            var1.method5010(new Buffer(var2));
          }
 
-         class267.field3367.method4028(var1, (long)var0);
+         class267.field3367.put(var1, (long)var0);
          return var1;
       }
    }
@@ -54,7 +54,7 @@ public class class8 {
    )
    static int method91(int var0, int var1) {
       long var2 = (long)((var0 << 16) + var1);
-      return class320.field3816 != null && var2 == class320.field3816.field2449?class232.field2771.field2359 * 99 / (class232.field2771.field2365.length - class320.field3816.field3169) + 1:0;
+      return class320.currentRequest != null && var2 == class320.currentRequest.hash?class232.NetCache_responseArchiveBuffer.offset * 99 / (class232.NetCache_responseArchiveBuffer.payload.length - class320.currentRequest.padding) + 1:0;
    }
 
    @ObfuscatedName("l")

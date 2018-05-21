@@ -3,8 +3,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ht")
-public class class221 extends class204 {
-
+public class class221 extends Node {
    @ObfuscatedName("w")
    @ObfuscatedGetter(
       intValue = -409991273
@@ -14,29 +13,35 @@ public class class221 extends class204 {
    @ObfuscatedSignature(
       signature = "[Lcg;"
    )
-   class93[] field2553 = new class93[128];
+   RawAudioNode[] field2553;
    @ObfuscatedName("q")
-   short[] field2555 = new short[128];
+   short[] field2555;
    @ObfuscatedName("b")
-   byte[] field2556 = new byte[128];
+   byte[] field2556;
    @ObfuscatedName("f")
-   byte[] field2554 = new byte[128];
+   byte[] field2554;
    @ObfuscatedName("n")
    @ObfuscatedSignature(
       signature = "[Lhe;"
    )
-   class216[] field2557 = new class216[128];
+   class216[] field2557;
    @ObfuscatedName("h")
-   byte[] field2560 = new byte[128];
+   byte[] field2560;
    @ObfuscatedName("x")
-   int[] field2558 = new int[128];
-
+   int[] field2558;
 
    class221(byte[] var1) {
-      class182 var2 = new class182(var1);
+      this.field2553 = new RawAudioNode[128];
+      this.field2555 = new short[128];
+      this.field2556 = new byte[128];
+      this.field2554 = new byte[128];
+      this.field2557 = new class216[128];
+      this.field2560 = new byte[128];
+      this.field2558 = new int[128];
+      Buffer var2 = new Buffer(var1);
 
       int var3;
-      for(var3 = 0; var2.field2365[var3 + var2.field2359] != 0; ++var3) {
+      for(var3 = 0; var2.payload[var3 + var2.offset] != 0; ++var3) {
          ;
       }
 
@@ -44,16 +49,16 @@ public class class221 extends class204 {
 
       int var5;
       for(var5 = 0; var5 < var3; ++var5) {
-         var4[var5] = var2.method3569();
+         var4[var5] = var2.readByte();
       }
 
-      ++var2.field2359;
+      ++var2.offset;
       ++var3;
-      var5 = var2.field2359;
-      var2.field2359 += var3;
+      var5 = var2.offset;
+      var2.offset += var3;
 
       int var6;
-      for(var6 = 0; var2.field2365[var6 + var2.field2359] != 0; ++var6) {
+      for(var6 = 0; var2.payload[var6 + var2.offset] != 0; ++var6) {
          ;
       }
 
@@ -61,26 +66,26 @@ public class class221 extends class204 {
 
       int var8;
       for(var8 = 0; var8 < var6; ++var8) {
-         var7[var8] = var2.method3569();
+         var7[var8] = var2.readByte();
       }
 
-      ++var2.field2359;
+      ++var2.offset;
       ++var6;
-      var8 = var2.field2359;
-      var2.field2359 += var6;
+      var8 = var2.offset;
+      var2.offset += var6;
 
       int var9;
-      for(var9 = 0; var2.field2365[var9 + var2.field2359] != 0; ++var9) {
+      for(var9 = 0; var2.payload[var9 + var2.offset] != 0; ++var9) {
          ;
       }
 
       byte[] var10 = new byte[var9];
 
       for(int var11 = 0; var11 < var9; ++var11) {
-         var10[var11] = var2.method3569();
+         var10[var11] = var2.readByte();
       }
 
-      ++var2.field2359;
+      ++var2.offset;
       ++var9;
       byte[] var36 = new byte[var9];
       int var12;
@@ -91,7 +96,7 @@ public class class221 extends class204 {
          var12 = 2;
 
          for(var14 = 2; var14 < var9; ++var14) {
-            int var15 = var2.method3742();
+            int var15 = var2.readUnsignedByte();
             if(var15 == 0) {
                var13 = var12++;
             } else {
@@ -113,25 +118,25 @@ public class class221 extends class204 {
       class216 var38;
       for(var14 = 0; var14 < var37.length; ++var14) {
          var38 = var37[var14] = new class216();
-         int var16 = var2.method3742();
+         int var16 = var2.readUnsignedByte();
          if(var16 > 0) {
             var38.field2478 = new byte[var16 * 2];
          }
 
-         var16 = var2.method3742();
+         var16 = var2.readUnsignedByte();
          if(var16 > 0) {
             var38.field2473 = new byte[var16 * 2 + 2];
             var38.field2473[1] = 64;
          }
       }
 
-      var14 = var2.method3742();
+      var14 = var2.readUnsignedByte();
       byte[] var45 = var14 > 0?new byte[var14 * 2]:null;
-      var14 = var2.method3742();
+      var14 = var2.readUnsignedByte();
       byte[] var39 = var14 > 0?new byte[var14 * 2]:null;
 
       int var17;
-      for(var17 = 0; var2.field2365[var17 + var2.field2359] != 0; ++var17) {
+      for(var17 = 0; var2.payload[var17 + var2.offset] != 0; ++var17) {
          ;
       }
 
@@ -139,23 +144,23 @@ public class class221 extends class204 {
 
       int var19;
       for(var19 = 0; var19 < var17; ++var19) {
-         var18[var19] = var2.method3569();
+         var18[var19] = var2.readByte();
       }
 
-      ++var2.field2359;
+      ++var2.offset;
       ++var17;
       var19 = 0;
 
       int var20;
       for(var20 = 0; var20 < 128; ++var20) {
-         var19 += var2.method3742();
+         var19 += var2.readUnsignedByte();
          this.field2555[var20] = (short)var19;
       }
 
       var19 = 0;
 
       for(var20 = 0; var20 < 128; ++var20) {
-         var19 += var2.method3742();
+         var19 += var2.readUnsignedByte();
          this.field2555[var20] = (short)(this.field2555[var20] + (var19 << 8));
       }
 
@@ -172,7 +177,7 @@ public class class221 extends class204 {
                var20 = -1;
             }
 
-            var22 = var2.method3586();
+            var22 = var2.readVarInt();
          }
 
          this.field2555[var23] = (short)(this.field2555[var23] + ((var22 - 1 & 2) << 14));
@@ -194,7 +199,7 @@ public class class221 extends class204 {
                   var20 = -1;
                }
 
-               var23 = var2.field2365[var5++] - 1;
+               var23 = var2.payload[var5++] - 1;
             }
 
             this.field2560[var24] = (byte)var23;
@@ -215,7 +220,7 @@ public class class221 extends class204 {
                   var20 = -1;
                }
 
-               var24 = var2.field2365[var8++] + 16 << 2;
+               var24 = var2.payload[var8++] + 16 << 2;
             }
 
             this.field2554[var25] = (byte)var24;
@@ -258,7 +263,7 @@ public class class221 extends class204 {
             }
 
             if(this.field2558[var27] > 0) {
-               var26 = var2.method3742() + 1;
+               var26 = var2.readUnsignedByte() + 1;
             }
          }
 
@@ -266,7 +271,7 @@ public class class221 extends class204 {
          --var20;
       }
 
-      this.field2561 = var2.method3742() + 1;
+      this.field2561 = var2.readUnsignedByte() + 1;
 
       class216 var28;
       int var29;
@@ -274,26 +279,26 @@ public class class221 extends class204 {
          var28 = var37[var27];
          if(var28.field2478 != null) {
             for(var29 = 1; var29 < var28.field2478.length; var29 += 2) {
-               var28.field2478[var29] = var2.method3569();
+               var28.field2478[var29] = var2.readByte();
             }
          }
 
          if(var28.field2473 != null) {
             for(var29 = 3; var29 < var28.field2473.length - 2; var29 += 2) {
-               var28.field2473[var29] = var2.method3569();
+               var28.field2473[var29] = var2.readByte();
             }
          }
       }
 
       if(var45 != null) {
          for(var27 = 1; var27 < var45.length; var27 += 2) {
-            var45[var27] = var2.method3569();
+            var45[var27] = var2.readByte();
          }
       }
 
       if(var39 != null) {
          for(var27 = 1; var27 < var39.length; var27 += 2) {
-            var39[var27] = var2.method3569();
+            var39[var27] = var2.readByte();
          }
       }
 
@@ -303,7 +308,7 @@ public class class221 extends class204 {
             var19 = 0;
 
             for(var29 = 2; var29 < var28.field2473.length; var29 += 2) {
-               var19 = 1 + var19 + var2.method3742();
+               var19 = 1 + var19 + var2.readUnsignedByte();
                var28.field2473[var29] = (byte)var19;
             }
          }
@@ -315,7 +320,7 @@ public class class221 extends class204 {
             var19 = 0;
 
             for(var29 = 2; var29 < var28.field2478.length; var29 += 2) {
-               var19 = var19 + 1 + var2.method3742();
+               var19 = var19 + 1 + var2.readUnsignedByte();
                var28.field2478[var29] = (byte)var19;
             }
          }
@@ -328,11 +333,11 @@ public class class221 extends class204 {
       int var42;
       byte var44;
       if(var45 != null) {
-         var19 = var2.method3742();
+         var19 = var2.readUnsignedByte();
          var45[0] = (byte)var19;
 
          for(var27 = 2; var27 < var45.length; var27 += 2) {
-            var19 = 1 + var19 + var2.method3742();
+            var19 = 1 + var19 + var2.readUnsignedByte();
             var45[var27] = (byte)var19;
          }
 
@@ -366,11 +371,11 @@ public class class221 extends class204 {
       }
 
       if(var39 != null) {
-         var19 = var2.method3742();
+         var19 = var2.readUnsignedByte();
          var39[0] = (byte)var19;
 
          for(var27 = 2; var27 < var39.length; var27 += 2) {
-            var19 = var19 + 1 + var2.method3742();
+            var19 = var19 + 1 + var2.readUnsignedByte();
             var39[var27] = (byte)var19;
          }
 
@@ -432,39 +437,39 @@ public class class221 extends class204 {
       }
 
       for(var27 = 0; var27 < var12; ++var27) {
-         var37[var27].field2474 = var2.method3742();
+         var37[var27].field2474 = var2.readUnsignedByte();
       }
 
       for(var27 = 0; var27 < var12; ++var27) {
          var28 = var37[var27];
          if(var28.field2478 != null) {
-            var28.field2475 = var2.method3742();
+            var28.field2475 = var2.readUnsignedByte();
          }
 
          if(var28.field2473 != null) {
-            var28.field2481 = var2.method3742();
+            var28.field2481 = var2.readUnsignedByte();
          }
 
          if(var28.field2474 > 0) {
-            var28.field2476 = var2.method3742();
+            var28.field2476 = var2.readUnsignedByte();
          }
       }
 
       for(var27 = 0; var27 < var12; ++var27) {
-         var37[var27].field2479 = var2.method3742();
+         var37[var27].field2479 = var2.readUnsignedByte();
       }
 
       for(var27 = 0; var27 < var12; ++var27) {
          var28 = var37[var27];
          if(var28.field2479 > 0) {
-            var28.field2472 = var2.method3742();
+            var28.field2472 = var2.readUnsignedByte();
          }
       }
 
       for(var27 = 0; var27 < var12; ++var27) {
          var28 = var37[var27];
          if(var28.field2472 > 0) {
-            var28.field2480 = var2.method3742();
+            var28.field2480 = var2.readUnsignedByte();
          }
       }
 
@@ -478,7 +483,7 @@ public class class221 extends class204 {
    boolean method4414(class98 var1, byte[] var2, int[] var3) {
       boolean var4 = true;
       int var5 = 0;
-      class93 var6 = null;
+      RawAudioNode var6 = null;
 
       for(int var7 = 0; var7 < 128; ++var7) {
          if(var2 == null || var2[var7] != 0) {
