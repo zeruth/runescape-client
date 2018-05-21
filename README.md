@@ -1,11 +1,17 @@
 # runescape-client
 Reverse engineering project for Old School Runescape
 
+## Revision 170
 
-This must be patched every OSRS revision change.
+This is at it's simplest a decompiled & refactored Old School Runescape client
 
-This is the dependency for UpdateMappings in https://github.com/zeruth/OSRS-Deobfuscator
+### Decompiled using FernFlower
 
-Changes made here can be ran against same revision jars for refactored gamepacks in UpdateMappings, or it can be used as-is if client is cast to an Applet and added to a JFrame (Must set RSAppletStub then setSize() and init() first.) 
 
-Decompiled using FernFlower
+# Credits
+
+Thanks to RuneLite and Adam in particular for trying to expose the inner workings of the client. 
+
+It's probably the most useful bit of code in relation to developing third party clients. I appreciate all the work you guys have put into this and I hope it helps more people moving forward. Cheers.
+
+If this has helped you in the building of your client you really should be a patron for RuneLite.
