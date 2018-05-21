@@ -1,12 +1,9 @@
 # runescape-client
-Reverse engineering project for Old School Runescape
+Reverse engineering project for Old School Runescape.
+
+Decompiled using FernFlower.
 
 ## Revision 170
-
-This is at it's simplest a decompiled & refactored Old School Runescape client
-
-### Decompiled using FernFlower
-
 
 # Credits
 
