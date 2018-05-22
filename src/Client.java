@@ -15,7 +15,6 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
 import netscape.javascript.JSObject;
 
 @Implements("Client")
@@ -4343,8 +4342,8 @@ public final class Client extends GameEngine implements class288 {
 
                            for(var18 = 0; var18 < var17.length; ++var18) {
                               Method var19 = var17[var18];
-                              if(Reflection.getMethodName(var19).equals(var27)) {
-                                 Class[] var20 = Reflection.getParameterTypes(var19);
+                              if(var19.getName().equals(var27)) {
+                                 Class[] var20 = var19.getParameterTypes();
                                  if(var29.length == var20.length) {
                                     boolean var21 = true;
 
@@ -4378,8 +4377,7 @@ public final class Client extends GameEngine implements class288 {
                            throw new SecurityException();
                         }
 
-                        var67.fields[var6] = Reflection.findField(class76.loadClassFromDescriptor(var76), var27);
-                     }
+                        var67.fields[var6] = class76.loadClassFromDescriptor(var76).getDeclaredField(var27);                     }
                   } catch (ClassNotFoundException var52) {
                      var67.errorIdentifiers[var6] = -1;
                   } catch (SecurityException var53) {

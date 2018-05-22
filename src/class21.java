@@ -7,25 +7,23 @@ import java.io.StreamCorruptedException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
 
 @ObfuscatedName("z")
 public final class class21 {
+
    @ObfuscatedName("j")
    @ObfuscatedGetter(
       intValue = -744989909
    )
    static int field185;
    @ObfuscatedName("m")
-   final int[] field187;
+   final int[] field187 = new int[4096];
 
-   class21() {
-      this.field187 = new int[4096];
-   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -55,6 +53,7 @@ public final class class21 {
       signature = "(Lge;I)V",
       garbageValue = "1948250856"
    )
+   
    @Export("encodeClassVerifier")
    public static void encodeClassVerifier(PacketBuffer var0) {
       ClassInfo var1 = (ClassInfo)class313.classInfos.last();
@@ -72,12 +71,12 @@ public final class class21 {
                   int var6;
                   if(var4 == 0) {
                      var5 = var1.fields[var3];
-                     var6 = Reflection.getInt(var5, (Object)null);
+                     var6 = var5.getInt((Object)null);
                      var0.putByte(0);
                      var0.putInt(var6);
                   } else if(var4 == 1) {
                      var5 = var1.fields[var3];
-                     Reflection.setInt(var5, (Object)null, var1.field3757[var3]);
+                     var5.setInt((Object)null, var1.field3757[var3]);
                      var0.putByte(0);
                   } else if(var4 == 2) {
                      var5 = var1.fields[var3];
@@ -87,14 +86,7 @@ public final class class21 {
                   }
 
                   Method var25;
-                  if(var4 != 3) {
-                     if(var4 == 4) {
-                        var25 = var1.methods[var3];
-                        var6 = var25.getModifiers();
-                        var0.putByte(0);
-                        var0.putInt(var6);
-                     }
-                  } else {
+                  if(var4 == 3) {
                      var25 = var1.methods[var3];
                      byte[][] var10 = var1.args[var3];
                      Object[] var7 = new Object[var10.length];
@@ -104,7 +96,7 @@ public final class class21 {
                         var7[var8] = var9.readObject();
                      }
 
-                     Object var11 = Reflection.invoke(var25, (Object)null, var7);
+                     Object var11 = var25.invoke((Object)null, var7);
                      if(var11 == null) {
                         var0.putByte(0);
                      } else if(var11 instanceof Number) {
@@ -116,6 +108,11 @@ public final class class21 {
                      } else {
                         var0.putByte(4);
                      }
+                  } else if(var4 == 4) {
+                     var25 = var1.methods[var3];
+                     var6 = var25.getModifiers();
+                     var0.putByte(0);
+                     var0.putInt(var6);
                   }
                } catch (ClassNotFoundException var13) {
                   var0.putByte(-10);
@@ -155,7 +152,7 @@ public final class class21 {
       signature = "(IIB)Lhl;",
       garbageValue = "-47"
    )
-   @Export("getWidgetChild")
+   
    public static Widget getWidgetChild(int var0, int var1) {
       Widget var2 = OwnWorldComparator.getWidget(var0);
       return var1 == -1?var2:(var2 != null && var2.children != null && var1 < var2.children.length?var2.children[var1]:null);
@@ -167,9 +164,9 @@ public final class class21 {
       garbageValue = "1983839880"
    )
    public static void method303() {
-      ItemComposition.items.reset();
-      ItemComposition.itemModelCache.reset();
-      ItemComposition.itemSpriteCache.reset();
+	   ItemComposition.items.reset();
+	   ItemComposition.itemModelCache.reset();
+	   ItemComposition.itemSpriteCache.reset();
    }
 
    @ObfuscatedName("jd")
@@ -183,7 +180,7 @@ public final class class21 {
       int var3 = (int)var0.hash;
       var0.unlink();
       if(var1) {
-         WorldMapRectangle.method190(var2);
+    	  WorldMapRectangle.method190(var2);
       }
 
       for(IntegerNode var4 = (IntegerNode)Client.widgetFlags.first(); var4 != null; var4 = (IntegerNode)Client.widgetFlags.next()) {
