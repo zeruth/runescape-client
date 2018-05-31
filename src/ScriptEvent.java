@@ -86,7 +86,11 @@ public class ScriptEvent extends Node {
    @ObfuscatedGetter(
       intValue = -652399611
    )
-   int field518 = 76;
+   int field518;
+
+   public ScriptEvent() {
+      this.field518 = 76;
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -113,7 +117,7 @@ public class ScriptEvent extends Node {
    )
    public static int method1084(int var0, int var1) {
       int var2;
-      if (var1 > var0) {
+      if(var1 > var0) {
          var2 = var0;
          var0 = var1;
          var1 = var2;
@@ -142,7 +146,7 @@ public class ScriptEvent extends Node {
       int var5;
       int var6;
       int var7;
-      if (!Client.isDynamicRegion) {
+      if(!Client.isDynamicRegion) {
          var2 = var1.readUnsignedShort();
          var3 = var1.readUnsignedShort();
          int var8 = var1.readUnsignedShort();
@@ -160,11 +164,11 @@ public class ScriptEvent extends Node {
          class8.field58 = new byte[var8][];
          ItemLayer.field1475 = new byte[var8][];
          boolean var9 = false;
-         if ((var2 / 8 == 48 || var2 / 8 == 49) && var3 / 8 == 48) {
+         if((var2 / 8 == 48 || var2 / 8 == 49) && var3 / 8 == 48) {
             var9 = true;
          }
 
-         if (var2 / 8 == 48 && var3 / 8 == 148) {
+         if(var2 / 8 == 48 && var3 / 8 == 148) {
             var9 = true;
          }
 
@@ -173,7 +177,7 @@ public class ScriptEvent extends Node {
          for(var5 = (var2 - 6) / 8; var5 <= (var2 + 6) / 8; ++var5) {
             for(var6 = (var3 - 6) / 8; var6 <= (var3 + 6) / 8; ++var6) {
                var7 = var6 + (var5 << 8);
-               if (!var9 || var6 != 49 && var6 != 149 && var6 != 147 && var5 != 50 && (var5 != 49 || var6 != 47)) {
+               if(!var9 || var6 != 49 && var6 != 149 && var6 != 147 && var5 != 50 && (var5 != 49 || var6 != 47)) {
                   OwnWorldComparator.mapRegions[var8] = var7;
                   class140.landMapFileIds[var8] = class234.indexMaps.getFile("m" + var5 + "_" + var6);
                   ItemContainer.landRegionFileIds[var8] = class234.indexMaps.getFile("l" + var5 + "_" + var6);
@@ -195,7 +199,7 @@ public class ScriptEvent extends Node {
             for(var6 = 0; var6 < 13; ++var6) {
                for(var7 = 0; var7 < 13; ++var7) {
                   var16 = var1.getBits(1);
-                  if (var16 == 1) {
+                  if(var16 == 1) {
                      Client.instanceTemplateChunks[var5][var6][var7] = var1.getBits(26);
                   } else {
                      Client.instanceTemplateChunks[var5][var6][var7] = -1;
@@ -224,20 +228,20 @@ public class ScriptEvent extends Node {
             for(var6 = 0; var6 < 13; ++var6) {
                for(var7 = 0; var7 < 13; ++var7) {
                   var16 = Client.instanceTemplateChunks[var5][var6][var7];
-                  if (var16 != -1) {
+                  if(var16 != -1) {
                      int var10 = var16 >> 14 & 1023;
                      int var11 = var16 >> 3 & 2047;
                      int var12 = (var10 / 8 << 8) + var11 / 8;
 
                      int var13;
                      for(var13 = 0; var13 < var4; ++var13) {
-                        if (OwnWorldComparator.mapRegions[var13] == var12) {
+                        if(OwnWorldComparator.mapRegions[var13] == var12) {
                            var12 = -1;
                            break;
                         }
                      }
 
-                     if (var12 != -1) {
+                     if(var12 != -1) {
                         OwnWorldComparator.mapRegions[var4] = var12;
                         var13 = var12 >> 8 & 255;
                         int var14 = var12 & 255;

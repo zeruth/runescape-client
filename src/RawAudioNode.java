@@ -44,12 +44,12 @@ public class RawAudioNode extends AbstractIntegerNode0 {
    public RawAudioNode applyResampler(Resampler var1) {
       this.audioBuffer = var1.resampleIfNecessary(this.audioBuffer);
       this.sampleRate = var1.method2309(this.sampleRate);
-      if (this.startPosition == this.endPosition) {
+      if(this.startPosition == this.endPosition) {
          this.startPosition = this.endPosition = var1.method2306(this.startPosition);
       } else {
          this.startPosition = var1.method2306(this.startPosition);
          this.endPosition = var1.method2306(this.endPosition);
-         if (this.startPosition == this.endPosition) {
+         if(this.startPosition == this.endPosition) {
             --this.startPosition;
          }
       }

@@ -11,9 +11,10 @@ public final class Node2LinkedList {
       signature = "Lgc;"
    )
    @Export("sentinel")
-   CacheableNode sentinel = new CacheableNode();
+   CacheableNode sentinel;
 
    public Node2LinkedList() {
+      this.sentinel = new CacheableNode();
       this.sentinel.previous = this.sentinel;
       this.sentinel.next = this.sentinel;
    }
@@ -24,7 +25,7 @@ public final class Node2LinkedList {
    )
    @Export("push")
    public void push(CacheableNode var1) {
-      if (var1.next != null) {
+      if(var1.next != null) {
          var1.unlinkDual();
       }
 
@@ -40,7 +41,7 @@ public final class Node2LinkedList {
    )
    @Export("setHead")
    public void setHead(CacheableNode var1) {
-      if (var1.next != null) {
+      if(var1.next != null) {
          var1.unlinkDual();
       }
 
@@ -57,7 +58,7 @@ public final class Node2LinkedList {
    @Export("pop")
    CacheableNode pop() {
       CacheableNode var1 = this.sentinel.previous;
-      if (var1 == this.sentinel) {
+      if(var1 == this.sentinel) {
          return null;
       } else {
          var1.unlinkDual();
@@ -72,7 +73,7 @@ public final class Node2LinkedList {
    @Export("peek")
    public CacheableNode peek() {
       CacheableNode var1 = this.sentinel.previous;
-      return var1 == this.sentinel ? null : var1;
+      return var1 == this.sentinel?null:var1;
    }
 
    @ObfuscatedName("a")
@@ -80,7 +81,7 @@ public final class Node2LinkedList {
    void clear() {
       while(true) {
          CacheableNode var1 = this.sentinel.previous;
-         if (var1 == this.sentinel) {
+         if(var1 == this.sentinel) {
             return;
          }
 
@@ -93,7 +94,7 @@ public final class Node2LinkedList {
       signature = "(Lgc;Lgc;)V"
    )
    static void method3966(CacheableNode var0, CacheableNode var1) {
-      if (var0.next != null) {
+      if(var0.next != null) {
          var0.unlinkDual();
       }
 

@@ -36,7 +36,7 @@ public class ClanMember extends ChatPlayer {
       garbageValue = "-2033986770"
    )
    public final boolean method5277() {
-      if (this.field3628 == class289.field3652) {
+      if(this.field3628 == class289.field3652) {
          this.method5278();
       }
 
@@ -49,7 +49,7 @@ public class ClanMember extends ChatPlayer {
       garbageValue = "-557789086"
    )
    void method5278() {
-      this.field3628 = CacheFile.friendManager.friendContainer.isMember(super.name) ? class289.field3651 : class289.field3650;
+      this.field3628 = CacheFile.friendManager.friendContainer.isMember(super.name)?class289.field3651:class289.field3650;
    }
 
    @ObfuscatedName("x")
@@ -67,7 +67,7 @@ public class ClanMember extends ChatPlayer {
       garbageValue = "-11"
    )
    public final boolean method5280() {
-      if (this.field3626 == class289.field3652) {
+      if(this.field3626 == class289.field3652) {
          this.method5281();
       }
 
@@ -80,6 +80,6 @@ public class ClanMember extends ChatPlayer {
       garbageValue = "-1991874456"
    )
    void method5281() {
-      this.field3626 = CacheFile.friendManager.ignoreContainer.isMember(super.name) ? class289.field3651 : class289.field3650;
+      this.field3626 = CacheFile.friendManager.ignoreContainer.isMember(super.name)?class289.field3651:class289.field3650;
    }
 }

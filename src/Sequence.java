@@ -30,13 +30,13 @@ public class Sequence extends CacheableNode {
       signature = "Lgj;"
    )
    @Export("sequences")
-   static NodeCache sequences = new NodeCache(64);
+   static NodeCache sequences;
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Lgj;"
    )
    @Export("skeletons")
-   static NodeCache skeletons = new NodeCache(100);
+   static NodeCache skeletons;
    @ObfuscatedName("n")
    @Export("frameIDs")
    public int[] frameIDs;
@@ -52,55 +52,72 @@ public class Sequence extends CacheableNode {
       intValue = 1432697333
    )
    @Export("frameStep")
-   public int frameStep = -1;
+   public int frameStep;
    @ObfuscatedName("l")
    @Export("interleaveLeave")
    int[] interleaveLeave;
    @ObfuscatedName("d")
    @Export("stretches")
-   public boolean stretches = false;
+   public boolean stretches;
    @ObfuscatedName("s")
    @ObfuscatedGetter(
       intValue = -1179183481
    )
    @Export("forcedPriority")
-   public int forcedPriority = 5;
+   public int forcedPriority;
    @ObfuscatedName("p")
    @ObfuscatedGetter(
       intValue = 1245201533
    )
    @Export("leftHandItem")
-   public int leftHandItem = -1;
+   public int leftHandItem;
    @ObfuscatedName("g")
    @ObfuscatedGetter(
       intValue = 78204383
    )
    @Export("rightHandItem")
-   public int rightHandItem = -1;
+   public int rightHandItem;
    @ObfuscatedName("y")
    @ObfuscatedGetter(
       intValue = -1489530045
    )
    @Export("maxLoops")
-   public int maxLoops = 99;
+   public int maxLoops;
    @ObfuscatedName("c")
    @ObfuscatedGetter(
       intValue = -158478119
    )
    @Export("precedenceAnimating")
-   public int precedenceAnimating = -1;
+   public int precedenceAnimating;
    @ObfuscatedName("e")
    @ObfuscatedGetter(
       intValue = 1261603831
    )
    @Export("priority")
-   public int priority = -1;
+   public int priority;
    @ObfuscatedName("t")
    @ObfuscatedGetter(
       intValue = 2009554759
    )
    @Export("replyMode")
-   public int replyMode = 2;
+   public int replyMode;
+
+   static {
+      sequences = new NodeCache(64);
+      skeletons = new NodeCache(100);
+   }
+
+   Sequence() {
+      this.frameStep = -1;
+      this.stretches = false;
+      this.forcedPriority = 5;
+      this.leftHandItem = -1;
+      this.rightHandItem = -1;
+      this.maxLoops = 99;
+      this.precedenceAnimating = -1;
+      this.priority = -1;
+      this.replyMode = 2;
+   }
 
    @ObfuscatedName("m")
    @ObfuscatedSignature(
@@ -111,7 +128,7 @@ public class Sequence extends CacheableNode {
    void decode(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
-         if (var2 == 0) {
+         if(var2 == 0) {
             return;
          }
 
@@ -128,7 +145,7 @@ public class Sequence extends CacheableNode {
    void readNext(Buffer var1, int var2) {
       int var3;
       int var4;
-      if (var2 == 1) {
+      if(var2 == 1) {
          var3 = var1.readUnsignedShort();
          this.frameLengths = new int[var3];
 
@@ -145,9 +162,9 @@ public class Sequence extends CacheableNode {
          for(var4 = 0; var4 < var3; ++var4) {
             this.frameIDs[var4] += var1.readUnsignedShort() << 16;
          }
-      } else if (var2 == 2) {
+      } else if(var2 == 2) {
          this.frameStep = var1.readUnsignedShort();
-      } else if (var2 == 3) {
+      } else if(var2 == 3) {
          var3 = var1.readUnsignedByte();
          this.interleaveLeave = new int[var3 + 1];
 
@@ -156,23 +173,23 @@ public class Sequence extends CacheableNode {
          }
 
          this.interleaveLeave[var3] = 9999999;
-      } else if (var2 == 4) {
+      } else if(var2 == 4) {
          this.stretches = true;
-      } else if (var2 == 5) {
+      } else if(var2 == 5) {
          this.forcedPriority = var1.readUnsignedByte();
-      } else if (var2 == 6) {
+      } else if(var2 == 6) {
          this.leftHandItem = var1.readUnsignedShort();
-      } else if (var2 == 7) {
+      } else if(var2 == 7) {
          this.rightHandItem = var1.readUnsignedShort();
-      } else if (var2 == 8) {
+      } else if(var2 == 8) {
          this.maxLoops = var1.readUnsignedByte();
-      } else if (var2 == 9) {
+      } else if(var2 == 9) {
          this.precedenceAnimating = var1.readUnsignedByte();
-      } else if (var2 == 10) {
+      } else if(var2 == 10) {
          this.priority = var1.readUnsignedByte();
-      } else if (var2 == 11) {
+      } else if(var2 == 11) {
          this.replyMode = var1.readUnsignedByte();
-      } else if (var2 == 12) {
+      } else if(var2 == 12) {
          var3 = var1.readUnsignedByte();
          this.field3554 = new int[var3];
 
@@ -183,7 +200,7 @@ public class Sequence extends CacheableNode {
          for(var4 = 0; var4 < var3; ++var4) {
             this.field3554[var4] += var1.readUnsignedShort() << 16;
          }
-      } else if (var2 == 13) {
+      } else if(var2 == 13) {
          var3 = var1.readUnsignedByte();
          this.field3556 = new int[var3];
 
@@ -201,16 +218,16 @@ public class Sequence extends CacheableNode {
    )
    @Export("post")
    void post() {
-      if (this.precedenceAnimating == -1) {
-         if (this.interleaveLeave != null) {
+      if(this.precedenceAnimating == -1) {
+         if(this.interleaveLeave != null) {
             this.precedenceAnimating = 2;
          } else {
             this.precedenceAnimating = 0;
          }
       }
 
-      if (this.priority == -1) {
-         if (this.interleaveLeave != null) {
+      if(this.priority == -1) {
+         if(this.interleaveLeave != null) {
             this.priority = 2;
          } else {
             this.priority = 0;
@@ -229,7 +246,7 @@ public class Sequence extends CacheableNode {
       var2 = this.frameIDs[var2];
       Frames var3 = class309.getFrames(var2 >> 16);
       var2 &= 65535;
-      if (var3 == null) {
+      if(var3 == null) {
          return var1.toSharedModel(true);
       } else {
          Model var4 = var1.toSharedModel(!var3.method3085(var2));
@@ -248,25 +265,25 @@ public class Sequence extends CacheableNode {
       var2 = this.frameIDs[var2];
       Frames var4 = class309.getFrames(var2 >> 16);
       var2 &= 65535;
-      if (var4 == null) {
+      if(var4 == null) {
          return var1.toSharedModel(true);
       } else {
          Model var5 = var1.toSharedModel(!var4.method3085(var2));
          var3 &= 3;
-         if (var3 == 1) {
+         if(var3 == 1) {
             var5.rotateY270Ccw();
-         } else if (var3 == 2) {
+         } else if(var3 == 2) {
             var5.rotateY180Ccw();
-         } else if (var3 == 3) {
+         } else if(var3 == 3) {
             var5.rotateY90Ccw();
          }
 
          var5.method2783(var4, var2);
-         if (var3 == 1) {
+         if(var3 == 1) {
             var5.rotateY90Ccw();
-         } else if (var3 == 2) {
+         } else if(var3 == 2) {
             var5.rotateY180Ccw();
-         } else if (var3 == 3) {
+         } else if(var3 == 3) {
             var5.rotateY270Ccw();
          }
 
@@ -284,7 +301,7 @@ public class Sequence extends CacheableNode {
       var2 = this.frameIDs[var2];
       Frames var3 = class309.getFrames(var2 >> 16);
       var2 &= 65535;
-      if (var3 == null) {
+      if(var3 == null) {
          return var1.toSharedSpotAnimModel(true);
       } else {
          Model var4 = var1.toSharedSpotAnimModel(!var3.method3085(var2));
@@ -303,14 +320,14 @@ public class Sequence extends CacheableNode {
       var2 = this.frameIDs[var2];
       Frames var5 = class309.getFrames(var2 >> 16);
       var2 &= 65535;
-      if (var5 == null) {
+      if(var5 == null) {
          return var3.transformActorModel(var1, var4);
       } else {
          var4 = var3.frameIDs[var4];
          Frames var6 = class309.getFrames(var4 >> 16);
          var4 &= 65535;
          Model var7;
-         if (var6 == null) {
+         if(var6 == null) {
             var7 = var1.toSharedModel(!var5.method3085(var2));
             var7.method2783(var5, var2);
             return var7;
@@ -331,19 +348,19 @@ public class Sequence extends CacheableNode {
       int var3 = this.frameIDs[var2];
       Frames var4 = class309.getFrames(var3 >> 16);
       var3 &= 65535;
-      if (var4 == null) {
+      if(var4 == null) {
          return var1.toSharedModel(true);
       } else {
          Frames var5 = null;
          int var6 = 0;
-         if (this.field3554 != null && var2 < this.field3554.length) {
+         if(this.field3554 != null && var2 < this.field3554.length) {
             var6 = this.field3554[var2];
             var5 = class309.getFrames(var6 >> 16);
             var6 &= 65535;
          }
 
          Model var7;
-         if (var5 != null && var6 != 65535) {
+         if(var5 != null && var6 != 65535) {
             var7 = var1.toSharedModel(!var4.method3085(var3) & !var5.method3085(var6));
             var7.method2783(var4, var3);
             var7.method2783(var5, var6);
@@ -364,13 +381,13 @@ public class Sequence extends CacheableNode {
    public static IndexedSprite method5215(IndexDataBase var0, int var1) {
       byte[] var2 = var0.takeRecordFlat(var1);
       boolean var3;
-      if (var2 == null) {
+      if(var2 == null) {
          var3 = false;
       } else {
          class171.decodeSprite(var2);
          var3 = true;
       }
 
-      return !var3 ? null : class224.method4461();
+      return !var3?null:class224.method4461();
    }
 }

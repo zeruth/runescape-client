@@ -16,7 +16,7 @@ public class class145 extends class283 {
       garbageValue = "-295095521"
    )
    int method3195(ChatPlayer var1, ChatPlayer var2) {
-      return var1.world != 0 && var2.world != 0 ? (this.field1924 ? var1.getRsName().compareCleanName(var2.getRsName()) : var2.getRsName().compareCleanName(var1.getRsName())) : this.method5320(var1, var2);
+      return var1.world != 0 && var2.world != 0?(this.field1924?var1.getRsName().compareCleanName(var2.getRsName()):var2.getRsName().compareCleanName(var1.getRsName())):this.method5320(var1, var2);
    }
 
    public int compare(Object var1, Object var2) {
@@ -29,7 +29,7 @@ public class class145 extends class283 {
       garbageValue = "0"
    )
    static void method3200() {
-      if (Client.field711) {
+      if(Client.field711) {
          class32.method586(MilliTimer.localPlayer, false);
       }
 
@@ -45,7 +45,7 @@ public class class145 extends class283 {
       var4.packetBuffer.method3595(var2);
       var4.packetBuffer.method3605(var0);
       var4.packetBuffer.method3605(var1);
-      var4.packetBuffer.method3670(var3 ? Client.field674 : 0);
+      var4.packetBuffer.method3670(var3?Client.field674:0);
       Client.field739.method2019(var4);
    }
 }

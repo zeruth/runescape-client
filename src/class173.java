@@ -57,9 +57,9 @@ public class class173 {
    )
    @Export("queueAnimationSound")
    static void queueAnimationSound(Sequence var0, int var1, int var2, int var3) {
-      if (Client.queuedSoundEffectCount < 50 && Client.field827 != 0 && var0.field3556 != null && var1 < var0.field3556.length) {
+      if(Client.queuedSoundEffectCount < 50 && Client.field827 != 0 && var0.field3556 != null && var1 < var0.field3556.length) {
          int var4 = var0.field3556[var1];
-         if (var4 != 0) {
+         if(var4 != 0) {
             int var5 = var4 >> 8;
             int var6 = var4 >> 4 & 7;
             int var7 = var4 & 15;

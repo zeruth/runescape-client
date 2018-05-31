@@ -9,23 +9,23 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class class83 {
    @ObfuscatedName("w")
    @Export("chatLineMap")
-   static final Map chatLineMap = new HashMap();
+   static final Map chatLineMap;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lgx;"
    )
    @Export("messages")
-   static final IterableHashTable messages = new IterableHashTable(1024);
+   static final IterableHashTable messages;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lhq;"
    )
-   static final IterableDualNodeQueue field1205 = new IterableDualNodeQueue();
+   static final IterableDualNodeQueue field1205;
    @ObfuscatedName("b")
    @ObfuscatedGetter(
       intValue = 2021624217
    )
-   static int field1208 = 0;
+   static int field1208;
    @ObfuscatedName("a")
    @ObfuscatedGetter(
       intValue = -2076105995
@@ -34,6 +34,13 @@ public class class83 {
    static int scriptStringStackSize;
    @ObfuscatedName("ad")
    static int[] field1206;
+
+   static {
+      chatLineMap = new HashMap();
+      messages = new IterableHashTable(1024);
+      field1205 = new IterableDualNodeQueue();
+      field1208 = 0;
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -66,7 +73,7 @@ public class class83 {
       var2.pathY[0] = var6 - CombatInfoListHolder.baseY;
       var2.y = (var2.pathY[0] << 7) + (var2.getSize() << 6);
       class192.plane = var2.field581 = var4;
-      if (class81.field1179[var1] != null) {
+      if(class81.field1179[var1] != null) {
          var2.decodeApperance(class81.field1179[var1]);
       }
 
@@ -76,7 +83,7 @@ public class class83 {
       class81.field1182 = 0;
 
       for(int var7 = 1; var7 < 2048; ++var7) {
-         if (var1 != var7) {
+         if(var1 != var7) {
             int var8 = var0.getBits(18);
             int var9 = var8 >> 16;
             int var10 = var8 >> 8 & 597;
@@ -98,11 +105,11 @@ public class class83 {
       garbageValue = "-709266034"
    )
    static final int method1985(int var0, int var1) {
-      int var2 = UnitPriceComparator.getSmoothNoise(var0 + '넵', 91923 + var1, 4) - 128 + (UnitPriceComparator.getSmoothNoise(10294 + var0, var1 + '鎽', 2) - 128 >> 1) + (UnitPriceComparator.getSmoothNoise(var0, var1, 1) - 128 >> 2);
+      int var2 = UnitPriceComparator.getSmoothNoise(var0 + 45365, 91923 + var1, 4) - 128 + (UnitPriceComparator.getSmoothNoise(10294 + var0, var1 + 37821, 2) - 128 >> 1) + (UnitPriceComparator.getSmoothNoise(var0, var1, 1) - 128 >> 2);
       var2 = (int)(0.3D * (double)var2) + 35;
-      if (var2 < 10) {
+      if(var2 < 10) {
          var2 = 10;
-      } else if (var2 > 60) {
+      } else if(var2 > 60) {
          var2 = 60;
       }
 

@@ -22,14 +22,16 @@ public class class320 {
    @ObfuscatedGetter(
       intValue = 1362180319
    )
-   int field3810 = 0;
+   int field3810;
    @ObfuscatedName("j")
-   boolean field3812 = false;
+   boolean field3812;
 
    @ObfuscatedSignature(
       signature = "(Liv;)V"
    )
    class320(IndexDataBase var1) {
+      this.field3810 = 0;
+      this.field3812 = false;
       this.field3814 = var1;
    }
 
@@ -39,7 +41,7 @@ public class class320 {
       garbageValue = "724147284"
    )
    void method6042(String var1) {
-      if (var1 != null && !var1.isEmpty() && var1 != this.field3813) {
+      if(var1 != null && !var1.isEmpty() && var1 != this.field3813) {
          this.field3813 = var1;
          this.field3810 = 0;
          this.field3812 = false;
@@ -54,32 +56,32 @@ public class class320 {
       garbageValue = "-1747682512"
    )
    int method6034() {
-      if (this.field3810 < 25) {
-         if (!this.field3814.tryLoadRecordByNames(MapCacheArchiveNames.COMPOSITE_MAP.name, this.field3813)) {
+      if(this.field3810 < 25) {
+         if(!this.field3814.tryLoadRecordByNames(MapCacheArchiveNames.COMPOSITE_MAP.name, this.field3813)) {
             return this.field3810;
          }
 
          this.field3810 = 25;
       }
 
-      if (this.field3810 == 25) {
-         if (!this.field3814.tryLoadRecordByNames(this.field3813, MapCacheArchiveNames.AREA.name)) {
+      if(this.field3810 == 25) {
+         if(!this.field3814.tryLoadRecordByNames(this.field3813, MapCacheArchiveNames.AREA.name)) {
             return 25 + this.field3814.archiveLoadPercentByName(this.field3813) * 25 / 100;
          }
 
          this.field3810 = 50;
       }
 
-      if (this.field3810 == 50) {
-         if (this.field3814.method4689(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, this.field3813) && !this.field3814.tryLoadRecordByNames(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, this.field3813)) {
+      if(this.field3810 == 50) {
+         if(this.field3814.method4689(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, this.field3813) && !this.field3814.tryLoadRecordByNames(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, this.field3813)) {
             return 50;
          }
 
          this.field3810 = 75;
       }
 
-      if (this.field3810 == 75) {
-         if (!this.field3814.tryLoadRecordByNames(this.field3813, MapCacheArchiveNames.LABELS.name)) {
+      if(this.field3810 == 75) {
+         if(!this.field3814.tryLoadRecordByNames(this.field3813, MapCacheArchiveNames.LABELS.name)) {
             return 75;
          }
 

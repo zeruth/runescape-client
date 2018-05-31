@@ -27,7 +27,7 @@ public abstract class Actor extends Renderable {
    @Export("y")
    int y;
    @ObfuscatedName("an")
-   boolean field884 = false;
+   boolean field884;
    @ObfuscatedName("as")
    @ObfuscatedGetter(
       intValue = -288583475
@@ -38,7 +38,7 @@ public abstract class Actor extends Renderable {
    @ObfuscatedGetter(
       intValue = -275943381
    )
-   int field885 = 1;
+   int field885;
    @ObfuscatedName("ag")
    @ObfuscatedGetter(
       intValue = 1031464143
@@ -49,164 +49,164 @@ public abstract class Actor extends Renderable {
       intValue = 999370705
    )
    @Export("idlePoseAnimation")
-   int idlePoseAnimation = -1;
+   int idlePoseAnimation;
    @ObfuscatedName("az")
    @ObfuscatedGetter(
       intValue = 625498457
    )
-   int field892 = -1;
+   int field892;
    @ObfuscatedName("ao")
    @ObfuscatedGetter(
       intValue = -232489951
    )
-   int field889 = -1;
+   int field889;
    @ObfuscatedName("ap")
    @ObfuscatedGetter(
       intValue = -421220145
    )
-   int field890 = -1;
+   int field890;
    @ObfuscatedName("af")
    @ObfuscatedGetter(
       intValue = 60113477
    )
-   int field891 = -1;
+   int field891;
    @ObfuscatedName("am")
    @ObfuscatedGetter(
       intValue = -183823349
    )
-   int field882 = -1;
+   int field882;
    @ObfuscatedName("aq")
    @ObfuscatedGetter(
       intValue = -732832623
    )
-   int field893 = -1;
+   int field893;
    @ObfuscatedName("aj")
    @ObfuscatedGetter(
       intValue = -640872353
    )
-   int field894 = -1;
+   int field894;
    @ObfuscatedName("ae")
    @Export("overhead")
-   String overhead = null;
+   String overhead;
    @ObfuscatedName("au")
    boolean field938;
    @ObfuscatedName("av")
-   boolean field941 = false;
+   boolean field941;
    @ObfuscatedName("ab")
    @ObfuscatedGetter(
       intValue = 525434105
    )
    @Export("overheadTextCyclesRemaining")
-   int overheadTextCyclesRemaining = 100;
+   int overheadTextCyclesRemaining;
    @ObfuscatedName("aa")
    @ObfuscatedGetter(
       intValue = 1175798307
    )
-   int field899 = 0;
+   int field899;
    @ObfuscatedName("ar")
    @ObfuscatedGetter(
       intValue = 645731903
    )
-   int field887 = 0;
+   int field887;
    @ObfuscatedName("al")
-   byte field902 = 0;
+   byte field902;
    @ObfuscatedName("ak")
    @Export("hitsplatTypes")
-   int[] hitsplatTypes = new int[4];
+   int[] hitsplatTypes;
    @ObfuscatedName("bc")
    @Export("hitsplatValues")
-   int[] hitsplatValues = new int[4];
+   int[] hitsplatValues;
    @ObfuscatedName("bo")
    @Export("hitsplatCycles")
-   int[] hitsplatCycles = new int[4];
+   int[] hitsplatCycles;
    @ObfuscatedName("bx")
-   int[] field906 = new int[4];
+   int[] field906;
    @ObfuscatedName("be")
-   int[] field907 = new int[4];
+   int[] field907;
    @ObfuscatedName("br")
    @ObfuscatedSignature(
       signature = "Lgt;"
    )
    @Export("combatInfoList")
-   CombatInfoList combatInfoList = new CombatInfoList();
+   CombatInfoList combatInfoList;
    @ObfuscatedName("bk")
    @ObfuscatedGetter(
       intValue = -458626459
    )
    @Export("interacting")
-   int interacting = -1;
+   int interacting;
    @ObfuscatedName("bn")
-   boolean field910 = false;
+   boolean field910;
    @ObfuscatedName("bp")
    @ObfuscatedGetter(
       intValue = 1929094879
    )
-   int field897 = -1;
+   int field897;
    @ObfuscatedName("bu")
    @ObfuscatedGetter(
       intValue = 2095688717
    )
    @Export("poseAnimation")
-   int poseAnimation = -1;
+   int poseAnimation;
    @ObfuscatedName("by")
    @ObfuscatedGetter(
       intValue = -1773591931
    )
    @Export("poseFrame")
-   int poseFrame = 0;
+   int poseFrame;
    @ObfuscatedName("bl")
    @ObfuscatedGetter(
       intValue = 337252777
    )
    @Export("poseFrameCycle")
-   int poseFrameCycle = 0;
+   int poseFrameCycle;
    @ObfuscatedName("bs")
    @ObfuscatedGetter(
       intValue = -1957224505
    )
    @Export("animation")
-   int animation = -1;
+   int animation;
    @ObfuscatedName("bi")
    @ObfuscatedGetter(
       intValue = 1851810309
    )
    @Export("actionFrame")
-   int actionFrame = 0;
+   int actionFrame;
    @ObfuscatedName("bb")
    @ObfuscatedGetter(
       intValue = -933080379
    )
    @Export("actionFrameCycle")
-   int actionFrameCycle = 0;
+   int actionFrameCycle;
    @ObfuscatedName("bt")
    @ObfuscatedGetter(
       intValue = 1302070535
    )
    @Export("actionAnimationDisable")
-   int actionAnimationDisable = 0;
+   int actionAnimationDisable;
    @ObfuscatedName("bm")
    @ObfuscatedGetter(
       intValue = 1212107921
    )
-   int field919 = 0;
+   int field919;
    @ObfuscatedName("bw")
    @ObfuscatedGetter(
       intValue = -1070741445
    )
    @Export("graphic")
-   int graphic = -1;
+   int graphic;
    @ObfuscatedName("bv")
    @ObfuscatedGetter(
       intValue = 382614979
    )
    @Export("spotAnimFrame")
-   int spotAnimFrame = 0;
+   int spotAnimFrame;
    @ObfuscatedName("bf")
    @ObfuscatedGetter(
       intValue = 1533049309
    )
    @Export("spotAnimFrameCycle")
-   int spotAnimFrameCycle = 0;
+   int spotAnimFrameCycle;
    @ObfuscatedName("bj")
    @ObfuscatedGetter(
       intValue = -1103417953
@@ -258,13 +258,13 @@ public abstract class Actor extends Renderable {
       intValue = -818402131
    )
    @Export("npcCycle")
-   int npcCycle = 0;
+   int npcCycle;
    @ObfuscatedName("ct")
    @ObfuscatedGetter(
       intValue = -370023441
    )
    @Export("logicalHeight")
-   int logicalHeight = 200;
+   int logicalHeight;
    @ObfuscatedName("cw")
    @ObfuscatedGetter(
       intValue = -1225795687
@@ -275,37 +275,86 @@ public abstract class Actor extends Renderable {
    @ObfuscatedGetter(
       intValue = -742921575
    )
-   int field930 = 0;
+   int field930;
    @ObfuscatedName("cs")
    @ObfuscatedGetter(
       intValue = -509064687
    )
-   int field929 = 32;
+   int field929;
    @ObfuscatedName("ce")
    @ObfuscatedGetter(
       intValue = 1458096333
    )
    @Export("queueSize")
-   int queueSize = 0;
+   int queueSize;
    @ObfuscatedName("co")
    @Export("pathX")
-   int[] pathX = new int[10];
+   int[] pathX;
    @ObfuscatedName("cj")
    @Export("pathY")
-   int[] pathY = new int[10];
+   int[] pathY;
    @ObfuscatedName("cp")
    @Export("pathTraversed")
-   byte[] pathTraversed = new byte[10];
+   byte[] pathTraversed;
    @ObfuscatedName("ck")
    @ObfuscatedGetter(
       intValue = 558190371
    )
-   int field936 = 0;
+   int field936;
    @ObfuscatedName("ca")
    @ObfuscatedGetter(
       intValue = -1506593327
    )
-   int field942 = 0;
+   int field942;
+
+   Actor() {
+      this.field884 = false;
+      this.field885 = 1;
+      this.idlePoseAnimation = -1;
+      this.field892 = -1;
+      this.field889 = -1;
+      this.field890 = -1;
+      this.field891 = -1;
+      this.field882 = -1;
+      this.field893 = -1;
+      this.field894 = -1;
+      this.overhead = null;
+      this.field941 = false;
+      this.overheadTextCyclesRemaining = 100;
+      this.field899 = 0;
+      this.field887 = 0;
+      this.field902 = 0;
+      this.hitsplatTypes = new int[4];
+      this.hitsplatValues = new int[4];
+      this.hitsplatCycles = new int[4];
+      this.field906 = new int[4];
+      this.field907 = new int[4];
+      this.combatInfoList = new CombatInfoList();
+      this.interacting = -1;
+      this.field910 = false;
+      this.field897 = -1;
+      this.poseAnimation = -1;
+      this.poseFrame = 0;
+      this.poseFrameCycle = 0;
+      this.animation = -1;
+      this.actionFrame = 0;
+      this.actionFrameCycle = 0;
+      this.actionAnimationDisable = 0;
+      this.field919 = 0;
+      this.graphic = -1;
+      this.spotAnimFrame = 0;
+      this.spotAnimFrameCycle = 0;
+      this.npcCycle = 0;
+      this.logicalHeight = 200;
+      this.field930 = 0;
+      this.field929 = 32;
+      this.queueSize = 0;
+      this.pathX = new int[10];
+      this.pathY = new int[10];
+      this.pathTraversed = new byte[10];
+      this.field936 = 0;
+      this.field942 = 0;
+   }
 
    @ObfuscatedName("c")
    @ObfuscatedSignature(
@@ -343,7 +392,7 @@ public abstract class Actor extends Renderable {
 
       int var9;
       for(var9 = 0; var9 < 4; ++var9) {
-         if (this.hitsplatCycles[var9] > var5) {
+         if(this.hitsplatCycles[var9] > var5) {
             var7 = false;
          } else {
             var8 = false;
@@ -353,57 +402,57 @@ public abstract class Actor extends Renderable {
       var9 = -1;
       int var10 = -1;
       int var11 = 0;
-      if (var1 >= 0) {
+      if(var1 >= 0) {
          class267 var12 = class8.method92(var1);
          var10 = var12.field3384;
          var11 = var12.field3375;
       }
 
       int var14;
-      if (var8) {
-         if (var10 == -1) {
+      if(var8) {
+         if(var10 == -1) {
             return;
          }
 
          var9 = 0;
          var14 = 0;
-         if (var10 == 0) {
+         if(var10 == 0) {
             var14 = this.hitsplatCycles[0];
-         } else if (var10 == 1) {
+         } else if(var10 == 1) {
             var14 = this.hitsplatValues[0];
          }
 
          for(int var13 = 1; var13 < 4; ++var13) {
-            if (var10 == 0) {
-               if (this.hitsplatCycles[var13] < var14) {
+            if(var10 == 0) {
+               if(this.hitsplatCycles[var13] < var14) {
                   var9 = var13;
                   var14 = this.hitsplatCycles[var13];
                }
-            } else if (var10 == 1 && this.hitsplatValues[var13] < var14) {
+            } else if(var10 == 1 && this.hitsplatValues[var13] < var14) {
                var9 = var13;
                var14 = this.hitsplatValues[var13];
             }
          }
 
-         if (var10 == 1 && var14 >= var2) {
+         if(var10 == 1 && var14 >= var2) {
             return;
          }
       } else {
-         if (var7) {
+         if(var7) {
             this.field902 = 0;
          }
 
          for(var14 = 0; var14 < 4; ++var14) {
             byte var15 = this.field902;
             this.field902 = (byte)((this.field902 + 1) % 4);
-            if (this.hitsplatCycles[var15] <= var5) {
+            if(this.hitsplatCycles[var15] <= var5) {
                var9 = var15;
                break;
             }
          }
       }
 
-      if (var9 >= 0) {
+      if(var9 >= 0) {
          this.hitsplatTypes[var9] = var1;
          this.hitsplatValues[var9] = var2;
          this.field906[var9] = var3;
@@ -430,31 +479,31 @@ public abstract class Actor extends Renderable {
       CombatInfoListHolder var12;
       for(var12 = (CombatInfoListHolder)this.combatInfoList.last(); var12 != null; var12 = (CombatInfoListHolder)this.combatInfoList.previous()) {
          ++var11;
-         if (var12.combatInfo2.field3325 == var7.field3325) {
+         if(var12.combatInfo2.field3325 == var7.field3325) {
             var12.method1815(var2 + var4, var5, var6, var3);
             return;
          }
 
-         if (var12.combatInfo2.field3326 <= var7.field3326) {
+         if(var12.combatInfo2.field3326 <= var7.field3326) {
             var8 = var12;
          }
 
-         if (var12.combatInfo2.field3327 > var10) {
+         if(var12.combatInfo2.field3327 > var10) {
             var9 = var12;
             var10 = var12.combatInfo2.field3327;
          }
       }
 
-      if (var9 != null || var11 < 4) {
+      if(var9 != null || var11 < 4) {
          var12 = new CombatInfoListHolder(var7);
-         if (var8 == null) {
+         if(var8 == null) {
             this.combatInfoList.addLast(var12);
          } else {
             CombatInfoList.method4089(var12, var8);
          }
 
          var12.method1815(var2 + var4, var5, var6, var3);
-         if (var11 >= 4) {
+         if(var11 >= 4) {
             var9.unlink();
          }
       }
@@ -470,7 +519,7 @@ public abstract class Actor extends Renderable {
       CombatInfo2 var2 = Widget.method4570(var1);
 
       for(CombatInfoListHolder var3 = (CombatInfoListHolder)this.combatInfoList.last(); var3 != null; var3 = (CombatInfoListHolder)this.combatInfoList.previous()) {
-         if (var2 == var3.combatInfo2) {
+         if(var2 == var3.combatInfo2) {
             var3.unlink();
             return;
          }
@@ -493,12 +542,12 @@ public abstract class Actor extends Renderable {
       int var11;
       int var12;
       IndexedSprite var15;
-      if (var5 != 0L) {
+      if(var5 != 0L) {
          var7 = ScriptEvent.region.method2931(var0, var1, var2, var5);
          var8 = var7 >> 6 & 3;
          var9 = var7 & 31;
          var10 = var3;
-         if (WorldMapType2.method501(var5)) {
+         if(WorldMapType2.method501(var5)) {
             var10 = var4;
          }
 
@@ -506,31 +555,31 @@ public abstract class Actor extends Renderable {
          var11 = var1 * 4 + (103 - var2) * 2048 + 24624;
          var12 = class8.method93(var5);
          ObjectComposition var14 = SoundTaskDataProvider.getObjectDefinition(var12);
-         if (var14.mapSceneId != -1) {
+         if(var14.mapSceneId != -1) {
             var15 = WorldComparator.mapscene[var14.mapSceneId];
-            if (var15 != null) {
+            if(var15 != null) {
                int var16 = (var14.width * 4 - var15.width) / 2;
                int var17 = (var14.length * 4 - var15.height) / 2;
                var15.method5873(var16 + var1 * 4 + 48, var17 + (104 - var2 - var14.length) * 4 + 48);
             }
          } else {
-            if (var9 == 0 || var9 == 2) {
-               if (var8 == 0) {
+            if(var9 == 0 || var9 == 2) {
+               if(var8 == 0) {
                   var13[var11] = var10;
                   var13[var11 + 512] = var10;
                   var13[var11 + 1024] = var10;
                   var13[var11 + 1536] = var10;
-               } else if (var8 == 1) {
+               } else if(var8 == 1) {
                   var13[var11] = var10;
                   var13[var11 + 1] = var10;
                   var13[var11 + 2] = var10;
                   var13[var11 + 3] = var10;
-               } else if (var8 == 2) {
+               } else if(var8 == 2) {
                   var13[var11 + 3] = var10;
                   var13[var11 + 512 + 3] = var10;
                   var13[var11 + 1024 + 3] = var10;
                   var13[var11 + 1536 + 3] = var10;
-               } else if (var8 == 3) {
+               } else if(var8 == 3) {
                   var13[var11 + 1536] = var10;
                   var13[var11 + 1536 + 1] = var10;
                   var13[var11 + 1536 + 2] = var10;
@@ -538,35 +587,35 @@ public abstract class Actor extends Renderable {
                }
             }
 
-            if (var9 == 3) {
-               if (var8 == 0) {
+            if(var9 == 3) {
+               if(var8 == 0) {
                   var13[var11] = var10;
-               } else if (var8 == 1) {
+               } else if(var8 == 1) {
                   var13[var11 + 3] = var10;
-               } else if (var8 == 2) {
+               } else if(var8 == 2) {
                   var13[var11 + 1536 + 3] = var10;
-               } else if (var8 == 3) {
+               } else if(var8 == 3) {
                   var13[var11 + 1536] = var10;
                }
             }
 
-            if (var9 == 2) {
-               if (var8 == 3) {
+            if(var9 == 2) {
+               if(var8 == 3) {
                   var13[var11] = var10;
                   var13[var11 + 512] = var10;
                   var13[var11 + 1024] = var10;
                   var13[var11 + 1536] = var10;
-               } else if (var8 == 0) {
+               } else if(var8 == 0) {
                   var13[var11] = var10;
                   var13[var11 + 1] = var10;
                   var13[var11 + 2] = var10;
                   var13[var11 + 3] = var10;
-               } else if (var8 == 1) {
+               } else if(var8 == 1) {
                   var13[var11 + 3] = var10;
                   var13[var11 + 512 + 3] = var10;
                   var13[var11 + 1024 + 3] = var10;
                   var13[var11 + 1536 + 3] = var10;
-               } else if (var8 == 2) {
+               } else if(var8 == 2) {
                   var13[var11 + 1536] = var10;
                   var13[var11 + 1536 + 1] = var10;
                   var13[var11 + 1536 + 2] = var10;
@@ -578,29 +627,29 @@ public abstract class Actor extends Renderable {
 
       var5 = ScriptEvent.region.method3045(var0, var1, var2);
       ObjectComposition var18;
-      if (var5 != 0L) {
+      if(var5 != 0L) {
          var7 = ScriptEvent.region.method2931(var0, var1, var2, var5);
          var8 = var7 >> 6 & 3;
          var9 = var7 & 31;
          var10 = class8.method93(var5);
          var18 = SoundTaskDataProvider.getObjectDefinition(var10);
          int var19;
-         if (var18.mapSceneId != -1) {
+         if(var18.mapSceneId != -1) {
             var15 = WorldComparator.mapscene[var18.mapSceneId];
-            if (var15 != null) {
+            if(var15 != null) {
                var12 = (var18.width * 4 - var15.width) / 2;
                var19 = (var18.length * 4 - var15.height) / 2;
                var15.method5873(var1 * 4 + var12 + 48, var19 + (104 - var2 - var18.length) * 4 + 48);
             }
-         } else if (var9 == 9) {
+         } else if(var9 == 9) {
             var11 = 15658734;
-            if (WorldMapType2.method501(var5)) {
+            if(WorldMapType2.method501(var5)) {
                var11 = 15597568;
             }
 
             int[] var21 = class283.minimapSprite.pixels;
             var19 = var1 * 4 + (103 - var2) * 2048 + 24624;
-            if (var8 != 0 && var8 != 2) {
+            if(var8 != 0 && var8 != 2) {
                var21[var19] = var11;
                var21[var19 + 1 + 512] = var11;
                var21[var19 + 1024 + 2] = var11;
@@ -615,12 +664,12 @@ public abstract class Actor extends Renderable {
       }
 
       var5 = ScriptEvent.region.method2930(var0, var1, var2);
-      if (0L != var5) {
+      if(0L != var5) {
          var7 = class8.method93(var5);
          var18 = SoundTaskDataProvider.getObjectDefinition(var7);
-         if (var18.mapSceneId != -1) {
+         if(var18.mapSceneId != -1) {
             IndexedSprite var20 = WorldComparator.mapscene[var18.mapSceneId];
-            if (var20 != null) {
+            if(var20 != null) {
                var10 = (var18.width * 4 - var20.width) / 2;
                int var22 = (var18.length * 4 - var20.height) / 2;
                var20.method5873(var10 + var1 * 4 + 48, (104 - var2 - var18.length) * 4 + var22 + 48);

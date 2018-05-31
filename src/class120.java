@@ -7,22 +7,22 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class class120 {
    @ObfuscatedName("w")
    @Export("Viewport_containsMouse")
-   static boolean Viewport_containsMouse = false;
+   static boolean Viewport_containsMouse;
    @ObfuscatedName("m")
    @ObfuscatedGetter(
       intValue = 1071935907
    )
    @Export("Viewport_mouseX")
-   static int Viewport_mouseX = 0;
+   static int Viewport_mouseX;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = -831543585
    )
    @Export("Viewport_mouseY")
-   static int Viewport_mouseY = 0;
+   static int Viewport_mouseY;
    @ObfuscatedName("b")
    @Export("Viewport_false0")
-   static boolean Viewport_false0 = false;
+   static boolean Viewport_false0;
    @ObfuscatedName("f")
    @ObfuscatedGetter(
       intValue = 1611736783
@@ -43,9 +43,18 @@ public class class120 {
       intValue = -817355445
    )
    @Export("Viewport_entityCountAtMouse")
-   public static int Viewport_entityCountAtMouse = 0;
+   public static int Viewport_entityCountAtMouse;
    @ObfuscatedName("g")
-   public static long[] field1688 = new long[1000];
+   public static long[] field1688;
+
+   static {
+      Viewport_containsMouse = false;
+      Viewport_mouseX = 0;
+      Viewport_mouseY = 0;
+      Viewport_false0 = false;
+      Viewport_entityCountAtMouse = 0;
+      field1688 = new long[1000];
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -64,49 +73,49 @@ public class class120 {
    @Export("getItemDefinition")
    public static ItemComposition getItemDefinition(int var0) {
       ItemComposition var1 = (ItemComposition)ItemComposition.items.get((long)var0);
-      if (var1 != null) {
+      if(var1 != null) {
          return var1;
       } else {
          byte[] var2 = ItemComposition.item_ref.getConfigData(10, var0);
          var1 = new ItemComposition();
          var1.id = var0;
-         if (var2 != null) {
+         if(var2 != null) {
             var1.loadBuffer(new Buffer(var2));
          }
 
          var1.post();
-         if (var1.notedTemplate != -1) {
+         if(var1.notedTemplate != -1) {
             var1.updateNote(getItemDefinition(var1.notedTemplate), getItemDefinition(var1.note));
          }
 
-         if (var1.notedId != -1) {
+         if(var1.notedId != -1) {
             var1.method5106(getItemDefinition(var1.notedId), getItemDefinition(var1.unnotedId));
          }
 
-         if (var1.placeholderTemplateId != -1) {
+         if(var1.placeholderTemplateId != -1) {
             var1.method5137(getItemDefinition(var1.placeholderTemplateId), getItemDefinition(var1.placeholderId));
          }
 
-         if (!GrandExchangeOffer.isMembersWorld && var1.isMembers) {
+         if(!GrandExchangeOffer.isMembersWorld && var1.isMembers) {
             var1.name = "Members object";
             var1.isTradable = false;
             var1.groundActions = null;
             var1.inventoryActions = null;
             var1.shiftClickIndex = -1;
             var1.team = 0;
-            if (var1.params != null) {
+            if(var1.params != null) {
                boolean var3 = false;
 
                for(Node var4 = var1.params.getHead(); var4 != null; var4 = var1.params.getTail()) {
                   class264 var5 = Buffer.method3811((int)var4.hash);
-                  if (var5.field3349) {
+                  if(var5.field3349) {
                      var4.unlink();
                   } else {
                      var3 = true;
                   }
                }
 
-               if (!var3) {
+               if(!var3) {
                   var1.params = null;
                }
             }
@@ -134,12 +143,12 @@ public class class120 {
    static final void method2813(boolean var0) {
       for(int var1 = 0; var1 < Client.npcIndexesCount; ++var1) {
          NPC var2 = Client.cachedNPCs[Client.npcIndices[var1]];
-         if (var2 != null && var2.hasConfig() && var2.composition.isVisible == var0 && var2.composition.method5194()) {
+         if(var2 != null && var2.hasConfig() && var2.composition.isVisible == var0 && var2.composition.method5194()) {
             int var3 = var2.x >> 7;
             int var4 = var2.y >> 7;
-            if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
-               if (var2.field885 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
-                  if (Client.field689[var3][var4] == Client.field690) {
+            if(var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
+               if(var2.field885 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
+                  if(Client.field689[var3][var4] == Client.field690) {
                      continue;
                   }
 

@@ -18,7 +18,7 @@ public class class309 implements Comparator {
       garbageValue = "1482542953"
    )
    int method5717(Nameable var1, Nameable var2) {
-      return this.field3747 ? var1.getRsName().compareCleanName(var2.getRsName()) : var2.getRsName().compareCleanName(var1.getRsName());
+      return this.field3747?var1.getRsName().compareCleanName(var2.getRsName()):var2.getRsName().compareCleanName(var1.getRsName());
    }
 
    public int compare(Object var1, Object var2) {
@@ -37,11 +37,11 @@ public class class309 implements Comparator {
    @Export("getFrames")
    static Frames getFrames(int var0) {
       Frames var1 = (Frames)Sequence.skeletons.get((long)var0);
-      if (var1 != null) {
+      if(var1 != null) {
          return var1;
       } else {
          var1 = SceneTilePaint.method2899(Sequence.skel_ref, Sequence.skin_ref, var0, false);
-         if (var1 != null) {
+         if(var1 != null) {
             Sequence.skeletons.put(var1, (long)var0);
          }
 

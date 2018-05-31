@@ -31,7 +31,7 @@ final class WorldComparator implements Comparator {
       garbageValue = "1"
    )
    int method1(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-      return var1.world < var2.world ? -1 : (var2.world == var1.world ? 0 : 1);
+      return var1.world < var2.world?-1:(var2.world == var1.world?0:1);
    }
 
    public boolean equals(Object var1) {
@@ -49,19 +49,19 @@ final class WorldComparator implements Comparator {
    )
    public static boolean method0() {
       try {
-         if (class217.field2486 == 2) {
-            if (Ignore.field3644 == null) {
+         if(class217.field2486 == 2) {
+            if(Ignore.field3644 == null) {
                Ignore.field3644 = Track1.getMusicFile(class26.field236, WorldMapDecoration.field167, class217.field2487);
-               if (Ignore.field3644 == null) {
+               if(Ignore.field3644 == null) {
                   return false;
                }
             }
 
-            if (class59.field557 == null) {
+            if(class59.field557 == null) {
                class59.field557 = new class98(class217.field2490, class217.field2482);
             }
 
-            if (class217.field2485.method4229(Ignore.field3644, class217.field2484, class59.field557, 22050)) {
+            if(class217.field2485.method4229(Ignore.field3644, class217.field2484, class59.field557, 22050)) {
                class217.field2485.method4230();
                class217.field2485.method4302(class21.field185);
                class217.field2485.method4327(Ignore.field3644, class178.field2317);
@@ -93,8 +93,8 @@ final class WorldComparator implements Comparator {
       for(int var0 = 0; var0 < Client.menuOptionCount; ++var0) {
          int var1 = Client.menuTypes[var0];
          boolean var2 = var1 == 57 || var1 == 58 || var1 == 1007 || var1 == 25 || var1 == 30;
-         if (var2) {
-            if (var0 < Client.menuOptionCount - 1) {
+         if(var2) {
+            if(var0 < Client.menuOptionCount - 1) {
                for(int var3 = var0; var3 < Client.menuOptionCount - 1; ++var3) {
                   Client.menuOptions[var3] = Client.menuOptions[var3 + 1];
                   Client.menuTargets[var3] = Client.menuTargets[var3 + 1];
@@ -122,30 +122,30 @@ final class WorldComparator implements Comparator {
    static final void method2(Widget[] var0, int var1) {
       for(int var2 = 0; var2 < var0.length; ++var2) {
          Widget var3 = var0[var2];
-         if (var3 != null) {
-            if (var3.type == 0) {
-               if (var3.children != null) {
+         if(var3 != null) {
+            if(var3.type == 0) {
+               if(var3.children != null) {
                   method2(var3.children, var1);
                }
 
                WidgetNode var4 = (WidgetNode)Client.componentTable.get((long)var3.id);
-               if (var4 != null) {
+               if(var4 != null) {
                   class76.method1849(var4.id, var1);
                }
             }
 
             ScriptEvent var6;
-            if (var1 == 0 && var3.onDialogAbortListener != null) {
+            if(var1 == 0 && var3.onDialogAbortListener != null) {
                var6 = new ScriptEvent();
                var6.source = var3;
                var6.params = var3.onDialogAbortListener;
                FriendManager.method1728(var6);
             }
 
-            if (var1 == 1 && var3.onSubChangeListener != null) {
-               if (var3.index >= 0) {
+            if(var1 == 1 && var3.onSubChangeListener != null) {
+               if(var3.index >= 0) {
                   Widget var5 = OwnWorldComparator.getWidget(var3.id);
-                  if (var5 == null || var5.children == null || var3.index >= var5.children.length || var3 != var5.children[var3.index]) {
+                  if(var5 == null || var5.children == null || var3.index >= var5.children.length || var3 != var5.children[var3.index]) {
                      continue;
                   }
                }

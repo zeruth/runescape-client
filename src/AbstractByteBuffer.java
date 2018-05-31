@@ -8,7 +8,11 @@ import net.runelite.mapping.ObfuscatedSignature;
 public abstract class AbstractByteBuffer {
    @ObfuscatedName("m")
    @Export("directBufferUnavailable")
-   static boolean directBufferUnavailable = false;
+   static boolean directBufferUnavailable;
+
+   static {
+      directBufferUnavailable = false;
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(

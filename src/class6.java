@@ -36,13 +36,13 @@ final class class6 implements Comparator {
    )
    static int method71(World var0, World var1, int var2, boolean var3, int var4, boolean var5) {
       int var6 = class219.method4361(var0, var1, var2, var3);
-      if (var6 != 0) {
-         return var3 ? -var6 : var6;
-      } else if (var4 == -1) {
+      if(var6 != 0) {
+         return var3?-var6:var6;
+      } else if(var4 == -1) {
          return 0;
       } else {
          int var7 = class219.method4361(var0, var1, var4, var5);
-         return var5 ? -var7 : var7;
+         return var5?-var7:var7;
       }
    }
 }

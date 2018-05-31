@@ -42,12 +42,12 @@ public class AbstractSoundSystem {
    @ObfuscatedGetter(
       intValue = -759205163
    )
-   int field1329 = 32;
+   int field1329;
    @ObfuscatedName("c")
    @ObfuscatedGetter(
       longValue = -913623916545243455L
    )
-   long field1334 = class166.method3456();
+   long field1334;
    @ObfuscatedName("e")
    @ObfuscatedGetter(
       intValue = 2024020127
@@ -68,44 +68,58 @@ public class AbstractSoundSystem {
    @ObfuscatedGetter(
       longValue = -5023377774405903021L
    )
-   long field1320 = 0L;
+   long field1320;
    @ObfuscatedName("z")
    @ObfuscatedGetter(
       intValue = -5737955
    )
-   int field1326 = 0;
+   int field1326;
    @ObfuscatedName("k")
    @ObfuscatedGetter(
       intValue = 741309427
    )
-   int field1335 = 0;
+   int field1335;
    @ObfuscatedName("r")
    @ObfuscatedGetter(
       intValue = -1986148097
    )
-   int field1337 = 0;
+   int field1337;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
       longValue = -5722049471560573075L
    )
-   long field1338 = 0L;
+   long field1338;
    @ObfuscatedName("o")
-   boolean field1333 = true;
+   boolean field1333;
    @ObfuscatedName("an")
    @ObfuscatedGetter(
       intValue = 1008236685
    )
-   int field1340 = 0;
+   int field1340;
    @ObfuscatedName("as")
    @ObfuscatedSignature(
       signature = "[Ldu;"
    )
-   TaskDataNode[] field1341 = new TaskDataNode[8];
+   TaskDataNode[] field1341;
    @ObfuscatedName("aw")
    @ObfuscatedSignature(
       signature = "[Ldu;"
    )
-   TaskDataNode[] field1342 = new TaskDataNode[8];
+   TaskDataNode[] field1342;
+
+   protected AbstractSoundSystem() {
+      this.field1329 = 32;
+      this.field1334 = class166.method3456();
+      this.field1320 = 0L;
+      this.field1326 = 0;
+      this.field1335 = 0;
+      this.field1337 = 0;
+      this.field1338 = 0L;
+      this.field1333 = true;
+      this.field1340 = 0;
+      this.field1341 = new TaskDataNode[8];
+      this.field1342 = new TaskDataNode[8];
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -168,7 +182,90 @@ public class AbstractSoundSystem {
       garbageValue = "1112855945"
    )
    public final synchronized void method2192() {
-      // $FF: Couldn't be decompiled
+      if(this.samples != null) {
+         long var1 = class166.method3456();
+
+         try {
+            if(0L != this.field1320) {
+               if(var1 < this.field1320) {
+                  return;
+               }
+
+               this.create(this.offset);
+               this.field1320 = 0L;
+               this.field1333 = true;
+            }
+
+            int var3 = this.size();
+            if(this.field1337 - var3 > this.field1326) {
+               this.field1326 = this.field1337 - var3;
+            }
+
+            int var4 = this.field1332 + this.field1322;
+            if(var4 + 256 > 16384) {
+               var4 = 16128;
+            }
+
+            if(var4 + 256 > this.offset) {
+               this.offset += 1024;
+               if(this.offset > 16384) {
+                  this.offset = 16384;
+               }
+
+               this.close();
+               this.create(this.offset);
+               var3 = 0;
+               this.field1333 = true;
+               if(var4 + 256 > this.offset) {
+                  var4 = this.offset - 256;
+                  this.field1332 = var4 - this.field1322;
+               }
+            }
+
+            while(var3 < var4) {
+               this.method2250(this.samples, 256);
+               this.write();
+               var3 += 256;
+            }
+
+            if(var1 > this.field1338) {
+               if(!this.field1333) {
+                  if(this.field1326 == 0 && this.field1335 == 0) {
+                     this.close();
+                     this.field1320 = 2000L + var1;
+                     return;
+                  }
+
+                  this.field1332 = Math.min(this.field1335, this.field1326);
+                  this.field1335 = this.field1326;
+               } else {
+                  this.field1333 = false;
+               }
+
+               this.field1326 = 0;
+               this.field1338 = var1 + 2000L;
+            }
+
+            this.field1337 = var3;
+         } catch (Exception var6) {
+            this.close();
+            this.field1320 = var1 + 2000L;
+         }
+
+         try {
+            if(var1 > 500000L + this.field1334) {
+               var1 = this.field1334;
+            }
+
+            while(var1 > this.field1334 + 5000L) {
+               this.method2196(256);
+               this.field1334 += (long)(256000 / sampleRate);
+            }
+         } catch (Exception var5) {
+            this.field1334 = var1;
+         }
+      }
+
    }
 
    @ObfuscatedName("aw")
@@ -205,20 +302,20 @@ public class AbstractSoundSystem {
    )
    @Export("shutdown")
    public final synchronized void shutdown() {
-      if (class231.task != null) {
+      if(class231.task != null) {
          boolean var1 = true;
 
          for(int var2 = 0; var2 < 2; ++var2) {
-            if (this == class231.task.systems[var2]) {
+            if(this == class231.task.systems[var2]) {
                class231.task.systems[var2] = null;
             }
 
-            if (class231.task.systems[var2] != null) {
+            if(class231.task.systems[var2] != null) {
                var1 = false;
             }
          }
 
-         if (var1) {
+         if(var1) {
             field1323.shutdownNow();
             field1323 = null;
             class231.task = null;
@@ -236,11 +333,11 @@ public class AbstractSoundSystem {
    )
    final void method2196(int var1) {
       this.field1340 -= var1;
-      if (this.field1340 < 0) {
+      if(this.field1340 < 0) {
          this.field1340 = 0;
       }
 
-      if (this.field1328 != null) {
+      if(this.field1328 != null) {
          this.field1328.vmethod4425(var1);
       }
 
@@ -249,13 +346,13 @@ public class AbstractSoundSystem {
    @ObfuscatedName("ao")
    final void method2250(int[] var1, int var2) {
       int var3 = var2;
-      if (audioHighMemory) {
+      if(audioHighMemory) {
          var3 = var2 << 1;
       }
 
       class193.method3935(var1, 0, var3);
       this.field1340 -= var2;
-      if (this.field1328 != null && this.field1340 <= 0) {
+      if(this.field1328 != null && this.field1340 <= 0) {
          this.field1340 += sampleRate >> 4;
          WorldMapDecoration.method222(this.field1328);
          this.method2198(this.field1328, this.field1328.vmethod2484());
@@ -268,7 +365,7 @@ public class AbstractSoundSystem {
          for(var6 = 7; var5 != 0; --var6) {
             int var8;
             int var9;
-            if (var6 < 0) {
+            if(var6 < 0) {
                var8 = var6 & 3;
                var9 = -(var6 >> 2);
             } else {
@@ -277,7 +374,7 @@ public class AbstractSoundSystem {
             }
 
             for(int var10 = var5 >>> var8 & 286331153; var10 != 0; var10 >>>= 4) {
-               if ((var10 & 1) != 0) {
+               if((var10 & 1) != 0) {
                   var5 &= ~(1 << var8);
                   var7 = null;
                   TaskDataNode var11 = this.field1341[var8];
@@ -285,12 +382,12 @@ public class AbstractSoundSystem {
                   label99:
                   while(true) {
                      while(true) {
-                        if (var11 == null) {
+                        if(var11 == null) {
                            break label99;
                         }
 
                         AbstractIntegerNode0 var12 = var11.data;
-                        if (var12 != null && var12.int1 > var9) {
+                        if(var12 != null && var12.int1 > var9) {
                            var5 |= 1 << var8;
                            var7 = var11;
                            var11 = var11.field1407;
@@ -298,16 +395,16 @@ public class AbstractSoundSystem {
                            var11.field1409 = true;
                            int var13 = var11.vmethod4423();
                            var4 += var13;
-                           if (var12 != null) {
+                           if(var12 != null) {
                               var12.int1 += var13;
                            }
 
-                           if (var4 >= this.field1329) {
+                           if(var4 >= this.field1329) {
                               break label105;
                            }
 
                            TaskDataNode var14 = var11.vmethod4421();
-                           if (var14 != null) {
+                           if(var14 != null) {
                               for(int var15 = var11.field1406; var14 != null; var14 = var11.vmethod4422()) {
                                  this.method2198(var14, var15 * var14.vmethod2484() >> 8);
                               }
@@ -315,13 +412,13 @@ public class AbstractSoundSystem {
 
                            TaskDataNode var18 = var11.field1407;
                            var11.field1407 = null;
-                           if (var7 == null) {
+                           if(var7 == null) {
                               this.field1341[var8] = var18;
                            } else {
                               var7.field1407 = var18;
                            }
 
-                           if (var18 == null) {
+                           if(var18 == null) {
                               this.field1342[var8] = var7;
                            }
 
@@ -348,11 +445,11 @@ public class AbstractSoundSystem {
          }
       }
 
-      if (this.field1340 < 0) {
+      if(this.field1340 < 0) {
          this.field1340 = 0;
       }
 
-      if (this.field1328 != null) {
+      if(this.field1328 != null) {
          this.field1328.vmethod4424(var1, 0, var2);
       }
 
@@ -367,7 +464,7 @@ public class AbstractSoundSystem {
    final void method2198(TaskDataNode var1, int var2) {
       int var3 = var2 >> 5;
       TaskDataNode var4 = this.field1342[var3];
-      if (var4 == null) {
+      if(var4 == null) {
          this.field1341[var3] = var1;
       } else {
          var4.field1407 = var1;
@@ -386,7 +483,7 @@ public class AbstractSoundSystem {
       KeyFocusListener var0 = KeyFocusListener.keyboard;
       KeyFocusListener var1 = KeyFocusListener.keyboard;
       synchronized(KeyFocusListener.keyboard) {
-         if (KeyFocusListener.field348 == KeyFocusListener.field342) {
+         if(KeyFocusListener.field348 == KeyFocusListener.field342) {
             return false;
          } else {
             WallObject.currentPressedKey = KeyFocusListener.field339[KeyFocusListener.field342];
@@ -415,6 +512,6 @@ public class AbstractSoundSystem {
    @Export("getWidgetClickMask")
    static int getWidgetClickMask(Widget var0) {
       IntegerNode var1 = (IntegerNode)Client.widgetFlags.get(((long)var0.id << 32) + (long)var0.index);
-      return var1 != null ? var1.value : var0.clickMask;
+      return var1 != null?var1.value:var0.clickMask;
    }
 }

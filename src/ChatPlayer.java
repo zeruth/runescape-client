@@ -12,7 +12,7 @@ public class ChatPlayer extends Nameable {
       intValue = -1818299933
    )
    @Export("world")
-   public int world = -1;
+   public int world;
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = -467035593
@@ -24,6 +24,10 @@ public class ChatPlayer extends Nameable {
    )
    @Export("rank")
    public int rank;
+
+   ChatPlayer() {
+      this.world = -1;
+   }
 
    @ObfuscatedName("ax")
    @ObfuscatedSignature(

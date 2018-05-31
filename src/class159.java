@@ -103,12 +103,12 @@ public class class159 extends class157 {
    @Export("setItemTableSlot")
    static void setItemTableSlot(int var0, int var1, int var2, int var3) {
       ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-      if (var4 == null) {
+      if(var4 == null) {
          var4 = new ItemContainer();
          ItemContainer.itemContainers.put(var4, (long)var0);
       }
 
-      if (var4.itemIds.length <= var1) {
+      if(var4.itemIds.length <= var1) {
          int[] var5 = new int[var1 + 1];
          int[] var6 = new int[var1 + 1];
 

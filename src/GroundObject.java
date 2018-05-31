@@ -63,6 +63,6 @@ public final class GroundObject {
       garbageValue = "-863280267"
    )
    static World method2704() {
-      return World.field956 < World.worldCount ? class143.worldList[++World.field956 - 1] : null;
+      return World.field956 < World.worldCount?class143.worldList[++World.field956 - 1]:null;
    }
 }

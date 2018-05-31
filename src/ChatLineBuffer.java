@@ -12,13 +12,17 @@ public class ChatLineBuffer {
       signature = "[Lbn;"
    )
    @Export("lines")
-   MessageNode[] lines = new MessageNode[100];
+   MessageNode[] lines;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 1420819617
    )
    @Export("length")
    int length;
+
+   ChatLineBuffer() {
+      this.lines = new MessageNode[100];
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -30,12 +34,12 @@ public class ChatLineBuffer {
       MessageNode var5 = this.lines[99];
 
       for(int var6 = this.length; var6 > 0; --var6) {
-         if (var6 != 100) {
+         if(var6 != 100) {
             this.lines[var6] = this.lines[var6 - 1];
          }
       }
 
-      if (var5 == null) {
+      if(var5 == null) {
          var5 = new MessageNode(var1, var2, var4, var3);
       } else {
          var5.unlink();
@@ -44,7 +48,7 @@ public class ChatLineBuffer {
       }
 
       this.lines[0] = var5;
-      if (this.length < 100) {
+      if(this.length < 100) {
          ++this.length;
       }
 
@@ -58,7 +62,7 @@ public class ChatLineBuffer {
    )
    @Export("getMessage")
    MessageNode getMessage(int var1) {
-      return var1 >= 0 && var1 < this.length ? this.lines[var1] : null;
+      return var1 >= 0 && var1 < this.length?this.lines[var1]:null;
    }
 
    @ObfuscatedName("q")
@@ -78,7 +82,7 @@ public class ChatLineBuffer {
    )
    @Export("getSpriteAsSpritePixels")
    public static SpritePixels getSpriteAsSpritePixels(IndexDataBase var0, int var1, int var2) {
-      if (!class306.method5702(var0, var1, var2)) {
+      if(!class306.method5702(var0, var1, var2)) {
          return null;
       } else {
          SpritePixels var3 = new SpritePixels();
@@ -112,7 +116,7 @@ public class ChatLineBuffer {
       garbageValue = "0"
    )
    static final void method2018() {
-      if (Client.field688 > 0) {
+      if(Client.field688 > 0) {
          Varcs.method1959();
       } else {
          Client.field840.method5256();

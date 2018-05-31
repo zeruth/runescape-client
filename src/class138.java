@@ -17,7 +17,7 @@ public class class138 extends class283 {
       garbageValue = "1131558933"
    )
    int method3153(ChatPlayer var1, ChatPlayer var2) {
-      return Client.world == var1.world && var2.world == Client.world ? (this.field1892 ? var1.getRsName().compareCleanName(var2.getRsName()) : var2.getRsName().compareCleanName(var1.getRsName())) : this.method5320(var1, var2);
+      return Client.world == var1.world && var2.world == Client.world?(this.field1892?var1.getRsName().compareCleanName(var2.getRsName()):var2.getRsName().compareCleanName(var1.getRsName())):this.method5320(var1, var2);
    }
 
    public int compare(Object var1, Object var2) {
@@ -33,12 +33,12 @@ public class class138 extends class283 {
    public static int getVarbit(int var0) {
       Varbit var1 = (Varbit)Varbit.varbits.get((long)var0);
       Varbit var2;
-      if (var1 != null) {
+      if(var1 != null) {
          var2 = var1;
       } else {
          byte[] var3 = Varbit.varbit_ref.getConfigData(14, var0);
          var1 = new Varbit();
-         if (var3 != null) {
+         if(var3 != null) {
             var1.decode(new Buffer(var3));
          }
 
@@ -59,7 +59,7 @@ public class class138 extends class283 {
       garbageValue = "74"
    )
    static void method3160(int var0, boolean var1, int var2, boolean var3) {
-      if (class143.worldList != null) {
+      if(class143.worldList != null) {
          TextureProvider.method2598(0, class143.worldList.length - 1, var0, var1, var2, var3);
       }
 
@@ -85,35 +85,35 @@ public class class138 extends class283 {
    static void method3155(Widget var0, int var1, int var2, boolean var3) {
       int var4 = var0.width;
       int var5 = var0.height;
-      if (var0.dynamicWidth == 0) {
+      if(var0.dynamicWidth == 0) {
          var0.width = var0.originalWidth;
-      } else if (var0.dynamicWidth == 1) {
+      } else if(var0.dynamicWidth == 1) {
          var0.width = var1 - var0.originalWidth;
-      } else if (var0.dynamicWidth == 2) {
+      } else if(var0.dynamicWidth == 2) {
          var0.width = var0.originalWidth * var1 >> 14;
       }
 
-      if (var0.buttonType == 0) {
+      if(var0.buttonType == 0) {
          var0.height = var0.originalHeight;
-      } else if (var0.buttonType == 1) {
+      } else if(var0.buttonType == 1) {
          var0.height = var2 - var0.originalHeight;
-      } else if (var0.buttonType == 2) {
+      } else if(var0.buttonType == 2) {
          var0.height = var2 * var0.originalHeight >> 14;
       }
 
-      if (var0.dynamicWidth == 4) {
+      if(var0.dynamicWidth == 4) {
          var0.width = var0.field2740 * var0.height / var0.field2641;
       }
 
-      if (var0.buttonType == 4) {
+      if(var0.buttonType == 4) {
          var0.height = var0.width * var0.field2641 / var0.field2740;
       }
 
-      if (var0.contentType == 1337) {
+      if(var0.contentType == 1337) {
          Client.field776 = var0;
       }
 
-      if (var3 && var0.onResizeListener != null && (var4 != var0.width || var5 != var0.height)) {
+      if(var3 && var0.onResizeListener != null && (var4 != var0.width || var5 != var0.height)) {
          ScriptEvent var6 = new ScriptEvent();
          var6.source = var0;
          var6.params = var0.onResizeListener;

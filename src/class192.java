@@ -8,9 +8,9 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("gp")
 public class class192 {
    @ObfuscatedName("w")
-   public static final String[][] field2417 = new String[][]{{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}, {"Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"}};
+   public static final String[][] field2417;
    @ObfuscatedName("m")
-   public static final String[] field2414 = new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+   public static final String[] field2414;
    @ObfuscatedName("q")
    public static Calendar field2418;
    @ObfuscatedName("f")
@@ -30,6 +30,8 @@ public class class192 {
    static int plane;
 
    static {
+      field2417 = new String[][]{{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}, {"Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"}};
+      field2414 = new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
       Calendar.getInstance(TimeZone.getTimeZone("Europe/London"));
       field2418 = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
    }

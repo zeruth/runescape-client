@@ -20,7 +20,7 @@ public class class140 extends class283 {
       garbageValue = "-449392151"
    )
    int method3169(ChatPlayer var1, ChatPlayer var2) {
-      return Client.world == var1.world && var2.world == Client.world ? (this.field1900 ? var1.field3649 - var2.field3649 : var2.field3649 - var1.field3649) : this.method5320(var1, var2);
+      return Client.world == var1.world && var2.world == Client.world?(this.field1900?var1.field3649 - var2.field3649:var2.field3649 - var1.field3649):this.method5320(var1, var2);
    }
 
    public int compare(Object var1, Object var2) {

@@ -15,7 +15,11 @@ public final class MouseWheelHandler implements MouseWheel, MouseWheelListener {
       intValue = 560801541
    )
    @Export("rotation")
-   int rotation = 0;
+   int rotation;
+
+   MouseWheelHandler() {
+      this.rotation = 0;
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(

@@ -18,19 +18,20 @@ public class class199 implements Iterator {
    @ObfuscatedSignature(
       signature = "Lgl;"
    )
-   Node field2430 = null;
+   Node field2430;
 
    @ObfuscatedSignature(
       signature = "(Lgt;)V"
    )
    class199(CombatInfoList var1) {
+      this.field2430 = null;
       this.field2429 = var1;
       this.field2428 = this.field2429.node.next;
       this.field2430 = null;
    }
 
    public void remove() {
-      if (this.field2430 == null) {
+      if(this.field2430 == null) {
          throw new IllegalStateException();
       } else {
          this.field2430.unlink();
@@ -40,7 +41,7 @@ public class class199 implements Iterator {
 
    public Object next() {
       Node var1 = this.field2428;
-      if (var1 == this.field2429.node) {
+      if(var1 == this.field2429.node) {
          var1 = null;
          this.field2428 = null;
       } else {

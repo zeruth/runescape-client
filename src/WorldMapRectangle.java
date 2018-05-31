@@ -49,14 +49,14 @@ public final class WorldMapRectangle {
       garbageValue = "-1965753337"
    )
    public static void method190(int var0) {
-      if (var0 != -1 && Item.validInterfaces[var0]) {
+      if(var0 != -1 && Item.validInterfaces[var0]) {
          Frames.widgetIndex.method4659(var0);
-         if (Widget.widgets[var0] != null) {
+         if(Widget.widgets[var0] != null) {
             boolean var1 = true;
 
             for(int var2 = 0; var2 < Widget.widgets[var0].length; ++var2) {
-               if (Widget.widgets[var0][var2] != null) {
-                  if (Widget.widgets[var0][var2].type != 2) {
+               if(Widget.widgets[var0][var2] != null) {
+                  if(Widget.widgets[var0][var2].type != 2) {
                      Widget.widgets[var0][var2] = null;
                   } else {
                      var1 = false;
@@ -64,7 +64,7 @@ public final class WorldMapRectangle {
                }
             }
 
-            if (var1) {
+            if(var1) {
                Widget.widgets[var0] = null;
             }
 

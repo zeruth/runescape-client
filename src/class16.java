@@ -62,8 +62,8 @@ public abstract class class16 {
    )
    void method165(int var1, int var2, Buffer var3) {
       int var4 = var3.readUnsignedByte();
-      if (var4 != 0) {
-         if ((var4 & 1) != 0) {
+      if(var4 != 0) {
+         if((var4 & 1) != 0) {
             this.method167(var1, var2, var3, var4);
          } else {
             this.method175(var1, var2, var3, var4);
@@ -79,7 +79,7 @@ public abstract class class16 {
    )
    void method167(int var1, int var2, Buffer var3, int var4) {
       boolean var5 = (var4 & 2) != 0;
-      if (var5) {
+      if(var5) {
          this.field130[0][var1][var2] = (short)var3.readUnsignedByte();
       }
 
@@ -99,12 +99,12 @@ public abstract class class16 {
       int var8;
       int var9;
       int var10;
-      if (var6) {
+      if(var6) {
          var8 = var3.readUnsignedByte();
 
          for(var9 = 0; var9 < var8; ++var9) {
             int var11 = var3.readUnsignedByte();
-            if (var11 != 0) {
+            if(var11 != 0) {
                this.field130[var9][var1][var2] = (short)var11;
                var10 = var3.readUnsignedByte();
                this.field137[var9][var1][var2] = (byte)(var10 >> 2);
@@ -113,10 +113,10 @@ public abstract class class16 {
          }
       }
 
-      if (var7) {
+      if(var7) {
          for(var8 = 0; var8 < var5; ++var8) {
             var9 = var3.readUnsignedByte();
-            if (var9 != 0) {
+            if(var9 != 0) {
                WorldMapDecoration[] var14 = this.decorations[var8][var1][var2] = new WorldMapDecoration[var9];
 
                for(var10 = 0; var10 < var9; ++var10) {
@@ -136,7 +136,7 @@ public abstract class class16 {
       garbageValue = "-359965470"
    )
    int method168(int var1, int var2) {
-      return var1 >= 0 && var2 >= 0 ? (var1 < 64 && var2 < 64 ? this.field129[0][var1][var2] - 1 : -1) : -1;
+      return var1 >= 0 && var2 >= 0?(var1 < 64 && var2 < 64?this.field129[0][var1][var2] - 1:-1):-1;
    }
 
    @ObfuscatedName("l")
@@ -163,17 +163,17 @@ public abstract class class16 {
       garbageValue = "825820954"
    )
    static final int method185(int var0, int var1) {
-      if (var0 == -1) {
+      if(var0 == -1) {
          return 12345678;
       } else {
          var1 = (var0 & 127) * var1 / 128;
-         if (var1 < 2) {
+         if(var1 < 2) {
             var1 = 2;
-         } else if (var1 > 126) {
+         } else if(var1 > 126) {
             var1 = 126;
          }
 
-         return (var0 & 'ﾀ') + var1;
+         return (var0 & 65408) + var1;
       }
    }
 
@@ -248,12 +248,12 @@ public abstract class class16 {
       for(var0 = 0; var0 < VarPlayerType.field3251; ++var0) {
          VarPlayerType var5 = (VarPlayerType)VarPlayerType.varplayers.get((long)var0);
          VarPlayerType var3;
-         if (var5 != null) {
+         if(var5 != null) {
             var3 = var5;
          } else {
             byte[] var4 = VarPlayerType.varplayer_ref.getConfigData(16, var0);
             var5 = new VarPlayerType();
-            if (var4 != null) {
+            if(var4 != null) {
                var5.decode(new Buffer(var4));
             }
 
@@ -261,7 +261,7 @@ public abstract class class16 {
             var3 = var5;
          }
 
-         if (var3 != null) {
+         if(var3 != null) {
             class225.serverVarps[var0] = 0;
             class225.clientVarps[var0] = 0;
          }
@@ -269,7 +269,7 @@ public abstract class class16 {
 
       Permission.varcs.reset();
       Client.field760 = -1;
-      if (Client.widgetRoot != -1) {
+      if(Client.widgetRoot != -1) {
          WorldMapRectangle.method190(Client.widgetRoot);
       }
 
@@ -298,7 +298,7 @@ public abstract class class16 {
 
       PacketNode var7 = DecorativeObject.method3115(ClientPacket.field2206, Client.field739.field1250);
       PacketBuffer var8 = var7.packetBuffer;
-      var1 = Client.isResized ? 2 : 1;
+      var1 = Client.isResized?2:1;
       var8.putByte(var1);
       var7.packetBuffer.putShort(class9.canvasWidth);
       var7.packetBuffer.putShort(class37.canvasHeight);
@@ -318,7 +318,7 @@ public abstract class class16 {
       garbageValue = "-7094"
    )
    static final void method187(String var0, boolean var1) {
-      if (Client.field715) {
+      if(Client.field715) {
          byte var2 = 4;
          int var3 = var2 + 6;
          int var4 = var2 + 6;
@@ -328,7 +328,7 @@ public abstract class class16 {
          Rasterizer2D.drawRectangle(var3 - var2, var4 - var2, var2 + var2 + var5, var2 + var6 + var2, 16777215);
          ScriptEvent.font_p12full.method5595(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
          class34.method626(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var6 + var2);
-         if (var1) {
+         if(var1) {
             class50.rasterProvider.drawFull(0, 0);
          } else {
             BuildType.method4608(var3, var4, var5, var6);
@@ -358,14 +358,14 @@ public abstract class class16 {
 
       for(int var4 = 0; var4 < class49.field443; ++var4) {
          ItemComposition var5 = class120.getItemDefinition(var4);
-         if ((!var1 || var5.isTradable) && var5.notedTemplate == -1 && var5.name.toLowerCase().indexOf(var0) != -1) {
-            if (var3 >= 250) {
+         if((!var1 || var5.isTradable) && var5.notedTemplate == -1 && var5.name.toLowerCase().indexOf(var0) != -1) {
+            if(var3 >= 250) {
                MapIcon.field256 = -1;
                class137.field1889 = null;
                return;
             }
 
-            if (var3 >= var2.length) {
+            if(var3 >= var2.length) {
                short[] var6 = new short[var2.length * 2];
 
                for(int var7 = 0; var7 < var3; ++var7) {

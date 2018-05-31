@@ -32,27 +32,27 @@ public final class GameCanvas extends Canvas {
    )
    @Export("loadWidget")
    public static boolean loadWidget(int var0) {
-      if (Item.validInterfaces[var0]) {
+      if(Item.validInterfaces[var0]) {
          return true;
-      } else if (!Frames.widgetIndex.containsFile(var0)) {
+      } else if(!Frames.widgetIndex.containsFile(var0)) {
          return false;
       } else {
          int var1 = Frames.widgetIndex.fileCount(var0);
-         if (var1 == 0) {
+         if(var1 == 0) {
             Item.validInterfaces[var0] = true;
             return true;
          } else {
-            if (Widget.widgets[var0] == null) {
+            if(Widget.widgets[var0] == null) {
                Widget.widgets[var0] = new Widget[var1];
             }
 
             for(int var2 = 0; var2 < var1; ++var2) {
-               if (Widget.widgets[var0][var2] == null) {
+               if(Widget.widgets[var0][var2] == null) {
                   byte[] var3 = Frames.widgetIndex.getConfigData(var0, var2);
-                  if (var3 != null) {
+                  if(var3 != null) {
                      Widget.widgets[var0][var2] = new Widget();
                      Widget.widgets[var0][var2].id = var2 + (var0 << 16);
-                     if (var3[0] == -1) {
+                     if(var3[0] == -1) {
                         Widget.widgets[var0][var2].decodeActive(new Buffer(var3));
                      } else {
                         Widget.widgets[var0][var2].decode(new Buffer(var3));
@@ -85,7 +85,7 @@ public final class GameCanvas extends Canvas {
    @Export("load")
    static void load() {
       int var0;
-      if (Client.loadingStage == 0) {
+      if(Client.loadingStage == 0) {
          ScriptEvent.region = new Region(4, 104, 104, class50.tileHeights);
 
          for(var0 = 0; var0 < 4; ++var0) {
@@ -101,7 +101,7 @@ public final class GameCanvas extends Canvas {
          int var2;
          int var3;
          int var4;
-         if (Client.loadingStage == 20) {
+         if(Client.loadingStage == 20) {
             int[] var5 = new int[9];
 
             for(var1 = 0; var1 < 9; ++var1) {
@@ -115,7 +115,7 @@ public final class GameCanvas extends Canvas {
             class78.loadingText = "Prepared visibility map";
             class78.loadingBarPercentage = 10;
             Client.loadingStage = 30;
-         } else if (Client.loadingStage == 30) {
+         } else if(Client.loadingStage == 30) {
             FileSystem.indexInterfaces = class24.openCacheIndex(0, false, true, true);
             Client.indexSoundEffects = class24.openCacheIndex(1, false, true, true);
             class9.configsIndex = class24.openCacheIndex(2, true, false, true);
@@ -136,7 +136,7 @@ public final class GameCanvas extends Canvas {
             class78.loadingText = "Connecting to update server";
             class78.loadingBarPercentage = 20;
             Client.loadingStage = 40;
-         } else if (Client.loadingStage == 40) {
+         } else if(Client.loadingStage == 40) {
             byte var25 = 0;
             var0 = var25 + FileSystem.indexInterfaces.percentage() * 4 / 100;
             var0 += Client.indexSoundEffects.percentage() * 4 / 100;
@@ -155,8 +155,8 @@ public final class GameCanvas extends Canvas {
             var0 += class10.vorbisIndex.percentage() * 2 / 100;
             var0 += class6.indexCache15.percentage() * 2 / 100;
             var0 += MouseInput.indexWorldMap.percentage() * 2 / 100;
-            if (var0 != 100) {
-               if (var0 != 0) {
+            if(var0 != 100) {
+               if(var0 != 0) {
                   class78.loadingText = "Checking for updates - " + var0 + "%";
                }
 
@@ -181,7 +181,7 @@ public final class GameCanvas extends Canvas {
             IndexData var6;
             IndexData var7;
             IndexData var26;
-            if (Client.loadingStage == 45) {
+            if(Client.loadingStage == 45) {
                class184.method3828(22050, !Client.lowMemory, 2);
                class218 var8 = new class218();
                var8.method4235(9, 128);
@@ -202,13 +202,13 @@ public final class GameCanvas extends Canvas {
                class78.loadingBarPercentage = 35;
                Client.loadingStage = 50;
                CollisionData.fonts = new Fonts(class59.indexSprites, TotalQuantityComparator.indexCache13);
-            } else if (Client.loadingStage == 50) {
+            } else if(Client.loadingStage == 50) {
                FontName[] var27 = new FontName[]{FontName.FontName_plain12, FontName.field3682, FontName.FontName_plain11, FontName.FontName_bold12, FontName.field3683, FontName.field3684};
                var1 = var27.length;
                Fonts var9 = CollisionData.fonts;
                FontName[] var10 = new FontName[]{FontName.FontName_plain12, FontName.field3682, FontName.FontName_plain11, FontName.FontName_bold12, FontName.field3683, FontName.field3684};
                Client.fontsMap = var9.createMap(var10);
-               if (Client.fontsMap.size() < var1) {
+               if(Client.fontsMap.size() < var1) {
                   class78.loadingText = "Loading fonts - " + Client.fontsMap.size() * 100 / var1 + "%";
                   class78.loadingBarPercentage = 40;
                } else {
@@ -220,51 +220,51 @@ public final class GameCanvas extends Canvas {
                   class78.loadingBarPercentage = 40;
                   Client.loadingStage = 60;
                }
-            } else if (Client.loadingStage == 60) {
+            } else if(Client.loadingStage == 60) {
                var26 = MapLabel.indexCache10;
                var6 = class59.indexSprites;
                var3 = 0;
-               if (var26.tryLoadRecordByNames("title.jpg", "")) {
+               if(var26.tryLoadRecordByNames("title.jpg", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("logo", "")) {
+               if(var6.tryLoadRecordByNames("logo", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("logo_deadman_mode", "")) {
+               if(var6.tryLoadRecordByNames("logo_deadman_mode", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("titlebox", "")) {
+               if(var6.tryLoadRecordByNames("titlebox", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("titlebutton", "")) {
+               if(var6.tryLoadRecordByNames("titlebutton", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("runes", "")) {
+               if(var6.tryLoadRecordByNames("runes", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("title_mute", "")) {
+               if(var6.tryLoadRecordByNames("title_mute", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("options_radio_buttons,0", "")) {
+               if(var6.tryLoadRecordByNames("options_radio_buttons,0", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("options_radio_buttons,2", "")) {
+               if(var6.tryLoadRecordByNames("options_radio_buttons,2", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("options_radio_buttons,4", "")) {
+               if(var6.tryLoadRecordByNames("options_radio_buttons,4", "")) {
                   ++var3;
                }
 
-               if (var6.tryLoadRecordByNames("options_radio_buttons,6", "")) {
+               if(var6.tryLoadRecordByNames("options_radio_buttons,6", "")) {
                   ++var3;
                }
 
@@ -274,7 +274,7 @@ public final class GameCanvas extends Canvas {
                var6.tryLoadRecordByNames("sl_stars", "");
                var6.tryLoadRecordByNames("sl_button", "");
                byte var28 = 11;
-               if (var3 < var28) {
+               if(var3 < var28) {
                   class78.loadingText = "Loading title screen - " + var3 * 100 / var28 + "%";
                   class78.loadingBarPercentage = 50;
                } else {
@@ -283,8 +283,8 @@ public final class GameCanvas extends Canvas {
                   Resampler.setGameState(5);
                   Client.loadingStage = 70;
                }
-            } else if (Client.loadingStage == 70) {
-               if (!class9.configsIndex.method4631()) {
+            } else if(Client.loadingStage == 70) {
+               if(!class9.configsIndex.method4631()) {
                   class78.loadingText = "Loading config - " + class9.configsIndex.loadPercent() + "%";
                   class78.loadingBarPercentage = 60;
                } else {
@@ -336,13 +336,13 @@ public final class GameCanvas extends Canvas {
                   IndexData var21 = class9.configsIndex;
                   IndexData var22 = class59.indexSprites;
                   Area.field3256 = var22;
-                  if (var21.method4631()) {
+                  if(var21.method4631()) {
                      Area.field3257 = var21.fileCount(35);
                      Area.mapAreaType = new Area[Area.field3257];
 
                      for(int var23 = 0; var23 < Area.field3257; ++var23) {
                         byte[] var24 = var21.getConfigData(35, var23);
-                        if (var24 != null) {
+                        if(var24 != null) {
                            Area.mapAreaType[var23] = new Area(var23);
                            Area.mapAreaType[var23].method4826(new Buffer(var24));
                            Area.mapAreaType[var23].method4827();
@@ -354,75 +354,75 @@ public final class GameCanvas extends Canvas {
                   class78.loadingBarPercentage = 60;
                   Client.loadingStage = 80;
                }
-            } else if (Client.loadingStage == 80) {
+            } else if(Client.loadingStage == 80) {
                var0 = 0;
-               if (class35.compass == null) {
+               if(class35.compass == null) {
                   class35.compass = class276.method5251(class59.indexSprites, "compass", "");
                } else {
                   ++var0;
                }
 
-               if (Renderable.mapedge == null) {
+               if(Renderable.mapedge == null) {
                   Renderable.mapedge = class276.method5251(class59.indexSprites, "mapedge", "");
                } else {
                   ++var0;
                }
 
-               if (WorldComparator.mapscene == null) {
+               if(WorldComparator.mapscene == null) {
                   WorldComparator.mapscene = class278.getIndexedSprites(class59.indexSprites, "mapscene", "");
                } else {
                   ++var0;
                }
 
-               if (Actor.headIconsPk == null) {
+               if(Actor.headIconsPk == null) {
                   Actor.headIconsPk = MapIconReference.getSprites(class59.indexSprites, "headicons_pk", "");
                } else {
                   ++var0;
                }
 
-               if (KeyFocusListener.headIconsPrayer == null) {
+               if(KeyFocusListener.headIconsPrayer == null) {
                   KeyFocusListener.headIconsPrayer = MapIconReference.getSprites(class59.indexSprites, "headicons_prayer", "");
                } else {
                   ++var0;
                }
 
-               if (class262.headIconsHint == null) {
+               if(class262.headIconsHint == null) {
                   class262.headIconsHint = MapIconReference.getSprites(class59.indexSprites, "headicons_hint", "");
                } else {
                   ++var0;
                }
 
-               if (class217.mapMarkers == null) {
+               if(class217.mapMarkers == null) {
                   class217.mapMarkers = MapIconReference.getSprites(class59.indexSprites, "mapmarker", "");
                } else {
                   ++var0;
                }
 
-               if (FileOnDisk.crossSprites == null) {
+               if(FileOnDisk.crossSprites == null) {
                   FileOnDisk.crossSprites = MapIconReference.getSprites(class59.indexSprites, "cross", "");
                } else {
                   ++var0;
                }
 
-               if (class81.mapDots == null) {
+               if(class81.mapDots == null) {
                   class81.mapDots = MapIconReference.getSprites(class59.indexSprites, "mapdots", "");
                } else {
                   ++var0;
                }
 
-               if (CombatInfoListHolder.scrollbarSprites == null) {
+               if(CombatInfoListHolder.scrollbarSprites == null) {
                   CombatInfoListHolder.scrollbarSprites = class278.getIndexedSprites(class59.indexSprites, "scrollbar", "");
                } else {
                   ++var0;
                }
 
-               if (class78.modIconSprites == null) {
+               if(class78.modIconSprites == null) {
                   class78.modIconSprites = class278.getIndexedSprites(class59.indexSprites, "mod_icons", "");
                } else {
                   ++var0;
                }
 
-               if (var0 < 11) {
+               if(var0 < 11) {
                   class78.loadingText = "Loading sprites - " + var0 * 100 / 12 + "%";
                   class78.loadingBarPercentage = 70;
                } else {
@@ -437,19 +437,19 @@ public final class GameCanvas extends Canvas {
                   class78.loadingBarPercentage = 70;
                   Client.loadingStage = 90;
                }
-            } else if (Client.loadingStage == 90) {
-               if (!class183.indexTextures.method4631()) {
+            } else if(Client.loadingStage == 90) {
+               if(!class183.indexTextures.method4631()) {
                   class78.loadingText = "Loading textures - 0%";
                   class78.loadingBarPercentage = 90;
                } else {
-                  class10.field72 = new TextureProvider(class183.indexTextures, class59.indexSprites, 20, 0.8D, Client.lowMemory ? 64 : 128);
+                  class10.field72 = new TextureProvider(class183.indexTextures, class59.indexSprites, 20, 0.8D, Client.lowMemory?64:128);
                   Graphics3D.method2890(class10.field72);
                   Graphics3D.setBrightness(0.8D);
                   Client.loadingStage = 100;
                }
-            } else if (Client.loadingStage == 100) {
+            } else if(Client.loadingStage == 100) {
                var0 = class10.field72.method2616();
-               if (var0 < 100) {
+               if(var0 < 100) {
                   class78.loadingText = "Loading textures - " + var0 + "%";
                   class78.loadingBarPercentage = 90;
                } else {
@@ -457,14 +457,14 @@ public final class GameCanvas extends Canvas {
                   class78.loadingBarPercentage = 90;
                   Client.loadingStage = 110;
                }
-            } else if (Client.loadingStage == 110) {
+            } else if(Client.loadingStage == 110) {
                VarCString.mouseRecorder = new MouseRecorder();
                GameEngine.taskManager.createRunnable(VarCString.mouseRecorder, 10);
                class78.loadingText = "Loaded input handler";
                class78.loadingBarPercentage = 92;
                Client.loadingStage = 120;
-            } else if (Client.loadingStage == 120) {
-               if (!MapLabel.indexCache10.tryLoadRecordByNames("huffman", "")) {
+            } else if(Client.loadingStage == 120) {
+               if(!MapLabel.indexCache10.tryLoadRecordByNames("huffman", "")) {
                   class78.loadingText = "Loading wordpack - 0%";
                   class78.loadingBarPercentage = 94;
                } else {
@@ -474,14 +474,14 @@ public final class GameCanvas extends Canvas {
                   class78.loadingBarPercentage = 94;
                   Client.loadingStage = 130;
                }
-            } else if (Client.loadingStage == 130) {
-               if (!WorldMapDecoration.indexCache3.method4631()) {
+            } else if(Client.loadingStage == 130) {
+               if(!WorldMapDecoration.indexCache3.method4631()) {
                   class78.loadingText = "Loading interfaces - " + WorldMapDecoration.indexCache3.loadPercent() * 4 / 5 + "%";
                   class78.loadingBarPercentage = 96;
-               } else if (!TotalQuantityComparator.indexScripts.method4631()) {
+               } else if(!TotalQuantityComparator.indexScripts.method4631()) {
                   class78.loadingText = "Loading interfaces - " + (80 + TotalQuantityComparator.indexScripts.loadPercent() / 6) + "%";
                   class78.loadingBarPercentage = 96;
-               } else if (!TotalQuantityComparator.indexCache13.method4631()) {
+               } else if(!TotalQuantityComparator.indexCache13.method4631()) {
                   class78.loadingText = "Loading interfaces - " + (96 + TotalQuantityComparator.indexCache13.loadPercent() / 50) + "%";
                   class78.loadingBarPercentage = 96;
                } else {
@@ -489,25 +489,25 @@ public final class GameCanvas extends Canvas {
                   class78.loadingBarPercentage = 98;
                   Client.loadingStage = 140;
                }
-            } else if (Client.loadingStage == 140) {
+            } else if(Client.loadingStage == 140) {
                class78.loadingBarPercentage = 100;
-               if (!MouseInput.indexWorldMap.tryLoadArchiveByName(MapCacheArchiveNames.DETAILS.name)) {
+               if(!MouseInput.indexWorldMap.tryLoadArchiveByName(MapCacheArchiveNames.DETAILS.name)) {
                   class78.loadingText = "Loading world map - " + MouseInput.indexWorldMap.archiveLoadPercentByName(MapCacheArchiveNames.DETAILS.name) / 10 + "%";
                } else {
-                  if (Preferences.renderOverview == null) {
+                  if(Preferences.renderOverview == null) {
                      Preferences.renderOverview = new RenderOverview();
                      Preferences.renderOverview.method6047(MouseInput.indexWorldMap, WidgetNode.fontBold12, Client.fontsMap, WorldComparator.mapscene);
                   }
 
                   var0 = Preferences.renderOverview.method6048();
-                  if (var0 < 100) {
+                  if(var0 < 100) {
                      class78.loadingText = "Loading world map - " + (var0 * 9 / 10 + 10) + "%";
                   } else {
                      class78.loadingText = "Loaded world map";
                      Client.loadingStage = 150;
                   }
                }
-            } else if (Client.loadingStage == 150) {
+            } else if(Client.loadingStage == 150) {
                Resampler.setGameState(10);
             }
          }
@@ -523,12 +523,12 @@ public final class GameCanvas extends Canvas {
    static final void method774() {
       for(int var0 = 0; var0 < Client.queuedSoundEffectCount; ++var0) {
          --Client.unknownSoundValues2[var0];
-         if (Client.unknownSoundValues2[var0] >= -10) {
+         if(Client.unknownSoundValues2[var0] >= -10) {
             SoundEffect var9 = Client.audioEffects[var0];
-            if (var9 == null) {
+            if(var9 == null) {
                Object var2 = null;
                var9 = SoundEffect.getTrack(FileOnDisk.indexCache4, Client.queuedSoundEffectIDs[var0], 0);
-               if (var9 == null) {
+               if(var9 == null) {
                   continue;
                }
 
@@ -536,29 +536,29 @@ public final class GameCanvas extends Canvas {
                Client.audioEffects[var0] = var9;
             }
 
-            if (Client.unknownSoundValues2[var0] < 0) {
+            if(Client.unknownSoundValues2[var0] < 0) {
                int var10;
-               if (Client.soundLocations[var0] != 0) {
+               if(Client.soundLocations[var0] != 0) {
                   int var3 = (Client.soundLocations[var0] & 255) * 128;
                   int var4 = Client.soundLocations[var0] >> 16 & 255;
                   int var5 = var4 * 128 + 64 - MilliTimer.localPlayer.x;
-                  if (var5 < 0) {
+                  if(var5 < 0) {
                      var5 = -var5;
                   }
 
                   int var6 = Client.soundLocations[var0] >> 8 & 255;
                   int var7 = var6 * 128 + 64 - MilliTimer.localPlayer.y;
-                  if (var7 < 0) {
+                  if(var7 < 0) {
                      var7 = -var7;
                   }
 
                   int var8 = var5 + var7 - 128;
-                  if (var8 > var3) {
+                  if(var8 > var3) {
                      Client.unknownSoundValues2[var0] = -100;
                      continue;
                   }
 
-                  if (var8 < 0) {
+                  if(var8 < 0) {
                      var8 = 0;
                   }
 
@@ -567,7 +567,7 @@ public final class GameCanvas extends Canvas {
                   var10 = Client.field768;
                }
 
-               if (var10 > 0) {
+               if(var10 > 0) {
                   RawAudioNode var11 = var9.method2110().applyResampler(FileSystem.field3166);
                   class103 var12 = class103.method2370(var11, 100, var10);
                   var12.method2318(Client.unknownSoundValues1[var0] - 1);
@@ -591,8 +591,8 @@ public final class GameCanvas extends Canvas {
          }
       }
 
-      if (Client.field825 && !class158.method3314()) {
-         if (Client.field693 != 0 && Client.field824 != -1) {
+      if(Client.field825 && !class158.method3314()) {
+         if(Client.field693 != 0 && Client.field824 != -1) {
             class179.method3537(MouseInput.indexTrack1, Client.field824, 0, Client.field693, false);
          }
 
@@ -610,7 +610,7 @@ public final class GameCanvas extends Canvas {
       int var4 = var0.pathX[0];
       int var5 = var0.pathY[0];
       int var6 = var0.getSize();
-      if (var4 >= var6 && var4 < 104 - var6 && var5 >= var6 && var5 < 104 - var6 && var1 >= var6 && var1 < 104 - var6 && var2 >= var6 && var2 < 104 - var6) {
+      if(var4 >= var6 && var4 < 104 - var6 && var5 >= var6 && var5 < 104 - var6 && var1 >= var6 && var1 < 104 - var6 && var2 >= var6 && var2 < 104 - var6) {
          int var7 = var0.getSize();
          class166 var8 = ClientPacket.method3461(var1, var2);
          CollisionData var9 = Client.collisionMaps[var0.field581];
@@ -640,8 +640,8 @@ public final class GameCanvas extends Canvas {
          int var25;
          int var26;
          byte var28;
-         if (var7 != 1) {
-            if (var7 == 2) {
+         if(var7 != 1) {
+            if(var7 == 2) {
                var23 = class50.method1059(var4, var5, var8, var9);
             } else {
                var23 = WorldMapType1.method219(var4, var5, var7, var8, var9);
@@ -664,7 +664,7 @@ public final class GameCanvas extends Canvas {
 
             boolean var30;
             while(true) {
-               if (var19 == var26) {
+               if(var19 == var26) {
                   Bounds.field3748 = var14;
                   ScriptState.field463 = var15;
                   var30 = false;
@@ -678,7 +678,7 @@ public final class GameCanvas extends Canvas {
                var25 = var15 - var18;
                var20 = var14 - var9.x;
                var21 = var15 - var9.y;
-               if (var8.vmethod3457(1, var14, var15, var9)) {
+               if(var8.vmethod3457(1, var14, var15, var9)) {
                   Bounds.field3748 = var14;
                   ScriptState.field463 = var15;
                   var30 = true;
@@ -686,7 +686,7 @@ public final class GameCanvas extends Canvas {
                }
 
                var22 = class165.field2058[var24][var25] + 1;
-               if (var24 > 0 && class165.field2059[var24 - 1][var25] == 0 && (var29[var20 - 1][var21] & 19136776) == 0) {
+               if(var24 > 0 && class165.field2059[var24 - 1][var25] == 0 && (var29[var20 - 1][var21] & 19136776) == 0) {
                   class165.field2061[var26] = var14 - 1;
                   class165.field2060[var26] = var15;
                   var26 = var26 + 1 & 4095;
@@ -694,7 +694,7 @@ public final class GameCanvas extends Canvas {
                   class165.field2058[var24 - 1][var25] = var22;
                }
 
-               if (var24 < 127 && class165.field2059[var24 + 1][var25] == 0 && (var29[var20 + 1][var21] & 19136896) == 0) {
+               if(var24 < 127 && class165.field2059[var24 + 1][var25] == 0 && (var29[var20 + 1][var21] & 19136896) == 0) {
                   class165.field2061[var26] = var14 + 1;
                   class165.field2060[var26] = var15;
                   var26 = var26 + 1 & 4095;
@@ -702,7 +702,7 @@ public final class GameCanvas extends Canvas {
                   class165.field2058[var24 + 1][var25] = var22;
                }
 
-               if (var25 > 0 && class165.field2059[var24][var25 - 1] == 0 && (var29[var20][var21 - 1] & 19136770) == 0) {
+               if(var25 > 0 && class165.field2059[var24][var25 - 1] == 0 && (var29[var20][var21 - 1] & 19136770) == 0) {
                   class165.field2061[var26] = var14;
                   class165.field2060[var26] = var15 - 1;
                   var26 = var26 + 1 & 4095;
@@ -710,7 +710,7 @@ public final class GameCanvas extends Canvas {
                   class165.field2058[var24][var25 - 1] = var22;
                }
 
-               if (var25 < 127 && class165.field2059[var24][var25 + 1] == 0 && (var29[var20][var21 + 1] & 19136800) == 0) {
+               if(var25 < 127 && class165.field2059[var24][var25 + 1] == 0 && (var29[var20][var21 + 1] & 19136800) == 0) {
                   class165.field2061[var26] = var14;
                   class165.field2060[var26] = var15 + 1;
                   var26 = var26 + 1 & 4095;
@@ -718,7 +718,7 @@ public final class GameCanvas extends Canvas {
                   class165.field2058[var24][var25 + 1] = var22;
                }
 
-               if (var24 > 0 && var25 > 0 && class165.field2059[var24 - 1][var25 - 1] == 0 && (var29[var20 - 1][var21 - 1] & 19136782) == 0 && (var29[var20 - 1][var21] & 19136776) == 0 && (var29[var20][var21 - 1] & 19136770) == 0) {
+               if(var24 > 0 && var25 > 0 && class165.field2059[var24 - 1][var25 - 1] == 0 && (var29[var20 - 1][var21 - 1] & 19136782) == 0 && (var29[var20 - 1][var21] & 19136776) == 0 && (var29[var20][var21 - 1] & 19136770) == 0) {
                   class165.field2061[var26] = var14 - 1;
                   class165.field2060[var26] = var15 - 1;
                   var26 = var26 + 1 & 4095;
@@ -726,7 +726,7 @@ public final class GameCanvas extends Canvas {
                   class165.field2058[var24 - 1][var25 - 1] = var22;
                }
 
-               if (var24 < 127 && var25 > 0 && class165.field2059[var24 + 1][var25 - 1] == 0 && (var29[var20 + 1][var21 - 1] & 19136899) == 0 && (var29[var20 + 1][var21] & 19136896) == 0 && (var29[var20][var21 - 1] & 19136770) == 0) {
+               if(var24 < 127 && var25 > 0 && class165.field2059[var24 + 1][var25 - 1] == 0 && (var29[var20 + 1][var21 - 1] & 19136899) == 0 && (var29[var20 + 1][var21] & 19136896) == 0 && (var29[var20][var21 - 1] & 19136770) == 0) {
                   class165.field2061[var26] = var14 + 1;
                   class165.field2060[var26] = var15 - 1;
                   var26 = var26 + 1 & 4095;
@@ -734,7 +734,7 @@ public final class GameCanvas extends Canvas {
                   class165.field2058[var24 + 1][var25 - 1] = var22;
                }
 
-               if (var24 > 0 && var25 < 127 && class165.field2059[var24 - 1][var25 + 1] == 0 && (var29[var20 - 1][var21 + 1] & 19136824) == 0 && (var29[var20 - 1][var21] & 19136776) == 0 && (var29[var20][var21 + 1] & 19136800) == 0) {
+               if(var24 > 0 && var25 < 127 && class165.field2059[var24 - 1][var25 + 1] == 0 && (var29[var20 - 1][var21 + 1] & 19136824) == 0 && (var29[var20 - 1][var21] & 19136776) == 0 && (var29[var20][var21 + 1] & 19136800) == 0) {
                   class165.field2061[var26] = var14 - 1;
                   class165.field2060[var26] = var15 + 1;
                   var26 = var26 + 1 & 4095;
@@ -742,7 +742,7 @@ public final class GameCanvas extends Canvas {
                   class165.field2058[var24 - 1][var25 + 1] = var22;
                }
 
-               if (var24 < 127 && var25 < 127 && class165.field2059[var24 + 1][var25 + 1] == 0 && (var29[var20 + 1][var21 + 1] & 19136992) == 0 && (var29[var20 + 1][var21] & 19136896) == 0 && (var29[var20][var21 + 1] & 19136800) == 0) {
+               if(var24 < 127 && var25 < 127 && class165.field2059[var24 + 1][var25 + 1] == 0 && (var29[var20 + 1][var21 + 1] & 19136992) == 0 && (var29[var20 + 1][var21] & 19136896) == 0 && (var29[var20][var21 + 1] & 19136800) == 0) {
                   class165.field2061[var26] = var14 + 1;
                   class165.field2060[var26] = var15 + 1;
                   var26 = var26 + 1 & 4095;
@@ -760,7 +760,7 @@ public final class GameCanvas extends Canvas {
             var14 = var5 - 64;
             var15 = Bounds.field3748;
             var24 = ScriptState.field463;
-            if (!var23) {
+            if(!var23) {
                var25 = Integer.MAX_VALUE;
                var17 = Integer.MAX_VALUE;
                var28 = 10;
@@ -773,23 +773,23 @@ public final class GameCanvas extends Canvas {
                   for(var22 = var19 - var28; var22 <= var19 + var28; ++var22) {
                      int var37 = var21 - var13;
                      int var31 = var22 - var14;
-                     if (var37 >= 0 && var31 >= 0 && var37 < 128 && var31 < 128 && class165.field2058[var37][var31] < 100) {
+                     if(var37 >= 0 && var31 >= 0 && var37 < 128 && var31 < 128 && class165.field2058[var37][var31] < 100) {
                         int var32 = 0;
-                        if (var21 < var26) {
+                        if(var21 < var26) {
                            var32 = var26 - var21;
-                        } else if (var21 > var36 + var26 - 1) {
+                        } else if(var21 > var36 + var26 - 1) {
                            var32 = var21 - (var36 + var26 - 1);
                         }
 
                         int var33 = 0;
-                        if (var22 < var19) {
+                        if(var22 < var19) {
                            var33 = var19 - var22;
-                        } else if (var22 > var19 + var20 - 1) {
+                        } else if(var22 > var19 + var20 - 1) {
                            var33 = var22 - (var19 + var20 - 1);
                         }
 
                         int var34 = var33 * var33 + var32 * var32;
-                        if (var34 < var25 || var34 == var25 && class165.field2058[var37][var31] < var17) {
+                        if(var34 < var25 || var34 == var25 && class165.field2058[var37][var31] < var17) {
                            var25 = var34;
                            var17 = class165.field2058[var37][var31];
                            var15 = var21;
@@ -799,13 +799,13 @@ public final class GameCanvas extends Canvas {
                   }
                }
 
-               if (var25 == Integer.MAX_VALUE) {
+               if(var25 == Integer.MAX_VALUE) {
                   var35 = -1;
                   break label277;
                }
             }
 
-            if (var4 == var15 && var24 == var5) {
+            if(var4 == var15 && var24 == var5) {
                var35 = 0;
             } else {
                var16 = 0;
@@ -815,13 +815,13 @@ public final class GameCanvas extends Canvas {
                var17 = var18 = class165.field2059[var15 - var13][var24 - var14];
 
                while(true) {
-                  if (var15 == var4 && var5 == var24) {
+                  if(var15 == var4 && var5 == var24) {
                      var26 = 0;
 
                      while(var25-- > 0) {
                         var10[var26] = class165.field2061[var25];
                         var11[var26++] = class165.field2060[var25];
-                        if (var26 >= var10.length) {
+                        if(var26 >= var10.length) {
                            break;
                         }
                      }
@@ -830,21 +830,21 @@ public final class GameCanvas extends Canvas {
                      break;
                   }
 
-                  if (var18 != var17) {
+                  if(var18 != var17) {
                      var18 = var17;
                      class165.field2061[var25] = var15;
                      class165.field2060[var25++] = var24;
                   }
 
-                  if ((var17 & 2) != 0) {
+                  if((var17 & 2) != 0) {
                      ++var15;
-                  } else if ((var17 & 8) != 0) {
+                  } else if((var17 & 8) != 0) {
                      --var15;
                   }
 
-                  if ((var17 & 1) != 0) {
+                  if((var17 & 1) != 0) {
                      ++var24;
-                  } else if ((var17 & 4) != 0) {
+                  } else if((var17 & 4) != 0) {
                      --var24;
                   }
 
@@ -854,7 +854,7 @@ public final class GameCanvas extends Canvas {
          }
 
          var12 = var35;
-         if (var35 >= 1) {
+         if(var35 >= 1) {
             for(var13 = 0; var13 < var12 - 1; ++var13) {
                var0.method1164(Client.field680[var13], Client.field864[var13], var3);
             }

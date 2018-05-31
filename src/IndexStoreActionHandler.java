@@ -1,5 +1,4 @@
 import java.net.URL;
-
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -14,24 +13,31 @@ public class IndexStoreActionHandler implements Runnable {
       signature = "Lgz;"
    )
    @Export("IndexStoreActionHandler_requestQueue")
-   public static Deque IndexStoreActionHandler_requestQueue = new Deque();
+   public static Deque IndexStoreActionHandler_requestQueue;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lgz;"
    )
    @Export("IndexStoreActionHandler_responseQueue")
-   public static Deque IndexStoreActionHandler_responseQueue = new Deque();
+   public static Deque IndexStoreActionHandler_responseQueue;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 596410709
    )
-   public static int field3191 = 0;
+   public static int field3191;
    @ObfuscatedName("b")
    @Export("IndexStoreActionHandler_lock")
-   public static Object IndexStoreActionHandler_lock = new Object();
+   public static Object IndexStoreActionHandler_lock;
    @ObfuscatedName("f")
    @Export("IndexStoreActionHandler_thread")
    static Thread IndexStoreActionHandler_thread;
+
+   static {
+      IndexStoreActionHandler_requestQueue = new Deque();
+      IndexStoreActionHandler_responseQueue = new Deque();
+      field3191 = 0;
+      IndexStoreActionHandler_lock = new Object();
+   }
 
    public void run() {
       try {
@@ -45,16 +51,16 @@ public class IndexStoreActionHandler implements Runnable {
 
             Object var4;
             Object var11;
-            if (var2 != null) {
+            if(var2 != null) {
                Deque var12;
-               if (var2.type == 0) {
+               if(var2.type == 0) {
                   var2.index.write((int)var2.hash, var2.field3165, var2.field3165.length);
                   var1 = IndexStoreActionHandler_requestQueue;
                   var12 = IndexStoreActionHandler_requestQueue;
                   synchronized(IndexStoreActionHandler_requestQueue) {
                      var2.unlink();
                   }
-               } else if (var2.type == 1) {
+               } else if(var2.type == 1) {
                   var2.field3165 = var2.index.read((int)var2.hash);
                   var1 = IndexStoreActionHandler_requestQueue;
                   var12 = IndexStoreActionHandler_requestQueue;
@@ -66,7 +72,7 @@ public class IndexStoreActionHandler implements Runnable {
                var11 = IndexStoreActionHandler_lock;
                var4 = IndexStoreActionHandler_lock;
                synchronized(IndexStoreActionHandler_lock) {
-                  if (field3191 <= 1) {
+                  if(field3191 <= 1) {
                      field3191 = 0;
                      IndexStoreActionHandler_lock.notifyAll();
                      return;
@@ -79,7 +85,7 @@ public class IndexStoreActionHandler implements Runnable {
                var11 = IndexStoreActionHandler_lock;
                var4 = IndexStoreActionHandler_lock;
                synchronized(IndexStoreActionHandler_lock) {
-                  if (field3191 <= 1) {
+                  if(field3191 <= 1) {
                      field3191 = 0;
                      IndexStoreActionHandler_lock.notifyAll();
                      return;
@@ -101,36 +107,36 @@ public class IndexStoreActionHandler implements Runnable {
    )
    @Export("loadWorlds")
    static boolean loadWorlds() {
-	      try {
-	         if(World.listFetcher == null) {
-	            World.listFetcher = class59.urlRequester.request(new URL(ScriptEvent.field521));
-	         } else if(World.listFetcher.isDone()) {
-	            byte[] var0 = World.listFetcher.getResponse();
-	            Buffer var1 = new Buffer(var0);
-	            var1.readInt();
-	            World.worldCount = var1.readUnsignedShort();
-	            class143.worldList = new World[World.worldCount];
+      try {
+         if(World.listFetcher == null) {
+            World.listFetcher = class59.urlRequester.request(new URL(ScriptEvent.field521));
+         } else if(World.listFetcher.isDone()) {
+            byte[] var0 = World.listFetcher.getResponse();
+            Buffer var1 = new Buffer(var0);
+            var1.readInt();
+            World.worldCount = var1.readUnsignedShort();
+            class143.worldList = new World[World.worldCount];
 
-	            World var3;
-	            for(int var2 = 0; var2 < World.worldCount; var3.index = var2++) {
-	               var3 = class143.worldList[var2] = new World();
-	               var3.id = var1.readUnsignedShort();
-	               var3.mask = var1.readInt();
-	               var3.address = var1.readString();
-	               var3.activity = var1.readString();
-	               var3.location = var1.readUnsignedByte();
-	               var3.playerCount = var1.readShort();
-	            }
+            World var2;
+            for(int var3 = 0; var3 < World.worldCount; var2.index = var3++) {
+               var2 = class143.worldList[var3] = new World();
+               var2.id = var1.readUnsignedShort();
+               var2.mask = var1.readInt();
+               var2.address = var1.readString();
+               var2.activity = var1.readString();
+               var2.location = var1.readUnsignedByte();
+               var2.playerCount = var1.readShort();
+            }
 
-	            UrlRequest.method3137(class143.worldList, 0, class143.worldList.length - 1, World.field958, World.field969);
-	            World.listFetcher = null;
-	            return true;
-	         }
-	      } catch (Exception var4) {
-	         var4.printStackTrace();
-	         World.listFetcher = null;
-	      }
+            UrlRequest.method3137(class143.worldList, 0, class143.worldList.length - 1, World.field958, World.field969);
+            World.listFetcher = null;
+            return true;
+         }
+      } catch (Exception var4) {
+         var4.printStackTrace();
+         World.listFetcher = null;
+      }
 
-	      return false;
-	   }
+      return false;
+   }
 }

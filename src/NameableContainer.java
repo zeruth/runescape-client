@@ -20,7 +20,7 @@ public abstract class NameableContainer {
       intValue = 1391335809
    )
    @Export("count")
-   int count = 0;
+   int count;
    @ObfuscatedName("n")
    @ObfuscatedSignature(
       signature = "[Ljn;"
@@ -32,9 +32,11 @@ public abstract class NameableContainer {
    @ObfuscatedName("x")
    HashMap field3640;
    @ObfuscatedName("j")
-   Comparator field3643 = null;
+   Comparator field3643;
 
    NameableContainer(int var1) {
+      this.count = 0;
+      this.field3643 = null;
       this.field3642 = var1;
       this.nameables = this.vmethod5492(var1);
       this.field3641 = new HashMap(var1 / 8);
@@ -93,7 +95,7 @@ public abstract class NameableContainer {
    )
    @Export("isMember")
    public boolean isMember(Name var1) {
-      return !var1.isCleanNameValid() ? false : (this.field3641.containsKey(var1) ? true : this.field3640.containsKey(var1));
+      return !var1.isCleanNameValid()?false:(this.field3641.containsKey(var1)?true:this.field3640.containsKey(var1));
    }
 
    @ObfuscatedName("e")
@@ -103,7 +105,7 @@ public abstract class NameableContainer {
    )
    public Nameable method5344(Name var1) {
       Nameable var2 = this.method5374(var1);
-      return var2 != null ? var2 : this.method5346(var1);
+      return var2 != null?var2:this.method5346(var1);
    }
 
    @ObfuscatedName("t")
@@ -112,7 +114,7 @@ public abstract class NameableContainer {
       garbageValue = "1140436781"
    )
    Nameable method5374(Name var1) {
-      return !var1.isCleanNameValid() ? null : (Nameable)this.field3641.get(var1);
+      return !var1.isCleanNameValid()?null:(Nameable)this.field3641.get(var1);
    }
 
    @ObfuscatedName("u")
@@ -121,7 +123,7 @@ public abstract class NameableContainer {
       garbageValue = "127"
    )
    Nameable method5346(Name var1) {
-      return !var1.isCleanNameValid() ? null : (Nameable)this.field3640.get(var1);
+      return !var1.isCleanNameValid()?null:(Nameable)this.field3640.get(var1);
    }
 
    @ObfuscatedName("i")
@@ -131,7 +133,7 @@ public abstract class NameableContainer {
    )
    public final boolean method5397(Name var1) {
       Nameable var2 = this.method5374(var1);
-      if (var2 == null) {
+      if(var2 == null) {
          return false;
       } else {
          this.method5362(var2);
@@ -146,7 +148,7 @@ public abstract class NameableContainer {
    )
    final void method5362(Nameable var1) {
       int var2 = this.method5347(var1);
-      if (var2 != -1) {
+      if(var2 != -1) {
          this.method5415(var2);
          this.method5355(var1);
       }
@@ -168,7 +170,7 @@ public abstract class NameableContainer {
       garbageValue = "-36"
    )
    Nameable method5373(Name var1, Name var2) {
-      if (this.method5374(var1) != null) {
+      if(this.method5374(var1) != null) {
          throw new IllegalStateException();
       } else {
          Nameable var3 = this.vmethod5491();
@@ -186,7 +188,7 @@ public abstract class NameableContainer {
    )
    @Export("get")
    public final Nameable get(int var1) {
-      if (var1 >= 0 && var1 < this.count) {
+      if(var1 >= 0 && var1 < this.count) {
          return this.nameables[var1];
       } else {
          throw new ArrayIndexOutOfBoundsException(var1);
@@ -199,7 +201,7 @@ public abstract class NameableContainer {
       garbageValue = "109"
    )
    public final void method5383() {
-      if (this.field3643 == null) {
+      if(this.field3643 == null) {
          Arrays.sort(this.nameables, 0, this.count);
       } else {
          Arrays.sort(this.nameables, 0, this.count, this.field3643);
@@ -225,7 +227,7 @@ public abstract class NameableContainer {
    )
    final int method5347(Nameable var1) {
       for(int var2 = 0; var2 < this.count; ++var2) {
-         if (this.nameables[var2] == var1) {
+         if(this.nameables[var2] == var1) {
             return var2;
          }
       }
@@ -239,10 +241,10 @@ public abstract class NameableContainer {
       garbageValue = "125"
    )
    final void method5355(Nameable var1) {
-      if (this.field3641.remove(var1.name) == null) {
+      if(this.field3641.remove(var1.name) == null) {
          throw new IllegalStateException();
       } else {
-         if (var1.prevName != null) {
+         if(var1.prevName != null) {
             this.field3640.remove(var1.prevName);
          }
 
@@ -265,9 +267,9 @@ public abstract class NameableContainer {
    )
    final void method5379(Nameable var1) {
       this.field3641.put(var1.name, var1);
-      if (var1.prevName != null) {
+      if(var1.prevName != null) {
          Nameable var2 = (Nameable)this.field3640.put(var1.prevName, var1);
-         if (var2 != null && var2 != var1) {
+         if(var2 != null && var2 != var1) {
             var2.prevName = null;
          }
       }
@@ -281,7 +283,7 @@ public abstract class NameableContainer {
    )
    final void method5415(int var1) {
       --this.count;
-      if (var1 < this.count) {
+      if(var1 < this.count) {
          System.arraycopy(this.nameables, var1 + 1, this.nameables, var1, this.count - var1);
       }
 
@@ -302,9 +304,9 @@ public abstract class NameableContainer {
       garbageValue = "-1"
    )
    public final void method5381(Comparator var1) {
-      if (this.field3643 == null) {
+      if(this.field3643 == null) {
          this.field3643 = var1;
-      } else if (this.field3643 instanceof class283) {
+      } else if(this.field3643 instanceof class283) {
          ((class283)this.field3643).method5319(var1);
       }
 

@@ -41,11 +41,11 @@ public class Identifiers {
 
       while(true) {
          int var4 = this.table[var3 + var3 + 1];
-         if (var4 == -1) {
+         if(var4 == -1) {
             return -1;
          }
 
-         if (this.table[var3 + var3] == var1) {
+         if(this.table[var3 + var3] == var1) {
             return var4;
          }
 

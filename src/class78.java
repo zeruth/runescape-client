@@ -12,7 +12,7 @@ public class class78 {
    @ObfuscatedGetter(
       intValue = -958297323
    )
-   static int field1104 = 0;
+   static int field1104;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Llh;"
@@ -163,6 +163,7 @@ public class class78 {
    static IndexedSprite[] modIconSprites;
 
    static {
+      field1104 = 0;
       loginWindowX = field1104 + 202;
       field1128 = new int[256];
       field1114 = 0;

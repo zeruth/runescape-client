@@ -1,3 +1,7 @@
+import java.io.DataInputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Hook;
 import net.runelite.mapping.Implements;
@@ -29,21 +33,24 @@ public class Signlink implements Runnable {
       signature = "Led;"
    )
    @Export("currentTask")
-   Task currentTask = null;
+   Task currentTask;
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Led;"
    )
    @Export("cachedTask")
-   Task cachedTask = null;
+   Task cachedTask;
    @ObfuscatedName("f")
    @Export("sysEventQueue")
    Thread sysEventQueue;
    @ObfuscatedName("n")
    @Export("closed")
-   boolean closed = false;
+   boolean closed;
 
    public Signlink() {
+      this.currentTask = null;
+      this.cachedTask = null;
+      this.closed = false;
       javaVendor = "Unknown";
       javaVersion = "1.6";
 
@@ -93,7 +100,7 @@ public class Signlink implements Runnable {
       var5.intArgument = var2;
       var5.objectArgument = var4;
       synchronized(this) {
-         if (this.cachedTask != null) {
+         if(this.cachedTask != null) {
             this.cachedTask.task = var5;
             this.cachedTask = var5;
          } else {
@@ -126,7 +133,52 @@ public class Signlink implements Runnable {
    }
 
    public final void run() {
-      // $FF: Couldn't be decompiled
+      while(true) {
+         Task var1;
+         synchronized(this) {
+            while(true) {
+               if(this.closed) {
+                  return;
+               }
+
+               if(this.currentTask != null) {
+                  var1 = this.currentTask;
+                  this.currentTask = this.currentTask.task;
+                  if(this.currentTask == null) {
+                     this.cachedTask = null;
+                  }
+                  break;
+               }
+
+               try {
+                  this.wait();
+               } catch (InterruptedException var6) {
+                  ;
+               }
+            }
+         }
+
+         try {
+            int var2 = var1.type;
+            if(var2 == 1) {
+               var1.value = new Socket(InetAddress.getByName((String)var1.objectArgument), var1.intArgument);
+            } else if(var2 == 2) {
+               Thread var3 = new Thread((Runnable)var1.objectArgument);
+               var3.setDaemon(true);
+               var3.start();
+               var3.setPriority(var1.intArgument);
+               var1.value = var3;
+            } else if(var2 == 4) {
+               var1.value = new DataInputStream(((URL)var1.objectArgument).openStream());
+            }
+
+            var1.status = 1;
+         } catch (ThreadDeath var4) {
+            throw var4;
+         } catch (Throwable var5) {
+            var1.status = 2;
+         }
+      }
    }
 
    @ObfuscatedName("m")
@@ -137,10 +189,10 @@ public class Signlink implements Runnable {
    @Export("addChatMessage")
    @Hook("addChatMessage")
    static void addChatMessage(int var0, String var1, String var2, String var3) {
-      ChatLineBuffer var4 = (ChatLineBuffer)class83.chatLineMap.get(var0);
-      if (var4 == null) {
+      ChatLineBuffer var4 = (ChatLineBuffer)class83.chatLineMap.get(Integer.valueOf(var0));
+      if(var4 == null) {
          var4 = new ChatLineBuffer();
-         class83.chatLineMap.put(var0, var4);
+         class83.chatLineMap.put(Integer.valueOf(var0), var4);
       }
 
       MessageNode var5 = var4.addMessage(var0, var1, var2, var3);
@@ -155,7 +207,7 @@ public class Signlink implements Runnable {
       garbageValue = "-95084124"
    )
    static void method3242(IndexData var0, int var1) {
-      if (class325.NetCache_reference != null) {
+      if(class325.NetCache_reference != null) {
          class325.NetCache_reference.offset = var1 * 8 + 5;
          int var2 = class325.NetCache_reference.readInt();
          int var3 = class325.NetCache_reference.readInt();

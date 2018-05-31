@@ -4,7 +4,7 @@ import net.runelite.mapping.ObfuscatedName;
 @ObfuscatedName("kq")
 public class class304 {
    @ObfuscatedName("w")
-   static char[] field3736 = new char[64];
+   static char[] field3736;
    @ObfuscatedName("m")
    static char[] field3734;
    @ObfuscatedName("q")
@@ -16,6 +16,8 @@ public class class304 {
    static int field3737;
 
    static {
+      field3736 = new char[64];
+
       int var0;
       for(var0 = 0; var0 < 26; ++var0) {
          field3736[var0] = (char)(var0 + 65);

@@ -42,7 +42,7 @@ public class class184 {
       garbageValue = "1842007658"
    )
    public static final void method3828(int var0, boolean var1, int var2) {
-      if (var0 >= 8000 && var0 <= 48000) {
+      if(var0 >= 8000 && var0 <= 48000) {
          AbstractSoundSystem.sampleRate = var0;
          AbstractSoundSystem.audioHighMemory = var1;
          AbstractSoundSystem.field1324 = var2;
@@ -57,53 +57,53 @@ public class class184 {
       garbageValue = "-223861270"
    )
    static final void method3829(NPCComposition var0, int var1, int var2, int var3) {
-      if (Client.menuOptionCount < 400) {
-         if (var0.configs != null) {
+      if(Client.menuOptionCount < 400) {
+         if(var0.configs != null) {
             var0 = var0.transform();
          }
 
-         if (var0 != null && var0.field3535 && (!var0.field3534 || Client.field760 == var1)) {
+         if(var0 != null && var0.field3535 && (!var0.field3534 || Client.field760 == var1)) {
             String var4 = var0.name;
-            if (var0.combatLevel != 0) {
+            if(var0.combatLevel != 0) {
                var4 = var4 + class32.method598(var0.combatLevel, MilliTimer.localPlayer.combatLevel) + " " + " (" + "level-" + var0.combatLevel + ")";
             }
 
-            if (var0.field3534 && Client.field753) {
+            if(var0.field3534 && Client.field753) {
                VertexNormal.addMenuEntry("Examine", class50.getColTags(16776960) + var4, 1003, var1, var2, var3);
             }
 
-            if (Client.itemSelectionState == 1) {
+            if(Client.itemSelectionState == 1) {
                VertexNormal.addMenuEntry("Use", Client.lastSelectedItemName + " " + "->" + " " + class50.getColTags(16776960) + var4, 7, var1, var2, var3);
-            } else if (Client.spellSelected) {
-               if ((class45.field373 & 2) == 2) {
+            } else if(Client.spellSelected) {
+               if((class45.field373 & 2) == 2) {
                   VertexNormal.addMenuEntry(Client.field750, Client.field751 + " " + "->" + " " + class50.getColTags(16776960) + var4, 8, var1, var2, var3);
                }
             } else {
-               int var5 = var0.field3534 && Client.field753 ? 2000 : 0;
+               int var5 = var0.field3534 && Client.field753?2000:0;
                String[] var6 = var0.actions;
                int var7;
                int var8;
-               if (var6 != null) {
+               if(var6 != null) {
                   for(var7 = 4; var7 >= 0; --var7) {
-                     if (var6[var7] != null && !var6[var7].equalsIgnoreCase("Attack")) {
+                     if(var6[var7] != null && !var6[var7].equalsIgnoreCase("Attack")) {
                         var8 = 0;
-                        if (var7 == 0) {
+                        if(var7 == 0) {
                            var8 = var5 + 9;
                         }
 
-                        if (var7 == 1) {
+                        if(var7 == 1) {
                            var8 = var5 + 10;
                         }
 
-                        if (var7 == 2) {
+                        if(var7 == 2) {
                            var8 = var5 + 11;
                         }
 
-                        if (var7 == 3) {
+                        if(var7 == 3) {
                            var8 = var5 + 12;
                         }
 
-                        if (var7 == 4) {
+                        if(var7 == 4) {
                            var8 = var5 + 13;
                         }
 
@@ -112,33 +112,33 @@ public class class184 {
                   }
                }
 
-               if (var6 != null) {
+               if(var6 != null) {
                   for(var7 = 4; var7 >= 0; --var7) {
-                     if (var6[var7] != null && var6[var7].equalsIgnoreCase("Attack")) {
+                     if(var6[var7] != null && var6[var7].equalsIgnoreCase("Attack")) {
                         short var9 = 0;
-                        if (Client.npcAttackOption != AttackOption.AttackOption_hidden) {
-                           if (Client.npcAttackOption == AttackOption.AttackOption_alwaysRightClick || AttackOption.AttackOption_dependsOnCombatLevels == Client.npcAttackOption && var0.combatLevel > MilliTimer.localPlayer.combatLevel) {
+                        if(Client.npcAttackOption != AttackOption.AttackOption_hidden) {
+                           if(Client.npcAttackOption == AttackOption.AttackOption_alwaysRightClick || AttackOption.AttackOption_dependsOnCombatLevels == Client.npcAttackOption && var0.combatLevel > MilliTimer.localPlayer.combatLevel) {
                               var9 = 2000;
                            }
 
                            var8 = 0;
-                           if (var7 == 0) {
+                           if(var7 == 0) {
                               var8 = var9 + 9;
                            }
 
-                           if (var7 == 1) {
+                           if(var7 == 1) {
                               var8 = var9 + 10;
                            }
 
-                           if (var7 == 2) {
+                           if(var7 == 2) {
                               var8 = var9 + 11;
                            }
 
-                           if (var7 == 3) {
+                           if(var7 == 3) {
                               var8 = var9 + 12;
                            }
 
-                           if (var7 == 4) {
+                           if(var7 == 4) {
                               var8 = var9 + 13;
                            }
 
@@ -148,7 +148,7 @@ public class class184 {
                   }
                }
 
-               if (!var0.field3534 || !Client.field753) {
+               if(!var0.field3534 || !Client.field753) {
                   VertexNormal.addMenuEntry("Examine", class50.getColTags(16776960) + var4, 1003, var1, var2, var3);
                }
             }

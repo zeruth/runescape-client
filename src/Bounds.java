@@ -79,16 +79,16 @@ public class Bounds {
    void method5736(Bounds var1, Bounds var2) {
       var2.field3752 = this.field3752;
       var2.field3750 = this.field3750;
-      if (this.field3752 < var1.field3752) {
+      if(this.field3752 < var1.field3752) {
          var2.field3750 -= var1.field3752 - this.field3752;
          var2.field3752 = var1.field3752;
       }
 
-      if (var2.method5738() > var1.method5738()) {
+      if(var2.method5738() > var1.method5738()) {
          var2.field3750 -= var2.method5738() - var1.method5738();
       }
 
-      if (var2.field3750 < 0) {
+      if(var2.field3750 < 0) {
          var2.field3750 = 0;
       }
 
@@ -102,16 +102,16 @@ public class Bounds {
    void method5727(Bounds var1, Bounds var2) {
       var2.field3749 = this.field3749;
       var2.field3751 = this.field3751;
-      if (this.field3749 < var1.field3749) {
+      if(this.field3749 < var1.field3749) {
          var2.field3751 -= var1.field3749 - this.field3749;
          var2.field3749 = var1.field3749;
       }
 
-      if (var2.method5723() > var1.method5723()) {
+      if(var2.method5723() > var1.method5723()) {
          var2.field3751 -= var2.method5723() - var1.method5723();
       }
 
-      if (var2.field3751 < 0) {
+      if(var2.field3751 < 0) {
          var2.field3751 = 0;
       }
 

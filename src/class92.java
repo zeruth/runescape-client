@@ -50,7 +50,7 @@ public class class92 extends Node {
    @Export("modeMappings")
    static int[] modeMappings;
    @ObfuscatedName("e")
-   static boolean field1284 = false;
+   static boolean field1284;
    @ObfuscatedName("k")
    static float[] field1291;
    @ObfuscatedName("r")
@@ -96,6 +96,10 @@ public class class92 extends Node {
    @ObfuscatedName("aw")
    int field1271;
 
+   static {
+      field1284 = false;
+   }
+
    class92(byte[] var1) {
       this.method2122(var1);
    }
@@ -107,7 +111,7 @@ public class class92 extends Node {
       this.field1302 = var2.readInt();
       this.field1272 = var2.readInt();
       this.field1292 = var2.readInt();
-      if (this.field1292 < 0) {
+      if(this.field1292 < 0) {
          this.field1292 = ~this.field1292;
          this.field1274 = true;
       }
@@ -137,10 +141,10 @@ public class class92 extends Node {
       getBit();
       int var2 = getInt(class11.ilog(modeMappings.length - 1));
       boolean var3 = modeBlockFlags[var2];
-      int var4 = var3 ? blockSize1 : blockSize0;
+      int var4 = var3?blockSize1:blockSize0;
       boolean var5 = false;
       boolean var6 = false;
-      if (var3) {
+      if(var3) {
          var5 = getBit() != 0;
          var6 = getBit() != 0;
       }
@@ -149,7 +153,7 @@ public class class92 extends Node {
       int var8;
       int var9;
       int var10;
-      if (var3 && !var5) {
+      if(var3 && !var5) {
          var8 = (var4 >> 2) - (blockSize0 >> 2);
          var9 = (blockSize0 >> 2) + (var4 >> 2);
          var10 = blockSize0 >> 1;
@@ -162,7 +166,7 @@ public class class92 extends Node {
       int var11;
       int var12;
       int var13;
-      if (var3 && !var6) {
+      if(var3 && !var6) {
          var11 = var4 - (var4 >> 2) - (blockSize0 >> 2);
          var12 = (blockSize0 >> 2) + (var4 - (var4 >> 2));
          var13 = blockSize0 >> 1;
@@ -185,7 +189,7 @@ public class class92 extends Node {
       }
 
       int var48;
-      if (!var17) {
+      if(!var17) {
          var16 = var14.mux;
          var48 = var14.submapFloors[var16];
          floors[var48].computeFloor(field1291, var4 >> 1);
@@ -194,7 +198,7 @@ public class class92 extends Node {
       float[] var21;
       int var22;
       int var49;
-      if (var17) {
+      if(var17) {
          for(var16 = var4 >> 1; var16 < var4; ++var16) {
             field1291[var16] = 0.0F;
          }
@@ -212,10 +216,10 @@ public class class92 extends Node {
             var21[var22] = -var21[var4 - var22 - 1];
          }
 
-         float[] var23 = var3 ? field1286 : field1283;
-         float[] var24 = var3 ? field1296 : field1279;
-         float[] var25 = var3 ? field1297 : field1294;
-         int[] var26 = var3 ? field1299 : field1298;
+         float[] var23 = var3?field1286:field1283;
+         float[] var24 = var3?field1296:field1279;
+         float[] var25 = var3?field1297:field1294;
+         int[] var26 = var3?field1299:field1298;
 
          int var27;
          float var28;
@@ -278,7 +282,7 @@ public class class92 extends Node {
 
          for(var34 = 1; var34 < var49 - 1; ++var34) {
             var35 = var26[var34];
-            if (var34 < var35) {
+            if(var34 < var35) {
                var36 = var34 * 8;
                var37 = var35 * 8;
                var32 = var21[var36 + 1];
@@ -355,17 +359,17 @@ public class class92 extends Node {
       }
 
       var21 = null;
-      if (this.field1288 > 0) {
+      if(this.field1288 > 0) {
          var48 = var4 + this.field1288 >> 2;
          var21 = new float[var48];
-         if (!this.field1290) {
+         if(!this.field1290) {
             for(var49 = 0; var49 < this.field1289; ++var49) {
                var22 = var49 + (this.field1288 >> 1);
                var21[var49] += this.field1287[var22];
             }
          }
 
-         if (!var17) {
+         if(!var17) {
             for(var49 = var8; var49 < var4 >> 1; ++var49) {
                var22 = var21.length - (var4 >> 1) + var49;
                var21[var22] += field1291[var49];
@@ -387,10 +391,10 @@ public class class92 extends Node {
       signature = "([I)Lcg;"
    )
    RawAudioNode method2128(int[] var1) {
-      if (var1 != null && var1[0] <= 0) {
+      if(var1 != null && var1[0] <= 0) {
          return null;
       } else {
-         if (this.field1300 == null) {
+         if(this.field1300 == null) {
             this.field1288 = 0;
             this.field1287 = new float[blockSize1];
             this.field1300 = new byte[this.field1302];
@@ -399,28 +403,28 @@ public class class92 extends Node {
          }
 
          for(; this.field1271 < this.field1280.length; ++this.field1271) {
-            if (var1 != null && var1[0] <= 0) {
+            if(var1 != null && var1[0] <= 0) {
                return null;
             }
 
             float[] var2 = this.method2125(this.field1271);
-            if (var2 != null) {
+            if(var2 != null) {
                int var3 = this.field1295;
                int var4 = var2.length;
-               if (var4 > this.field1302 - var3) {
+               if(var4 > this.field1302 - var3) {
                   var4 = this.field1302 - var3;
                }
 
                for(int var5 = 0; var5 < var4; ++var5) {
                   int var6 = (int)(128.0F + var2[var5] * 128.0F);
-                  if ((var6 & -256) != 0) {
+                  if((var6 & -256) != 0) {
                      var6 = ~var6 >> 31;
                   }
 
                   this.field1300[var3++] = (byte)(var6 - 128);
                }
 
-               if (var1 != null) {
+               if(var1 != null) {
                   var1[0] -= var3 - this.field1295;
                }
 
@@ -441,7 +445,7 @@ public class class92 extends Node {
       int var1 = var0 & 2097151;
       int var2 = var0 & Integer.MIN_VALUE;
       int var3 = (var0 & 2145386496) >> 21;
-      if (var2 != 0) {
+      if(var2 != 0) {
          var1 = -var1;
       }
 
@@ -482,7 +486,7 @@ public class class92 extends Node {
          var2 += var3;
       }
 
-      if (var0 > 0) {
+      if(var0 > 0) {
          var3 = (1 << var0) - 1;
          var1 += (payload[position] >> bitPosition & var3) << var2;
          bitPosition += var0;
@@ -504,7 +508,7 @@ public class class92 extends Node {
       int var4;
       int var5;
       for(var1 = 0; var1 < 2; ++var1) {
-         var2 = var1 != 0 ? blockSize1 : blockSize0;
+         var2 = var1 != 0?blockSize1:blockSize0;
          var3 = var2 >> 1;
          var4 = var2 >> 2;
          var5 = var2 >> 3;
@@ -536,7 +540,7 @@ public class class92 extends Node {
             var15[var11] = MapIconReference.method690(var11, var10);
          }
 
-         if (var1 != 0) {
+         if(var1 != 0) {
             field1286 = var6;
             field1296 = var13;
             field1297 = var14;
@@ -601,9 +605,9 @@ public class class92 extends Node {
       signature = "(Liv;)Z"
    )
    static boolean method2132(IndexDataBase var0) {
-      if (!field1284) {
+      if(!field1284) {
          byte[] var1 = var0.getConfigData(0, 0);
-         if (var1 == null) {
+         if(var1 == null) {
             return false;
          }
 
@@ -620,12 +624,12 @@ public class class92 extends Node {
    )
    @Export("getInstrument")
    static class92 getInstrument(IndexDataBase var0, int var1, int var2) {
-      if (!method2132(var0)) {
+      if(!method2132(var0)) {
          var0.tryLoadRecord(var1, var2);
          return null;
       } else {
          byte[] var3 = var0.getConfigData(var1, var2);
-         return var3 == null ? null : new class92(var3);
+         return var3 == null?null:new class92(var3);
       }
    }
 }

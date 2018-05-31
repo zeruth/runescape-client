@@ -34,15 +34,15 @@ public class Frames extends CacheableNode {
          int var11 = (var9[0] & 255) << 8 | var9[1] & 255;
 
          for(FrameMap var12 = (FrameMap)var5.getFront(); var12 != null; var12 = (FrameMap)var5.getNext()) {
-            if (var11 == var12.id) {
+            if(var11 == var12.id) {
                var10 = var12;
                break;
             }
          }
 
-         if (var10 == null) {
+         if(var10 == null) {
             byte[] var13;
-            if (var4) {
+            if(var4) {
                var13 = var2.getChild(0, var11);
             } else {
                var13 = var2.getChild(var11, 0);
@@ -107,10 +107,10 @@ public class Frames extends CacheableNode {
       for(int var3 = 0; var3 < var1 + 0; var3 += 3) {
          int var4 = var0[var3] & 255;
          var2.append(class304.field3736[var4 >>> 2]);
-         if (var3 < var1 - 1) {
+         if(var3 < var1 - 1) {
             int var5 = var0[var3 + 1] & 255;
             var2.append(class304.field3736[(var4 & 3) << 4 | var5 >>> 4]);
-            if (var3 < var1 - 2) {
+            if(var3 < var1 - 2) {
                int var6 = var0[var3 + 2] & 255;
                var2.append(class304.field3736[(var5 & 15) << 2 | var6 >>> 6]).append(class304.field3736[var6 & 63]);
             } else {
@@ -159,8 +159,8 @@ public class Frames extends CacheableNode {
       garbageValue = "-1163381700"
    )
    static final void method3091() {
-      if (WorldMapType2.field245) {
-         if (WorldComparator.clanMemberManager != null) {
+      if(WorldMapType2.field245) {
+         if(WorldComparator.clanMemberManager != null) {
             WorldComparator.clanMemberManager.method5383();
          }
 
@@ -177,11 +177,11 @@ public class Frames extends CacheableNode {
    )
    static final void method3096(boolean var0, PacketBuffer var1) {
       while(true) {
-         if (var1.bitsAvail(Client.field739.packetLength) >= 27) {
+         if(var1.bitsAvail(Client.field739.packetLength) >= 27) {
             int var2 = var1.getBits(15);
-            if (var2 != 32767) {
+            if(var2 != 32767) {
                boolean var3 = false;
-               if (Client.cachedNPCs[var2] == null) {
+               if(Client.cachedNPCs[var2] == null) {
                   Client.cachedNPCs[var2] = new NPC();
                   var3 = true;
                }
@@ -190,38 +190,38 @@ public class Frames extends CacheableNode {
                Client.npcIndices[++Client.npcIndexesCount - 1] = var2;
                var4.npcCycle = Client.gameCycle;
                int var5;
-               if (var0) {
+               if(var0) {
                   var5 = var1.getBits(8);
-                  if (var5 > 127) {
+                  if(var5 > 127) {
                      var5 -= 256;
                   }
                } else {
                   var5 = var1.getBits(5);
-                  if (var5 > 15) {
+                  if(var5 > 15) {
                      var5 -= 32;
                   }
                }
 
                int var6 = var1.getBits(1);
-               if (var6 == 1) {
+               if(var6 == 1) {
                   Client.pendingNpcFlagsIndices[++Client.pendingNpcFlagsCount - 1] = var2;
                }
 
                int var7 = Client.field665[var1.getBits(3)];
-               if (var3) {
+               if(var3) {
                   var4.orientation = var4.angle = var7;
                }
 
                int var8 = var1.getBits(1);
                int var9;
-               if (var0) {
+               if(var0) {
                   var9 = var1.getBits(8);
-                  if (var9 > 127) {
+                  if(var9 > 127) {
                      var9 -= 256;
                   }
                } else {
                   var9 = var1.getBits(5);
-                  if (var9 > 15) {
+                  if(var9 > 15) {
                      var9 -= 32;
                   }
                }
@@ -229,7 +229,7 @@ public class Frames extends CacheableNode {
                var4.composition = class59.getNpcDefinition(var1.getBits(14));
                var4.field885 = var4.composition.size;
                var4.field929 = var4.composition.rotation;
-               if (var4.field929 == 0) {
+               if(var4.field929 == 0) {
                   var4.angle = 0;
                }
 

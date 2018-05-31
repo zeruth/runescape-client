@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -21,16 +22,18 @@ public class class151 implements Runnable {
    @ObfuscatedGetter(
       intValue = -1603981301
    )
-   int field1953 = 0;
+   int field1953;
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = -1202012067
    )
-   int field1949 = 0;
+   int field1949;
    @ObfuscatedName("h")
    IOException field1955;
 
    class151(InputStream var1, int var2) {
+      this.field1953 = 0;
+      this.field1949 = 0;
       this.field1956 = var1;
       this.field1951 = var2 + 1;
       this.field1952 = new byte[this.field1951];
@@ -45,19 +48,19 @@ public class class151 implements Runnable {
       garbageValue = "27"
    )
    boolean method3222(int var1) throws IOException {
-      if (var1 == 0) {
+      if(var1 == 0) {
          return true;
-      } else if (var1 > 0 && var1 < this.field1951) {
+      } else if(var1 > 0 && var1 < this.field1951) {
          synchronized(this) {
             int var3;
-            if (this.field1953 <= this.field1949) {
+            if(this.field1953 <= this.field1949) {
                var3 = this.field1949 - this.field1953;
             } else {
                var3 = this.field1951 - this.field1953 + this.field1949;
             }
 
-            if (var3 < var1) {
-               if (this.field1955 != null) {
+            if(var3 < var1) {
+               if(this.field1955 != null) {
                   throw new IOException(this.field1955.toString());
                } else {
                   this.notifyAll();
@@ -80,13 +83,13 @@ public class class151 implements Runnable {
    int method3227() throws IOException {
       synchronized(this) {
          int var2;
-         if (this.field1953 <= this.field1949) {
+         if(this.field1953 <= this.field1949) {
             var2 = this.field1949 - this.field1953;
          } else {
             var2 = this.field1951 - this.field1953 + this.field1949;
          }
 
-         if (var2 <= 0 && this.field1955 != null) {
+         if(var2 <= 0 && this.field1955 != null) {
             throw new IOException(this.field1955.toString());
          } else {
             this.notifyAll();
@@ -102,8 +105,8 @@ public class class151 implements Runnable {
    )
    int method3223() throws IOException {
       synchronized(this) {
-         if (this.field1953 == this.field1949) {
-            if (this.field1955 != null) {
+         if(this.field1953 == this.field1949) {
+            if(this.field1955 != null) {
                throw new IOException(this.field1955.toString());
             } else {
                return -1;
@@ -123,23 +126,23 @@ public class class151 implements Runnable {
       garbageValue = "-1576161114"
    )
    int method3224(byte[] var1, int var2, int var3) throws IOException {
-      if (var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) {
+      if(var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) {
          synchronized(this) {
             int var5;
-            if (this.field1953 <= this.field1949) {
+            if(this.field1953 <= this.field1949) {
                var5 = this.field1949 - this.field1953;
             } else {
                var5 = this.field1951 - this.field1953 + this.field1949;
             }
 
-            if (var3 > var5) {
+            if(var3 > var5) {
                var3 = var5;
             }
 
-            if (var3 == 0 && this.field1955 != null) {
+            if(var3 == 0 && this.field1955 != null) {
                throw new IOException(this.field1955.toString());
             } else {
-               if (var3 + this.field1953 <= this.field1951) {
+               if(var3 + this.field1953 <= this.field1951) {
                   System.arraycopy(this.field1952, this.field1953, var1, var2, var3);
                } else {
                   int var6 = this.field1951 - this.field1953;
@@ -163,11 +166,69 @@ public class class151 implements Runnable {
       garbageValue = "69"
    )
    void method3225() {
-      // $FF: Couldn't be decompiled
+      synchronized(this) {
+         if(this.field1955 == null) {
+            this.field1955 = new IOException("");
+         }
+
+         this.notifyAll();
+      }
+
+      try {
+         this.field1950.join();
+      } catch (InterruptedException var2) {
+         ;
+      }
+
    }
 
    public void run() {
-      // $FF: Couldn't be decompiled
+      while(true) {
+         int var1;
+         synchronized(this) {
+            while(true) {
+               if(this.field1955 != null) {
+                  return;
+               }
+
+               if(this.field1953 == 0) {
+                  var1 = this.field1951 - this.field1949 - 1;
+               } else if(this.field1953 <= this.field1949) {
+                  var1 = this.field1951 - this.field1949;
+               } else {
+                  var1 = this.field1953 - this.field1949 - 1;
+               }
+
+               if(var1 > 0) {
+                  break;
+               }
+
+               try {
+                  this.wait();
+               } catch (InterruptedException var8) {
+                  ;
+               }
+            }
+         }
+
+         int var2;
+         try {
+            var2 = this.field1956.read(this.field1952, this.field1949, var1);
+            if(var2 == -1) {
+               throw new EOFException();
+            }
+         } catch (IOException var9) {
+            IOException var4 = var9;
+            synchronized(this) {
+               this.field1955 = var4;
+               return;
+            }
+         }
+
+         synchronized(this) {
+            this.field1949 = (var2 + this.field1949) % this.field1951;
+         }
+      }
    }
 
    @ObfuscatedName("w")
@@ -185,46 +246,46 @@ public class class151 implements Runnable {
       garbageValue = "93"
    )
    static final void method3234(String var0) {
-      if (var0.equalsIgnoreCase("toggleroof")) {
+      if(var0.equalsIgnoreCase("toggleroof")) {
          ScriptState.preferences.hideRoofs = !ScriptState.preferences.hideRoofs;
          Enum.method5008();
-         if (ScriptState.preferences.hideRoofs) {
+         if(ScriptState.preferences.hideRoofs) {
             OwnWorldComparator.sendGameMessage(99, "", "Roofs are now all hidden");
          } else {
             OwnWorldComparator.sendGameMessage(99, "", "Roofs will only be removed selectively");
          }
       }
 
-      if (var0.equalsIgnoreCase("displayfps")) {
+      if(var0.equalsIgnoreCase("displayfps")) {
          Client.displayFps = !Client.displayFps;
       }
 
-      if (var0.equalsIgnoreCase("renderself")) {
+      if(var0.equalsIgnoreCase("renderself")) {
          Client.field711 = !Client.field711;
       }
 
-      if (var0.equalsIgnoreCase("mouseovertext")) {
+      if(var0.equalsIgnoreCase("mouseovertext")) {
          Client.field740 = !Client.field740;
       }
 
-      if (Client.rights >= 2) {
-         if (var0.equalsIgnoreCase("showcoord")) {
+      if(Client.rights >= 2) {
+         if(var0.equalsIgnoreCase("showcoord")) {
             Preferences.renderOverview.field3846 = !Preferences.renderOverview.field3846;
          }
 
-         if (var0.equalsIgnoreCase("fpson")) {
+         if(var0.equalsIgnoreCase("fpson")) {
             Client.displayFps = true;
          }
 
-         if (var0.equalsIgnoreCase("fpsoff")) {
+         if(var0.equalsIgnoreCase("fpsoff")) {
             Client.displayFps = false;
          }
 
-         if (var0.equalsIgnoreCase("gc")) {
+         if(var0.equalsIgnoreCase("gc")) {
             System.gc();
          }
 
-         if (var0.equalsIgnoreCase("clientdrop")) {
+         if(var0.equalsIgnoreCase("clientdrop")) {
             ChatLineBuffer.method2018();
          }
       }

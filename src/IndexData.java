@@ -10,7 +10,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class IndexData extends IndexDataBase {
    @ObfuscatedName("ad")
    @Export("crc32")
-   static CRC32 crc32 = new CRC32();
+   static CRC32 crc32;
    @ObfuscatedName("k")
    @ObfuscatedSignature(
       signature = "Lff;"
@@ -30,9 +30,9 @@ public class IndexData extends IndexDataBase {
    @Export("index")
    int index;
    @ObfuscatedName("o")
-   volatile boolean field3201 = false;
+   volatile boolean field3201;
    @ObfuscatedName("ai")
-   boolean field3200 = false;
+   boolean field3200;
    @ObfuscatedName("at")
    @Export("validArchives")
    volatile boolean[] validArchives;
@@ -52,13 +52,20 @@ public class IndexData extends IndexDataBase {
    @ObfuscatedGetter(
       intValue = -293628809
    )
-   int field3207 = -1;
+   int field3207;
+
+   static {
+      crc32 = new CRC32();
+   }
 
    @ObfuscatedSignature(
       signature = "(Lff;Lff;IZZZ)V"
    )
    public IndexData(IndexFile var1, IndexFile var2, int var3, boolean var4, boolean var5, boolean var6) {
       super(var4, var5);
+      this.field3201 = false;
+      this.field3200 = false;
+      this.field3207 = -1;
       this.indexStore = var1;
       this.referenceStore = var2;
       this.index = var3;
@@ -81,7 +88,7 @@ public class IndexData extends IndexDataBase {
       garbageValue = "-45"
    )
    int archiveLoadPercent(int var1) {
-      return super.archives[var1] != null ? 100 : (this.validArchives[var1] ? 100 : class8.method91(this.index, var1));
+      return super.archives[var1] != null?100:(this.validArchives[var1]?100:class8.method91(this.index, var1));
    }
 
    @ObfuscatedName("c")
@@ -89,8 +96,31 @@ public class IndexData extends IndexDataBase {
       signature = "(II)V",
       garbageValue = "1716933918"
    )
-   void loadArchive(int param1) {
-      // $FF: Couldn't be decompiled
+   void loadArchive(int var1) {
+      if(this.indexStore != null && this.validArchives != null && this.validArchives[var1]) {
+         IndexFile var2 = this.indexStore;
+         byte[] var3 = null;
+         Deque var4 = IndexStoreActionHandler.IndexStoreActionHandler_requestQueue;
+         Deque var5 = IndexStoreActionHandler.IndexStoreActionHandler_requestQueue;
+         synchronized(IndexStoreActionHandler.IndexStoreActionHandler_requestQueue) {
+            for(FileSystem var6 = (FileSystem)IndexStoreActionHandler.IndexStoreActionHandler_requestQueue.getFront(); var6 != null; var6 = (FileSystem)IndexStoreActionHandler.IndexStoreActionHandler_requestQueue.getNext()) {
+               if((long)var1 == var6.hash && var2 == var6.index && var6.type == 0) {
+                  var3 = var6.field3165;
+                  break;
+               }
+            }
+         }
+
+         if(var3 != null) {
+            this.load(var2, var1, var3, true);
+         } else {
+            byte[] var8 = var2.read(var1);
+            this.load(var2, var1, var8, true);
+         }
+      } else {
+         class37.requestNetFile(this, this.index, var1, super.archiveCrcs[var1], (byte)2, true);
+      }
+
    }
 
    @ObfuscatedName("da")
@@ -100,13 +130,13 @@ public class IndexData extends IndexDataBase {
    )
    @Export("percentage")
    public int percentage() {
-      if (this.field3201) {
+      if(this.field3201) {
          return 100;
-      } else if (super.archives != null) {
+      } else if(super.archives != null) {
          return 99;
       } else {
          int var1 = class8.method91(255, this.index);
-         if (var1 >= 100) {
+         if(var1 >= 100) {
             var1 = 99;
          }
 
@@ -120,8 +150,34 @@ public class IndexData extends IndexDataBase {
       garbageValue = "-452481515"
    )
    @Export("setInformation")
-   void setInformation(int param1, int param2) {
-      // $FF: Couldn't be decompiled
+   void setInformation(int var1, int var2) {
+      this.crcValue = var1;
+      this.indexReferenceVersion = var2;
+      if(this.referenceStore != null) {
+         int var3 = this.index;
+         IndexFile var4 = this.referenceStore;
+         byte[] var5 = null;
+         Deque var6 = IndexStoreActionHandler.IndexStoreActionHandler_requestQueue;
+         Deque var7 = IndexStoreActionHandler.IndexStoreActionHandler_requestQueue;
+         synchronized(IndexStoreActionHandler.IndexStoreActionHandler_requestQueue) {
+            for(FileSystem var8 = (FileSystem)IndexStoreActionHandler.IndexStoreActionHandler_requestQueue.getFront(); var8 != null; var8 = (FileSystem)IndexStoreActionHandler.IndexStoreActionHandler_requestQueue.getNext()) {
+               if(var8.hash == (long)var3 && var4 == var8.index && var8.type == 0) {
+                  var5 = var8.field3165;
+                  break;
+               }
+            }
+         }
+
+         if(var5 != null) {
+            this.load(var4, var3, var5, true);
+         } else {
+            byte[] var10 = var4.read(var3);
+            this.load(var4, var3, var10, true);
+         }
+      } else {
+         class37.requestNetFile(this, 255, this.index, this.crcValue, (byte)0, true);
+      }
+
    }
 
    @ObfuscatedName("dl")
@@ -131,12 +187,12 @@ public class IndexData extends IndexDataBase {
    )
    @Export("write")
    void write(int var1, byte[] var2, boolean var3, boolean var4) {
-      if (var3) {
-         if (this.field3201) {
+      if(var3) {
+         if(this.field3201) {
             throw new RuntimeException();
          }
 
-         if (this.referenceStore != null) {
+         if(this.referenceStore != null) {
             Item.method1906(this.index, var2, this.referenceStore);
          }
 
@@ -145,12 +201,12 @@ public class IndexData extends IndexDataBase {
       } else {
          var2[var2.length - 2] = (byte)(super.archiveRevisions[var1] >> 8);
          var2[var2.length - 1] = (byte)super.archiveRevisions[var1];
-         if (this.indexStore != null) {
+         if(this.indexStore != null) {
             Item.method1906(var1, var2, this.indexStore);
             this.validArchives[var1] = true;
          }
 
-         if (var4) {
+         if(var4) {
             super.archives[var1] = SceneTilePaint.byteArrayToObject(var2, false);
          }
       }
@@ -165,29 +221,29 @@ public class IndexData extends IndexDataBase {
    @Export("load")
    public void load(IndexFile var1, int var2, byte[] var3, boolean var4) {
       int var5;
-      if (var1 == this.referenceStore) {
-         if (this.field3201) {
+      if(var1 == this.referenceStore) {
+         if(this.field3201) {
             throw new RuntimeException();
-         } else if (var3 == null) {
+         } else if(var3 == null) {
             class37.requestNetFile(this, 255, this.index, this.crcValue, (byte)0, true);
          } else {
             crc32.reset();
             crc32.update(var3, 0, var3.length);
             var5 = (int)crc32.getValue();
-            if (var5 != this.crcValue) {
+            if(var5 != this.crcValue) {
                class37.requestNetFile(this, 255, this.index, this.crcValue, (byte)0, true);
             } else {
                Buffer var9 = new Buffer(GZipDecompressor.decodeContainer(var3));
                int var7 = var9.readUnsignedByte();
-               if (var7 != 5 && var7 != 6) {
+               if(var7 != 5 && var7 != 6) {
                   throw new RuntimeException(var7 + "," + this.index + "," + var2);
                } else {
                   int var8 = 0;
-                  if (var7 >= 6) {
+                  if(var7 >= 6) {
                      var8 = var9.readInt();
                   }
 
-                  if (var8 != this.indexReferenceVersion) {
+                  if(var8 != this.indexReferenceVersion) {
                      class37.requestNetFile(this, 255, this.index, this.crcValue, (byte)0, true);
                   } else {
                      this.setIndexReference(var3);
@@ -197,31 +253,31 @@ public class IndexData extends IndexDataBase {
             }
          }
       } else {
-         if (!var4 && var2 == this.field3207) {
+         if(!var4 && var2 == this.field3207) {
             this.field3201 = true;
          }
 
-         if (var3 != null && var3.length > 2) {
+         if(var3 != null && var3.length > 2) {
             crc32.reset();
             crc32.update(var3, 0, var3.length - 2);
             var5 = (int)crc32.getValue();
             int var6 = ((var3[var3.length - 2] & 255) << 8) + (var3[var3.length - 1] & 255);
-            if (var5 == super.archiveCrcs[var2] && var6 == super.archiveRevisions[var2]) {
+            if(var5 == super.archiveCrcs[var2] && var6 == super.archiveRevisions[var2]) {
                this.validArchives[var2] = true;
-               if (var4) {
+               if(var4) {
                   super.archives[var2] = SceneTilePaint.byteArrayToObject(var3, false);
                }
 
             } else {
                this.validArchives[var2] = false;
-               if (this.field3200 || var4) {
+               if(this.field3200 || var4) {
                   class37.requestNetFile(this, this.index, var2, super.archiveCrcs[var2], (byte)2, var4);
                }
 
             }
          } else {
             this.validArchives[var2] = false;
-            if (this.field3200 || var4) {
+            if(this.field3200 || var4) {
                class37.requestNetFile(this, this.index, var2, super.archiveCrcs[var2], (byte)2, var4);
             }
 
@@ -243,19 +299,19 @@ public class IndexData extends IndexDataBase {
          this.validArchives[var1] = false;
       }
 
-      if (this.indexStore == null) {
+      if(this.indexStore == null) {
          this.field3201 = true;
       } else {
          this.field3207 = -1;
 
          for(var1 = 0; var1 < this.validArchives.length; ++var1) {
-            if (super.archiveNumberOfFiles[var1] > 0) {
+            if(super.archiveNumberOfFiles[var1] > 0) {
                FaceNormal.method3082(var1, this.indexStore, this);
                this.field3207 = var1;
             }
          }
 
-         if (this.field3207 == -1) {
+         if(this.field3207 == -1) {
             this.field3201 = true;
          }
       }
@@ -292,13 +348,13 @@ public class IndexData extends IndexDataBase {
 
       int var3;
       for(var3 = 0; var3 < super.archives.length; ++var3) {
-         if (super.archiveNumberOfFiles[var3] > 0) {
+         if(super.archiveNumberOfFiles[var3] > 0) {
             var1 += 100;
             var2 += this.archiveLoadPercent(var3);
          }
       }
 
-      if (var1 == 0) {
+      if(var1 == 0) {
          return 100;
       } else {
          var3 = var2 * 100 / var1;

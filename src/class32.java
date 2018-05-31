@@ -42,7 +42,7 @@ public class class32 {
       garbageValue = "2"
    )
    void method587(int var1, int var2, int var3, FloorUnderlayDefinition var4) {
-      if (var4 != null && var3 + var1 >= 0 && var3 + var2 >= 0 && var1 - var3 <= this.field285 && var2 - var3 <= this.field282) {
+      if(var4 != null && var3 + var1 >= 0 && var3 + var2 >= 0 && var1 - var3 <= this.field285 && var2 - var3 <= this.field282) {
          int var5 = Math.max(0, var1 - var3);
          int var6 = Math.min(this.field285, var3 + var1);
          int var7 = Math.max(0, var2 - var3);
@@ -66,8 +66,8 @@ public class class32 {
       garbageValue = "-1777051554"
    )
    int method596(int var1, int var2) {
-      if (var1 >= 0 && var2 >= 0 && var1 < this.field285 && var2 < this.field282) {
-         if (this.field283[var1][var2] == 0) {
+      if(var1 >= 0 && var2 >= 0 && var1 < this.field285 && var2 < this.field282) {
+         if(this.field283[var1][var2] == 0) {
             return 0;
          } else {
             int var3 = this.field286[var1][var2] / this.field281[var1][var2];
@@ -86,8 +86,8 @@ public class class32 {
       garbageValue = "-95"
    )
    public static void method590(String var0, boolean var1, String var2, boolean var3) {
-      if (var1) {
-         if (!var3 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+      if(var1) {
+         if(!var3 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
             try {
                Desktop.getDesktop().browse(new URI(var0));
                return;
@@ -96,12 +96,12 @@ public class class32 {
             }
          }
 
-         if (class45.field368.startsWith("win") && !var3) {
+         if(class45.field368.startsWith("win") && !var3) {
             class178.method3534(var0, 0, "openjs");
             return;
          }
 
-         if (class45.field368.startsWith("mac")) {
+         if(class45.field368.startsWith("mac")) {
             class178.method3534(var0, 1, var2);
             return;
          }
@@ -126,7 +126,7 @@ public class class32 {
       label56:
       while(true) {
          int var6 = var4.method3583();
-         if (var6 == 0) {
+         if(var6 == 0) {
             return var3;
          }
 
@@ -138,7 +138,7 @@ public class class32 {
             int var9;
             while(!var8) {
                var9 = var4.getUSmart();
-               if (var9 == 0) {
+               if(var9 == 0) {
                   continue label56;
                }
 
@@ -148,10 +148,10 @@ public class class32 {
                int var12 = var4.readUnsignedByte() >> 2;
                int var13 = var11 + var1;
                int var14 = var10 + var2;
-               if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
+               if(var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
                   ObjectComposition var15 = SoundTaskDataProvider.getObjectDefinition(var5);
-                  if (var12 != 22 || !Client.lowMemory || var15.int1 != 0 || var15.clipType == 1 || var15.obstructsGround) {
-                     if (!var15.method5046()) {
+                  if(var12 != 22 || !Client.lowMemory || var15.int1 != 0 || var15.clipType == 1 || var15.obstructsGround) {
+                     if(!var15.method5046()) {
                         ++Client.field647;
                         var3 = false;
                      }
@@ -162,7 +162,7 @@ public class class32 {
             }
 
             var9 = var4.getUSmart();
-            if (var9 == 0) {
+            if(var9 == 0) {
                break;
             }
 
@@ -178,23 +178,23 @@ public class class32 {
    )
    @Export("drawLoginScreen")
    static void drawLoginScreen(Font var0, Font var1, Font var2, boolean var3) {
-      if (var3) {
+      if(var3) {
          class78.field1104 = (class9.canvasWidth - 765) / 2;
          class78.loginWindowX = class78.field1104 + 202;
          class78.field1112 = class78.loginWindowX + 180;
       }
 
-      if (class78.worldSelectShown) {
+      if(class78.worldSelectShown) {
          Varcs.method1960(var0, var1);
       } else {
-         if (var3) {
+         if(var3) {
             class78.field1107.method5893(class78.field1104, 0);
             class24.field224.method5893(class78.field1104 + 382, 0);
             class78.logoSprite.method5873(class78.field1104 + 382 - class78.logoSprite.width / 2, 18);
          }
 
          int var4;
-         if (Client.gameState == 0 || Client.gameState == 5) {
+         if(Client.gameState == 0 || Client.gameState == 5) {
             byte var5 = 20;
             var0.drawTextCentered("RuneScape is loading - please wait...", class78.loginWindowX + 180, 245 - var5, 16777215, -1);
             var4 = 253 - var5;
@@ -209,7 +209,7 @@ public class class32 {
          int var7;
          short var8;
          String var15;
-         if (Client.gameState == 20) {
+         if(Client.gameState == 20) {
             class78.field1105.method5873(class78.loginWindowX + 180 - class78.field1105.width / 2, 271 - class78.field1105.height / 2);
             var6 = 201;
             var0.drawTextCentered(class78.loginMessage1, class78.loginWindowX + 180, var6, 16776960, 0);
@@ -219,7 +219,7 @@ public class class32 {
             var0.drawTextCentered(class78.loginMessage3, class78.loginWindowX + 180, var7, 16776960, 0);
             var7 += 15;
             var7 += 7;
-            if (class78.loginIndex != 4) {
+            if(class78.loginIndex != 4) {
                var0.method5541("Login: ", class78.loginWindowX + 180 - 110, var7, 16777215, 0);
                var8 = 200;
 
@@ -234,10 +234,10 @@ public class class32 {
             }
          }
 
-         if (Client.gameState == 10 || Client.gameState == 11) {
+         if(Client.gameState == 10 || Client.gameState == 11) {
             class78.field1105.method5873(class78.loginWindowX, 171);
             short var9;
-            if (class78.loginIndex == 0) {
+            if(class78.loginIndex == 0) {
                var6 = 251;
                var0.drawTextCentered("Welcome to RuneScape", class78.loginWindowX + 180, var6, 16776960, 0);
                var7 = var6 + 30;
@@ -248,7 +248,7 @@ public class class32 {
                var4 = class78.loginWindowX + 180 + 80;
                class78.field1113.method5873(var4 - 73, var9 - 20);
                var0.method5595("Existing User", var4 - 73, var9 - 20, 144, 40, 16777215, 0, 1, 1, 0);
-            } else if (class78.loginIndex == 1) {
+            } else if(class78.loginIndex == 1) {
                var0.drawTextCentered(class78.Login_response0, class78.loginWindowX + 180, 201, 16776960, 0);
                var6 = 236;
                var0.drawTextCentered(class78.loginMessage1, class78.loginWindowX + 180, var6, 16777215, 0);
@@ -266,7 +266,7 @@ public class class32 {
                var0.drawTextCentered("Cancel", var4, var9 + 5, 16777215, 0);
             } else {
                int var10;
-               if (class78.loginIndex == 2) {
+               if(class78.loginIndex == 2) {
                   var6 = 201;
                   var0.drawTextCentered(class78.loginMessage1, class78.field1112, var6, 16776960, 0);
                   var7 = var6 + 15;
@@ -282,9 +282,9 @@ public class class32 {
                      ;
                   }
 
-                  var0.method5541(FontTypeFace.appendTags(var15) + (class78.currentLoginField == 0 & Client.gameCycle % 40 < 20 ? class50.getColTags(16776960) + "|" : ""), class78.field1112 - 70, var7, 16777215, 0);
+                  var0.method5541(FontTypeFace.appendTags(var15) + (class78.currentLoginField == 0 & Client.gameCycle % 40 < 20?class50.getColTags(16776960) + "|":""), class78.field1112 - 70, var7, 16777215, 0);
                   var7 += 15;
-                  var0.method5541("Password: " + TextureProvider.method2592(class78.password) + (class78.currentLoginField == 1 & Client.gameCycle % 40 < 20 ? class50.getColTags(16776960) + "|" : ""), class78.field1112 - 108, var7, 16777215, 0);
+                  var0.method5541("Password: " + TextureProvider.method2592(class78.password) + (class78.currentLoginField == 1 & Client.gameCycle % 40 < 20?class50.getColTags(16776960) + "|":""), class78.field1112 - 108, var7, 16777215, 0);
                   var7 += 15;
                   var6 = 277;
                   var10 = class78.field1112 + -117;
@@ -307,7 +307,7 @@ public class class32 {
                   var0.drawTextCentered("Cancel", var20, var21 + 5, 16777215, 0);
                   var6 = 357;
                   var1.drawTextCentered("Forgotten your password? <col=ffffff>Click here.", class78.field1112, var6, 16776960, 0);
-               } else if (class78.loginIndex == 3) {
+               } else if(class78.loginIndex == 3) {
                   var6 = 201;
                   var0.drawTextCentered("Invalid username or password.", class78.loginWindowX + 180, var6, 16776960, 0);
                   var7 = var6 + 20;
@@ -323,7 +323,7 @@ public class class32 {
                   var9 = 326;
                   class78.field1113.method5873(var4 - 73, var9 - 20);
                   var2.drawTextCentered("Forgotten password?", var4, var9 + 5, 16777215, 0);
-               } else if (class78.loginIndex == 4) {
+               } else if(class78.loginIndex == 4) {
                   var0.drawTextCentered("Authenticator", class78.loginWindowX + 180, 201, 16776960, 0);
                   var6 = 236;
                   var0.drawTextCentered(class78.loginMessage1, class78.loginWindowX + 180, var6, 16777215, 0);
@@ -332,7 +332,7 @@ public class class32 {
                   var7 += 15;
                   var0.drawTextCentered(class78.loginMessage3, class78.loginWindowX + 180, var7, 16777215, 0);
                   var7 += 15;
-                  var0.method5541("PIN: " + TextureProvider.method2592(GameEngine.field414) + (Client.gameCycle % 40 < 20 ? class50.getColTags(16776960) + "|" : ""), class78.loginWindowX + 180 - 108, var7, 16777215, 0);
+                  var0.method5541("PIN: " + TextureProvider.method2592(GameEngine.field414) + (Client.gameCycle % 40 < 20?class50.getColTags(16776960) + "|":""), class78.loginWindowX + 180 - 108, var7, 16777215, 0);
                   var7 -= 8;
                   var0.method5541("Trust this computer", class78.loginWindowX + 180 - 9, var7, 16776960, 0);
                   var7 += 15;
@@ -340,7 +340,7 @@ public class class32 {
                   var4 = 180 + class78.loginWindowX - 9 + var0.getTextWidth("for 30 days: ") + 15;
                   int var17 = var7 - var0.verticalSpace;
                   IndexedSprite var12;
-                  if (class78.field1132) {
+                  if(class78.field1132) {
                      var12 = class78.field1110;
                   } else {
                      var12 = class78.field1109;
@@ -355,9 +355,9 @@ public class class32 {
                   var13 = class78.loginWindowX + 180 + 80;
                   class78.field1113.method5873(var13 - 73, var14 - 20);
                   var0.drawTextCentered("Cancel", var13, var14 + 5, 16777215, 0);
-                  var1.drawTextCentered("<u=ff>Can't Log In?</u>", class78.loginWindowX + 180, var14 + 36, 255, 0);
-               } else if (class78.loginIndex != 5) {
-                  if (class78.loginIndex == 6) {
+                  var1.drawTextCentered("<u=ff>Can\'t Log In?</u>", class78.loginWindowX + 180, var14 + 36, 255, 0);
+               } else if(class78.loginIndex != 5) {
+                  if(class78.loginIndex == 6) {
                      var6 = 201;
                      var0.drawTextCentered(class78.loginMessage1, class78.loginWindowX + 180, var6, 16776960, 0);
                      var7 = var6 + 15;
@@ -369,9 +369,9 @@ public class class32 {
                      var9 = 321;
                      class78.field1113.method5873(var4 - 73, var9 - 20);
                      var0.drawTextCentered("Back", var4, var9 + 5, 16777215, 0);
-                  } else if (class78.loginIndex == 7) {
+                  } else if(class78.loginIndex == 7) {
                      var6 = 216;
-                     var0.drawTextCentered("Your date of birth isn't set.", class78.loginWindowX + 180, var6, 16776960, 0);
+                     var0.drawTextCentered("Your date of birth isn\'t set.", class78.loginWindowX + 180, var6, 16776960, 0);
                      var7 = var6 + 15;
                      var2.drawTextCentered("Please verify your account status by", class78.loginWindowX + 180, var7, 16776960, 0);
                      var7 += 15;
@@ -384,7 +384,7 @@ public class class32 {
                      var4 = class78.loginWindowX + 180 + 80;
                      class78.field1113.method5873(var4 - 73, var9 - 20);
                      var0.drawTextCentered("Back", var4, var9 + 5, 16777215, 0);
-                  } else if (class78.loginIndex == 8) {
+                  } else if(class78.loginIndex == 8) {
                      var6 = 216;
                      var0.drawTextCentered("Sorry, but your account is not eligible to play.", class78.loginWindowX + 180, var6, 16776960, 0);
                      var7 = var6 + 15;
@@ -417,7 +417,7 @@ public class class32 {
                      ;
                   }
 
-                  var0.method5541(FontTypeFace.appendTags(var15) + (Client.gameCycle % 40 < 20 ? class50.getColTags(16776960) + "|" : ""), class78.loginWindowX + 180 - 34, var7, 16777215, 0);
+                  var0.method5541(FontTypeFace.appendTags(var15) + (Client.gameCycle % 40 < 20?class50.getColTags(16776960) + "|":""), class78.loginWindowX + 180 - 34, var7, 16777215, 0);
                   var7 += 15;
                   var10 = class78.loginWindowX + 180 - 80;
                   short var11 = 321;
@@ -430,22 +430,22 @@ public class class32 {
             }
          }
 
-         if (class78.field1118 > 0) {
+         if(class78.field1118 > 0) {
             class43.method791(class78.field1118);
             class78.field1118 = 0;
          }
 
          MessageNode.method1105();
-         WidgetNode.titlemuteSprite[ScriptState.preferences.muted ? 1 : 0].method5873(class78.field1104 + 765 - 40, 463);
-         if (Client.gameState > 5 && Client.languageId == 0) {
-            if (Occluder.field1844 != null) {
+         WidgetNode.titlemuteSprite[ScriptState.preferences.muted?1:0].method5873(class78.field1104 + 765 - 40, 463);
+         if(Client.gameState > 5 && Client.languageId == 0) {
+            if(Occluder.field1844 != null) {
                var7 = class78.field1104 + 5;
                var8 = 463;
                byte var16 = 100;
                byte var19 = 35;
                Occluder.field1844.method5873(var7, var8);
                var0.drawTextCentered("World " + Client.world, var16 / 2 + var7, var19 / 2 + var8 - 2, 16777215, 0);
-               if (World.listFetcher != null) {
+               if(World.listFetcher != null) {
                   var1.drawTextCentered("Loading...", var16 / 2 + var7, var19 / 2 + var8 + 12, 16777215, 0);
                } else {
                   var1.drawTextCentered("Click to switch", var16 / 2 + var7, var19 / 2 + var8 + 12, 16777215, 0);
@@ -465,50 +465,50 @@ public class class32 {
    )
    static int method600(int var0, Script var1, boolean var2) {
       Widget var3 = OwnWorldComparator.getWidget(class69.intStack[--class45.intStackSize]);
-      if (var0 == 2600) {
+      if(var0 == 2600) {
          class69.intStack[++class45.intStackSize - 1] = var3.scrollX;
          return 1;
-      } else if (var0 == 2601) {
+      } else if(var0 == 2601) {
          class69.intStack[++class45.intStackSize - 1] = var3.scrollY;
          return 1;
-      } else if (var0 == 2602) {
+      } else if(var0 == 2602) {
          class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3.text;
          return 1;
-      } else if (var0 == 2603) {
+      } else if(var0 == 2603) {
          class69.intStack[++class45.intStackSize - 1] = var3.scrollWidth;
          return 1;
-      } else if (var0 == 2604) {
+      } else if(var0 == 2604) {
          class69.intStack[++class45.intStackSize - 1] = var3.scrollHeight;
          return 1;
-      } else if (var0 == 2605) {
+      } else if(var0 == 2605) {
          class69.intStack[++class45.intStackSize - 1] = var3.modelZoom;
          return 1;
-      } else if (var0 == 2606) {
+      } else if(var0 == 2606) {
          class69.intStack[++class45.intStackSize - 1] = var3.rotationX;
          return 1;
-      } else if (var0 == 2607) {
+      } else if(var0 == 2607) {
          class69.intStack[++class45.intStackSize - 1] = var3.rotationY;
          return 1;
-      } else if (var0 == 2608) {
+      } else if(var0 == 2608) {
          class69.intStack[++class45.intStackSize - 1] = var3.rotationZ;
          return 1;
-      } else if (var0 == 2609) {
+      } else if(var0 == 2609) {
          class69.intStack[++class45.intStackSize - 1] = var3.opacity;
          return 1;
-      } else if (var0 == 2610) {
+      } else if(var0 == 2610) {
          class69.intStack[++class45.intStackSize - 1] = var3.field2649;
          return 1;
-      } else if (var0 == 2611) {
+      } else if(var0 == 2611) {
          class69.intStack[++class45.intStackSize - 1] = var3.textColor;
          return 1;
-      } else if (var0 == 2612) {
+      } else if(var0 == 2612) {
          class69.intStack[++class45.intStackSize - 1] = var3.field2640;
          return 1;
-      } else if (var0 == 2613) {
+      } else if(var0 == 2613) {
          class69.intStack[++class45.intStackSize - 1] = var3.field2700.rsOrdinal();
          return 1;
-      } else if (var0 == 2614) {
-         class69.intStack[++class45.intStackSize - 1] = var3.field2679 ? 1 : 0;
+      } else if(var0 == 2614) {
+         class69.intStack[++class45.intStackSize - 1] = var3.field2679?1:0;
          return 1;
       } else {
          return 2;
@@ -535,24 +535,24 @@ public class class32 {
       garbageValue = "-1322367604"
    )
    static void method586(Player var0, boolean var1) {
-      if (var0 != null && var0.hasConfig() && !var0.hidden) {
+      if(var0 != null && var0.hasConfig() && !var0.hidden) {
          var0.isLowDetail = false;
-         if ((Client.lowMemory && class81.playerIndexesCount > 50 || class81.playerIndexesCount > 200) && var1 && var0.poseAnimation == var0.idlePoseAnimation) {
+         if((Client.lowMemory && class81.playerIndexesCount > 50 || class81.playerIndexesCount > 200) && var1 && var0.poseAnimation == var0.idlePoseAnimation) {
             var0.isLowDetail = true;
          }
 
          int var2 = var0.x >> 7;
          int var3 = var0.y >> 7;
-         if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+         if(var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
             long var4 = class59.method1129(0, 0, 0, false, var0.playerId);
-            if (var0.model != null && Client.gameCycle >= var0.animationCycleStart && Client.gameCycle < var0.animationCycleEnd) {
+            if(var0.model != null && Client.gameCycle >= var0.animationCycleStart && Client.gameCycle < var0.animationCycleEnd) {
                var0.isLowDetail = false;
                var0.field572 = class264.getTileHeight(var0.x, var0.y, class192.plane);
                var0.field905 = Client.gameCycle;
                ScriptEvent.region.method2971(class192.plane, var0.x, var0.y, var0.field572, 60, var0, var0.angle, var4, var0.field568, var0.field573, var0.field577, var0.field578);
             } else {
-               if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
-                  if (Client.field689[var2][var3] == Client.field690) {
+               if((var0.x & 127) == 64 && (var0.y & 127) == 64) {
+                  if(Client.field689[var2][var3] == Client.field690) {
                      return;
                   }
 
@@ -575,10 +575,10 @@ public class class32 {
    )
    static final void method595() {
       for(GraphicsObject var0 = (GraphicsObject)Client.graphicsObjectDeque.getFront(); var0 != null; var0 = (GraphicsObject)Client.graphicsObjectDeque.getNext()) {
-         if (var0.level == class192.plane && !var0.finished) {
-            if (Client.gameCycle >= var0.startCycle) {
+         if(var0.level == class192.plane && !var0.finished) {
+            if(Client.gameCycle >= var0.startCycle) {
                var0.method1812(Client.field654);
-               if (var0.finished) {
+               if(var0.finished) {
                   var0.unlink();
                } else {
                   ScriptEvent.region.method2945(var0.level, var0.x, var0.y, var0.height, 60, var0, 0, -1L, false);
@@ -598,6 +598,6 @@ public class class32 {
    )
    static final String method598(int var0, int var1) {
       int var2 = var1 - var0;
-      return var2 < -9 ? class50.getColTags(16711680) : (var2 < -6 ? class50.getColTags(16723968) : (var2 < -3 ? class50.getColTags(16740352) : (var2 < 0 ? class50.getColTags(16756736) : (var2 > 9 ? class50.getColTags(65280) : (var2 > 6 ? class50.getColTags(4259584) : (var2 > 3 ? class50.getColTags(8453888) : (var2 > 0 ? class50.getColTags(12648192) : class50.getColTags(16776960))))))));
+      return var2 < -9?class50.getColTags(16711680):(var2 < -6?class50.getColTags(16723968):(var2 < -3?class50.getColTags(16740352):(var2 < 0?class50.getColTags(16756736):(var2 > 9?class50.getColTags(65280):(var2 > 6?class50.getColTags(4259584):(var2 > 3?class50.getColTags(8453888):(var2 > 0?class50.getColTags(12648192):class50.getColTags(16776960))))))));
    }
 }

@@ -4,12 +4,12 @@ import net.runelite.mapping.ObfuscatedName;
 public class class193 {
    @ObfuscatedName("w")
    public static void method3951(byte[] var0, int var1, byte[] var2, int var3, int var4) {
-      if (var2 == var0) {
-         if (var3 == var1) {
+      if(var2 == var0) {
+         if(var3 == var1) {
             return;
          }
 
-         if (var3 > var1 && var3 < var4 + var1) {
+         if(var3 > var1 && var3 < var4 + var1) {
             --var4;
             var1 += var4;
             var3 += var4;

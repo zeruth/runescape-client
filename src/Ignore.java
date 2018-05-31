@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
@@ -50,6 +53,36 @@ public class Ignore extends Nameable {
       garbageValue = "-2039609224"
    )
    public static void method5431() {
-      // $FF: Couldn't be decompiled
+      try {
+         File var0 = new File(FaceNormal.userHome, "random.dat");
+         int var1;
+         if(var0.exists()) {
+            class155.randomDat = new CacheFile(new FileOnDisk(var0, "rw", 25L), 24, 0);
+         } else {
+            label34:
+            for(int var2 = 0; var2 < class155.field1995.length; ++var2) {
+               for(var1 = 0; var1 < class155.cacheLocations.length; ++var1) {
+                  File var3 = new File(class155.cacheLocations[var1] + class155.field1995[var2] + File.separatorChar + "random.dat");
+                  if(var3.exists()) {
+                     class155.randomDat = new CacheFile(new FileOnDisk(var3, "rw", 25L), 24, 0);
+                     break label34;
+                  }
+               }
+            }
+         }
+
+         if(class155.randomDat == null) {
+            RandomAccessFile var5 = new RandomAccessFile(var0, "rw");
+            var1 = var5.read();
+            var5.seek(0L);
+            var5.write(var1);
+            var5.seek(0L);
+            var5.close();
+            class155.randomDat = new CacheFile(new FileOnDisk(var0, "rw", 25L), 24, 0);
+         }
+      } catch (IOException var4) {
+         ;
+      }
+
    }
 }

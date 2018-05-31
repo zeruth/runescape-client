@@ -12,25 +12,25 @@ public class BuildType {
       signature = "Lip;"
    )
    @Export("RC")
-   static final BuildType RC = new BuildType("LIVE", 0);
+   static final BuildType RC;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lip;"
    )
    @Export("WIP")
-   static final BuildType WIP = new BuildType("BUILDLIVE", 3);
+   static final BuildType WIP;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lip;"
    )
    @Export("LIVE")
-   static final BuildType LIVE = new BuildType("RC", 1);
+   static final BuildType LIVE;
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lip;"
    )
    @Export("BUILD_LIVE")
-   static final BuildType BUILD_LIVE = new BuildType("WIP", 2);
+   static final BuildType BUILD_LIVE;
    @ObfuscatedName("f")
    @Export("identifier")
    public final String identifier;
@@ -39,6 +39,13 @@ public class BuildType {
       intValue = 1213546159
    )
    public final int field3149;
+
+   static {
+      RC = new BuildType("LIVE", 0);
+      WIP = new BuildType("BUILDLIVE", 3);
+      LIVE = new BuildType("RC", 1);
+      BUILD_LIVE = new BuildType("WIP", 2);
+   }
 
    BuildType(String var1, int var2) {
       this.identifier = var1;
@@ -52,7 +59,7 @@ public class BuildType {
    )
    static final void method4608(int var0, int var1, int var2, int var3) {
       for(int var4 = 0; var4 < Client.widgetCount; ++var4) {
-         if (Client.widgetPositionX[var4] + Client.widgetBoundsWidth[var4] > var0 && Client.widgetPositionX[var4] < var0 + var2 && Client.widgetPositionY[var4] + Client.widgetBoundsHeight[var4] > var1 && Client.widgetPositionY[var4] < var3 + var1) {
+         if(Client.widgetPositionX[var4] + Client.widgetBoundsWidth[var4] > var0 && Client.widgetPositionX[var4] < var0 + var2 && Client.widgetPositionY[var4] + Client.widgetBoundsHeight[var4] > var1 && Client.widgetPositionY[var4] < var3 + var1) {
             Client.field796[var4] = true;
          }
       }
@@ -65,7 +72,7 @@ public class BuildType {
       garbageValue = "-1551283972"
    )
    static final void method4609(int var0, int var1, int var2, int var3) {
-      if (Client.itemSelectionState == 0 && !Client.spellSelected) {
+      if(Client.itemSelectionState == 0 && !Client.spellSelected) {
          VertexNormal.addMenuEntry("Walk here", "", 23, 0, var0 - var2, var1 - var3);
       }
 
@@ -75,8 +82,8 @@ public class BuildType {
 
       while(true) {
          int var9 = class120.Viewport_entityCountAtMouse;
-         if (var8 >= var9) {
-            if (-1L != var4) {
+         if(var8 >= var9) {
+            if(-1L != var4) {
                var8 = (int)(var4 >>> 0 & 127L);
                var9 = UnitPriceComparator.method59(var4);
                Player var30 = Client.cachedPlayers[Client.field719];
@@ -87,7 +94,7 @@ public class BuildType {
          }
 
          long var10 = CacheFile.method2522(var8);
-         if (var6 != var10) {
+         if(var6 != var10) {
             label276: {
                var6 = var10;
                long var12 = class120.field1688[var8];
@@ -97,45 +104,45 @@ public class BuildType {
                int var16 = class59.method1122(var8);
                int var17 = class8.method93(class120.field1688[var8]);
                int var18 = var17;
-               if (var16 == 2 && ScriptEvent.region.method2931(class192.plane, var14, var15, var10) >= 0) {
+               if(var16 == 2 && ScriptEvent.region.method2931(class192.plane, var14, var15, var10) >= 0) {
                   ObjectComposition var19 = SoundTaskDataProvider.getObjectDefinition(var17);
-                  if (var19.impostorIds != null) {
+                  if(var19.impostorIds != null) {
                      var19 = var19.getImpostor();
                   }
 
-                  if (var19 == null) {
+                  if(var19 == null) {
                      break label276;
                   }
 
-                  if (Client.itemSelectionState == 1) {
+                  if(Client.itemSelectionState == 1) {
                      VertexNormal.addMenuEntry("Use", Client.lastSelectedItemName + " " + "->" + " " + class50.getColTags(65535) + var19.name, 1, var17, var14, var15);
-                  } else if (Client.spellSelected) {
-                     if ((class45.field373 & 4) == 4) {
+                  } else if(Client.spellSelected) {
+                     if((class45.field373 & 4) == 4) {
                         VertexNormal.addMenuEntry(Client.field750, Client.field751 + " " + "->" + " " + class50.getColTags(65535) + var19.name, 2, var17, var14, var15);
                      }
                   } else {
                      String[] var20 = var19.actions;
-                     if (var20 != null) {
+                     if(var20 != null) {
                         for(int var21 = 4; var21 >= 0; --var21) {
-                           if (var20[var21] != null) {
+                           if(var20[var21] != null) {
                               short var22 = 0;
-                              if (var21 == 0) {
+                              if(var21 == 0) {
                                  var22 = 3;
                               }
 
-                              if (var21 == 1) {
+                              if(var21 == 1) {
                                  var22 = 4;
                               }
 
-                              if (var21 == 2) {
+                              if(var21 == 2) {
                                  var22 = 5;
                               }
 
-                              if (var21 == 3) {
+                              if(var21 == 3) {
                                  var22 = 6;
                               }
 
-                              if (var21 == 4) {
+                              if(var21 == 4) {
                                  var22 = 1001;
                               }
 
@@ -153,16 +160,16 @@ public class BuildType {
                NPC var32;
                Player var33;
                int[] var35;
-               if (var16 == 1) {
+               if(var16 == 1) {
                   NPC var24 = Client.cachedNPCs[var18];
-                  if (var24 == null) {
+                  if(var24 == null) {
                      break label276;
                   }
 
-                  if (var24.composition.size == 1 && (var24.x & 127) == 64 && (var24.y & 127) == 64) {
+                  if(var24.composition.size == 1 && (var24.x & 127) == 64 && (var24.y & 127) == 64) {
                      for(var31 = 0; var31 < Client.npcIndexesCount; ++var31) {
                         var32 = Client.cachedNPCs[Client.npcIndices[var31]];
-                        if (var32 != null && var32 != var24 && var32.composition.size == 1 && var32.x == var24.x && var32.y == var24.y) {
+                        if(var32 != null && var32 != var24 && var32.composition.size == 1 && var32.x == var24.x && var32.y == var24.y) {
                            class184.method3829(var32.composition, Client.npcIndices[var31], var14, var15);
                         }
                      }
@@ -172,7 +179,7 @@ public class BuildType {
 
                      for(var23 = 0; var23 < var31; ++var23) {
                         var33 = Client.cachedPlayers[var35[var23]];
-                        if (var33 != null && var33.x == var24.x && var24.y == var33.y) {
+                        if(var33 != null && var33.x == var24.x && var24.y == var33.y) {
                            Varcs.method1942(var33, var35[var23], var14, var15);
                         }
                      }
@@ -181,16 +188,16 @@ public class BuildType {
                   class184.method3829(var24.composition, var18, var14, var15);
                }
 
-               if (var16 == 0) {
+               if(var16 == 0) {
                   Player var34 = Client.cachedPlayers[var18];
-                  if (var34 == null) {
+                  if(var34 == null) {
                      break label276;
                   }
 
-                  if ((var34.x & 127) == 64 && (var34.y & 127) == 64) {
+                  if((var34.x & 127) == 64 && (var34.y & 127) == 64) {
                      for(var31 = 0; var31 < Client.npcIndexesCount; ++var31) {
                         var32 = Client.cachedNPCs[Client.npcIndices[var31]];
-                        if (var32 != null && var32.composition.size == 1 && var32.x == var34.x && var32.y == var34.y) {
+                        if(var32 != null && var32.composition.size == 1 && var32.x == var34.x && var32.y == var34.y) {
                            class184.method3829(var32.composition, Client.npcIndices[var31], var14, var15);
                         }
                      }
@@ -200,58 +207,58 @@ public class BuildType {
 
                      for(var23 = 0; var23 < var31; ++var23) {
                         var33 = Client.cachedPlayers[var35[var23]];
-                        if (var33 != null && var33 != var34 && var33.x == var34.x && var33.y == var34.y) {
+                        if(var33 != null && var33 != var34 && var33.x == var34.x && var33.y == var34.y) {
                            Varcs.method1942(var33, var35[var23], var14, var15);
                         }
                      }
                   }
 
-                  if (var18 != Client.field719) {
+                  if(var18 != Client.field719) {
                      Varcs.method1942(var34, var18, var14, var15);
                   } else {
                      var4 = var10;
                   }
                }
 
-               if (var16 == 3) {
+               if(var16 == 3) {
                   Deque var36 = Client.groundItemDeque[class192.plane][var14][var15];
-                  if (var36 != null) {
+                  if(var36 != null) {
                      for(Item var25 = (Item)var36.getTail(); var25 != null; var25 = (Item)var36.getPrevious()) {
                         ItemComposition var26 = class120.getItemDefinition(var25.id);
-                        if (Client.itemSelectionState == 1) {
+                        if(Client.itemSelectionState == 1) {
                            VertexNormal.addMenuEntry("Use", Client.lastSelectedItemName + " " + "->" + " " + class50.getColTags(16748608) + var26.name, 16, var25.id, var14, var15);
-                        } else if (Client.spellSelected) {
-                           if ((class45.field373 & 1) == 1) {
+                        } else if(Client.spellSelected) {
+                           if((class45.field373 & 1) == 1) {
                               VertexNormal.addMenuEntry(Client.field750, Client.field751 + " " + "->" + " " + class50.getColTags(16748608) + var26.name, 17, var25.id, var14, var15);
                            }
                         } else {
                            String[] var27 = var26.groundActions;
 
                            for(int var28 = 4; var28 >= 0; --var28) {
-                              if (var27 != null && var27[var28] != null) {
+                              if(var27 != null && var27[var28] != null) {
                                  byte var29 = 0;
-                                 if (var28 == 0) {
+                                 if(var28 == 0) {
                                     var29 = 18;
                                  }
 
-                                 if (var28 == 1) {
+                                 if(var28 == 1) {
                                     var29 = 19;
                                  }
 
-                                 if (var28 == 2) {
+                                 if(var28 == 2) {
                                     var29 = 20;
                                  }
 
-                                 if (var28 == 3) {
+                                 if(var28 == 3) {
                                     var29 = 21;
                                  }
 
-                                 if (var28 == 4) {
+                                 if(var28 == 4) {
                                     var29 = 22;
                                  }
 
                                  VertexNormal.addMenuEntry(var27[var28], class50.getColTags(16748608) + var26.name, var29, var25.id, var14, var15);
-                              } else if (var28 == 2) {
+                              } else if(var28 == 2) {
                                  VertexNormal.addMenuEntry("Take", class50.getColTags(16748608) + var26.name, 20, var25.id, var14, var15);
                               }
                            }

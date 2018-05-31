@@ -46,19 +46,19 @@ public class WorldMapType2 implements WorldMapSectionBase {
       garbageValue = "-1657983190"
    )
    public void vmethod692(WorldMapData var1) {
-      if (var1.minX > this.field243) {
+      if(var1.minX > this.field243) {
          var1.minX = this.field243;
       }
 
-      if (var1.field177 < this.field243) {
+      if(var1.field177 < this.field243) {
          var1.field177 = this.field243;
       }
 
-      if (var1.minY > this.field242) {
+      if(var1.minY > this.field242) {
          var1.minY = this.field242;
       }
 
-      if (var1.field179 < this.field242) {
+      if(var1.field179 < this.field242) {
          var1.field179 = this.field242;
       }
 
@@ -70,7 +70,7 @@ public class WorldMapType2 implements WorldMapSectionBase {
       garbageValue = "1329615536"
    )
    public boolean containsCoord(int var1, int var2, int var3) {
-      return var1 >= this.field239 && var1 < this.field239 + this.field240 ? var2 >> 6 == this.field241 && var3 >> 6 == this.field244 : false;
+      return var1 >= this.field239 && var1 < this.field239 + this.field240?var2 >> 6 == this.field241 && var3 >> 6 == this.field244:false;
    }
 
    @ObfuscatedName("q")
@@ -88,7 +88,7 @@ public class WorldMapType2 implements WorldMapSectionBase {
       garbageValue = "-1657440355"
    )
    public int[] vmethod712(int var1, int var2, int var3) {
-      if (!this.containsCoord(var1, var2, var3)) {
+      if(!this.containsCoord(var1, var2, var3)) {
          return null;
       } else {
          int[] var4 = new int[]{this.field243 * 64 - this.field241 * 64 + var2, var3 + (this.field242 * 64 - this.field244 * 64)};
@@ -102,7 +102,7 @@ public class WorldMapType2 implements WorldMapSectionBase {
       garbageValue = "2126255726"
    )
    public Coordinates vmethod707(int var1, int var2) {
-      if (!this.vmethod694(var1, var2)) {
+      if(!this.vmethod694(var1, var2)) {
          return null;
       } else {
          int var3 = this.field241 * 64 - this.field243 * 64 + var1;
@@ -148,24 +148,24 @@ public class WorldMapType2 implements WorldMapSectionBase {
       int var3 = (var1 << 8) + var0;
       Script var4 = (Script)Script.field1214.get((long)(var3 << 16));
       Script var5;
-      if (var4 != null) {
+      if(var4 != null) {
          var5 = var4;
       } else {
          String var6 = String.valueOf(var3);
          int var7 = TotalQuantityComparator.indexScripts.getFile(var6);
-         if (var7 == -1) {
+         if(var7 == -1) {
             var5 = null;
          } else {
             label57: {
                byte[] var8 = TotalQuantityComparator.indexScripts.takeRecordFlat(var7);
-               if (var8 != null) {
-                  if (var8.length <= 1) {
+               if(var8 != null) {
+                  if(var8.length <= 1) {
                      var5 = null;
                      break label57;
                   }
 
                   var4 = class143.newScript(var8);
-                  if (var4 != null) {
+                  if(var4 != null) {
                      Script.field1214.put(var4, (long)(var3 << 16));
                      var5 = var4;
                      break label57;
@@ -177,31 +177,31 @@ public class WorldMapType2 implements WorldMapSectionBase {
          }
       }
 
-      if (var5 != null) {
+      if(var5 != null) {
          return var5;
       } else {
-         int var12 = var0 + (var2 + '鱀' << 8);
+         int var12 = var0 + (var2 + 40000 << 8);
          Script var13 = (Script)Script.field1214.get((long)(var12 << 16));
          Script var14;
-         if (var13 != null) {
+         if(var13 != null) {
             var14 = var13;
          } else {
             String var9 = String.valueOf(var12);
             int var10 = TotalQuantityComparator.indexScripts.getFile(var9);
-            if (var10 == -1) {
+            if(var10 == -1) {
                var14 = null;
             } else {
                byte[] var11 = TotalQuantityComparator.indexScripts.takeRecordFlat(var10);
-               if (var11 != null) {
-                  if (var11.length <= 1) {
+               if(var11 != null) {
+                  if(var11.length <= 1) {
                      var14 = null;
-                     return var14 != null ? var14 : null;
+                     return var14 != null?var14:null;
                   }
 
                   var13 = class143.newScript(var11);
-                  if (var13 != null) {
+                  if(var13 != null) {
                      Script.field1214.put(var13, (long)(var12 << 16));
-                     return var13 != null ? var13 : null;
+                     return var13 != null?var13:null;
                   }
                }
 
@@ -209,7 +209,7 @@ public class WorldMapType2 implements WorldMapSectionBase {
             }
          }
 
-         return var14 != null ? var14 : null;
+         return var14 != null?var14:null;
       }
    }
 
@@ -220,11 +220,11 @@ public class WorldMapType2 implements WorldMapSectionBase {
    )
    @Export("toByteArray")
    public static byte[] toByteArray(Object var0, boolean var1) {
-      if (var0 == null) {
+      if(var0 == null) {
          return null;
-      } else if (var0 instanceof byte[]) {
+      } else if(var0 instanceof byte[]) {
          byte[] var5 = (byte[])var0;
-         if (var1) {
+         if(var1) {
             int var3 = var5.length;
             byte[] var4 = new byte[var3];
             System.arraycopy(var5, 0, var4, 0, var3);
@@ -232,7 +232,7 @@ public class WorldMapType2 implements WorldMapSectionBase {
          } else {
             return var5;
          }
-      } else if (var0 instanceof AbstractByteBuffer) {
+      } else if(var0 instanceof AbstractByteBuffer) {
          AbstractByteBuffer var2 = (AbstractByteBuffer)var0;
          return var2.get();
       } else {
@@ -246,7 +246,7 @@ public class WorldMapType2 implements WorldMapSectionBase {
       garbageValue = "-54"
    )
    static final String method491(int var0) {
-      return var0 < 999999999 ? Integer.toString(var0) : "*";
+      return var0 < 999999999?Integer.toString(var0):"*";
    }
 
    @ObfuscatedName("jh")
@@ -255,7 +255,7 @@ public class WorldMapType2 implements WorldMapSectionBase {
       garbageValue = "-789706794"
    )
    static final void method498(int var0) {
-      if (GameCanvas.loadWidget(var0)) {
+      if(GameCanvas.loadWidget(var0)) {
          ItemComposition.method5125(Widget.widgets[var0], -1);
       }
 

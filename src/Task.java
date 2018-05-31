@@ -15,7 +15,7 @@ public class Task {
    Task task;
    @ObfuscatedName("f")
    @Export("status")
-   public volatile int status = 0;
+   public volatile int status;
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = -759807313
@@ -31,4 +31,8 @@ public class Task {
    @ObfuscatedName("j")
    @Export("value")
    public volatile Object value;
+
+   Task() {
+      this.status = 0;
+   }
 }

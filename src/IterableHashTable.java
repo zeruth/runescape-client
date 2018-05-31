@@ -30,9 +30,10 @@ public final class IterableHashTable implements Iterable {
    Node tail;
    @ObfuscatedName("f")
    @Export("index")
-   int index = 0;
+   int index;
 
    public IterableHashTable(int var1) {
+      this.index = 0;
       this.size = var1;
       this.buckets = new Node[var1];
 
@@ -53,7 +54,7 @@ public final class IterableHashTable implements Iterable {
       Node var3 = this.buckets[(int)(var1 & (long)(this.size - 1))];
 
       for(this.head = var3.next; var3 != this.head; this.head = this.head.next) {
-         if (this.head.hash == var1) {
+         if(this.head.hash == var1) {
             Node var4 = this.head;
             this.head = this.head.next;
             return var4;
@@ -70,7 +71,7 @@ public final class IterableHashTable implements Iterable {
    )
    @Export("put")
    public void put(Node var1, long var2) {
-      if (var1.previous != null) {
+      if(var1.previous != null) {
          var1.unlink();
       }
 
@@ -90,7 +91,7 @@ public final class IterableHashTable implements Iterable {
 
          while(true) {
             Node var3 = var2.next;
-            if (var3 == var2) {
+            if(var3 == var2) {
                break;
             }
 
@@ -119,14 +120,14 @@ public final class IterableHashTable implements Iterable {
    @Export("getTail")
    public Node getTail() {
       Node var1;
-      if (this.index > 0 && this.buckets[this.index - 1] != this.tail) {
+      if(this.index > 0 && this.buckets[this.index - 1] != this.tail) {
          var1 = this.tail;
          this.tail = var1.next;
          return var1;
       } else {
          while(this.index < this.size) {
             var1 = this.buckets[this.index++].next;
-            if (var1 != this.buckets[this.index - 1]) {
+            if(var1 != this.buckets[this.index - 1]) {
                this.tail = var1.next;
                return var1;
             }

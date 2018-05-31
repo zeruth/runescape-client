@@ -39,7 +39,7 @@ public final class SceneTilePaint {
    int texture;
    @ObfuscatedName("n")
    @Export("flatShade")
-   boolean flatShade = true;
+   boolean flatShade;
    @ObfuscatedName("h")
    @ObfuscatedGetter(
       intValue = 1234806617
@@ -48,6 +48,7 @@ public final class SceneTilePaint {
    int rgb;
 
    SceneTilePaint(int var1, int var2, int var3, int var4, int var5, int var6, boolean var7) {
+      this.flatShade = true;
       this.swColor = var1;
       this.seColor = var2;
       this.neColor = var3;
@@ -63,7 +64,7 @@ public final class SceneTilePaint {
       garbageValue = "711248926"
    )
    public static void method2897(int[] var0, int[] var1) {
-      if (var0 != null && var1 != null) {
+      if(var0 != null && var1 != null) {
          class78.field1123 = var0;
          class183.field2370 = new int[var0.length];
          class183.field2373 = new byte[var0.length][][];
@@ -90,24 +91,24 @@ public final class SceneTilePaint {
 
       for(int var6 = 0; var6 < var5.length; ++var6) {
          byte[] var7 = var0.getChild(var2, var5[var6]);
-         if (var7 == null) {
+         if(var7 == null) {
             var4 = false;
          } else {
             int var8 = (var7[0] & 255) << 8 | var7[1] & 255;
             byte[] var9;
-            if (var3) {
+            if(var3) {
                var9 = var1.getChild(0, var8);
             } else {
                var9 = var1.getChild(var8, 0);
             }
 
-            if (var9 == null) {
+            if(var9 == null) {
                var4 = false;
             }
          }
       }
 
-      if (!var4) {
+      if(!var4) {
          return null;
       } else {
          try {
@@ -124,7 +125,7 @@ public final class SceneTilePaint {
       garbageValue = "-2125"
    )
    public static String method2898(CharSequence var0, JagexLoginType var1) {
-      if (var0 == null) {
+      if(var0 == null) {
          return null;
       } else {
          int var2 = 0;
@@ -133,7 +134,7 @@ public final class SceneTilePaint {
          for(var3 = var0.length(); var2 < var3; ++var2) {
             char var4 = var0.charAt(var2);
             boolean var5 = var4 == 160 || var4 == ' ' || var4 == '_' || var4 == '-';
-            if (!var5) {
+            if(!var5) {
                break;
             }
          }
@@ -143,15 +144,15 @@ public final class SceneTilePaint {
          }
 
          int var12 = var3 - var2;
-         if (var12 >= 1 && var12 <= class158.method3317(var1)) {
+         if(var12 >= 1 && var12 <= class158.method3317(var1)) {
             StringBuilder var13 = new StringBuilder(var12);
 
             for(int var6 = var2; var6 < var3; ++var6) {
                char var7 = var0.charAt(var6);
                boolean var8;
-               if (Character.isISOControl(var7)) {
+               if(Character.isISOControl(var7)) {
                   var8 = false;
-               } else if (class148.method3206(var7)) {
+               } else if(class148.method3206(var7)) {
                   var8 = true;
                } else {
                   label115: {
@@ -161,7 +162,7 @@ public final class SceneTilePaint {
                      char var11;
                      for(var10 = 0; var10 < var9.length; ++var10) {
                         var11 = var9[var10];
-                        if (var11 == var7) {
+                        if(var11 == var7) {
                            var8 = true;
                            break label115;
                         }
@@ -171,7 +172,7 @@ public final class SceneTilePaint {
 
                      for(var10 = 0; var10 < var9.length; ++var10) {
                         var11 = var9[var10];
-                        if (var11 == var7) {
+                        if(var11 == var7) {
                            var8 = true;
                            break label115;
                         }
@@ -181,15 +182,15 @@ public final class SceneTilePaint {
                   }
                }
 
-               if (var8) {
+               if(var8) {
                   char var14 = class171.method3473(var7);
-                  if (var14 != 0) {
+                  if(var14 != 0) {
                      var13.append(var14);
                   }
                }
             }
 
-            if (var13.length() == 0) {
+            if(var13.length() == 0) {
                return null;
             } else {
                return var13.toString();
@@ -206,8 +207,8 @@ public final class SceneTilePaint {
       garbageValue = "-39"
    )
    static int method2895(int var0) {
-      ChatLineBuffer var1 = (ChatLineBuffer)class83.chatLineMap.get(var0);
-      return var1 == null ? 0 : var1.size();
+      ChatLineBuffer var1 = (ChatLineBuffer)class83.chatLineMap.get(Integer.valueOf(var0));
+      return var1 == null?0:var1.size();
    }
 
    @ObfuscatedName("s")
@@ -217,10 +218,10 @@ public final class SceneTilePaint {
    )
    @Export("byteArrayToObject")
    public static Object byteArrayToObject(byte[] var0, boolean var1) {
-      if (var0 == null) {
+      if(var0 == null) {
          return null;
       } else {
-         if (var0.length > 136 && !AbstractByteBuffer.directBufferUnavailable) {
+         if(var0.length > 136 && !AbstractByteBuffer.directBufferUnavailable) {
             try {
                DirectByteBuffer var2 = new DirectByteBuffer();
                var2.put(var0);

@@ -4,12 +4,12 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("hk")
 public class class220 {
    @ObfuscatedName("a")
-   static final byte[] field2543 = new byte[]{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+   static final byte[] field2543;
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "Lgy;"
    )
-   Buffer field2548 = new Buffer((byte[])null);
+   Buffer field2548;
    @ObfuscatedName("m")
    int field2540;
    @ObfuscatedName("q")
@@ -25,11 +25,17 @@ public class class220 {
    @ObfuscatedName("j")
    long field2547;
 
+   static {
+      field2543 = new byte[]{(byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)1, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)2, (byte)0, (byte)1, (byte)2, (byte)1, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0};
+   }
+
    class220(byte[] var1) {
+      this.field2548 = new Buffer((byte[])null);
       this.method4364(var1);
    }
 
    class220() {
+      this.field2548 = new Buffer((byte[])null);
    }
 
    @ObfuscatedName("w")
@@ -46,7 +52,7 @@ public class class220 {
       for(var3 = 0; var3 < var2; this.field2548.offset += var4) {
          int var5 = this.field2548.readInt();
          var4 = this.field2548.readInt();
-         if (var5 == 1297379947) {
+         if(var5 == 1297379947) {
             this.field2539[var3] = this.field2548.offset;
             ++var3;
          }
@@ -113,7 +119,7 @@ public class class220 {
    int method4373(int var1) {
       byte var2 = this.field2548.payload[this.field2548.offset];
       int var3;
-      if (var2 < 0) {
+      if(var2 < 0) {
          var3 = var2 & 255;
          this.field2545[var1] = var3;
          ++this.field2548.offset;
@@ -121,13 +127,13 @@ public class class220 {
          var3 = this.field2545[var1];
       }
 
-      if (var3 != 240 && var3 != 247) {
+      if(var3 != 240 && var3 != 247) {
          return this.method4374(var1, var3);
       } else {
          int var4 = this.field2548.readVarInt();
-         if (var3 == 247 && var4 > 0) {
+         if(var3 == 247 && var4 > 0) {
             int var5 = this.field2548.payload[this.field2548.offset] & 255;
-            if (var5 >= 241 && var5 <= 243 || var5 == 246 || var5 == 248 || var5 >= 250 && var5 <= 252 || var5 == 254) {
+            if(var5 >= 241 && var5 <= 243 || var5 == 246 || var5 == 248 || var5 >= 250 && var5 <= 252 || var5 == 254) {
                ++this.field2548.offset;
                this.field2545[var1] = var5;
                return this.method4374(var1, var5);
@@ -142,13 +148,13 @@ public class class220 {
    @ObfuscatedName("g")
    int method4374(int var1, int var2) {
       int var3;
-      if (var2 == 255) {
+      if(var2 == 255) {
          int var7 = this.field2548.readUnsignedByte();
          var3 = this.field2548.readVarInt();
-         if (var7 == 47) {
+         if(var7 == 47) {
             this.field2548.offset += var3;
             return 1;
-         } else if (var7 == 81) {
+         } else if(var7 == 81) {
             int var5 = this.field2548.read24BitInt();
             var3 -= 3;
             int var6 = this.field2541[var1];
@@ -163,11 +169,11 @@ public class class220 {
       } else {
          byte var4 = field2543[var2 - 128];
          var3 = var2;
-         if (var4 >= 1) {
+         if(var4 >= 1) {
             var3 = var2 | this.field2548.readUnsignedByte() << 8;
          }
 
-         if (var4 >= 2) {
+         if(var4 >= 2) {
             var3 |= this.field2548.readUnsignedByte() << 16;
          }
 
@@ -187,7 +193,7 @@ public class class220 {
       int var3 = Integer.MAX_VALUE;
 
       for(int var4 = 0; var4 < var1; ++var4) {
-         if (this.field2542[var4] >= 0 && this.field2541[var4] < var3) {
+         if(this.field2542[var4] >= 0 && this.field2541[var4] < var3) {
             var2 = var4;
             var3 = this.field2541[var4];
          }
@@ -201,7 +207,7 @@ public class class220 {
       int var1 = this.field2542.length;
 
       for(int var2 = 0; var2 < var1; ++var2) {
-         if (this.field2542[var2] >= 0) {
+         if(this.field2542[var2] >= 0) {
             return false;
          }
       }

@@ -12,12 +12,12 @@ public abstract class IndexDataBase {
       signature = "Lfl;"
    )
    @Export("gzip")
-   static GZipDecompressor gzip = new GZipDecompressor();
+   static GZipDecompressor gzip;
    @ObfuscatedName("e")
    @ObfuscatedGetter(
       intValue = -679236219
    )
-   static int field3179 = 0;
+   static int field3179;
    @ObfuscatedName("m")
    @ObfuscatedGetter(
       intValue = 1625132987
@@ -76,6 +76,11 @@ public abstract class IndexDataBase {
    @Export("shallowRecords")
    boolean shallowRecords;
 
+   static {
+      gzip = new GZipDecompressor();
+      field3179 = 0;
+   }
+
    IndexDataBase(boolean var1, boolean var2) {
       this.releaseArchives = var1;
       this.shallowRecords = var2;
@@ -93,13 +98,13 @@ public abstract class IndexDataBase {
       this.crc = var3;
       Buffer var4 = new Buffer(GZipDecompressor.decodeContainer(var1));
       int var5 = var4.readUnsignedByte();
-      if (var5 >= 5 && var5 <= 7) {
-         if (var5 >= 6) {
+      if(var5 >= 5 && var5 <= 7) {
+         if(var5 >= 6) {
             var4.readInt();
          }
 
          int var6 = var4.readUnsignedByte();
-         if (var5 >= 7) {
+         if(var5 >= 7) {
             this.validArchivesCount = var4.getLargeSmart();
          } else {
             this.validArchivesCount = var4.readUnsignedShort();
@@ -109,17 +114,17 @@ public abstract class IndexDataBase {
          int var8 = -1;
          this.archiveIds = new int[this.validArchivesCount];
          int var9;
-         if (var5 >= 7) {
+         if(var5 >= 7) {
             for(var9 = 0; var9 < this.validArchivesCount; ++var9) {
                this.archiveIds[var9] = var7 += var4.getLargeSmart();
-               if (this.archiveIds[var9] > var8) {
+               if(this.archiveIds[var9] > var8) {
                   var8 = this.archiveIds[var9];
                }
             }
          } else {
             for(var9 = 0; var9 < this.validArchivesCount; ++var9) {
                this.archiveIds[var9] = var7 += var4.readUnsignedShort();
-               if (this.archiveIds[var9] > var8) {
+               if(this.archiveIds[var9] > var8) {
                   var8 = this.archiveIds[var9];
                }
             }
@@ -131,7 +136,7 @@ public abstract class IndexDataBase {
          this.archiveFileIds = new int[var8 + 1][];
          this.archives = new Object[var8 + 1];
          this.childs = new Object[var8 + 1][];
-         if (var6 != 0) {
+         if(var6 != 0) {
             this.archiveNames = new int[var8 + 1];
 
             for(var9 = 0; var9 < this.validArchivesCount; ++var9) {
@@ -158,7 +163,7 @@ public abstract class IndexDataBase {
          int var12;
          int var13;
          int var14;
-         if (var5 >= 7) {
+         if(var5 >= 7) {
             for(var9 = 0; var9 < this.validArchivesCount; ++var9) {
                var10 = this.archiveIds[var9];
                var11 = this.archiveNumberOfFiles[var10];
@@ -168,7 +173,7 @@ public abstract class IndexDataBase {
 
                for(var13 = 0; var13 < var11; ++var13) {
                   var14 = this.archiveFileIds[var10][var13] = var7 += var4.getLargeSmart();
-                  if (var14 > var12) {
+                  if(var14 > var12) {
                      var12 = var14;
                   }
                }
@@ -185,7 +190,7 @@ public abstract class IndexDataBase {
 
                for(var13 = 0; var13 < var11; ++var13) {
                   var14 = this.archiveFileIds[var10][var13] = var7 += var4.readUnsignedShort();
-                  if (var14 > var12) {
+                  if(var14 > var12) {
                      var12 = var14;
                   }
                }
@@ -194,7 +199,7 @@ public abstract class IndexDataBase {
             }
          }
 
-         if (var6 != 0) {
+         if(var6 != 0) {
             this.archiveFileNames = new int[var8 + 1][];
             this.childIdentifiers = new Identifiers[var8 + 1];
 
@@ -241,20 +246,20 @@ public abstract class IndexDataBase {
    )
    @Export("getConfigDataKeys")
    public byte[] getConfigDataKeys(int var1, int var2, int[] var3) {
-      if (var1 >= 0 && var1 < this.childs.length && this.childs[var1] != null && var2 >= 0 && var2 < this.childs[var1].length) {
-         if (this.childs[var1][var2] == null) {
+      if(var1 >= 0 && var1 < this.childs.length && this.childs[var1] != null && var2 >= 0 && var2 < this.childs[var1].length) {
+         if(this.childs[var1][var2] == null) {
             boolean var4 = this.buildRecords(var1, var3);
-            if (!var4) {
+            if(!var4) {
                this.loadArchive(var1);
                var4 = this.buildRecords(var1, var3);
-               if (!var4) {
+               if(!var4) {
                   return null;
                }
             }
          }
 
          byte[] var5 = WorldMapType2.toByteArray(this.childs[var1][var2], false);
-         if (this.shallowRecords) {
+         if(this.shallowRecords) {
             this.childs[var1][var2] = null;
          }
 
@@ -271,10 +276,10 @@ public abstract class IndexDataBase {
    )
    @Export("tryLoadRecord")
    public boolean tryLoadRecord(int var1, int var2) {
-      if (var1 >= 0 && var1 < this.childs.length && this.childs[var1] != null && var2 >= 0 && var2 < this.childs[var1].length) {
-         if (this.childs[var1][var2] != null) {
+      if(var1 >= 0 && var1 < this.childs.length && this.childs[var1] != null && var2 >= 0 && var2 < this.childs[var1].length) {
+         if(this.childs[var1][var2] != null) {
             return true;
-         } else if (this.archives[var1] != null) {
+         } else if(this.archives[var1] != null) {
             return true;
          } else {
             this.loadArchive(var1);
@@ -291,9 +296,9 @@ public abstract class IndexDataBase {
       garbageValue = "21"
    )
    public boolean method4629(int var1) {
-      if (this.childs.length == 1) {
+      if(this.childs.length == 1) {
          return this.tryLoadRecord(0, var1);
-      } else if (this.childs[var1].length == 1) {
+      } else if(this.childs[var1].length == 1) {
          return this.tryLoadRecord(var1, 0);
       } else {
          throw new RuntimeException();
@@ -307,7 +312,7 @@ public abstract class IndexDataBase {
    )
    @Export("containsFile")
    public boolean containsFile(int var1) {
-      if (this.archives[var1] != null) {
+      if(this.archives[var1] != null) {
          return true;
       } else {
          this.loadArchive(var1);
@@ -325,9 +330,9 @@ public abstract class IndexDataBase {
 
       for(int var2 = 0; var2 < this.archiveIds.length; ++var2) {
          int var3 = this.archiveIds[var2];
-         if (this.archives[var3] == null) {
+         if(this.archives[var3] == null) {
             this.loadArchive(var3);
-            if (this.archives[var3] == null) {
+            if(this.archives[var3] == null) {
                var1 = false;
             }
          }
@@ -343,7 +348,7 @@ public abstract class IndexDataBase {
    )
    @Export("archiveLoadPercent")
    int archiveLoadPercent(int var1) {
-      return this.archives[var1] != null ? 100 : 0;
+      return this.archives[var1] != null?100:0;
    }
 
    @ObfuscatedName("p")
@@ -353,9 +358,9 @@ public abstract class IndexDataBase {
    )
    @Export("takeRecordFlat")
    public byte[] takeRecordFlat(int var1) {
-      if (this.childs.length == 1) {
+      if(this.childs.length == 1) {
          return this.getConfigData(0, var1);
-      } else if (this.childs[var1].length == 1) {
+      } else if(this.childs[var1].length == 1) {
          return this.getConfigData(var1, 0);
       } else {
          throw new RuntimeException();
@@ -369,13 +374,13 @@ public abstract class IndexDataBase {
    )
    @Export("getChild")
    public byte[] getChild(int var1, int var2) {
-      if (var1 >= 0 && var1 < this.childs.length && this.childs[var1] != null && var2 >= 0 && var2 < this.childs[var1].length) {
-         if (this.childs[var1][var2] == null) {
+      if(var1 >= 0 && var1 < this.childs.length && this.childs[var1] != null && var2 >= 0 && var2 < this.childs[var1].length) {
+         if(this.childs[var1][var2] == null) {
             boolean var3 = this.buildRecords(var1, (int[])null);
-            if (!var3) {
+            if(!var3) {
                this.loadArchive(var1);
                var3 = this.buildRecords(var1, (int[])null);
-               if (!var3) {
+               if(!var3) {
                   return null;
                }
             }
@@ -395,9 +400,9 @@ public abstract class IndexDataBase {
    )
    @Export("getRecordFlat")
    public byte[] getRecordFlat(int var1) {
-      if (this.childs.length == 1) {
+      if(this.childs.length == 1) {
          return this.getChild(0, var1);
-      } else if (this.childs[var1].length == 1) {
+      } else if(this.childs[var1].length == 1) {
          return this.getChild(var1, 0);
       } else {
          throw new RuntimeException();
@@ -475,7 +480,7 @@ public abstract class IndexDataBase {
    @Export("reset")
    public void reset() {
       for(int var1 = 0; var1 < this.childs.length; ++var1) {
-         if (this.childs[var1] != null) {
+         if(this.childs[var1] != null) {
             for(int var2 = 0; var2 < this.childs[var1].length; ++var2) {
                this.childs[var1][var2] = null;
             }
@@ -491,7 +496,7 @@ public abstract class IndexDataBase {
    )
    @Export("buildRecords")
    boolean buildRecords(int var1, int[] var2) {
-      if (this.archives[var1] == null) {
+      if(this.archives[var1] == null) {
          return false;
       } else {
          int var3 = this.archiveNumberOfFiles[var1];
@@ -500,17 +505,17 @@ public abstract class IndexDataBase {
          boolean var6 = true;
 
          for(int var7 = 0; var7 < var3; ++var7) {
-            if (var5[var4[var7]] == null) {
+            if(var5[var4[var7]] == null) {
                var6 = false;
                break;
             }
          }
 
-         if (var6) {
+         if(var6) {
             return true;
          } else {
             byte[] var18;
-            if (var2 != null && (var2[0] != 0 || var2[1] != 0 || var2[2] != 0 || var2[3] != 0)) {
+            if(var2 != null && (var2[0] != 0 || var2[1] != 0 || var2[2] != 0 || var2[3] != 0)) {
                var18 = WorldMapType2.toByteArray(this.archives[var1], true);
                Buffer var8 = new Buffer(var18);
                var8.decryptXtea(var2, 5, var8.payload.length);
@@ -519,11 +524,11 @@ public abstract class IndexDataBase {
             }
 
             byte[] var19 = GZipDecompressor.decodeContainer(var18);
-            if (this.releaseArchives) {
+            if(this.releaseArchives) {
                this.archives[var1] = null;
             }
 
-            if (var3 > 1) {
+            if(var3 > 1) {
                int var9 = var19.length;
                --var9;
                int var10 = var19[var9] & 255;
@@ -565,13 +570,13 @@ public abstract class IndexDataBase {
                }
 
                for(var14 = 0; var14 < var3; ++var14) {
-                  if (!this.shallowRecords) {
+                  if(!this.shallowRecords) {
                      var5[var4[var14]] = SceneTilePaint.byteArrayToObject(var20[var14], false);
                   } else {
                      var5[var4[var14]] = var20[var14];
                   }
                }
-            } else if (!this.shallowRecords) {
+            } else if(!this.shallowRecords) {
                var5[var4[0]] = SceneTilePaint.byteArrayToObject(var19, false);
             } else {
                var5[var4[0]] = var19;
@@ -613,7 +618,7 @@ public abstract class IndexDataBase {
       var1 = var1.toLowerCase();
       var2 = var2.toLowerCase();
       int var3 = this.identifiers.getFile(TextureProvider.djb2Hash(var1));
-      if (var3 < 0) {
+      if(var3 < 0) {
          return false;
       } else {
          int var4 = this.childIdentifiers[var3].getFile(TextureProvider.djb2Hash(var2));
@@ -669,7 +674,7 @@ public abstract class IndexDataBase {
    public void method4650(String var1) {
       var1 = var1.toLowerCase();
       int var2 = this.identifiers.getFile(TextureProvider.djb2Hash(var1));
-      if (var2 >= 0) {
+      if(var2 >= 0) {
          this.vmethod4741(var2);
       }
 

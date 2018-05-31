@@ -7,15 +7,15 @@ import net.runelite.mapping.ObfuscatedSignature;
 public final class class50 {
    @ObfuscatedName("w")
    @Export("tileHeights")
-   static int[][][] tileHeights = new int[4][105][105];
+   static int[][][] tileHeights;
    @ObfuscatedName("m")
    @Export("tileSettings")
-   static byte[][][] tileSettings = new byte[4][104][104];
+   static byte[][][] tileSettings;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = -1846767625
    )
-   static int field446 = 99;
+   static int field446;
    @ObfuscatedName("b")
    @Export("tileUnderlayIds")
    static byte[][][] tileUnderlayIds;
@@ -32,33 +32,47 @@ public final class class50 {
    @ObfuscatedName("p")
    static int[] field452;
    @ObfuscatedName("t")
-   static final int[] field454 = new int[]{1, 2, 4, 8};
+   static final int[] field454;
    @ObfuscatedName("u")
-   static final int[] field453 = new int[]{16, 32, 64, 128};
+   static final int[] field453;
    @ObfuscatedName("i")
-   static final int[] field456 = new int[]{1, 0, -1, 0};
+   static final int[] field456;
    @ObfuscatedName("z")
-   static final int[] field457 = new int[]{0, -1, 0, 1};
+   static final int[] field457;
    @ObfuscatedName("k")
-   static final int[] field458 = new int[]{1, -1, -1, 1};
+   static final int[] field458;
    @ObfuscatedName("r")
-   static final int[] field459 = new int[]{-1, -1, 1, 1};
+   static final int[] field459;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
       intValue = -1482262967
    )
-   static int field462 = (int)(Math.random() * 17.0D) - 8;
+   static int field462;
    @ObfuscatedName("o")
    @ObfuscatedGetter(
       intValue = -1253487083
    )
-   static int field461 = (int)(Math.random() * 33.0D) - 16;
+   static int field461;
    @ObfuscatedName("am")
    @ObfuscatedSignature(
       signature = "Llj;"
    )
    @Export("rasterProvider")
    public static BufferProvider rasterProvider;
+
+   static {
+      tileHeights = new int[4][105][105];
+      tileSettings = new byte[4][104][104];
+      field446 = 99;
+      field454 = new int[]{1, 2, 4, 8};
+      field453 = new int[]{16, 32, 64, 128};
+      field456 = new int[]{1, 0, -1, 0};
+      field457 = new int[]{0, -1, 0, 1};
+      field458 = new int[]{1, -1, -1, 1};
+      field459 = new int[]{-1, -1, 1, 1};
+      field462 = (int)(Math.random() * 17.0D) - 8;
+      field461 = (int)(Math.random() * 33.0D) - 16;
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -89,14 +103,14 @@ public final class class50 {
          int var16 = var5 - var9;
          int var17 = var4 - var3.x;
          int var18 = var5 - var3.y;
-         if (var2.vmethod3457(2, var4, var5, var3)) {
+         if(var2.vmethod3457(2, var4, var5, var3)) {
             Bounds.field3748 = var4;
             ScriptState.field463 = var5;
             return true;
          }
 
          int var19 = class165.field2058[var15][var16] + 1;
-         if (var15 > 0 && class165.field2059[var15 - 1][var16] == 0 && (var14[var17 - 1][var18] & 19136782) == 0 && (var14[var17 - 1][var18 + 1] & 19136824) == 0) {
+         if(var15 > 0 && class165.field2059[var15 - 1][var16] == 0 && (var14[var17 - 1][var18] & 19136782) == 0 && (var14[var17 - 1][var18 + 1] & 19136824) == 0) {
             class165.field2061[var13] = var4 - 1;
             class165.field2060[var13] = var5;
             var13 = var13 + 1 & 4095;
@@ -104,7 +118,7 @@ public final class class50 {
             class165.field2058[var15 - 1][var16] = var19;
          }
 
-         if (var15 < 126 && class165.field2059[var15 + 1][var16] == 0 && (var14[var17 + 2][var18] & 19136899) == 0 && (var14[var17 + 2][var18 + 1] & 19136992) == 0) {
+         if(var15 < 126 && class165.field2059[var15 + 1][var16] == 0 && (var14[var17 + 2][var18] & 19136899) == 0 && (var14[var17 + 2][var18 + 1] & 19136992) == 0) {
             class165.field2061[var13] = var4 + 1;
             class165.field2060[var13] = var5;
             var13 = var13 + 1 & 4095;
@@ -112,7 +126,7 @@ public final class class50 {
             class165.field2058[var15 + 1][var16] = var19;
          }
 
-         if (var16 > 0 && class165.field2059[var15][var16 - 1] == 0 && (var14[var17][var18 - 1] & 19136782) == 0 && (var14[var17 + 1][var18 - 1] & 19136899) == 0) {
+         if(var16 > 0 && class165.field2059[var15][var16 - 1] == 0 && (var14[var17][var18 - 1] & 19136782) == 0 && (var14[var17 + 1][var18 - 1] & 19136899) == 0) {
             class165.field2061[var13] = var4;
             class165.field2060[var13] = var5 - 1;
             var13 = var13 + 1 & 4095;
@@ -120,7 +134,7 @@ public final class class50 {
             class165.field2058[var15][var16 - 1] = var19;
          }
 
-         if (var16 < 126 && class165.field2059[var15][var16 + 1] == 0 && (var14[var17][var18 + 2] & 19136824) == 0 && (var14[var17 + 1][var18 + 2] & 19136992) == 0) {
+         if(var16 < 126 && class165.field2059[var15][var16 + 1] == 0 && (var14[var17][var18 + 2] & 19136824) == 0 && (var14[var17 + 1][var18 + 2] & 19136992) == 0) {
             class165.field2061[var13] = var4;
             class165.field2060[var13] = var5 + 1;
             var13 = var13 + 1 & 4095;
@@ -128,7 +142,7 @@ public final class class50 {
             class165.field2058[var15][var16 + 1] = var19;
          }
 
-         if (var15 > 0 && var16 > 0 && class165.field2059[var15 - 1][var16 - 1] == 0 && (var14[var17 - 1][var18] & 19136830) == 0 && (var14[var17 - 1][var18 - 1] & 19136782) == 0 && (var14[var17][var18 - 1] & 19136911) == 0) {
+         if(var15 > 0 && var16 > 0 && class165.field2059[var15 - 1][var16 - 1] == 0 && (var14[var17 - 1][var18] & 19136830) == 0 && (var14[var17 - 1][var18 - 1] & 19136782) == 0 && (var14[var17][var18 - 1] & 19136911) == 0) {
             class165.field2061[var13] = var4 - 1;
             class165.field2060[var13] = var5 - 1;
             var13 = var13 + 1 & 4095;
@@ -136,7 +150,7 @@ public final class class50 {
             class165.field2058[var15 - 1][var16 - 1] = var19;
          }
 
-         if (var15 < 126 && var16 > 0 && class165.field2059[var15 + 1][var16 - 1] == 0 && (var14[var17 + 1][var18 - 1] & 19136911) == 0 && (var14[var17 + 2][var18 - 1] & 19136899) == 0 && (var14[var17 + 2][var18] & 19136995) == 0) {
+         if(var15 < 126 && var16 > 0 && class165.field2059[var15 + 1][var16 - 1] == 0 && (var14[var17 + 1][var18 - 1] & 19136911) == 0 && (var14[var17 + 2][var18 - 1] & 19136899) == 0 && (var14[var17 + 2][var18] & 19136995) == 0) {
             class165.field2061[var13] = var4 + 1;
             class165.field2060[var13] = var5 - 1;
             var13 = var13 + 1 & 4095;
@@ -144,7 +158,7 @@ public final class class50 {
             class165.field2058[var15 + 1][var16 - 1] = var19;
          }
 
-         if (var15 > 0 && var16 < 126 && class165.field2059[var15 - 1][var16 + 1] == 0 && (var14[var17 - 1][var18 + 1] & 19136830) == 0 && (var14[var17 - 1][var18 + 2] & 19136824) == 0 && (var14[var17][var18 + 2] & 19137016) == 0) {
+         if(var15 > 0 && var16 < 126 && class165.field2059[var15 - 1][var16 + 1] == 0 && (var14[var17 - 1][var18 + 1] & 19136830) == 0 && (var14[var17 - 1][var18 + 2] & 19136824) == 0 && (var14[var17][var18 + 2] & 19137016) == 0) {
             class165.field2061[var13] = var4 - 1;
             class165.field2060[var13] = var5 + 1;
             var13 = var13 + 1 & 4095;
@@ -152,7 +166,7 @@ public final class class50 {
             class165.field2058[var15 - 1][var16 + 1] = var19;
          }
 
-         if (var15 < 126 && var16 < 126 && class165.field2059[var15 + 1][var16 + 1] == 0 && (var14[var17 + 1][var18 + 2] & 19137016) == 0 && (var14[var17 + 2][var18 + 2] & 19136992) == 0 && (var14[var17 + 2][var18 + 1] & 19136995) == 0) {
+         if(var15 < 126 && var16 < 126 && class165.field2059[var15 + 1][var16 + 1] == 0 && (var14[var17 + 1][var18 + 2] & 19137016) == 0 && (var14[var17 + 2][var18 + 2] & 19136992) == 0 && (var14[var17 + 2][var18 + 1] & 19136995) == 0) {
             class165.field2061[var13] = var4 + 1;
             class165.field2060[var13] = var5 + 1;
             var13 = var13 + 1 & 4095;

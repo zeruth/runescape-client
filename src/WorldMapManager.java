@@ -19,10 +19,10 @@ public final class WorldMapManager {
    static int field268;
    @ObfuscatedName("w")
    @Export("loaded")
-   boolean loaded = false;
+   boolean loaded;
    @ObfuscatedName("m")
    @Export("loading")
-   boolean loading = false;
+   boolean loading;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Law;"
@@ -42,7 +42,7 @@ public final class WorldMapManager {
    @Export("mapRegions")
    WorldMapRegion[][] mapRegions;
    @ObfuscatedName("h")
-   HashMap field270 = new HashMap();
+   HashMap field270;
    @ObfuscatedName("x")
    @ObfuscatedSignature(
       signature = "[Llh;"
@@ -77,12 +77,16 @@ public final class WorldMapManager {
    @ObfuscatedGetter(
       intValue = 57378661
    )
-   public int field269 = 0;
+   public int field269;
 
    @ObfuscatedSignature(
       signature = "([Llh;Ljava/util/HashMap;)V"
    )
    public WorldMapManager(IndexedSprite[] var1, HashMap var2) {
+      this.loaded = false;
+      this.loading = false;
+      this.field270 = new HashMap();
+      this.field269 = 0;
       this.field271 = var1;
       this.mapFonts = var2;
    }
@@ -94,7 +98,7 @@ public final class WorldMapManager {
    )
    @Export("load")
    public void load(IndexDataBase var1, String var2, boolean var3) {
-      if (!this.loading) {
+      if(!this.loading) {
          this.loaded = false;
          this.loading = true;
          System.nanoTime();
@@ -142,7 +146,7 @@ public final class WorldMapManager {
 
          for(int var18 = 0; var18 < var9; ++var18) {
             for(var13 = 0; var13 < var10; ++var13) {
-               if (this.mapRegions[var18][var13] == null) {
+               if(this.mapRegions[var18][var13] == null) {
                   this.mapRegions[var18][var13] = new WorldMapRegion(this.field266.getMinX() + var18, this.field266.getMinY() + var13, this.field266.method235(), this.mapFonts);
                   this.mapRegions[var18][var13].method378(this.field266.field293, this.field266.field291);
                }
@@ -151,7 +155,7 @@ public final class WorldMapManager {
 
          System.nanoTime();
          System.nanoTime();
-         if (var1.method4689(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, var2)) {
+         if(var1.method4689(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, var2)) {
             byte[] var19 = var1.takeRecordByNames(MapCacheArchiveNames.COMPOSITE_TEXTURE.name, var2);
             this.field267 = VarCInt.method4854(var19);
          }
@@ -189,10 +193,10 @@ public final class WorldMapManager {
       float var14 = this.getPixelsPerTile(var7 - var5, var3 - var1);
       int var15 = (int)Math.ceil((double)var14);
       this.field269 = var15;
-      if (!this.field270.containsKey(var15)) {
+      if(!this.field270.containsKey(Integer.valueOf(var15))) {
          class35 var16 = new class35(var15);
          var16.method640();
-         this.field270.put(var15, var16);
+         this.field270.put(Integer.valueOf(var15), var16);
       }
 
       WorldMapRegion[] var22 = new WorldMapRegion[8];
@@ -202,7 +206,7 @@ public final class WorldMapManager {
       for(var17 = var13.worldMapRegionX; var17 < var13.worldMapRegionX + var13.worldMapRegionWidth; ++var17) {
          for(var18 = var13.worldMapRegionY; var18 < var13.worldMapRegionHeight + var13.worldMapRegionY; ++var18) {
             this.method524(var17, var18, var22);
-            this.mapRegions[var17][var18].method314(var15, (class35)this.field270.get(var15), var22, this.field271);
+            this.mapRegions[var17][var18].method314(var15, (class35)this.field270.get(Integer.valueOf(var15)), var22, this.field271);
          }
       }
 
@@ -237,7 +241,7 @@ public final class WorldMapManager {
       int var20;
       for(var19 = var14.worldMapRegionX; var19 < var14.worldMapRegionX + var14.worldMapRegionWidth; ++var19) {
          for(var20 = var14.worldMapRegionY; var20 < var14.worldMapRegionY + var14.worldMapRegionHeight; ++var20) {
-            if (var13) {
+            if(var13) {
                this.mapRegions[var19][var20].method337();
             }
 
@@ -245,7 +249,7 @@ public final class WorldMapManager {
          }
       }
 
-      if (var10 != null && var11 > 0) {
+      if(var10 != null && var11 > 0) {
          for(var19 = var14.worldMapRegionX; var19 < var14.worldMapRegionX + var14.worldMapRegionWidth; ++var19) {
             for(var20 = var14.worldMapRegionY; var20 < var14.worldMapRegionHeight + var14.worldMapRegionY; ++var20) {
                this.mapRegions[var19][var20].drawFlashingMapIcons(var10, var11, var12);
@@ -265,19 +269,19 @@ public final class WorldMapManager {
       boolean var5 = var1 >= this.mapRegions.length - 1;
       boolean var6 = var2 <= 0;
       boolean var7 = var2 >= this.mapRegions[0].length - 1;
-      if (var7) {
+      if(var7) {
          var3[class240.field3128.rsOrdinal()] = null;
       } else {
          var3[class240.field3128.rsOrdinal()] = this.mapRegions[var1][var2 + 1];
       }
 
-      var3[class240.field3121.rsOrdinal()] = !var7 && !var5 ? this.mapRegions[var1 + 1][var2 + 1] : null;
-      var3[class240.field3120.rsOrdinal()] = !var7 && !var4 ? this.mapRegions[var1 - 1][var2 + 1] : null;
-      var3[class240.field3125.rsOrdinal()] = var5 ? null : this.mapRegions[var1 + 1][var2];
-      var3[class240.field3127.rsOrdinal()] = var4 ? null : this.mapRegions[var1 - 1][var2];
-      var3[class240.field3124.rsOrdinal()] = var6 ? null : this.mapRegions[var1][var2 - 1];
-      var3[class240.field3123.rsOrdinal()] = !var6 && !var5 ? this.mapRegions[var1 + 1][var2 - 1] : null;
-      var3[class240.field3122.rsOrdinal()] = !var6 && !var4 ? this.mapRegions[var1 - 1][var2 - 1] : null;
+      var3[class240.field3121.rsOrdinal()] = !var7 && !var5?this.mapRegions[var1 + 1][var2 + 1]:null;
+      var3[class240.field3120.rsOrdinal()] = !var7 && !var4?this.mapRegions[var1 - 1][var2 + 1]:null;
+      var3[class240.field3125.rsOrdinal()] = var5?null:this.mapRegions[var1 + 1][var2];
+      var3[class240.field3127.rsOrdinal()] = var4?null:this.mapRegions[var1 - 1][var2];
+      var3[class240.field3124.rsOrdinal()] = var6?null:this.mapRegions[var1][var2 - 1];
+      var3[class240.field3123.rsOrdinal()] = !var6 && !var5?this.mapRegions[var1 + 1][var2 - 1]:null;
+      var3[class240.field3122.rsOrdinal()] = !var6 && !var4?this.mapRegions[var1 - 1][var2 - 1]:null;
    }
 
    @ObfuscatedName("a")
@@ -286,10 +290,10 @@ public final class WorldMapManager {
       garbageValue = "-1866436282"
    )
    public void method525(int var1, int var2, int var3, int var4, HashSet var5, int var6, int var7) {
-      if (this.field267 != null) {
+      if(this.field267 != null) {
          this.field267.method5897(var1, var2, var3, var4);
-         if (var6 > 0 && var6 % var7 < var7 / 2) {
-            if (this.field277 == null) {
+         if(var6 > 0 && var6 % var7 < var7 / 2) {
+            if(this.field277 == null) {
                this.method529();
             }
 
@@ -298,12 +302,12 @@ public final class WorldMapManager {
             while(true) {
                List var9;
                do {
-                  if (!var8.hasNext()) {
+                  if(!var8.hasNext()) {
                      return;
                   }
 
-                  int var10 = (Integer)var8.next();
-                  var9 = (List)this.field277.get(var10);
+                  int var10 = ((Integer)var8.next()).intValue();
+                  var9 = (List)this.field277.get(Integer.valueOf(var10));
                } while(var9 == null);
 
                Iterator var14 = var9.iterator();
@@ -327,7 +331,7 @@ public final class WorldMapManager {
    )
    public List method560(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
       LinkedList var11 = new LinkedList();
-      if (!this.loaded) {
+      if(!this.loaded) {
          return var11;
       } else {
          WorldMapRectangle var12 = this.getRegionRectForViewport(var1, var2, var3, var4);
@@ -339,7 +343,7 @@ public final class WorldMapManager {
          for(int var17 = var12.worldMapRegionX; var17 < var12.worldMapRegionWidth + var12.worldMapRegionX; ++var17) {
             for(int var18 = var12.worldMapRegionY; var18 < var12.worldMapRegionHeight + var12.worldMapRegionY; ++var18) {
                List var19 = this.mapRegions[var17][var18].method344(var5 + var14 * (this.mapRegions[var17][var18].field205 * 64 - var15) / 64, var8 + var6 - var14 * (this.mapRegions[var17][var18].field206 * 64 - var16 + 64) / 64, var14, var9, var10);
-               if (!var19.isEmpty()) {
+               if(!var19.isEmpty()) {
                   var11.addAll(var19);
                }
             }
@@ -369,21 +373,21 @@ public final class WorldMapManager {
       var5.worldMapRegionHeight = var13 - var11 + 1;
       var5.worldMapRegionX = var10 - this.field266.getMinX();
       var5.worldMapRegionY = var11 - this.field266.getMinY();
-      if (var5.worldMapRegionX < 0) {
+      if(var5.worldMapRegionX < 0) {
          var5.worldMapRegionWidth += var5.worldMapRegionX;
          var5.worldMapRegionX = 0;
       }
 
-      if (var5.worldMapRegionX > this.mapRegions.length - var5.worldMapRegionWidth) {
+      if(var5.worldMapRegionX > this.mapRegions.length - var5.worldMapRegionWidth) {
          var5.worldMapRegionWidth = this.mapRegions.length - var5.worldMapRegionX;
       }
 
-      if (var5.worldMapRegionY < 0) {
+      if(var5.worldMapRegionY < 0) {
          var5.worldMapRegionHeight += var5.worldMapRegionY;
          var5.worldMapRegionY = 0;
       }
 
-      if (var5.worldMapRegionY > this.mapRegions[0].length - var5.worldMapRegionHeight) {
+      if(var5.worldMapRegionY > this.mapRegions[0].length - var5.worldMapRegionHeight) {
          var5.worldMapRegionHeight = this.mapRegions[0].length - var5.worldMapRegionY;
       }
 
@@ -418,7 +422,7 @@ public final class WorldMapManager {
       garbageValue = "2010052197"
    )
    void method529() {
-      if (this.field277 == null) {
+      if(this.field277 == null) {
          this.field277 = new HashMap();
       }
 
@@ -431,12 +435,12 @@ public final class WorldMapManager {
 
             while(var4.hasNext()) {
                MapIcon var5 = (MapIcon)var4.next();
-               if (!this.field277.containsKey(var5.areaId)) {
+               if(!this.field277.containsKey(Integer.valueOf(var5.areaId))) {
                   LinkedList var6 = new LinkedList();
                   var6.add(var5);
-                  this.field277.put(var5.areaId, var6);
+                  this.field277.put(Integer.valueOf(var5.areaId), var6);
                } else {
-                  List var7 = (List)this.field277.get(var5.areaId);
+                  List var7 = (List)this.field277.get(Integer.valueOf(var5.areaId));
                   var7.add(var5);
                }
             }
@@ -453,13 +457,13 @@ public final class WorldMapManager {
    @Export("getPixelsPerTile")
    float getPixelsPerTile(int var1, int var2) {
       float var3 = (float)var1 / (float)var2;
-      if (var3 > 8.0F) {
+      if(var3 > 8.0F) {
          return 8.0F;
-      } else if (var3 < 1.0F) {
+      } else if(var3 < 1.0F) {
          return 1.0F;
       } else {
          int var4 = Math.round(var3);
-         return Math.abs((float)var4 - var3) < 0.05F ? (float)var4 : var3;
+         return Math.abs((float)var4 - var3) < 0.05F?(float)var4:var3;
       }
    }
 
@@ -481,12 +485,12 @@ public final class WorldMapManager {
    @Export("getKitDefinition")
    public static KitDefinition getKitDefinition(int var0) {
       KitDefinition var1 = (KitDefinition)KitDefinition.identKits.get((long)var0);
-      if (var1 != null) {
+      if(var1 != null) {
          return var1;
       } else {
          byte[] var2 = KitDefinition.identKit_ref.getConfigData(3, var0);
          var1 = new KitDefinition();
-         if (var2 != null) {
+         if(var2 != null) {
             var1.decode(new Buffer(var2));
          }
 
@@ -502,7 +506,7 @@ public final class WorldMapManager {
    )
    static final int method559(int var0, int var1, int var2) {
       int var3 = 256 - var2;
-      return ((var1 & 16711935) * var2 + var3 * (var0 & 16711935) & -16711936) + ((var1 & '\uff00') * var2 + (var0 & '\uff00') * var3 & 16711680) >> 8;
+      return ((var1 & 16711935) * var2 + var3 * (var0 & 16711935) & -16711936) + ((var1 & 65280) * var2 + (var0 & 65280) * var3 & 16711680) >> 8;
    }
 
    @ObfuscatedName("e")
@@ -512,15 +516,15 @@ public final class WorldMapManager {
    )
    static int method528(int var0, Script var1, boolean var2) {
       String var3;
-      if (var0 == 3100) {
+      if(var0 == 3100) {
          var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
          OwnWorldComparator.sendGameMessage(0, "", var3);
          return 1;
-      } else if (var0 == 3101) {
+      } else if(var0 == 3101) {
          class45.intStackSize -= 2;
          class144.method3193(MilliTimer.localPlayer, class69.intStack[class45.intStackSize], class69.intStack[class45.intStackSize + 1]);
          return 1;
-      } else if (var0 == 3103) {
+      } else if(var0 == 3103) {
          class9.method99();
          return 1;
       } else {
@@ -529,7 +533,7 @@ public final class WorldMapManager {
          int var6;
          PacketNode var7;
          int var9;
-         if (var0 == 3104) {
+         if(var0 == 3104) {
             var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
             var6 = 0;
             var4 = false;
@@ -540,49 +544,49 @@ public final class WorldMapManager {
 
             boolean var19;
             while(true) {
-               if (var17 >= var9) {
+               if(var17 >= var9) {
                   var19 = var16;
                   break;
                }
 
                label381: {
                   char var23 = var3.charAt(var17);
-                  if (var17 == 0) {
-                     if (var23 == '-') {
+                  if(var17 == 0) {
+                     if(var23 == '-') {
                         var4 = true;
                         break label381;
                      }
 
-                     if (var23 == '+') {
+                     if(var23 == '+') {
                         break label381;
                      }
                   }
 
                   int var21;
-                  if (var23 >= '0' && var23 <= '9') {
-                     var21 = var23 - 48;
-                  } else if (var23 >= 'A' && var23 <= 'Z') {
-                     var21 = var23 - 55;
+                  if(var23 >= '0' && var23 <= '9') {
+                     var21 = var23 - '0';
+                  } else if(var23 >= 'A' && var23 <= 'Z') {
+                     var21 = var23 - '7';
                   } else {
-                     if (var23 < 'a' || var23 > 'z') {
+                     if(var23 < 'a' || var23 > 'z') {
                         var19 = false;
                         break;
                      }
 
-                     var21 = var23 - 87;
+                     var21 = var23 - 'W';
                   }
 
-                  if (var21 >= 10) {
+                  if(var21 >= 10) {
                      var19 = false;
                      break;
                   }
 
-                  if (var4) {
+                  if(var4) {
                      var21 = -var21;
                   }
 
                   int var25 = var5 * 10 + var21;
-                  if (var5 != var25 / 10) {
+                  if(var5 != var25 / 10) {
                      var19 = false;
                      break;
                   }
@@ -594,7 +598,7 @@ public final class WorldMapManager {
                ++var17;
             }
 
-            if (var19) {
+            if(var19) {
                int var24 = GrandExchangeEvents.parseInt(var3, 10, true);
                var6 = var24;
             }
@@ -605,14 +609,14 @@ public final class WorldMapManager {
             return 1;
          } else {
             PacketNode var8;
-            if (var0 == 3105) {
+            if(var0 == 3105) {
                var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                var8 = DecorativeObject.method3115(ClientPacket.field2239, Client.field739.field1250);
                var8.packetBuffer.putByte(var3.length() + 1);
                var8.packetBuffer.putString(var3);
                Client.field739.method2019(var8);
                return 1;
-            } else if (var0 == 3106) {
+            } else if(var0 == 3106) {
                var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                var8 = DecorativeObject.method3115(ClientPacket.field2249, Client.field739.field1250);
                var8.packetBuffer.putByte(var3.length() + 1);
@@ -622,9 +626,9 @@ public final class WorldMapManager {
             } else {
                String var10;
                int var11;
-               if (var0 != 3107) {
+               if(var0 != 3107) {
                   Widget var22;
-                  if (var0 == 3108) {
+                  if(var0 == 3108) {
                      class45.intStackSize -= 3;
                      var11 = class69.intStack[class45.intStackSize];
                      var6 = class69.intStack[class45.intStackSize + 1];
@@ -632,44 +636,44 @@ public final class WorldMapManager {
                      var22 = OwnWorldComparator.getWidget(var9);
                      class35.method685(var22, var11, var6);
                      return 1;
-                  } else if (var0 == 3109) {
+                  } else if(var0 == 3109) {
                      class45.intStackSize -= 2;
                      var11 = class69.intStack[class45.intStackSize];
                      var6 = class69.intStack[class45.intStackSize + 1];
-                     var22 = var2 ? class184.field2379 : FriendManager.field996;
+                     var22 = var2?class184.field2379:FriendManager.field996;
                      class35.method685(var22, var11, var6);
                      return 1;
-                  } else if (var0 == 3110) {
+                  } else if(var0 == 3110) {
                      class8.middleMouseMovesCamera = class69.intStack[--class45.intStackSize] == 1;
                      return 1;
-                  } else if (var0 == 3111) {
-                     class69.intStack[++class45.intStackSize - 1] = ScriptState.preferences.hideRoofs ? 1 : 0;
+                  } else if(var0 == 3111) {
+                     class69.intStack[++class45.intStackSize - 1] = ScriptState.preferences.hideRoofs?1:0;
                      return 1;
-                  } else if (var0 == 3112) {
+                  } else if(var0 == 3112) {
                      ScriptState.preferences.hideRoofs = class69.intStack[--class45.intStackSize] == 1;
                      Enum.method5008();
                      return 1;
                   } else {
                      boolean var18;
-                     if (var0 == 3113) {
+                     if(var0 == 3113) {
                         var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                         var18 = class69.intStack[--class45.intStackSize] == 1;
                         class32.method590(var3, var18, "openjs", false);
                         return 1;
-                     } else if (var0 == 3115) {
+                     } else if(var0 == 3115) {
                         var11 = class69.intStack[--class45.intStackSize];
                         var8 = DecorativeObject.method3115(ClientPacket.field2200, Client.field739.field1250);
                         var8.packetBuffer.putShort(var11);
                         Client.field739.method2019(var8);
                         return 1;
-                     } else if (var0 == 3116) {
+                     } else if(var0 == 3116) {
                         var11 = class69.intStack[--class45.intStackSize];
                         class83.scriptStringStackSize -= 2;
                         var10 = class69.scriptStringStack[class83.scriptStringStackSize];
                         String var20 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
-                        if (var10.length() > 500) {
+                        if(var10.length() > 500) {
                            return 1;
-                        } else if (var20.length() > 500) {
+                        } else if(var20.length() > 500) {
                            return 1;
                         } else {
                            var7 = DecorativeObject.method3115(ClientPacket.field2205, Client.field739.field1250);
@@ -680,72 +684,72 @@ public final class WorldMapManager {
                            Client.field739.method2019(var7);
                            return 1;
                         }
-                     } else if (var0 == 3117) {
+                     } else if(var0 == 3117) {
                         Client.field733 = class69.intStack[--class45.intStackSize] == 1;
                         return 1;
-                     } else if (var0 == 3118) {
+                     } else if(var0 == 3118) {
                         Client.field740 = class69.intStack[--class45.intStackSize] == 1;
                         return 1;
-                     } else if (var0 == 3119) {
+                     } else if(var0 == 3119) {
                         Client.field711 = class69.intStack[--class45.intStackSize] == 1;
                         return 1;
-                     } else if (var0 == 3120) {
-                        if (class69.intStack[--class45.intStackSize] == 1) {
+                     } else if(var0 == 3120) {
+                        if(class69.intStack[--class45.intStackSize] == 1) {
                            Client.playerNameMask |= 1;
                         } else {
                            Client.playerNameMask &= -2;
                         }
 
                         return 1;
-                     } else if (var0 == 3121) {
-                        if (class69.intStack[--class45.intStackSize] == 1) {
+                     } else if(var0 == 3121) {
+                        if(class69.intStack[--class45.intStackSize] == 1) {
                            Client.playerNameMask |= 2;
                         } else {
                            Client.playerNameMask &= -3;
                         }
 
                         return 1;
-                     } else if (var0 == 3122) {
-                        if (class69.intStack[--class45.intStackSize] == 1) {
+                     } else if(var0 == 3122) {
+                        if(class69.intStack[--class45.intStackSize] == 1) {
                            Client.playerNameMask |= 4;
                         } else {
                            Client.playerNameMask &= -5;
                         }
 
                         return 1;
-                     } else if (var0 == 3123) {
-                        if (class69.intStack[--class45.intStackSize] == 1) {
+                     } else if(var0 == 3123) {
+                        if(class69.intStack[--class45.intStackSize] == 1) {
                            Client.playerNameMask |= 8;
                         } else {
                            Client.playerNameMask &= -9;
                         }
 
                         return 1;
-                     } else if (var0 == 3124) {
+                     } else if(var0 == 3124) {
                         Client.playerNameMask = 0;
                         return 1;
-                     } else if (var0 == 3125) {
+                     } else if(var0 == 3125) {
                         Client.field664 = class69.intStack[--class45.intStackSize] == 1;
                         return 1;
-                     } else if (var0 == 3126) {
+                     } else if(var0 == 3126) {
                         Client.field715 = class69.intStack[--class45.intStackSize] == 1;
                         return 1;
-                     } else if (var0 == 3127) {
+                     } else if(var0 == 3127) {
                         var18 = class69.intStack[--class45.intStackSize] == 1;
                         Client.field669 = var18;
                         return 1;
-                     } else if (var0 == 3128) {
-                        class69.intStack[++class45.intStackSize - 1] = class275.method5250() ? 1 : 0;
+                     } else if(var0 == 3128) {
+                        class69.intStack[++class45.intStackSize - 1] = class275.method5250()?1:0;
                         return 1;
-                     } else if (var0 == 3129) {
+                     } else if(var0 == 3129) {
                         class45.intStackSize -= 2;
                         Client.field672 = class69.intStack[class45.intStackSize];
                         Client.field673 = class69.intStack[class45.intStackSize + 1];
                         return 1;
-                     } else if (var0 == 3130) {
+                     } else if(var0 == 3130) {
                         class45.intStackSize -= 2;
                         return 1;
-                     } else if (var0 == 3131) {
+                     } else if(var0 == 3131) {
                         --class45.intStackSize;
                         return 1;
                      } else {
@@ -762,24 +766,24 @@ public final class WorldMapManager {
 
                   for(var5 = 0; var5 < var9; ++var5) {
                      Player var14 = Client.cachedPlayers[var12[var5]];
-                     if (var14 != null && var14 != MilliTimer.localPlayer && var14.name != null && var14.name.equals(var13)) {
+                     if(var14 != null && var14 != MilliTimer.localPlayer && var14.name != null && var14.name.equals(var13)) {
                         PacketNode var15;
-                        if (var11 == 1) {
+                        if(var11 == 1) {
                            var15 = DecorativeObject.method3115(ClientPacket.field2213, Client.field739.field1250);
                            var15.packetBuffer.method3605(var12[var5]);
                            var15.packetBuffer.method3594(0);
                            Client.field739.method2019(var15);
-                        } else if (var11 == 4) {
+                        } else if(var11 == 4) {
                            var15 = DecorativeObject.method3115(ClientPacket.field2218, Client.field739.field1250);
                            var15.packetBuffer.putByte(0);
                            var15.packetBuffer.method3725(var12[var5]);
                            Client.field739.method2019(var15);
-                        } else if (var11 == 6) {
+                        } else if(var11 == 6) {
                            var15 = DecorativeObject.method3115(ClientPacket.field2164, Client.field739.field1250);
                            var15.packetBuffer.method3707(var12[var5]);
                            var15.packetBuffer.method3594(0);
                            Client.field739.method2019(var15);
-                        } else if (var11 == 7) {
+                        } else if(var11 == 7) {
                            var15 = DecorativeObject.method3115(ClientPacket.field2180, Client.field739.field1250);
                            var15.packetBuffer.method3725(var12[var5]);
                            var15.packetBuffer.method3594(0);
@@ -791,7 +795,7 @@ public final class WorldMapManager {
                      }
                   }
 
-                  if (!var4) {
+                  if(!var4) {
                      OwnWorldComparator.sendGameMessage(4, "", "Unable to find " + var10);
                   }
 

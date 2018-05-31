@@ -8,10 +8,10 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class SoundEffect3 {
    @ObfuscatedName("n")
    @Export("minimisedCoefficients")
-   static float[][] minimisedCoefficients = new float[2][8];
+   static float[][] minimisedCoefficients;
    @ObfuscatedName("h")
    @Export("coefficients")
-   static int[][] coefficients = new int[2][8];
+   static int[][] coefficients;
    @ObfuscatedName("x")
    @Export("fowardMinimisedCoefficientMultiplier")
    static float fowardMinimisedCoefficientMultiplier;
@@ -20,16 +20,28 @@ public class SoundEffect3 {
    static int fowardMultiplier;
    @ObfuscatedName("w")
    @Export("pairs")
-   int[] pairs = new int[2];
+   int[] pairs;
    @ObfuscatedName("q")
    @Export("phases")
-   int[][][] phases = new int[2][2][4];
+   int[][][] phases;
    @ObfuscatedName("b")
    @Export("magnitudes")
-   int[][][] magnitudes = new int[2][2][4];
+   int[][][] magnitudes;
    @ObfuscatedName("f")
    @Export("unity")
-   int[] unity = new int[2];
+   int[] unity;
+
+   static {
+      minimisedCoefficients = new float[2][8];
+      coefficients = new int[2][8];
+   }
+
+   SoundEffect3() {
+      this.pairs = new int[2];
+      this.phases = new int[2][2][4];
+      this.magnitudes = new int[2][2][4];
+      this.unity = new int[2];
+   }
 
    @ObfuscatedName("w")
    @Export("interpolateMagniture")
@@ -51,14 +63,14 @@ public class SoundEffect3 {
    @Export("compute")
    int compute(int var1, float var2) {
       float var3;
-      if (var1 == 0) {
+      if(var1 == 0) {
          var3 = (float)this.unity[0] + (float)(this.unity[1] - this.unity[0]) * var2;
          var3 *= 0.0030517578F;
          fowardMinimisedCoefficientMultiplier = (float)Math.pow(0.1D, (double)(var3 / 20.0F));
          fowardMultiplier = (int)(fowardMinimisedCoefficientMultiplier * 65536.0F);
       }
 
-      if (this.pairs[var1] == 0) {
+      if(this.pairs[var1] == 0) {
          return 0;
       } else {
          var3 = this.interpolateMagniture(var1, 0, var2);
@@ -81,7 +93,7 @@ public class SoundEffect3 {
             minimisedCoefficients[var1][0] += var5;
          }
 
-         if (var1 == 0) {
+         if(var1 == 0) {
             for(var4 = 0; var4 < this.pairs[0] * 2; ++var4) {
                minimisedCoefficients[0][var4] *= fowardMinimisedCoefficientMultiplier;
             }
@@ -104,7 +116,7 @@ public class SoundEffect3 {
       int var3 = var1.readUnsignedByte();
       this.pairs[0] = var3 >> 4;
       this.pairs[1] = var3 & 15;
-      if (var3 != 0) {
+      if(var3 != 0) {
          this.unity[0] = var1.readUnsignedShort();
          this.unity[1] = var1.readUnsignedShort();
          int var4 = var1.readUnsignedByte();
@@ -120,7 +132,7 @@ public class SoundEffect3 {
 
          for(var5 = 0; var5 < 2; ++var5) {
             for(var6 = 0; var6 < this.pairs[var5]; ++var6) {
-               if ((var4 & 1 << var5 * 4 << var6) != 0) {
+               if((var4 & 1 << var5 * 4 << var6) != 0) {
                   this.phases[var5][1][var6] = var1.readUnsignedShort();
                   this.magnitudes[var5][1][var6] = var1.readUnsignedShort();
                } else {
@@ -130,7 +142,7 @@ public class SoundEffect3 {
             }
          }
 
-         if (var4 != 0 || this.unity[1] != this.unity[0]) {
+         if(var4 != 0 || this.unity[1] != this.unity[0]) {
             var2.decodeSegments(var1);
          }
       } else {

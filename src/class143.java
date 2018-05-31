@@ -23,7 +23,7 @@ public class class143 extends class283 {
       garbageValue = "-737922169"
    )
    int method3187(ChatPlayer var1, ChatPlayer var2) {
-      return var2.world != var1.world ? (this.field1913 ? var1.world - var2.world : var2.world - var1.world) : this.method5320(var1, var2);
+      return var2.world != var1.world?(this.field1913?var1.world - var2.world:var2.world - var1.world):this.method5320(var1, var2);
    }
 
    public int compare(Object var1, Object var2) {
@@ -51,12 +51,12 @@ public class class143 extends class283 {
       int var6 = var2.readUnsignedByte();
       int var7;
       int var8;
-      if (var6 > 0) {
+      if(var6 > 0) {
          var1.switches = var1.method1989(var6);
 
          for(var7 = 0; var7 < var6; ++var7) {
             var8 = var2.readUnsignedShort();
-            IterableHashTable var9 = new IterableHashTable(var8 > 0 ? class81.nextPowerOfTwo(var8) : 1);
+            IterableHashTable var9 = new IterableHashTable(var8 > 0?class81.nextPowerOfTwo(var8):1);
             var1.switches[var7] = var9;
 
             while(var8-- > 0) {
@@ -75,9 +75,9 @@ public class class143 extends class283 {
 
       for(var7 = 0; var2.offset < var4; var1.instructions[var7++] = var8) {
          var8 = var2.readUnsignedShort();
-         if (var8 == 3) {
+         if(var8 == 3) {
             var1.stringOperands[var7] = var2.readString();
-         } else if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
+         } else if(var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
             var1.intOperands[var7] = var2.readInt();
          } else {
             var1.intOperands[var7] = var2.readUnsignedByte();

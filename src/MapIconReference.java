@@ -82,7 +82,7 @@ public class MapIconReference {
    )
    static final void method688() {
       for(PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.getFront(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.getNext()) {
-         if (var0.hitpoints == -1) {
+         if(var0.hitpoints == -1) {
             var0.delay = 0;
             class7.method85(var0);
          } else {

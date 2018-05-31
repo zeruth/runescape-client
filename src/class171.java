@@ -8,52 +8,65 @@ public class class171 {
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2274 = new class171(14);
+   public static final class171 field2274;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2267 = new class171(5);
+   public static final class171 field2267;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2269 = new class171(2);
+   public static final class171 field2269;
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2270 = new class171(4);
+   public static final class171 field2270;
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2271 = new class171(15);
+   public static final class171 field2271;
    @ObfuscatedName("n")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2276 = new class171(5);
+   public static final class171 field2276;
    @ObfuscatedName("h")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2273 = new class171(7);
+   public static final class171 field2273;
    @ObfuscatedName("x")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2268 = new class171(6);
+   public static final class171 field2268;
    @ObfuscatedName("j")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2275 = new class171(4);
+   public static final class171 field2275;
    @ObfuscatedName("a")
    @ObfuscatedSignature(
       signature = "Lfr;"
    )
-   public static final class171 field2272 = new class171(3);
+   public static final class171 field2272;
+
+   static {
+      field2274 = new class171(14);
+      field2267 = new class171(5);
+      field2269 = new class171(2);
+      field2270 = new class171(4);
+      field2271 = new class171(15);
+      field2276 = new class171(5);
+      field2273 = new class171(7);
+      field2268 = new class171(6);
+      field2275 = new class171(4);
+      field2272 = new class171(3);
+   }
 
    @ObfuscatedSignature(
       signature = "(I)V",
@@ -168,54 +181,54 @@ public class class171 {
    )
    @Export("createSprite")
    public static final SpritePixels createSprite(int var0, int var1, int var2, int var3, int var4, boolean var5) {
-      if (var1 == -1) {
+      if(var1 == -1) {
          var4 = 0;
-      } else if (var4 == 2 && var1 != 1) {
+      } else if(var4 == 2 && var1 != 1) {
          var4 = 1;
       }
 
       long var6 = ((long)var3 << 42) + ((long)var4 << 40) + ((long)var2 << 38) + (long)var0 + ((long)var1 << 16);
       SpritePixels var8;
-      if (!var5) {
+      if(!var5) {
          var8 = (SpritePixels)ItemComposition.itemSpriteCache.get(var6);
-         if (var8 != null) {
+         if(var8 != null) {
             return var8;
          }
       }
 
       ItemComposition var9 = class120.getItemDefinition(var0);
-      if (var1 > 1 && var9.countObj != null) {
+      if(var1 > 1 && var9.countObj != null) {
          int var10 = -1;
 
          for(int var11 = 0; var11 < 10; ++var11) {
-            if (var1 >= var9.countCo[var11] && var9.countCo[var11] != 0) {
+            if(var1 >= var9.countCo[var11] && var9.countCo[var11] != 0) {
                var10 = var9.countObj[var11];
             }
          }
 
-         if (var10 != -1) {
+         if(var10 != -1) {
             var9 = class120.getItemDefinition(var10);
          }
       }
 
       Model var21 = var9.getModel(1);
-      if (var21 == null) {
+      if(var21 == null) {
          return null;
       } else {
          SpritePixels var22 = null;
-         if (var9.notedTemplate != -1) {
+         if(var9.notedTemplate != -1) {
             var22 = createSprite(var9.note, 10, 1, 0, 0, true);
-            if (var22 == null) {
+            if(var22 == null) {
                return null;
             }
-         } else if (var9.notedId != -1) {
+         } else if(var9.notedId != -1) {
             var22 = createSprite(var9.unnotedId, var1, var2, var3, 0, false);
-            if (var22 == null) {
+            if(var22 == null) {
                return null;
             }
-         } else if (var9.placeholderTemplateId != -1) {
+         } else if(var9.placeholderTemplateId != -1) {
             var22 = createSprite(var9.placeholderId, var1, 0, 0, 0, false);
-            if (var22 == null) {
+            if(var22 == null) {
                return null;
             }
          }
@@ -231,14 +244,14 @@ public class class171 {
          Graphics3D.Rasterizer3D_method1();
          Graphics3D.method2821(16, 16);
          Graphics3D.rasterGouraudLowRes = false;
-         if (var9.placeholderTemplateId != -1) {
+         if(var9.placeholderTemplateId != -1) {
             var22.drawAt(0, 0);
          }
 
          int var16 = var9.zoom2d;
-         if (var5) {
+         if(var5) {
             var16 = (int)((double)var16 * 1.5D);
-         } else if (var2 == 2) {
+         } else if(var2 == 2) {
             var16 = (int)(1.04D * (double)var16);
          }
 
@@ -246,33 +259,33 @@ public class class171 {
          int var18 = var16 * Graphics3D.COSINE[var9.xan2d] >> 16;
          var21.calculateBoundsCylinder();
          var21.method2738(0, var9.yan2d, var9.zan2d, var9.xan2d, var9.offsetX2d, var21.modelHeight / 2 + var17 + var9.offsetY2d, var18 + var9.offsetY2d);
-         if (var9.notedId != -1) {
+         if(var9.notedId != -1) {
             var22.drawAt(0, 0);
          }
 
-         if (var2 >= 1) {
+         if(var2 >= 1) {
             var8.method5991(1);
          }
 
-         if (var2 >= 2) {
+         if(var2 >= 2) {
             var8.method5991(16777215);
          }
 
-         if (var3 != 0) {
+         if(var3 != 0) {
             var8.method5892(var3);
          }
 
          Rasterizer2D.setRasterBuffer(var8.pixels, 36, 32);
-         if (var9.notedTemplate != -1) {
+         if(var9.notedTemplate != -1) {
             var22.drawAt(0, 0);
          }
 
-         if (var4 == 1 || var4 == 2 && var9.isStackable == 1) {
+         if(var4 == 1 || var4 == 2 && var9.isStackable == 1) {
             Font var19 = GameSocket.field2036;
             String var20;
-            if (var1 < 100000) {
+            if(var1 < 100000) {
                var20 = "<col=ffff00>" + var1 + "</col>";
-            } else if (var1 < 10000000) {
+            } else if(var1 < 10000000) {
                var20 = "<col=ffffff>" + var1 / 1000 + "K" + "</col>";
             } else {
                var20 = "<col=00ff80>" + var1 / 1000000 + "M" + "</col>";
@@ -281,7 +294,7 @@ public class class171 {
             var19.method5541(var20, 0, 9, 16776960, 1);
          }
 
-         if (!var5) {
+         if(!var5) {
             ItemComposition.itemSpriteCache.put(var8, var6);
          }
 
@@ -335,7 +348,7 @@ public class class171 {
 
       for(var3 = 1; var3 < var2; ++var3) {
          class319.indexedSpritePalette[var3] = var1.read24BitInt();
-         if (class319.indexedSpritePalette[var3] == 0) {
+         if(class319.indexedSpritePalette[var3] == 0) {
             class319.indexedSpritePalette[var3] = 1;
          }
       }
@@ -350,11 +363,11 @@ public class class171 {
          class294.spritePixels[var3] = var7;
          int var8 = var1.readUnsignedByte();
          int var9;
-         if (var8 == 0) {
+         if(var8 == 0) {
             for(var9 = 0; var9 < var6; ++var9) {
                var7[var9] = var1.readByte();
             }
-         } else if (var8 == 1) {
+         } else if(var8 == 1) {
             for(var9 = 0; var9 < var4; ++var9) {
                for(int var10 = 0; var10 < var5; ++var10) {
                   var7[var9 + var10 * var4] = var1.readByte();
@@ -372,23 +385,23 @@ public class class171 {
    )
    static void method3470(int var0) {
       Client.field803 = 0L;
-      if (var0 >= 2) {
+      if(var0 >= 2) {
          Client.isResized = true;
       } else {
          Client.isResized = false;
       }
 
-      int var1 = Client.isResized ? 2 : 1;
-      if (var1 == 1) {
+      int var1 = Client.isResized?2:1;
+      if(var1 == 1) {
          class37.clientInstance.method896(765, 503);
       } else {
          class37.clientInstance.method896(7680, 2160);
       }
 
-      if (Client.gameState >= 25) {
+      if(Client.gameState >= 25) {
          PacketNode var2 = DecorativeObject.method3115(ClientPacket.field2206, Client.field739.field1250);
          PacketBuffer var3 = var2.packetBuffer;
-         int var4 = Client.isResized ? 2 : 1;
+         int var4 = Client.isResized?2:1;
          var3.putByte(var4);
          var2.packetBuffer.putShort(class9.canvasWidth);
          var2.packetBuffer.putShort(class37.canvasHeight);
@@ -403,23 +416,23 @@ public class class171 {
       garbageValue = "-536291877"
    )
    static boolean method3469(Player var0) {
-      if (Client.playerNameMask == 0) {
+      if(Client.playerNameMask == 0) {
          return false;
       } else {
          boolean var1;
-         if (MilliTimer.localPlayer == var0) {
+         if(MilliTimer.localPlayer == var0) {
             var1 = (Client.playerNameMask & 8) != 0;
             return var1;
          } else {
             var1 = class16.method188();
             boolean var2;
-            if (!var1) {
+            if(!var1) {
                var2 = (Client.playerNameMask & 1) != 0;
                var1 = var2 && var0.isFriend();
             }
 
             var2 = var1;
-            if (!var1) {
+            if(!var1) {
                boolean var3 = (Client.playerNameMask & 2) != 0;
                var2 = var3 && var0.isClanMember();
             }
@@ -437,7 +450,7 @@ public class class171 {
    @Export("groundItemSpawned")
    static final void groundItemSpawned(int var0, int var1) {
       Deque var2 = Client.groundItemDeque[class192.plane][var0][var1];
-      if (var2 == null) {
+      if(var2 == null) {
          ScriptEvent.region.removeGroundItemPile(class192.plane, var0, var1);
       } else {
          long var3 = -99999999L;
@@ -447,17 +460,17 @@ public class class171 {
          for(var6 = (Item)var2.getFront(); var6 != null; var6 = (Item)var2.getNext()) {
             ItemComposition var7 = class120.getItemDefinition(var6.id);
             long var8 = (long)var7.price;
-            if (var7.isStackable == 1) {
+            if(var7.isStackable == 1) {
                var8 *= (long)(var6.quantity + 1);
             }
 
-            if (var8 > var3) {
+            if(var8 > var3) {
                var3 = var8;
                var5 = var6;
             }
          }
 
-         if (var5 == null) {
+         if(var5 == null) {
             ScriptEvent.region.removeGroundItemPile(class192.plane, var0, var1);
          } else {
             var2.addTail(var5);
@@ -465,12 +478,12 @@ public class class171 {
             Item var12 = null;
 
             for(var6 = (Item)var2.getFront(); var6 != null; var6 = (Item)var2.getNext()) {
-               if (var6.id != var5.id) {
-                  if (var11 == null) {
+               if(var6.id != var5.id) {
+                  if(var11 == null) {
                      var11 = var6;
                   }
 
-                  if (var11.id != var6.id && var12 == null) {
+                  if(var11.id != var6.id && var12 == null) {
                      var12 = var6;
                   }
                }

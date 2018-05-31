@@ -30,12 +30,13 @@ public class CombatInfoListHolder extends Node {
       signature = "Lgt;"
    )
    @Export("combatInfo1")
-   CombatInfoList combatInfo1 = new CombatInfoList();
+   CombatInfoList combatInfo1;
 
    @ObfuscatedSignature(
       signature = "(Ljv;)V"
    )
    CombatInfoListHolder(CombatInfo2 var1) {
+      this.combatInfo1 = new CombatInfoList();
       this.combatInfo2 = var1;
    }
 
@@ -50,23 +51,23 @@ public class CombatInfoListHolder extends Node {
 
       for(CombatInfo1 var7 = (CombatInfo1)this.combatInfo1.last(); var7 != null; var7 = (CombatInfo1)this.combatInfo1.previous()) {
          ++var6;
-         if (var7.cycle == var1) {
+         if(var7.cycle == var1) {
             var7.set(var1, var2, var3, var4);
             return;
          }
 
-         if (var7.cycle <= var1) {
+         if(var7.cycle <= var1) {
             var5 = var7;
          }
       }
 
-      if (var5 == null) {
-         if (var6 < 4) {
+      if(var5 == null) {
+         if(var6 < 4) {
             this.combatInfo1.addLast(new CombatInfo1(var1, var2, var3, var4));
          }
       } else {
          CombatInfoList.method4089(new CombatInfo1(var1, var2, var3, var4), var5);
-         if (var6 >= 4) {
+         if(var6 >= 4) {
             this.combatInfo1.last().unlink();
          }
       }
@@ -80,13 +81,13 @@ public class CombatInfoListHolder extends Node {
    )
    CombatInfo1 method1816(int var1) {
       CombatInfo1 var2 = (CombatInfo1)this.combatInfo1.last();
-      if (var2 != null && var2.cycle <= var1) {
+      if(var2 != null && var2.cycle <= var1) {
          for(CombatInfo1 var3 = (CombatInfo1)this.combatInfo1.previous(); var3 != null && var3.cycle <= var1; var3 = (CombatInfo1)this.combatInfo1.previous()) {
             var2.unlink();
             var2 = var3;
          }
 
-         if (this.combatInfo2.field3330 + var2.int2 + var2.cycle > var1) {
+         if(this.combatInfo2.field3330 + var2.int2 + var2.cycle > var1) {
             return var2;
          } else {
             var2.unlink();
@@ -112,11 +113,11 @@ public class CombatInfoListHolder extends Node {
       garbageValue = "-391307830"
    )
    static String method1822(IterableHashTable var0, int var1, String var2) {
-      if (var0 == null) {
+      if(var0 == null) {
          return var2;
       } else {
          ObjectNode var3 = (ObjectNode)var0.get((long)var1);
-         return var3 == null ? var2 : (String)var3.value;
+         return var3 == null?var2:(String)var3.value;
       }
    }
 

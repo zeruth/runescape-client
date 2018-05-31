@@ -12,13 +12,13 @@ public class FloorUnderlayDefinition extends CacheableNode {
       signature = "Lgj;"
    )
    @Export("underlays")
-   static NodeCache underlays = new NodeCache(64);
+   static NodeCache underlays;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 1593176961
    )
    @Export("rgbColor")
-   int rgbColor = 0;
+   int rgbColor;
    @ObfuscatedName("b")
    @ObfuscatedGetter(
       intValue = 1345406209
@@ -44,6 +44,14 @@ public class FloorUnderlayDefinition extends CacheableNode {
    @Export("hueMultiplier")
    public int hueMultiplier;
 
+   static {
+      underlays = new NodeCache(64);
+   }
+
+   FloorUnderlayDefinition() {
+      this.rgbColor = 0;
+   }
+
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "(I)V",
@@ -63,7 +71,7 @@ public class FloorUnderlayDefinition extends CacheableNode {
    void decode(Buffer var1, int var2) {
       while(true) {
          int var3 = var1.readUnsignedByte();
-         if (var3 == 0) {
+         if(var3 == 0) {
             return;
          }
 
@@ -78,7 +86,7 @@ public class FloorUnderlayDefinition extends CacheableNode {
    )
    @Export("decode")
    void decode(Buffer var1, int var2, int var3) {
-      if (var2 == 1) {
+      if(var2 == 1) {
          this.rgbColor = var1.read24BitInt();
       }
 
@@ -95,40 +103,40 @@ public class FloorUnderlayDefinition extends CacheableNode {
       double var4 = (double)(var1 >> 8 & 255) / 256.0D;
       double var6 = (double)(var1 & 255) / 256.0D;
       double var8 = var2;
-      if (var4 < var2) {
+      if(var4 < var2) {
          var8 = var4;
       }
 
-      if (var6 < var8) {
+      if(var6 < var8) {
          var8 = var6;
       }
 
       double var10 = var2;
-      if (var4 > var2) {
+      if(var4 > var2) {
          var10 = var4;
       }
 
-      if (var6 > var10) {
+      if(var6 > var10) {
          var10 = var6;
       }
 
       double var12 = 0.0D;
       double var14 = 0.0D;
       double var16 = (var10 + var8) / 2.0D;
-      if (var8 != var10) {
-         if (var16 < 0.5D) {
+      if(var8 != var10) {
+         if(var16 < 0.5D) {
             var14 = (var10 - var8) / (var8 + var10);
          }
 
-         if (var16 >= 0.5D) {
+         if(var16 >= 0.5D) {
             var14 = (var10 - var8) / (2.0D - var10 - var8);
          }
 
-         if (var2 == var10) {
+         if(var2 == var10) {
             var12 = (var4 - var6) / (var10 - var8);
-         } else if (var4 == var10) {
+         } else if(var4 == var10) {
             var12 = 2.0D + (var6 - var2) / (var10 - var8);
-         } else if (var6 == var10) {
+         } else if(var6 == var10) {
             var12 = 4.0D + (var2 - var4) / (var10 - var8);
          }
       }
@@ -136,25 +144,25 @@ public class FloorUnderlayDefinition extends CacheableNode {
       var12 /= 6.0D;
       this.saturation = (int)(var14 * 256.0D);
       this.lightness = (int)(var16 * 256.0D);
-      if (this.saturation < 0) {
+      if(this.saturation < 0) {
          this.saturation = 0;
-      } else if (this.saturation > 255) {
+      } else if(this.saturation > 255) {
          this.saturation = 255;
       }
 
-      if (this.lightness < 0) {
+      if(this.lightness < 0) {
          this.lightness = 0;
-      } else if (this.lightness > 255) {
+      } else if(this.lightness > 255) {
          this.lightness = 255;
       }
 
-      if (var16 > 0.5D) {
+      if(var16 > 0.5D) {
          this.hueMultiplier = (int)(512.0D * (1.0D - var16) * var14);
       } else {
          this.hueMultiplier = (int)(512.0D * var16 * var14);
       }
 
-      if (this.hueMultiplier < 1) {
+      if(this.hueMultiplier < 1) {
          this.hueMultiplier = 1;
       }
 
@@ -167,7 +175,7 @@ public class FloorUnderlayDefinition extends CacheableNode {
       garbageValue = "444052766"
    )
    static void method4879(int var0, int var1) {
-      if (Client.field693 != 0 && var0 != -1) {
+      if(Client.field693 != 0 && var0 != -1) {
          class179.method3537(WidgetNode.indexTrack2, var0, 0, Client.field693, false);
          Client.field825 = true;
       }

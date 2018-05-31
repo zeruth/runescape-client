@@ -26,7 +26,7 @@ public class class236 {
    )
    public static int method4597(char var0, int var1) {
       int var2 = var0 << 4;
-      if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
+      if(Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
          var0 = Character.toLowerCase(var0);
          var2 = (var0 << 4) + 1;
       }

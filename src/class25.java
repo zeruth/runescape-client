@@ -13,12 +13,12 @@ public class class25 {
    @ObfuscatedSignature(
       signature = "Lo;"
    )
-   static final class25 field227 = new class25(0);
+   static final class25 field227;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lo;"
    )
-   static final class25 field233 = new class25(1);
+   static final class25 field233;
    @ObfuscatedName("bs")
    @ObfuscatedGetter(
       intValue = -256235113
@@ -29,6 +29,11 @@ public class class25 {
       intValue = -944658495
    )
    final int field228;
+
+   static {
+      field227 = new class25(0);
+      field233 = new class25(1);
+   }
 
    class25(int var1) {
       this.field228 = var1;
@@ -49,19 +54,19 @@ public class class25 {
       garbageValue = "2065007798"
    )
    static int method464(int var0, Script var1, boolean var2) {
-      Widget var3 = var2 ? class184.field2379 : FriendManager.field996;
-      if (var0 == 1700) {
+      Widget var3 = var2?class184.field2379:FriendManager.field996;
+      if(var0 == 1700) {
          class69.intStack[++class45.intStackSize - 1] = var3.itemId;
          return 1;
-      } else if (var0 == 1701) {
-         if (var3.itemId != -1) {
+      } else if(var0 == 1701) {
+         if(var3.itemId != -1) {
             class69.intStack[++class45.intStackSize - 1] = var3.itemQuantity;
          } else {
             class69.intStack[++class45.intStackSize - 1] = 0;
          }
 
          return 1;
-      } else if (var0 == 1702) {
+      } else if(var0 == 1702) {
          class69.intStack[++class45.intStackSize - 1] = var3.index;
          return 1;
       } else {
@@ -75,12 +80,12 @@ public class class25 {
       garbageValue = "-2"
    )
    static final void method465(int var0) {
-      if (GameCanvas.loadWidget(var0)) {
+      if(GameCanvas.loadWidget(var0)) {
          Widget[] var1 = Widget.widgets[var0];
 
          for(int var2 = 0; var2 < var1.length; ++var2) {
             Widget var3 = var1[var2];
-            if (var3 != null) {
+            if(var3 != null) {
                var3.field2746 = 0;
                var3.field2718 = 0;
             }

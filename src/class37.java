@@ -82,19 +82,19 @@ public class class37 implements WorldMapSectionBase {
       garbageValue = "-1657983190"
    )
    public void vmethod692(WorldMapData var1) {
-      if (var1.minX > this.field328) {
+      if(var1.minX > this.field328) {
          var1.minX = this.field328;
       }
 
-      if (var1.field177 < this.field328) {
+      if(var1.field177 < this.field328) {
          var1.field177 = this.field328;
       }
 
-      if (var1.minY > this.field314) {
+      if(var1.minY > this.field314) {
          var1.minY = this.field314;
       }
 
-      if (var1.field179 < this.field314) {
+      if(var1.field179 < this.field314) {
          var1.field179 = this.field314;
       }
 
@@ -106,7 +106,7 @@ public class class37 implements WorldMapSectionBase {
       garbageValue = "1329615536"
    )
    public boolean containsCoord(int var1, int var2, int var3) {
-      return var1 >= this.field316 && var1 < this.field316 + this.field315 ? var2 >= (this.field323 << 6) + (this.field320 << 3) && var2 <= (this.field323 << 6) + (this.field320 << 3) + 7 && var3 >= (this.field317 << 6) + (this.field325 << 3) && var3 <= (this.field317 << 6) + (this.field325 << 3) + 7 : false;
+      return var1 >= this.field316 && var1 < this.field316 + this.field315?var2 >= (this.field323 << 6) + (this.field320 << 3) && var2 <= (this.field323 << 6) + (this.field320 << 3) + 7 && var3 >= (this.field317 << 6) + (this.field325 << 3) && var3 <= (this.field317 << 6) + (this.field325 << 3) + 7:false;
    }
 
    @ObfuscatedName("q")
@@ -124,7 +124,7 @@ public class class37 implements WorldMapSectionBase {
       garbageValue = "-1657440355"
    )
    public int[] vmethod712(int var1, int var2, int var3) {
-      if (!this.containsCoord(var1, var2, var3)) {
+      if(!this.containsCoord(var1, var2, var3)) {
          return null;
       } else {
          int[] var4 = new int[]{this.field328 * 64 - this.field323 * 64 + var2 + (this.field319 * 8 - this.field320 * 8), var3 + (this.field314 * 64 - this.field317 * 64) + (this.field318 * 8 - this.field325 * 8)};
@@ -138,7 +138,7 @@ public class class37 implements WorldMapSectionBase {
       garbageValue = "2126255726"
    )
    public Coordinates vmethod707(int var1, int var2) {
-      if (!this.vmethod694(var1, var2)) {
+      if(!this.vmethod694(var1, var2)) {
          return null;
       } else {
          int var3 = this.field323 * 64 - this.field328 * 64 + (this.field320 * 8 - this.field319 * 8) + var1;
@@ -183,21 +183,21 @@ public class class37 implements WorldMapSectionBase {
    static void requestNetFile(IndexData var0, int var1, int var2, int var3, byte var4, boolean var5) {
       long var6 = (long)((var1 << 16) + var2);
       FileRequest var8 = (FileRequest)class250.NetCache_pendingPriorityWrites.get(var6);
-      if (var8 == null) {
+      if(var8 == null) {
          var8 = (FileRequest)class250.NetCache_pendingPriorityResponses.get(var6);
-         if (var8 == null) {
+         if(var8 == null) {
             var8 = (FileRequest)class250.NetCache_pendingWrites.get(var6);
-            if (var8 != null) {
-               if (var5) {
+            if(var8 != null) {
+               if(var5) {
                   var8.unlinkDual();
                   class250.NetCache_pendingPriorityWrites.put(var8, var6);
                   --class250.NetCache_pendingWritesCount;
                   ++class250.NetCache_pendingPriorityWritesCount;
                }
             } else {
-               if (!var5) {
+               if(!var5) {
                   var8 = (FileRequest)class250.NetCache_pendingResponses.get(var6);
-                  if (var8 != null) {
+                  if(var8 != null) {
                      return;
                   }
                }
@@ -206,7 +206,7 @@ public class class37 implements WorldMapSectionBase {
                var8.index = var0;
                var8.crc = var3;
                var8.padding = var4;
-               if (var5) {
+               if(var5) {
                   class250.NetCache_pendingPriorityWrites.put(var8, var6);
                   ++class250.NetCache_pendingPriorityWritesCount;
                } else {

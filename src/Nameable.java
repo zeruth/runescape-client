@@ -36,7 +36,7 @@ public class Nameable implements Comparable {
    )
    @Export("getName")
    public String getName() {
-      return this.name == null ? "" : this.name.getName();
+      return this.name == null?"":this.name.getName();
    }
 
    @ObfuscatedName("an")
@@ -46,7 +46,7 @@ public class Nameable implements Comparable {
    )
    @Export("getPrevName")
    public String getPrevName() {
-      return this.prevName == null ? "" : this.prevName.getName();
+      return this.prevName == null?"":this.prevName.getName();
    }
 
    @ObfuscatedName("as")
@@ -56,7 +56,7 @@ public class Nameable implements Comparable {
    )
    @Export("setName")
    void setName(Name var1, Name var2) {
-      if (var1 == null) {
+      if(var1 == null) {
          throw new NullPointerException();
       } else {
          this.name = var1;

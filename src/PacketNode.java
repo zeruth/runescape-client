@@ -12,12 +12,12 @@ public class PacketNode extends Node {
       signature = "[Lfe;"
    )
    @Export("packetBufferNodes")
-   static PacketNode[] packetBufferNodes = new PacketNode[300];
+   static PacketNode[] packetBufferNodes;
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = -1988723367
    )
-   static int field2277 = 0;
+   static int field2277;
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "Lfy;"
@@ -41,13 +41,18 @@ public class PacketNode extends Node {
    )
    public int field2280;
 
+   static {
+      packetBufferNodes = new PacketNode[300];
+      field2277 = 0;
+   }
+
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "(B)V",
       garbageValue = "2"
    )
    public void method3479() {
-      if (field2277 < packetBufferNodes.length) {
+      if(field2277 < packetBufferNodes.length) {
          packetBufferNodes[++field2277 - 1] = this;
       }
 

@@ -17,7 +17,7 @@ final class class7 implements Comparator {
       garbageValue = "-641386920"
    )
    int method79(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-      return var1.field10 < var2.field10 ? -1 : (var1.field10 == var2.field10 ? 0 : 1);
+      return var1.field10 < var2.field10?-1:(var1.field10 == var2.field10?0:1);
    }
 
    public int compare(Object var1, Object var2) {
@@ -39,7 +39,7 @@ final class class7 implements Comparator {
 
       for(int var3 = 0; var3 < var2.length; ++var3) {
          Enumerated var4 = var2[var3];
-         if (var1 == var4.rsOrdinal()) {
+         if(var1 == var4.rsOrdinal()) {
             return var4;
          }
       }
@@ -53,12 +53,12 @@ final class class7 implements Comparator {
       garbageValue = "103"
    )
    static int method87(int var0, int var1) {
-      if (var0 == -2) {
+      if(var0 == -2) {
          return 12345678;
-      } else if (var0 == -1) {
-         if (var1 < 0) {
+      } else if(var0 == -1) {
+         if(var1 < 0) {
             var1 = 0;
-         } else if (var1 > 127) {
+         } else if(var1 > 127) {
             var1 = 127;
          }
 
@@ -66,13 +66,13 @@ final class class7 implements Comparator {
          return var1;
       } else {
          var1 = (var0 & 127) * var1 / 128;
-         if (var1 < 2) {
+         if(var1 < 2) {
             var1 = 2;
-         } else if (var1 > 126) {
+         } else if(var1 > 126) {
             var1 = 126;
          }
 
-         return (var0 & 'ﾀ') + var1;
+         return (var0 & 65408) + var1;
       }
    }
 
@@ -86,23 +86,23 @@ final class class7 implements Comparator {
       int var3 = -1;
       int var4 = 0;
       int var5 = 0;
-      if (var0.type == 0) {
+      if(var0.type == 0) {
          var1 = ScriptEvent.region.method2927(var0.level, var0.x, var0.y);
       }
 
-      if (var0.type == 1) {
+      if(var0.type == 1) {
          var1 = ScriptEvent.region.method2928(var0.level, var0.x, var0.y);
       }
 
-      if (var0.type == 2) {
+      if(var0.type == 2) {
          var1 = ScriptEvent.region.method3045(var0.level, var0.x, var0.y);
       }
 
-      if (var0.type == 3) {
+      if(var0.type == 3) {
          var1 = ScriptEvent.region.method2930(var0.level, var0.x, var0.y);
       }
 
-      if (var1 != 0L) {
+      if(var1 != 0L) {
          int var6 = ScriptEvent.region.method2931(var0.level, var0.x, var0.y, var1);
          var3 = class8.method93(var1);
          var4 = var6 & 31;

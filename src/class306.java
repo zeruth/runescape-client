@@ -10,7 +10,7 @@ public class class306 {
    )
    public static boolean method5702(IndexDataBase var0, int var1, int var2) {
       byte[] var3 = var0.getConfigData(var1, var2);
-      if (var3 == null) {
+      if(var3 == null) {
          return false;
       } else {
          class171.decodeSprite(var3);

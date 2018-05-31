@@ -26,7 +26,7 @@ final class TotalQuantityComparator implements Comparator {
       garbageValue = "1722719770"
    )
    int method26(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-      return var1.grandExchangeOffer.totalQuantity < var2.grandExchangeOffer.totalQuantity ? -1 : (var2.grandExchangeOffer.totalQuantity == var1.grandExchangeOffer.totalQuantity ? 0 : 1);
+      return var1.grandExchangeOffer.totalQuantity < var2.grandExchangeOffer.totalQuantity?-1:(var2.grandExchangeOffer.totalQuantity == var1.grandExchangeOffer.totalQuantity?0:1);
    }
 
    public int compare(Object var1, Object var2) {

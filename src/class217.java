@@ -29,7 +29,7 @@ public class class217 {
    @ObfuscatedGetter(
       intValue = -908068121
    )
-   static int field2486 = 0;
+   static int field2486;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
       intValue = -2009173685
@@ -46,4 +46,8 @@ public class class217 {
    )
    @Export("mapMarkers")
    static SpritePixels[] mapMarkers;
+
+   static {
+      field2486 = 0;
+   }
 }

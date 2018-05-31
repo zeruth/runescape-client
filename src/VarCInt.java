@@ -20,7 +20,7 @@ public class VarCInt extends CacheableNode {
    @ObfuscatedSignature(
       signature = "Lgj;"
    )
-   static NodeCache field3279 = new NodeCache(64);
+   static NodeCache field3279;
    @ObfuscatedName("h")
    @ObfuscatedSignature(
       signature = "Liv;"
@@ -28,7 +28,15 @@ public class VarCInt extends CacheableNode {
    @Export("ItemDefinition_modelIndexCache")
    public static IndexDataBase ItemDefinition_modelIndexCache;
    @ObfuscatedName("q")
-   public boolean field3280 = false;
+   public boolean field3280;
+
+   static {
+      field3279 = new NodeCache(64);
+   }
+
+   VarCInt() {
+      this.field3280 = false;
+   }
 
    @ObfuscatedName("m")
    @ObfuscatedSignature(
@@ -38,7 +46,7 @@ public class VarCInt extends CacheableNode {
    void method4845(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
-         if (var2 == 0) {
+         if(var2 == 0) {
             return;
          }
 
@@ -52,7 +60,7 @@ public class VarCInt extends CacheableNode {
       garbageValue = "-1616931457"
    )
    void method4853(Buffer var1, int var2) {
-      if (var2 == 2) {
+      if(var2 == 2) {
          this.field3280 = true;
       }
 

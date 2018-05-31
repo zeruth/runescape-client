@@ -21,7 +21,7 @@ public class WorldMapData {
       intValue = 304469767
    )
    @Export("fileId")
-   int fileId = -1;
+   int fileId;
    @ObfuscatedName("m")
    @Export("identifier")
    String identifier;
@@ -32,44 +32,56 @@ public class WorldMapData {
    @ObfuscatedGetter(
       intValue = -1717593601
    )
-   int field171 = -1;
+   int field171;
    @ObfuscatedName("f")
    @ObfuscatedGetter(
       intValue = 649016241
    )
    @Export("initialMapSurfaceZoom")
-   int initialMapSurfaceZoom = -1;
+   int initialMapSurfaceZoom;
    @ObfuscatedName("n")
    @ObfuscatedSignature(
       signature = "Lhh;"
    )
-   Coordinates field175 = null;
+   Coordinates field175;
    @ObfuscatedName("h")
    @ObfuscatedGetter(
       intValue = 1148285323
    )
    @Export("minX")
-   int minX = Integer.MAX_VALUE;
+   int minX;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
       intValue = 435286975
    )
-   int field177 = 0;
+   int field177;
    @ObfuscatedName("j")
    @ObfuscatedGetter(
       intValue = -517933057
    )
    @Export("minY")
-   int minY = Integer.MAX_VALUE;
+   int minY;
    @ObfuscatedName("a")
    @ObfuscatedGetter(
       intValue = 761760769
    )
-   int field179 = 0;
+   int field179;
    @ObfuscatedName("l")
-   boolean field182 = false;
+   boolean field182;
    @ObfuscatedName("d")
    LinkedList field181;
+
+   public WorldMapData() {
+      this.fileId = -1;
+      this.field171 = -1;
+      this.initialMapSurfaceZoom = -1;
+      this.field175 = null;
+      this.minX = Integer.MAX_VALUE;
+      this.field177 = 0;
+      this.minY = Integer.MAX_VALUE;
+      this.field179 = 0;
+      this.field182 = false;
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -137,7 +149,7 @@ public class WorldMapData {
 
       while(var4.hasNext()) {
          WorldMapSectionBase var5 = (WorldMapSectionBase)var4.next();
-         if (var5.containsCoord(var1, var2, var3)) {
+         if(var5.containsCoord(var1, var2, var3)) {
             return true;
          }
       }
@@ -154,13 +166,13 @@ public class WorldMapData {
    public boolean surfaceContainsPosition(int var1, int var2) {
       int var3 = var1 / 64;
       int var4 = var2 / 64;
-      if (var3 >= this.minX && var3 <= this.field177) {
-         if (var4 >= this.minY && var4 <= this.field179) {
+      if(var3 >= this.minX && var3 <= this.field177) {
+         if(var4 >= this.minY && var4 <= this.field179) {
             Iterator var5 = this.field181.iterator();
 
             while(var5.hasNext()) {
                WorldMapSectionBase var6 = (WorldMapSectionBase)var5.next();
-               if (var6.vmethod694(var1, var2)) {
+               if(var6.vmethod694(var1, var2)) {
                   return true;
                }
             }
@@ -184,7 +196,7 @@ public class WorldMapData {
 
       while(var4.hasNext()) {
          WorldMapSectionBase var5 = (WorldMapSectionBase)var4.next();
-         if (var5.containsCoord(var1, var2, var3)) {
+         if(var5.containsCoord(var1, var2, var3)) {
             return var5.vmethod712(var1, var2, var3);
          }
       }
@@ -202,7 +214,7 @@ public class WorldMapData {
 
       while(var3.hasNext()) {
          WorldMapSectionBase var4 = (WorldMapSectionBase)var3.next();
-         if (var4.vmethod694(var1, var2)) {
+         if(var4.vmethod694(var1, var2)) {
             return var4.vmethod707(var1, var2);
          }
       }
@@ -380,7 +392,7 @@ public class WorldMapData {
          var2.write(var3);
          var2.seek(0L);
          var2.close();
-         if (var1) {
+         if(var1) {
             var0.delete();
          }
 

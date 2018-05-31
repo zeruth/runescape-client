@@ -18,16 +18,16 @@ public class World {
       intValue = -1767466175
    )
    @Export("worldCount")
-   static int worldCount = 0;
+   static int worldCount;
    @ObfuscatedName("h")
    @ObfuscatedGetter(
       intValue = 951177231
    )
-   static int field956 = 0;
+   static int field956;
    @ObfuscatedName("x")
-   static int[] field969 = new int[]{1, 1, 1, 1};
+   static int[] field969;
    @ObfuscatedName("j")
-   static int[] field958 = new int[]{0, 1, 2, 3};
+   static int[] field958;
    @ObfuscatedName("a")
    @ObfuscatedSignature(
       signature = "Ler;"
@@ -70,6 +70,13 @@ public class World {
    )
    @Export("index")
    int index;
+
+   static {
+      worldCount = 0;
+      field956 = 0;
+      field969 = new int[]{1, 1, 1, 1};
+      field958 = new int[]{0, 1, 2, 3};
+   }
 
    @ObfuscatedName("p")
    @ObfuscatedSignature(
@@ -131,9 +138,9 @@ public class World {
       garbageValue = "-14232"
    )
    static final void method1647(int var0, int var1) {
-      if (Client.hintArrowTargetType == 2) {
+      if(Client.hintArrowTargetType == 2) {
          KeyFocusListener.worldToScreen((Client.hintArrowX - class178.baseX << 7) + Client.hintArrowOffsetX, (Client.hintArrowY - CombatInfoListHolder.baseY << 7) + Client.hintArrowOffsetY, Client.hintArrowOffsetZ * 2);
-         if (Client.screenX > -1 && Client.gameCycle % 20 < 10) {
+         if(Client.screenX > -1 && Client.gameCycle % 20 < 10) {
             class262.headIconsHint[0].drawAt(var0 + Client.screenX - 12, Client.screenY + var1 - 28);
          }
       }

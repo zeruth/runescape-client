@@ -29,9 +29,10 @@ public final class HashTable {
    Node current;
    @ObfuscatedName("f")
    @Export("index")
-   int index = 0;
+   int index;
 
    public HashTable(int var1) {
+      this.index = 0;
       this.size = var1;
       this.buckets = new Node[var1];
 
@@ -52,7 +53,7 @@ public final class HashTable {
       Node var3 = this.buckets[(int)(var1 & (long)(this.size - 1))];
 
       for(this.currentGet = var3.next; var3 != this.currentGet; this.currentGet = this.currentGet.next) {
-         if (this.currentGet.hash == var1) {
+         if(this.currentGet.hash == var1) {
             Node var4 = this.currentGet;
             this.currentGet = this.currentGet.next;
             return var4;
@@ -69,7 +70,7 @@ public final class HashTable {
    )
    @Export("put")
    public void put(Node var1, long var2) {
-      if (var1.previous != null) {
+      if(var1.previous != null) {
          var1.unlink();
       }
 
@@ -89,7 +90,7 @@ public final class HashTable {
 
          while(true) {
             Node var3 = var2.next;
-            if (var3 == var2) {
+            if(var3 == var2) {
                break;
             }
 
@@ -118,14 +119,14 @@ public final class HashTable {
    @Export("next")
    public Node next() {
       Node var1;
-      if (this.index > 0 && this.buckets[this.index - 1] != this.current) {
+      if(this.index > 0 && this.buckets[this.index - 1] != this.current) {
          var1 = this.current;
          this.current = var1.next;
          return var1;
       } else {
          while(this.index < this.size) {
             var1 = this.buckets[this.index++].next;
-            if (var1 != this.buckets[this.index - 1]) {
+            if(var1 != this.buckets[this.index - 1]) {
                this.current = var1.next;
                return var1;
             }

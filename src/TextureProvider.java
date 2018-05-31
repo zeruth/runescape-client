@@ -19,7 +19,7 @@ public class TextureProvider implements ITextureLoader {
       signature = "Lgz;"
    )
    @Export("deque")
-   Deque deque = new Deque();
+   Deque deque;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 1229449465
@@ -31,16 +31,16 @@ public class TextureProvider implements ITextureLoader {
       intValue = 1775803035
    )
    @Export("size")
-   int size = 0;
+   int size;
    @ObfuscatedName("f")
    @Export("brightness")
-   double brightness = 1.0D;
+   double brightness;
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = -303532825
    )
    @Export("width")
-   int width = 128;
+   int width;
    @ObfuscatedName("h")
    @ObfuscatedSignature(
       signature = "Liv;"
@@ -52,6 +52,10 @@ public class TextureProvider implements ITextureLoader {
       signature = "(Liv;Liv;IDI)V"
    )
    public TextureProvider(IndexDataBase var1, IndexDataBase var2, int var3, double var4, int var6) {
+      this.deque = new Deque();
+      this.size = 0;
+      this.brightness = 1.0D;
+      this.width = 128;
       this.sprites = var2;
       this.maxSize = var3;
       this.size = this.maxSize;
@@ -80,20 +84,20 @@ public class TextureProvider implements ITextureLoader {
 
       for(int var4 = 0; var4 < var3.length; ++var4) {
          Texture var5 = var3[var4];
-         if (var5 != null && var5.fileIds != null) {
+         if(var5 != null && var5.fileIds != null) {
             var1 += var5.fileIds.length;
             int[] var6 = var5.fileIds;
 
             for(int var7 = 0; var7 < var6.length; ++var7) {
                int var8 = var6[var7];
-               if (this.sprites.method4629(var8)) {
+               if(this.sprites.method4629(var8)) {
                   ++var2;
                }
             }
          }
       }
 
-      if (var1 == 0) {
+      if(var1 == 0) {
          return 0;
       } else {
          return var2 * 100 / var1;
@@ -115,16 +119,16 @@ public class TextureProvider implements ITextureLoader {
    @Export("load")
    public int[] load(int var1) {
       Texture var2 = this.textures[var1];
-      if (var2 != null) {
-         if (var2.pixels != null) {
+      if(var2 != null) {
+         if(var2.pixels != null) {
             this.deque.addTail(var2);
             var2.loaded = true;
             return var2.pixels;
          }
 
          boolean var3 = var2.method2706(this.brightness, this.width, this.sprites);
-         if (var3) {
-            if (this.size == 0) {
+         if(var3) {
+            if(this.size == 0) {
                Texture var4 = (Texture)this.deque.popTail();
                var4.resetPixels();
             } else {
@@ -147,7 +151,7 @@ public class TextureProvider implements ITextureLoader {
    )
    @Export("getAverageTextureRGB")
    public int getAverageTextureRGB(int var1) {
-      return this.textures[var1] != null ? this.textures[var1].field1563 : 0;
+      return this.textures[var1] != null?this.textures[var1].field1563:0;
    }
 
    @ObfuscatedName("j")
@@ -176,7 +180,7 @@ public class TextureProvider implements ITextureLoader {
    @Export("reset")
    public void reset() {
       for(int var1 = 0; var1 < this.textures.length; ++var1) {
-         if (this.textures[var1] != null) {
+         if(this.textures[var1] != null) {
             this.textures[var1].resetPixels();
          }
       }
@@ -198,7 +202,7 @@ public class TextureProvider implements ITextureLoader {
    public void checkTextures(int var1) {
       for(int var2 = 0; var2 < this.textures.length; ++var2) {
          Texture var3 = this.textures[var2];
-         if (var3 != null && var3.field1568 != 0 && var3.loaded) {
+         if(var3 != null && var3.field1568 != 0 && var3.loaded) {
             var3.method2705(var1);
             var3.loaded = false;
          }
@@ -238,7 +242,7 @@ public class TextureProvider implements ITextureLoader {
       garbageValue = "451378026"
    )
    static void method2598(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
-      if (var0 < var1) {
+      if(var0 < var1) {
          int var6 = (var0 + var1) / 2;
          int var7 = var0;
          World var8 = class143.worldList[var6];
@@ -246,7 +250,7 @@ public class TextureProvider implements ITextureLoader {
          class143.worldList[var1] = var8;
 
          for(int var9 = var0; var9 < var1; ++var9) {
-            if (class6.method71(class143.worldList[var9], var8, var2, var3, var4, var5) <= 0) {
+            if(class6.method71(class143.worldList[var9], var8, var2, var3, var4, var5) <= 0) {
                World var10 = class143.worldList[var9];
                class143.worldList[var9] = class143.worldList[var7];
                class143.worldList[var7++] = var10;

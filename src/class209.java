@@ -16,7 +16,7 @@ public class class209 {
 
    @ObfuscatedName("w")
    public void method4156() {
-      if (this.field2459 != null) {
+      if(this.field2459 != null) {
          this.field2459.field2458 = this.field2458;
          this.field2458.field2459 = this.field2459;
          this.field2458 = null;

@@ -26,17 +26,19 @@ public class class98 {
    @ObfuscatedSignature(
       signature = "Lgd;"
    )
-   HashTable field1359 = new HashTable(256);
+   HashTable field1359;
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lgd;"
    )
-   HashTable field1357 = new HashTable(256);
+   HashTable field1357;
 
    @ObfuscatedSignature(
       signature = "(Liv;Liv;)V"
    )
    public class98(IndexDataBase var1, IndexDataBase var2) {
+      this.field1359 = new HashTable(256);
+      this.field1357 = new HashTable(256);
       this.sfx_index = var1;
       this.vorbis_index = var2;
    }
@@ -47,22 +49,22 @@ public class class98 {
       garbageValue = "-33"
    )
    RawAudioNode method2275(int var1, int var2, int[] var3) {
-      int var4 = var2 ^ (var1 << 4 & '\uffff' | var1 >>> 12);
+      int var4 = var2 ^ (var1 << 4 & 65535 | var1 >>> 12);
       var4 |= var1 << 16;
       long var5 = (long)var4;
       RawAudioNode var7 = (RawAudioNode)this.field1357.get(var5);
-      if (var7 != null) {
+      if(var7 != null) {
          return var7;
-      } else if (var3 != null && var3[0] <= 0) {
+      } else if(var3 != null && var3[0] <= 0) {
          return null;
       } else {
          SoundEffect var8 = SoundEffect.getTrack(this.sfx_index, var1, var2);
-         if (var8 == null) {
+         if(var8 == null) {
             return null;
          } else {
             var7 = var8.method2110();
             this.field1357.put(var7, var5);
-            if (var3 != null) {
+            if(var3 != null) {
                var3[0] -= var7.audioBuffer.length;
             }
 
@@ -77,19 +79,19 @@ public class class98 {
       garbageValue = "722390321"
    )
    RawAudioNode method2276(int var1, int var2, int[] var3) {
-      int var4 = var2 ^ (var1 << 4 & '\uffff' | var1 >>> 12);
+      int var4 = var2 ^ (var1 << 4 & 65535 | var1 >>> 12);
       var4 |= var1 << 16;
       long var5 = (long)var4 ^ 4294967296L;
       RawAudioNode var7 = (RawAudioNode)this.field1357.get(var5);
-      if (var7 != null) {
+      if(var7 != null) {
          return var7;
-      } else if (var3 != null && var3[0] <= 0) {
+      } else if(var3 != null && var3[0] <= 0) {
          return null;
       } else {
          class92 var8 = (class92)this.field1359.get(var5);
-         if (var8 == null) {
+         if(var8 == null) {
             var8 = class92.getInstrument(this.vorbis_index, var1, var2);
-            if (var8 == null) {
+            if(var8 == null) {
                return null;
             }
 
@@ -97,7 +99,7 @@ public class class98 {
          }
 
          var7 = var8.method2128(var3);
-         if (var7 == null) {
+         if(var7 == null) {
             return null;
          } else {
             var8.unlink();
@@ -113,9 +115,9 @@ public class class98 {
       garbageValue = "-757008929"
    )
    public RawAudioNode method2277(int var1, int[] var2) {
-      if (this.sfx_index.size() == 1) {
+      if(this.sfx_index.size() == 1) {
          return this.method2275(0, var1, var2);
-      } else if (this.sfx_index.fileCount(var1) == 1) {
+      } else if(this.sfx_index.fileCount(var1) == 1) {
          return this.method2275(var1, 0, var2);
       } else {
          throw new RuntimeException();
@@ -128,9 +130,9 @@ public class class98 {
       garbageValue = "1692568928"
    )
    public RawAudioNode method2274(int var1, int[] var2) {
-      if (this.vorbis_index.size() == 1) {
+      if(this.vorbis_index.size() == 1) {
          return this.method2276(0, var1, var2);
-      } else if (this.vorbis_index.fileCount(var1) == 1) {
+      } else if(this.vorbis_index.fileCount(var1) == 1) {
          return this.method2276(var1, 0, var2);
       } else {
          throw new RuntimeException();
@@ -154,17 +156,17 @@ public class class98 {
    )
    static int method2285(int var0, Script var1, boolean var2) {
       Widget var3;
-      if (var0 >= 2000) {
+      if(var0 >= 2000) {
          var0 -= 1000;
          var3 = OwnWorldComparator.getWidget(class69.intStack[--class45.intStackSize]);
       } else {
-         var3 = var2 ? class184.field2379 : FriendManager.field996;
+         var3 = var2?class184.field2379:FriendManager.field996;
       }
 
-      if (var0 == 1927) {
-         if (class69.field1025 >= 10) {
+      if(var0 == 1927) {
+         if(class69.field1025 >= 10) {
             throw new RuntimeException();
-         } else if (var3.onResizeListener == null) {
+         } else if(var3.onResizeListener == null) {
             return 0;
          } else {
             ScriptEvent var4 = new ScriptEvent();
@@ -185,7 +187,7 @@ public class class98 {
       garbageValue = "105"
    )
    static final void method2289(String var0, String var1, int var2, int var3, int var4, int var5, boolean var6) {
-      if (!Client.isMenuOpen && Client.menuOptionCount < 500) {
+      if(!Client.isMenuOpen && Client.menuOptionCount < 500) {
          Client.menuOptions[Client.menuOptionCount] = var0;
          Client.menuTargets[Client.menuOptionCount] = var1;
          Client.menuTypes[Client.menuOptionCount] = var2;

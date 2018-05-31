@@ -34,8 +34,8 @@ public class SourceDataSoundSystem extends AbstractSoundSystem {
       garbageValue = "2011832996"
    )
    protected void vmethod2190() {
-      this.audioFormat = new AudioFormat((float)AbstractSoundSystem.sampleRate, 16, AbstractSoundSystem.audioHighMemory ? 2 : 1, true, false);
-      this.bytes = new byte[256 << (AbstractSoundSystem.audioHighMemory ? 2 : 1)];
+      this.audioFormat = new AudioFormat((float)AbstractSoundSystem.sampleRate, 16, AbstractSoundSystem.audioHighMemory?2:1, true, false);
+      this.bytes = new byte[256 << (AbstractSoundSystem.audioHighMemory?2:1)];
    }
 
    @ObfuscatedName("m")
@@ -46,13 +46,13 @@ public class SourceDataSoundSystem extends AbstractSoundSystem {
    @Export("create")
    protected void create(int var1) throws LineUnavailableException {
       try {
-         Info var2 = new Info(SourceDataLine.class, this.audioFormat, var1 << (AbstractSoundSystem.audioHighMemory ? 2 : 1));
+         Info var2 = new Info(SourceDataLine.class, this.audioFormat, var1 << (AbstractSoundSystem.audioHighMemory?2:1));
          this.source = (SourceDataLine)AudioSystem.getLine(var2);
          this.source.open();
          this.source.start();
          this.size = var1;
       } catch (LineUnavailableException var3) {
-         if (Tile.method2717(var1) == 1) {
+         if(Tile.method2717(var1) == 1) {
             this.source = null;
             throw var3;
          }
@@ -69,20 +69,20 @@ public class SourceDataSoundSystem extends AbstractSoundSystem {
    )
    @Export("size")
    protected int size() {
-      return this.size - (this.source.available() >> (AbstractSoundSystem.audioHighMemory ? 2 : 1));
+      return this.size - (this.source.available() >> (AbstractSoundSystem.audioHighMemory?2:1));
    }
 
    @ObfuscatedName("x")
    @Export("write")
    protected void write() {
       int var1 = 256;
-      if (AbstractSoundSystem.audioHighMemory) {
+      if(AbstractSoundSystem.audioHighMemory) {
          var1 <<= 1;
       }
 
       for(int var2 = 0; var2 < var1; ++var2) {
          int var3 = super.samples[var2];
-         if ((var3 + 8388608 & -16777216) != 0) {
+         if((var3 + 8388608 & -16777216) != 0) {
             var3 = 8388607 ^ var3 >> 31;
          }
 
@@ -100,7 +100,7 @@ public class SourceDataSoundSystem extends AbstractSoundSystem {
    )
    @Export("close")
    protected void close() {
-      if (this.source != null) {
+      if(this.source != null) {
          this.source.close();
          this.source = null;
       }

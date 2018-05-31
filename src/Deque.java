@@ -11,7 +11,7 @@ public class Deque {
       signature = "Lgl;"
    )
    @Export("head")
-   public Node head = new Node();
+   public Node head;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lgl;"
@@ -20,6 +20,7 @@ public class Deque {
    Node current;
 
    public Deque() {
+      this.head = new Node();
       this.head.next = this.head;
       this.head.previous = this.head;
    }
@@ -29,7 +30,7 @@ public class Deque {
    public void clear() {
       while(true) {
          Node var1 = this.head.next;
-         if (var1 == this.head) {
+         if(var1 == this.head) {
             this.current = null;
             return;
          }
@@ -44,7 +45,7 @@ public class Deque {
    )
    @Export("addFront")
    public void addFront(Node var1) {
-      if (var1.previous != null) {
+      if(var1.previous != null) {
          var1.unlink();
       }
 
@@ -60,7 +61,7 @@ public class Deque {
    )
    @Export("addTail")
    public void addTail(Node var1) {
-      if (var1.previous != null) {
+      if(var1.previous != null) {
          var1.unlink();
       }
 
@@ -77,7 +78,7 @@ public class Deque {
    @Export("popFront")
    public Node popFront() {
       Node var1 = this.head.next;
-      if (var1 == this.head) {
+      if(var1 == this.head) {
          return null;
       } else {
          var1.unlink();
@@ -92,7 +93,7 @@ public class Deque {
    @Export("popTail")
    public Node popTail() {
       Node var1 = this.head.previous;
-      if (var1 == this.head) {
+      if(var1 == this.head) {
          return null;
       } else {
          var1.unlink();
@@ -107,7 +108,7 @@ public class Deque {
    @Export("getFront")
    public Node getFront() {
       Node var1 = this.head.next;
-      if (var1 == this.head) {
+      if(var1 == this.head) {
          this.current = null;
          return null;
       } else {
@@ -123,7 +124,7 @@ public class Deque {
    @Export("getTail")
    public Node getTail() {
       Node var1 = this.head.previous;
-      if (var1 == this.head) {
+      if(var1 == this.head) {
          this.current = null;
          return null;
       } else {
@@ -139,7 +140,7 @@ public class Deque {
    @Export("getNext")
    public Node getNext() {
       Node var1 = this.current;
-      if (var1 == this.head) {
+      if(var1 == this.head) {
          this.current = null;
          return null;
       } else {
@@ -155,7 +156,7 @@ public class Deque {
    @Export("getPrevious")
    public Node getPrevious() {
       Node var1 = this.current;
-      if (var1 == this.head) {
+      if(var1 == this.head) {
          this.current = null;
          return null;
       } else {
@@ -169,7 +170,7 @@ public class Deque {
       signature = "(Lgl;Lgl;)V"
    )
    public static void method4132(Node var0, Node var1) {
-      if (var0.previous != null) {
+      if(var0.previous != null) {
          var0.unlink();
       }
 

@@ -9,7 +9,11 @@ public final class class176 {
       signature = "Lfb;"
    )
    @Export("state")
-   static DState state = new DState();
+   static DState state;
+
+   static {
+      state = new DState();
+   }
 
    @ObfuscatedName("w")
    @Export("Bzip2Decompressor_decompress")
@@ -52,14 +56,14 @@ public final class class176 {
 
       label66:
       while(true) {
-         if (var2 > 0) {
+         if(var2 > 0) {
             while(true) {
-               if (var9 == 0) {
+               if(var9 == 0) {
                   break label66;
                }
 
-               if (var2 == 1) {
-                  if (var9 == 0) {
+               if(var2 == 1) {
+                  if(var9 == 0) {
                      var2 = 1;
                      break label66;
                   }
@@ -82,7 +86,7 @@ public final class class176 {
          byte var12;
          while(var11) {
             var11 = false;
-            if (var3 == var10) {
+            if(var3 == var10) {
                var2 = 0;
                break label66;
             }
@@ -92,9 +96,9 @@ public final class class176 {
             var12 = (byte)(var6 & 255);
             var6 >>= 8;
             ++var3;
-            if (var12 != var4) {
+            if(var12 != var4) {
                var4 = var12;
-               if (var9 == 0) {
+               if(var9 == 0) {
                   var2 = 1;
                   break label66;
                }
@@ -103,8 +107,8 @@ public final class class176 {
                ++var8;
                --var9;
                var11 = true;
-            } else if (var3 == var10) {
-               if (var9 == 0) {
+            } else if(var3 == var10) {
+               if(var9 == 0) {
                   var2 = 1;
                   break label66;
                }
@@ -121,8 +125,8 @@ public final class class176 {
          var12 = (byte)(var6 & 255);
          var6 >>= 8;
          ++var3;
-         if (var3 != var10) {
-            if (var12 != var4) {
+         if(var3 != var10) {
+            if(var12 != var4) {
                var4 = var12;
             } else {
                var2 = 3;
@@ -130,8 +134,8 @@ public final class class176 {
                var12 = (byte)(var6 & 255);
                var6 >>= 8;
                ++var3;
-               if (var3 != var10) {
-                  if (var12 != var4) {
+               if(var3 != var10) {
+                  if(var12 != var4) {
                      var4 = var12;
                   } else {
                      var6 = var5[var6];
@@ -151,7 +155,7 @@ public final class class176 {
 
       int var13 = var0.total_out_hi32;
       var0.total_out_hi32 += var9 - var9;
-      if (var0.total_out_hi32 < var13) {
+      if(var0.total_out_hi32 < var13) {
          ;
       }
 
@@ -194,7 +198,7 @@ public final class class176 {
       int[] var21 = null;
       int[] var22 = null;
       var0.blockSize100k = 1;
-      if (Timer.tt == null) {
+      if(Timer.tt == null) {
          Timer.tt = new int[var0.blockSize100k * 100000];
       }
 
@@ -203,7 +207,7 @@ public final class class176 {
       while(true) {
          while(var23) {
             byte var24 = method3506(var0);
-            if (var24 == 23) {
+            if(var24 == 23) {
                return;
             }
 
@@ -217,7 +221,7 @@ public final class class176 {
             var24 = method3506(var0);
             var24 = method3506(var0);
             var24 = method3516(var0);
-            if (var24 != 0) {
+            if(var24 != 0) {
                ;
             }
 
@@ -232,7 +236,7 @@ public final class class176 {
             int var25;
             for(var25 = 0; var25 < 16; ++var25) {
                var24 = method3516(var0);
-               if (var24 == 1) {
+               if(var24 == 1) {
                   var0.field2344[var25] = true;
                } else {
                   var0.field2344[var25] = false;
@@ -245,10 +249,10 @@ public final class class176 {
 
             int var26;
             for(var25 = 0; var25 < 16; ++var25) {
-               if (var0.field2344[var25]) {
+               if(var0.field2344[var25]) {
                   for(var26 = 0; var26 < 16; ++var26) {
                      var24 = method3516(var0);
-                     if (var24 == 1) {
+                     if(var24 == 1) {
                         var0.inUse[var26 + var25 * 16] = true;
                      }
                   }
@@ -265,7 +269,7 @@ public final class class176 {
 
                while(true) {
                   var24 = method3516(var0);
-                  if (var24 == 0) {
+                  if(var24 == 0) {
                      var0.field2351[var25] = (byte)var26;
                      break;
                   }
@@ -301,13 +305,13 @@ public final class class176 {
                for(var25 = 0; var25 < var27; ++var25) {
                   while(true) {
                      var24 = method3516(var0);
-                     if (var24 == 0) {
+                     if(var24 == 0) {
                         var0.field2343[var50][var25] = (byte)var33;
                         break;
                      }
 
                      var24 = method3516(var0);
-                     if (var24 == 0) {
+                     if(var24 == 0) {
                         ++var33;
                      } else {
                         --var33;
@@ -321,11 +325,11 @@ public final class class176 {
                byte var34 = 0;
 
                for(var25 = 0; var25 < var27; ++var25) {
-                  if (var0.field2343[var50][var25] > var34) {
+                  if(var0.field2343[var50][var25] > var34) {
                      var34 = var0.field2343[var50][var25];
                   }
 
-                  if (var0.field2343[var50][var25] < var51) {
+                  if(var0.field2343[var50][var25] < var51) {
                      var51 = var0.field2343[var50][var25];
                   }
                }
@@ -357,7 +361,7 @@ public final class class176 {
 
             int var39 = 0;
             byte var40;
-            if (var35 == 0) {
+            if(var35 == 0) {
                ++var52;
                var35 = 50;
                var40 = var0.field2327[var52];
@@ -383,10 +387,10 @@ public final class class176 {
                while(var45 != var33) {
                   int var46;
                   int var47;
-                  if (var45 != 0 && var45 != 1) {
+                  if(var45 != 0 && var45 != 1) {
                      var46 = var45 - 1;
                      int var48;
-                     if (var46 < 16) {
+                     if(var46 < 16) {
                         var47 = var0.field2349[0];
 
                         for(var24 = var0.field2348[var47 + var46]; var46 > 3; var46 -= 4) {
@@ -422,7 +426,7 @@ public final class class176 {
 
                         --var0.field2349[0];
                         var0.field2348[var0.field2349[0]] = var24;
-                        if (var0.field2349[0] == 0) {
+                        if(var0.field2349[0] == 0) {
                            var36 = 4095;
 
                            for(var37 = 15; var37 >= 0; --var37) {
@@ -439,7 +443,7 @@ public final class class176 {
                      ++var0.field2341[var0.seqToUnseq[var24 & 255] & 255];
                      Timer.tt[var39] = var0.seqToUnseq[var24 & 255] & 255;
                      ++var39;
-                     if (var41 == 0) {
+                     if(var41 == 0) {
                         ++var52;
                         var41 = 50;
                         var40 = var0.field2327[var52];
@@ -463,14 +467,14 @@ public final class class176 {
                      var47 = 1;
 
                      do {
-                        if (var45 == 0) {
+                        if(var45 == 0) {
                            var46 += var47;
-                        } else if (var45 == 1) {
+                        } else if(var45 == 1) {
                            var46 += var47 * 2;
                         }
 
                         var47 *= 2;
-                        if (var41 == 0) {
+                        if(var41 == 0) {
                            ++var52;
                            var41 = 50;
                            var40 = var0.field2327[var52];
@@ -527,7 +531,7 @@ public final class class176 {
                ++var0.nblock_used;
                var0.field2330 = var39;
                method3504(var0);
-               if (var0.field2330 + 1 == var0.nblock_used && var0.out_len == 0) {
+               if(var0.field2330 + 1 == var0.nblock_used && var0.out_len == 0) {
                   var23 = true;
                   break;
                }
@@ -567,7 +571,7 @@ public final class class176 {
          var1.total_in_lo32 += 8;
          ++var1.next_in;
          ++var1.total_out_lo32;
-         if (var1.total_out_lo32 == 0) {
+         if(var1.total_out_lo32 == 0) {
             ;
          }
       }
@@ -585,7 +589,7 @@ public final class class176 {
       var0.nInUse = 0;
 
       for(int var1 = 0; var1 < 256; ++var1) {
-         if (var0.inUse[var1]) {
+         if(var0.inUse[var1]) {
             var0.seqToUnseq[var0.nInUse] = (byte)var1;
             ++var0.nInUse;
          }
@@ -601,7 +605,7 @@ public final class class176 {
       int var9;
       for(var8 = var4; var8 <= var5; ++var8) {
          for(var9 = 0; var9 < var6; ++var9) {
-            if (var8 == var3[var9]) {
+            if(var8 == var3[var9]) {
                var2[var7] = var9;
                ++var7;
             }

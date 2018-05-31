@@ -40,31 +40,31 @@ public class Track1 extends Node {
 
          while(true) {
             var15 = var1.readUnsignedByte();
-            if (var15 != var14) {
+            if(var15 != var14) {
                ++var4;
             }
 
             var14 = var15 & 15;
-            if (var15 == 7) {
+            if(var15 == 7) {
                break;
             }
 
-            if (var15 == 23) {
+            if(var15 == 23) {
                ++var5;
-            } else if (var14 == 0) {
+            } else if(var14 == 0) {
                ++var7;
-            } else if (var14 == 1) {
+            } else if(var14 == 1) {
                ++var8;
-            } else if (var14 == 2) {
+            } else if(var14 == 2) {
                ++var6;
-            } else if (var14 == 3) {
+            } else if(var14 == 3) {
                ++var9;
-            } else if (var14 == 4) {
+            } else if(var14 == 4) {
                ++var10;
-            } else if (var14 == 5) {
+            } else if(var14 == 5) {
                ++var11;
             } else {
-               if (var14 != 6) {
+               if(var14 != 6) {
                   throw new RuntimeException();
                }
 
@@ -102,28 +102,28 @@ public class Track1 extends Node {
       int var29;
       for(var29 = 0; var29 < var6; ++var29) {
          var28 = var28 + var1.readUnsignedByte() & 127;
-         if (var28 != 0 && var28 != 32) {
-            if (var28 == 1) {
+         if(var28 != 0 && var28 != 32) {
+            if(var28 == 1) {
                ++var16;
-            } else if (var28 == 33) {
+            } else if(var28 == 33) {
                ++var17;
-            } else if (var28 == 7) {
+            } else if(var28 == 7) {
                ++var18;
-            } else if (var28 == 39) {
+            } else if(var28 == 39) {
                ++var19;
-            } else if (var28 == 10) {
+            } else if(var28 == 10) {
                ++var20;
-            } else if (var28 == 42) {
+            } else if(var28 == 42) {
                ++var21;
-            } else if (var28 == 99) {
+            } else if(var28 == 99) {
                ++var22;
-            } else if (var28 == 98) {
+            } else if(var28 == 98) {
                ++var23;
-            } else if (var28 == 101) {
+            } else if(var28 == 101) {
                ++var24;
-            } else if (var28 == 100) {
+            } else if(var28 == 100) {
                ++var25;
-            } else if (var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
+            } else if(var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
                ++var27;
             } else {
                ++var26;
@@ -180,7 +180,7 @@ public class Track1 extends Node {
       Buffer var51 = new Buffer(this.field2569);
       var51.putInt(1297377380);
       var51.putInt(6);
-      var51.putShort(var2 > 1 ? 1 : 0);
+      var51.putShort(var2 > 1?1:0);
       var51.putShort(var2);
       var51.putShort(var3);
       var1.offset = var13;
@@ -208,8 +208,8 @@ public class Track1 extends Node {
                int var64 = var1.payload[var29++] & 255;
                boolean var65 = var64 != var62;
                var62 = var64 & 15;
-               if (var64 == 7) {
-                  if (var65) {
+               if(var64 == 7) {
+                  if(var65) {
                      var51.putByte(255);
                   }
 
@@ -219,8 +219,8 @@ public class Track1 extends Node {
                   continue label221;
                }
 
-               if (var64 == 23) {
-                  if (var65) {
+               if(var64 == 23) {
+                  if(var65) {
                      var51.putByte(255);
                   }
 
@@ -231,8 +231,8 @@ public class Track1 extends Node {
                   var51.putByte(var1.payload[var50++]);
                } else {
                   var52 ^= var64 >> 4;
-                  if (var62 == 0) {
-                     if (var65) {
+                  if(var62 == 0) {
+                     if(var65) {
                         var51.putByte(var52 + 144);
                      }
 
@@ -240,8 +240,8 @@ public class Track1 extends Node {
                      var54 += var1.payload[var38++];
                      var51.putByte(var53 & 127);
                      var51.putByte(var54 & 127);
-                  } else if (var62 == 1) {
-                     if (var65) {
+                  } else if(var62 == 1) {
+                     if(var65) {
                         var51.putByte(var52 + 128);
                      }
 
@@ -249,36 +249,36 @@ public class Track1 extends Node {
                      var55 += var1.payload[var40++];
                      var51.putByte(var53 & 127);
                      var51.putByte(var55 & 127);
-                  } else if (var62 == 2) {
-                     if (var65) {
+                  } else if(var62 == 2) {
+                     if(var65) {
                         var51.putByte(var52 + 176);
                      }
 
                      var28 = var28 + var1.payload[var15++] & 127;
                      var51.putByte(var28);
                      byte var66;
-                     if (var28 != 0 && var28 != 32) {
-                        if (var28 == 1) {
+                     if(var28 != 0 && var28 != 32) {
+                        if(var28 == 1) {
                            var66 = var1.payload[var34++];
-                        } else if (var28 == 33) {
+                        } else if(var28 == 33) {
                            var66 = var1.payload[var41++];
-                        } else if (var28 == 7) {
+                        } else if(var28 == 7) {
                            var66 = var1.payload[var35++];
-                        } else if (var28 == 39) {
+                        } else if(var28 == 39) {
                            var66 = var1.payload[var42++];
-                        } else if (var28 == 10) {
+                        } else if(var28 == 10) {
                            var66 = var1.payload[var36++];
-                        } else if (var28 == 42) {
+                        } else if(var28 == 42) {
                            var66 = var1.payload[var43++];
-                        } else if (var28 == 99) {
+                        } else if(var28 == 99) {
                            var66 = var1.payload[var46++];
-                        } else if (var28 == 98) {
+                        } else if(var28 == 98) {
                            var66 = var1.payload[var47++];
-                        } else if (var28 == 101) {
+                        } else if(var28 == 101) {
                            var66 = var1.payload[var48++];
-                        } else if (var28 == 100) {
+                        } else if(var28 == 100) {
                            var66 = var1.payload[var49++];
-                        } else if (var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
+                        } else if(var28 != 64 && var28 != 65 && var28 != 120 && var28 != 121 && var28 != 123) {
                            var66 = var1.payload[var39++];
                         } else {
                            var66 = var1.payload[var30++];
@@ -290,8 +290,8 @@ public class Track1 extends Node {
                      int var67 = var66 + var59[var28];
                      var59[var28] = var67;
                      var51.putByte(var67 & 127);
-                  } else if (var62 == 3) {
-                     if (var65) {
+                  } else if(var62 == 3) {
+                     if(var65) {
                         var51.putByte(var52 + 224);
                      }
 
@@ -299,15 +299,15 @@ public class Track1 extends Node {
                      var56 += var1.payload[var33++] << 7;
                      var51.putByte(var56 & 127);
                      var51.putByte(var56 >> 7 & 127);
-                  } else if (var62 == 4) {
-                     if (var65) {
+                  } else if(var62 == 4) {
+                     if(var65) {
                         var51.putByte(var52 + 208);
                      }
 
                      var57 += var1.payload[var32++];
                      var51.putByte(var57 & 127);
-                  } else if (var62 == 5) {
-                     if (var65) {
+                  } else if(var62 == 5) {
+                     if(var65) {
                         var51.putByte(var52 + 160);
                      }
 
@@ -316,11 +316,11 @@ public class Track1 extends Node {
                      var51.putByte(var53 & 127);
                      var51.putByte(var58 & 127);
                   } else {
-                     if (var62 != 6) {
+                     if(var62 != 6) {
                         throw new RuntimeException();
                      }
 
-                     if (var65) {
+                     if(var65) {
                         var51.putByte(var52 + 192);
                      }
 
@@ -335,7 +335,7 @@ public class Track1 extends Node {
 
    @ObfuscatedName("m")
    void method4450() {
-      if (this.field2568 == null) {
+      if(this.field2568 == null) {
          this.field2568 = new HashTable(16);
          int[] var1 = new int[16];
          int[] var2 = new int[16];
@@ -360,7 +360,7 @@ public class Track1 extends Node {
                while(var6 == var3.field2541[var5]) {
                   var3.method4411(var5);
                   int var7 = var3.method4372(var5);
-                  if (var7 == 1) {
+                  if(var7 == 1) {
                      var3.method4370();
                      var3.method4402(var5);
                      continue label56;
@@ -370,33 +370,33 @@ public class Track1 extends Node {
                   int var9;
                   int var10;
                   int var11;
-                  if (var8 == 176) {
+                  if(var8 == 176) {
                      var9 = var7 & 15;
                      var10 = var7 >> 8 & 127;
                      var11 = var7 >> 16 & 127;
-                     if (var10 == 0) {
+                     if(var10 == 0) {
                         var1[var9] = (var11 << 14) + (var1[var9] & -2080769);
                      }
 
-                     if (var10 == 32) {
+                     if(var10 == 32) {
                         var1[var9] = (var1[var9] & -16257) + (var11 << 7);
                      }
                   }
 
-                  if (var8 == 192) {
+                  if(var8 == 192) {
                      var9 = var7 & 15;
                      var10 = var7 >> 8 & 127;
                      var2[var9] = var10 + var1[var9];
                   }
 
-                  if (var8 == 144) {
+                  if(var8 == 144) {
                      var9 = var7 & 15;
                      var10 = var7 >> 8 & 127;
                      var11 = var7 >> 16 & 127;
-                     if (var11 > 0) {
+                     if(var11 > 0) {
                         int var12 = var2[var9];
                         ByteArrayNode var13 = (ByteArrayNode)this.field2568.get((long)var12);
-                        if (var13 == null) {
+                        if(var13 == null) {
                            var13 = new ByteArrayNode(new byte[128]);
                            this.field2568.put(var13, (long)var12);
                         }
@@ -426,6 +426,6 @@ public class Track1 extends Node {
    @Export("getMusicFile")
    static Track1 getMusicFile(IndexDataBase var0, int var1, int var2) {
       byte[] var3 = var0.getConfigData(var1, var2);
-      return var3 == null ? null : new Track1(new Buffer(var3));
+      return var3 == null?null:new Track1(new Buffer(var3));
    }
 }

@@ -38,36 +38,36 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       signature = "Laa;"
    )
    @Export("shell")
-   static GameEngine shell = null;
+   static GameEngine shell;
    @ObfuscatedName("b")
    @ObfuscatedGetter(
       intValue = -1361678311
    )
    @Export("shellCount")
-   static int shellCount = 0;
+   static int shellCount;
    @ObfuscatedName("f")
    @ObfuscatedGetter(
       longValue = 2836813929099139673L
    )
-   static long field383 = 0L;
+   static long field383;
    @ObfuscatedName("n")
-   static boolean field384 = false;
+   static boolean field384;
    @ObfuscatedName("a")
    @ObfuscatedGetter(
       intValue = 1689766149
    )
-   static int field386 = 20;
+   static int field386;
    @ObfuscatedName("l")
    @ObfuscatedGetter(
       intValue = -1392235875
    )
-   static int field387 = 1;
+   static int field387;
    @ObfuscatedName("d")
    @ObfuscatedGetter(
       intValue = 1564891621
    )
    @Export("FPS")
-   protected static int FPS = 0;
+   protected static int FPS;
    @ObfuscatedName("s")
    @ObfuscatedSignature(
       signature = "Lfg;"
@@ -75,9 +75,9 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @Export("timer")
    static Timer timer;
    @ObfuscatedName("g")
-   static long[] field390 = new long[32];
+   static long[] field390;
    @ObfuscatedName("e")
-   static long[] field397 = new long[32];
+   static long[] field397;
    @ObfuscatedName("t")
    @ObfuscatedGetter(
       intValue = -698610971
@@ -87,22 +87,22 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @ObfuscatedGetter(
       intValue = -741352333
    )
-   static int field400 = 500;
+   static int field400;
    @ObfuscatedName("au")
    @Export("focused")
-   static volatile boolean focused = true;
+   static volatile boolean focused;
    @ObfuscatedName("aa")
    @ObfuscatedGetter(
       longValue = 7031479172029741533L
    )
    @Export("garbageCollectorLastCollectionTime")
-   protected static long garbageCollectorLastCollectionTime = -1L;
+   protected static long garbageCollectorLastCollectionTime;
    @ObfuscatedName("ar")
    @ObfuscatedGetter(
       longValue = 1019046935399526603L
    )
    @Export("garbageCollectorLastCheckTimeMs")
-   protected static long garbageCollectorLastCheckTimeMs = -1L;
+   protected static long garbageCollectorLastCheckTimeMs;
    @ObfuscatedName("br")
    static String field414;
    @ObfuscatedName("fg")
@@ -110,7 +110,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    static int[][] xteaKeys;
    @ObfuscatedName("h")
    @Export("hasErrored")
-   boolean hasErrored = false;
+   boolean hasErrored;
    @ObfuscatedName("u")
    @ObfuscatedGetter(
       intValue = -1359376647
@@ -125,12 +125,12 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @ObfuscatedGetter(
       intValue = 914914601
    )
-   int field395 = 0;
+   int field395;
    @ObfuscatedName("k")
    @ObfuscatedGetter(
       intValue = -1335456885
    )
-   int field396 = 0;
+   int field396;
    @ObfuscatedName("o")
    @ObfuscatedGetter(
       intValue = -541578041
@@ -158,16 +158,16 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @Export("canvas")
    Canvas canvas;
    @ObfuscatedName("aw")
-   volatile boolean field403 = true;
+   volatile boolean field403;
    @ObfuscatedName("az")
-   boolean field381 = false;
+   boolean field381;
    @ObfuscatedName("ao")
-   volatile boolean field406 = false;
+   volatile boolean field406;
    @ObfuscatedName("ap")
    @ObfuscatedGetter(
       longValue = 8431450235844399711L
    )
-   volatile long field394 = 0L;
+   volatile long field394;
    @ObfuscatedName("aq")
    @ObfuscatedSignature(
       signature = "Lap;"
@@ -181,7 +181,30 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @Export("eventQueue")
    final EventQueue eventQueue;
 
+   static {
+      shell = null;
+      shellCount = 0;
+      field383 = 0L;
+      field384 = false;
+      field386 = 20;
+      field387 = 1;
+      FPS = 0;
+      field390 = new long[32];
+      field397 = new long[32];
+      field400 = 500;
+      focused = true;
+      garbageCollectorLastCollectionTime = -1L;
+      garbageCollectorLastCheckTimeMs = -1L;
+   }
+
    protected GameEngine() {
+      this.hasErrored = false;
+      this.field395 = 0;
+      this.field396 = 0;
+      this.field403 = true;
+      this.field381 = false;
+      this.field406 = false;
+      this.field394 = 0L;
       EventQueue var1 = null;
 
       try {
@@ -200,7 +223,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       garbageValue = "114"
    )
    public final void method896(int var1, int var2) {
-      if (this.field405 != var1 || var2 != this.field407) {
+      if(this.field405 != var1 || var2 != this.field407) {
          this.method836();
       }
 
@@ -214,12 +237,12 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       garbageValue = "-1496637941"
    )
    final void method844(Object var1) {
-      if (this.eventQueue != null) {
+      if(this.eventQueue != null) {
          for(int var2 = 0; var2 < 50 && this.eventQueue.peekEvent() != null; ++var2) {
             WorldMapType1.method218(1L);
          }
 
-         if (var1 != null) {
+         if(var1 != null) {
             this.eventQueue.postEvent(new ActionEvent(var1, 1001, "dummy"));
          }
       }
@@ -233,7 +256,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    )
    @Export("mouseWheel")
    protected MouseWheel mouseWheel() {
-      if (this.mouseWheelHandler == null) {
+      if(this.mouseWheelHandler == null) {
          this.mouseWheelHandler = new MouseWheelHandler();
          this.mouseWheelHandler.addTo(this.canvas);
       }
@@ -294,15 +317,15 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    )
    final void method888() {
       Container var1 = this.container();
-      if (var1 != null) {
+      if(var1 != null) {
          Bounds var2 = this.method860();
          this.field393 = Math.max(var2.field3750, this.field392);
          this.field415 = Math.max(var2.field3751, this.field398);
-         if (this.field393 <= 0) {
+         if(this.field393 <= 0) {
             this.field393 = 1;
          }
 
-         if (this.field415 <= 0) {
+         if(this.field415 <= 0) {
             this.field415 = 1;
          }
 
@@ -312,7 +335,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
          this.field396 = 0;
          this.canvas.setSize(class9.canvasWidth, class37.canvasHeight);
          class50.rasterProvider = new MainBufferProvider(class9.canvasWidth, class37.canvasHeight, this.canvas);
-         if (var1 == this.frame) {
+         if(var1 == this.frame) {
             Insets var3 = this.frame.getInsets();
             this.canvas.setLocation(this.field395 + var3.left, var3.top + this.field396);
          } else {
@@ -342,12 +365,12 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       int var2 = this.field396;
       int var3 = this.field393 - class9.canvasWidth - var1;
       int var4 = this.field415 - class37.canvasHeight - var2;
-      if (var1 > 0 || var3 > 0 || var2 > 0 || var4 > 0) {
+      if(var1 > 0 || var3 > 0 || var2 > 0 || var4 > 0) {
          try {
             Container var5 = this.container();
             int var6 = 0;
             int var7 = 0;
-            if (var5 == this.frame) {
+            if(var5 == this.frame) {
                Insets var8 = this.frame.getInsets();
                var6 = var8.left;
                var7 = var8.top;
@@ -355,19 +378,19 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
             Graphics var10 = var5.getGraphics();
             var10.setColor(Color.black);
-            if (var1 > 0) {
+            if(var1 > 0) {
                var10.fillRect(var6, var7, var1, this.field415);
             }
 
-            if (var2 > 0) {
+            if(var2 > 0) {
                var10.fillRect(var6, var7, this.field393, var2);
             }
 
-            if (var3 > 0) {
+            if(var3 > 0) {
                var10.fillRect(var6 + this.field393 - var3, var7, var3, this.field415);
             }
 
-            if (var4 > 0) {
+            if(var4 > 0) {
                var10.fillRect(var6, var7 + this.field415 - var4, this.field393, var4);
             }
          } catch (Exception var9) {
@@ -389,7 +412,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       var1.removeMouseMotionListener(MouseInput.mouse);
       var1.removeFocusListener(MouseInput.mouse);
       MouseInput.MouseHandler_currentButton = 0;
-      if (this.mouseWheelHandler != null) {
+      if(this.mouseWheelHandler != null) {
          this.mouseWheelHandler.removeFrom(this.canvas);
       }
 
@@ -402,7 +425,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       var3.addMouseListener(MouseInput.mouse);
       var3.addMouseMotionListener(MouseInput.mouse);
       var3.addFocusListener(MouseInput.mouse);
-      if (this.mouseWheelHandler != null) {
+      if(this.mouseWheelHandler != null) {
          this.mouseWheelHandler.addTo(this.canvas);
       }
 
@@ -417,9 +440,9 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @Export("initialize")
    protected final void initialize(int var1, int var2, int var3) {
       try {
-         if (shell != null) {
+         if(shell != null) {
             ++shellCount;
-            if (shellCount >= 3) {
+            if(shellCount >= 3) {
                this.error("alreadyloaded");
                return;
             }
@@ -433,7 +456,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
          class37.canvasHeight = var2;
          class54.revision = var3;
          RunException.field1957 = this;
-         if (taskManager == null) {
+         if(taskManager == null) {
             taskManager = new Signlink();
          }
 
@@ -453,7 +476,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @Export("replaceCanvas")
    final synchronized void replaceCanvas() {
       Container var1 = this.container();
-      if (this.canvas != null) {
+      if(this.canvas != null) {
          this.canvas.removeFocusListener(this);
          var1.remove(this.canvas);
       }
@@ -461,7 +484,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       class9.canvasWidth = Math.max(var1.getWidth(), this.field392);
       class37.canvasHeight = Math.max(var1.getHeight(), this.field398);
       Insets var2;
-      if (this.frame != null) {
+      if(this.frame != null) {
          var2 = this.frame.getInsets();
          class9.canvasWidth -= var2.left + var2.right;
          class37.canvasHeight -= var2.top + var2.bottom;
@@ -472,7 +495,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       this.canvas.setSize(class9.canvasWidth, class37.canvasHeight);
       this.canvas.setVisible(true);
       this.canvas.setBackground(Color.BLACK);
-      if (var1 == this.frame) {
+      if(var1 == this.frame) {
          var2 = this.frame.getInsets();
          this.canvas.setLocation(var2.left + this.field395, this.field396 + var2.top);
       } else {
@@ -482,7 +505,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       this.canvas.addFocusListener(this);
       this.canvas.requestFocus();
       this.field403 = true;
-      if (class50.rasterProvider != null && class9.canvasWidth == class50.rasterProvider.width && class37.canvasHeight == class50.rasterProvider.height) {
+      if(class50.rasterProvider != null && class9.canvasWidth == class50.rasterProvider.width && class37.canvasHeight == class50.rasterProvider.height) {
          ((MainBufferProvider)class50.rasterProvider).replaceComponent(this.canvas);
          class50.rasterProvider.drawFull(0, 0);
       } else {
@@ -501,16 +524,16 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @Export("isValidHost")
    protected final boolean isValidHost() {
       String var1 = this.getDocumentBase().getHost().toLowerCase();
-      if (!var1.equals("jagex.com") && !var1.endsWith(".jagex.com")) {
-         if (!var1.equals("runescape.com") && !var1.endsWith(".runescape.com")) {
-            if (var1.endsWith("127.0.0.1")) {
+      if(!var1.equals("jagex.com") && !var1.endsWith(".jagex.com")) {
+         if(!var1.equals("runescape.com") && !var1.endsWith(".runescape.com")) {
+            if(var1.endsWith("127.0.0.1")) {
                return true;
             } else {
                while(var1.length() > 0 && var1.charAt(var1.length() - 1) >= '0' && var1.charAt(var1.length() - 1) <= '9') {
                   var1 = var1.substring(0, var1.length() - 1);
                }
 
-               if (var1.endsWith("192.168.1.")) {
+               if(var1.endsWith("192.168.1.")) {
                   return true;
                } else {
                   this.error("invalidhost");
@@ -535,7 +558,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       long var3 = field397[field413];
       field397[field413] = var1;
       field413 = field413 + 1 & 31;
-      if (var3 != 0L && var1 > var3) {
+      if(var3 != 0L && var1 > var3) {
          ;
       }
 
@@ -557,17 +580,17 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       long var4 = field390[UnitPriceComparator.field35];
       field390[UnitPriceComparator.field35] = var2;
       UnitPriceComparator.field35 = UnitPriceComparator.field35 + 1 & 31;
-      if (var4 != 0L && var2 > var4) {
+      if(var4 != 0L && var2 > var4) {
          int var6 = (int)(var2 - var4);
          FPS = ((var6 >> 1) + 32000) / var6;
       }
 
-      if (++field400 - 1 > 50) {
+      if(++field400 - 1 > 50) {
          field400 -= 50;
          this.field403 = true;
          this.canvas.setSize(class9.canvasWidth, class37.canvasHeight);
          this.canvas.setVisible(true);
-         if (var1 == this.frame) {
+         if(var1 == this.frame) {
             Insets var7 = this.frame.getInsets();
             this.canvas.setLocation(this.field395 + var7.left, this.field396 + var7.top);
          } else {
@@ -575,13 +598,13 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
          }
       }
 
-      if (this.field406) {
+      if(this.field406) {
          this.method859();
       }
 
       this.method853();
       this.methodDraw(this.field403);
-      if (this.field403) {
+      if(this.field403) {
          this.method845();
       }
 
@@ -595,7 +618,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    )
    final void method853() {
       Bounds var1 = this.method860();
-      if (this.field393 != var1.field3750 || var1.field3751 != this.field415 || this.field381) {
+      if(this.field393 != var1.field3750 || var1.field3751 != this.field415 || this.field381) {
          this.method888();
          this.field381 = false;
       }
@@ -617,7 +640,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       garbageValue = "-1316647126"
    )
    final synchronized void method855() {
-      if (!field384) {
+      if(!field384) {
          field384 = true;
 
          try {
@@ -632,7 +655,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
             ;
          }
 
-         if (this.frame != null) {
+         if(this.frame != null) {
             try {
                System.exit(0);
             } catch (Throwable var3) {
@@ -640,7 +663,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
             }
          }
 
-         if (taskManager != null) {
+         if(taskManager != null) {
             try {
                taskManager.join();
             } catch (Exception var2) {
@@ -690,12 +713,12 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    protected final void drawLoadingScreen(int var1, String var2, boolean var3) {
       try {
          Graphics var4 = this.canvas.getGraphics();
-         if (FileOnDisk.field1455 == null) {
+         if(FileOnDisk.field1455 == null) {
             FileOnDisk.field1455 = new java.awt.Font("Helvetica", 1, 13);
             class37.field322 = this.canvas.getFontMetrics(FileOnDisk.field1455);
          }
 
-         if (var3) {
+         if(var3) {
             var4.setColor(Color.black);
             var4.fillRect(0, 0, class9.canvasWidth, class37.canvasHeight);
          }
@@ -703,7 +726,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
          Color var5 = new Color(140, 17, 17);
 
          try {
-            if (class234.field2799 == null) {
+            if(class234.field2799 == null) {
                class234.field2799 = this.canvas.createImage(304, 34);
             }
 
@@ -755,7 +778,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    )
    @Export("error")
    protected void error(String var1) {
-      if (!this.hasErrored) {
+      if(!this.hasErrored) {
          this.hasErrored = true;
          System.out.println("error_game_" + var1);
 
@@ -775,7 +798,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    )
    @Export("container")
    Container container() {
-      return (Container)(this.frame != null ? this.frame : this);
+      return (Container)(this.frame != null?this.frame:this);
    }
 
    @ObfuscatedName("au")
@@ -787,7 +810,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       Container var1 = this.container();
       int var2 = Math.max(var1.getWidth(), this.field392);
       int var3 = Math.max(var1.getHeight(), this.field398);
-      if (this.frame != null) {
+      if(this.frame != null) {
          Insets var4 = this.frame.getInsets();
          var2 -= var4.left + var4.right;
          var3 -= var4.top + var4.bottom;
@@ -813,7 +836,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    protected abstract void vmethod1192();
 
    public final void destroy() {
-      if (this == shell && !field384) {
+      if(this == shell && !field384) {
          field383 = class166.method3456();
          WorldMapType1.method218(5000L);
          this.method855();
@@ -824,11 +847,11 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    @Export("paint")
    @ObfuscatedName("paint")
    public final synchronized void paint(Graphics var1) {
-      if (this == shell && !field384) {
+      if(this == shell && !field384) {
          this.field403 = true;
-         if (class166.method3456() - this.field394 > 1000L) {
+         if(class166.method3456() - this.field394 > 1000L) {
             Rectangle var2 = var1.getClipBounds();
-            if (var2 == null || var2.width >= class9.canvasWidth && var2.height >= class37.canvasHeight) {
+            if(var2 == null || var2.width >= class9.canvasWidth && var2.height >= class37.canvasHeight) {
                this.field406 = true;
             }
          }
@@ -845,14 +868,14 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    }
 
    public final void start() {
-      if (this == shell && !field384) {
+      if(this == shell && !field384) {
          field383 = 0L;
       }
 
    }
 
    public final void stop() {
-      if (this == shell && !field384) {
+      if(this == shell && !field384) {
          field383 = class166.method3456() + 4000L;
       }
 
@@ -894,7 +917,127 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    }
 
    public void run() {
-      // $FF: Couldn't be decompiled
+      try {
+         if(Signlink.javaVendor != null) {
+            String var1 = Signlink.javaVendor.toLowerCase();
+            if(var1.indexOf("sun") != -1 || var1.indexOf("apple") != -1) {
+               String var2 = Signlink.javaVersion;
+               if(var2.equals("1.1") || var2.startsWith("1.1.") || var2.equals("1.2") || var2.startsWith("1.2.") || var2.equals("1.3") || var2.startsWith("1.3.") || var2.equals("1.4") || var2.startsWith("1.4.") || var2.equals("1.5") || var2.startsWith("1.5.") || var2.equals("1.6.0")) {
+                  this.error("wrongjava");
+                  return;
+               }
+
+               if(var2.startsWith("1.6.0_")) {
+                  int var3;
+                  for(var3 = 6; var3 < var2.length() && class184.method3830(var2.charAt(var3)); ++var3) {
+                     ;
+                  }
+
+                  String var4 = var2.substring(6, var3);
+                  boolean var5 = false;
+                  boolean var6 = false;
+                  int var7 = 0;
+                  int var8 = var4.length();
+                  int var9 = 0;
+
+                  boolean var10;
+                  while(true) {
+                     if(var9 >= var8) {
+                        var10 = var6;
+                        break;
+                     }
+
+                     label171: {
+                        char var11 = var4.charAt(var9);
+                        if(var9 == 0) {
+                           if(var11 == '-') {
+                              var5 = true;
+                              break label171;
+                           }
+
+                           if(var11 == '+') {
+                              break label171;
+                           }
+                        }
+
+                        int var12;
+                        if(var11 >= '0' && var11 <= '9') {
+                           var12 = var11 - '0';
+                        } else if(var11 >= 'A' && var11 <= 'Z') {
+                           var12 = var11 - '7';
+                        } else {
+                           if(var11 < 'a' || var11 > 'z') {
+                              var10 = false;
+                              break;
+                           }
+
+                           var12 = var11 - 'W';
+                        }
+
+                        if(var12 >= 10) {
+                           var10 = false;
+                           break;
+                        }
+
+                        if(var5) {
+                           var12 = -var12;
+                        }
+
+                        int var13 = var7 * 10 + var12;
+                        if(var7 != var13 / 10) {
+                           var10 = false;
+                           break;
+                        }
+
+                        var7 = var13;
+                        var6 = true;
+                     }
+
+                     ++var9;
+                  }
+
+                  if(var10) {
+                     int var18 = GrandExchangeEvents.parseInt(var4, 10, true);
+                     if(var18 < 10) {
+                        this.error("wrongjava");
+                        return;
+                     }
+                  }
+               }
+
+               field387 = 5;
+            }
+         }
+
+         this.setFocusCycleRoot(true);
+         this.replaceCanvas();
+         this.setUp();
+
+         Object var16;
+         try {
+            var16 = new NanoTimer();
+         } catch (Throwable var14) {
+            var16 = new MilliTimer();
+         }
+
+         timer = (Timer)var16;
+
+         while(field383 == 0L || class166.method3456() < field383) {
+            Ignore.field3645 = timer.vmethod3348(field386, field387);
+
+            for(int var17 = 0; var17 < Ignore.field3645; ++var17) {
+               this.method851();
+            }
+
+            this.method914();
+            this.method844(this.canvas);
+         }
+      } catch (Exception var15) {
+         class43.processClientError((String)null, var15);
+         this.error("crash");
+      }
+
+      this.method855();
    }
 
    @ObfuscatedName("j")
@@ -929,11 +1072,11 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
          var4 = (103 - var3) * 2048 + 24628;
 
          for(var5 = 1; var5 < 103; ++var5) {
-            if ((class50.tileSettings[var0][var5][var3] & 24) == 0) {
+            if((class50.tileSettings[var0][var5][var3] & 24) == 0) {
                ScriptEvent.region.drawTile(var1, var4, 512, var0, var5, var3);
             }
 
-            if (var0 < 3 && (class50.tileSettings[var0 + 1][var5][var3] & 8) != 0) {
+            if(var0 < 3 && (class50.tileSettings[var0 + 1][var5][var3] & 8) != 0) {
                ScriptEvent.region.drawTile(var1, var4, 512, var0 + 1, var5, var3);
             }
 
@@ -948,11 +1091,11 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       int var6;
       for(var5 = 1; var5 < 103; ++var5) {
          for(var6 = 1; var6 < 103; ++var6) {
-            if ((class50.tileSettings[var0][var6][var5] & 24) == 0) {
+            if((class50.tileSettings[var0][var6][var5] & 24) == 0) {
                Actor.drawObject(var0, var6, var5, var3, var4);
             }
 
-            if (var0 < 3 && (class50.tileSettings[var0 + 1][var6][var5] & 8) != 0) {
+            if(var0 < 3 && (class50.tileSettings[var0 + 1][var6][var5] & 8) != 0) {
                Actor.drawObject(var0 + 1, var6, var5, var3, var4);
             }
          }
@@ -963,10 +1106,10 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
       for(var5 = 0; var5 < 104; ++var5) {
          for(var6 = 0; var6 < 104; ++var6) {
             long var7 = ScriptEvent.region.method2930(class192.plane, var5, var6);
-            if (var7 != 0L) {
+            if(var7 != 0L) {
                int var9 = class8.method93(var7);
                int var10 = SoundTaskDataProvider.getObjectDefinition(var9).mapIconId;
-               if (var10 >= 0) {
+               if(var10 >= 0) {
                   Client.mapIcons[Client.field651] = Area.mapAreaType[var10].getMapIcon(false);
                   Client.field817[Client.field651] = var5;
                   Client.field818[Client.field651] = var6;

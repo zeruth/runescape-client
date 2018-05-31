@@ -12,7 +12,7 @@ public class IterableDualNodeQueue implements Iterable {
       signature = "Lgc;"
    )
    @Export("sentinel")
-   public CacheableNode sentinel = new CacheableNode();
+   public CacheableNode sentinel;
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lgc;"
@@ -20,6 +20,7 @@ public class IterableDualNodeQueue implements Iterable {
    CacheableNode field2470;
 
    public IterableDualNodeQueue() {
+      this.sentinel = new CacheableNode();
       this.sentinel.previous = this.sentinel;
       this.sentinel.next = this.sentinel;
    }
@@ -39,7 +40,7 @@ public class IterableDualNodeQueue implements Iterable {
    )
    @Export("add")
    public void add(CacheableNode var1) {
-      if (var1.next != null) {
+      if(var1.next != null) {
          var1.unlinkDual();
       }
 
@@ -55,7 +56,7 @@ public class IterableDualNodeQueue implements Iterable {
    )
    CacheableNode method4184() {
       CacheableNode var1 = this.sentinel.previous;
-      if (var1 == this.sentinel) {
+      if(var1 == this.sentinel) {
          return null;
       } else {
          var1.unlinkDual();
@@ -77,13 +78,13 @@ public class IterableDualNodeQueue implements Iterable {
    )
    CacheableNode method4186(CacheableNode var1) {
       CacheableNode var2;
-      if (var1 == null) {
+      if(var1 == null) {
          var2 = this.sentinel.previous;
       } else {
          var2 = var1;
       }
 
-      if (var2 == this.sentinel) {
+      if(var2 == this.sentinel) {
          this.field2470 = null;
          return null;
       } else {
@@ -98,7 +99,7 @@ public class IterableDualNodeQueue implements Iterable {
    )
    CacheableNode method4187() {
       CacheableNode var1 = this.field2470;
-      if (var1 == this.sentinel) {
+      if(var1 == this.sentinel) {
          this.field2470 = null;
          return null;
       } else {

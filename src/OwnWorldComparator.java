@@ -19,20 +19,20 @@ public class OwnWorldComparator implements Comparator {
       garbageValue = "-35"
    )
    int method1179(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-      if (var2.world == var1.world) {
+      if(var2.world == var1.world) {
          return 0;
       } else {
-         if (this.field591) {
-            if (Client.world == var1.world) {
+         if(this.field591) {
+            if(Client.world == var1.world) {
                return -1;
             }
 
-            if (var2.world == Client.world) {
+            if(var2.world == Client.world) {
                return 1;
             }
          }
 
-         return var1.world < var2.world ? -1 : 1;
+         return var1.world < var2.world?-1:1;
       }
    }
 
@@ -62,10 +62,10 @@ public class OwnWorldComparator implements Comparator {
    @Export("getWidget")
    public static Widget getWidget(int var0) {
       int var1 = var0 >> 16;
-      int var2 = var0 & '\uffff';
-      if (Widget.widgets[var1] == null || Widget.widgets[var1][var2] == null) {
+      int var2 = var0 & 65535;
+      if(Widget.widgets[var1] == null || Widget.widgets[var1][var2] == null) {
          boolean var3 = GameCanvas.loadWidget(var1);
-         if (!var3) {
+         if(!var3) {
             return null;
          }
       }

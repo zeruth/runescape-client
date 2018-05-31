@@ -1,7 +1,17 @@
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InvalidClassException;
+import java.io.ObjectInputStream;
+import java.io.OptionalDataException;
+import java.io.StreamCorruptedException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
 @ObfuscatedName("z")
 public final class class21 {
@@ -11,7 +21,11 @@ public final class class21 {
    )
    static int field185;
    @ObfuscatedName("m")
-   final int[] field187 = new int[4096];
+   final int[] field187;
+
+   class21() {
+      this.field187 = new int[4096];
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -42,8 +56,99 @@ public final class class21 {
       garbageValue = "1948250856"
    )
    @Export("encodeClassVerifier")
-   public static void encodeClassVerifier(PacketBuffer param0) {
-      // $FF: Couldn't be decompiled
+   public static void encodeClassVerifier(PacketBuffer var0) {
+      ClassInfo var1 = (ClassInfo)class313.classInfos.last();
+      if(var1 != null) {
+         int var2 = var0.offset;
+         var0.putInt(var1.field3758);
+
+         for(int var3 = 0; var3 < var1.count; ++var3) {
+            if(var1.errorIdentifiers[var3] != 0) {
+               var0.putByte(var1.errorIdentifiers[var3]);
+            } else {
+               try {
+                  int var4 = var1.type[var3];
+                  Field var5;
+                  int var6;
+                  if(var4 == 0) {
+                     var5 = var1.fields[var3];
+                     var6 = Reflection.getInt(var5, (Object)null);
+                     var0.putByte(0);
+                     var0.putInt(var6);
+                  } else if(var4 == 1) {
+                     var5 = var1.fields[var3];
+                     Reflection.setInt(var5, (Object)null, var1.field3757[var3]);
+                     var0.putByte(0);
+                  } else if(var4 == 2) {
+                     var5 = var1.fields[var3];
+                     var6 = var5.getModifiers();
+                     var0.putByte(0);
+                     var0.putInt(var6);
+                  }
+
+                  Method var7;
+                  if(var4 != 3) {
+                     if(var4 == 4) {
+                        var7 = var1.methods[var3];
+                        var6 = var7.getModifiers();
+                        var0.putByte(0);
+                        var0.putInt(var6);
+                     }
+                  } else {
+                     var7 = var1.methods[var3];
+                     byte[][] var8 = var1.args[var3];
+                     Object[] var9 = new Object[var8.length];
+
+                     for(int var10 = 0; var10 < var8.length; ++var10) {
+                        ObjectInputStream var11 = new ObjectInputStream(new ByteArrayInputStream(var8[var10]));
+                        var9[var10] = var11.readObject();
+                     }
+
+                     Object var24 = Reflection.invoke(var7, (Object)null, var9);
+                     if(var24 == null) {
+                        var0.putByte(0);
+                     } else if(var24 instanceof Number) {
+                        var0.putByte(1);
+                        var0.putLong(((Number)var24).longValue());
+                     } else if(var24 instanceof String) {
+                        var0.putByte(2);
+                        var0.putString((String)var24);
+                     } else {
+                        var0.putByte(4);
+                     }
+                  }
+               } catch (ClassNotFoundException var12) {
+                  var0.putByte(-10);
+               } catch (InvalidClassException var13) {
+                  var0.putByte(-11);
+               } catch (StreamCorruptedException var14) {
+                  var0.putByte(-12);
+               } catch (OptionalDataException var15) {
+                  var0.putByte(-13);
+               } catch (IllegalAccessException var16) {
+                  var0.putByte(-14);
+               } catch (IllegalArgumentException var17) {
+                  var0.putByte(-15);
+               } catch (InvocationTargetException var18) {
+                  var0.putByte(-16);
+               } catch (SecurityException var19) {
+                  var0.putByte(-17);
+               } catch (IOException var20) {
+                  var0.putByte(-18);
+               } catch (NullPointerException var21) {
+                  var0.putByte(-19);
+               } catch (Exception var22) {
+                  var0.putByte(-20);
+               } catch (Throwable var23) {
+                  var0.putByte(-21);
+               }
+            }
+         }
+
+         var0.putCrc(var2);
+         var1.unlink();
+      }
+
    }
 
    @ObfuscatedName("q")
@@ -54,7 +159,7 @@ public final class class21 {
    @Export("getWidgetChild")
    public static Widget getWidgetChild(int var0, int var1) {
       Widget var2 = OwnWorldComparator.getWidget(var0);
-      return var1 == -1 ? var2 : (var2 != null && var2.children != null && var1 < var2.children.length ? var2.children[var1] : null);
+      return var1 == -1?var2:(var2 != null && var2.children != null && var1 < var2.children.length?var2.children[var1]:null);
    }
 
    @ObfuscatedName("v")
@@ -78,23 +183,23 @@ public final class class21 {
       int var2 = var0.id;
       int var3 = (int)var0.hash;
       var0.unlink();
-      if (var1) {
+      if(var1) {
          WorldMapRectangle.method190(var2);
       }
 
       for(IntegerNode var4 = (IntegerNode)Client.widgetFlags.first(); var4 != null; var4 = (IntegerNode)Client.widgetFlags.next()) {
-         if ((var4.hash >> 48 & 65535L) == (long)var2) {
+         if((var4.hash >> 48 & 65535L) == (long)var2) {
             var4.unlink();
          }
       }
 
       Widget var5 = OwnWorldComparator.getWidget(var3);
-      if (var5 != null) {
+      if(var5 != null) {
          DState.method3548(var5);
       }
 
       WorldComparator.method9();
-      if (Client.widgetRoot != -1) {
+      if(Client.widgetRoot != -1) {
          class76.method1849(Client.widgetRoot, 1);
       }
 

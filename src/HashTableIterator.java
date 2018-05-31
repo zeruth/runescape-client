@@ -27,12 +27,13 @@ public class HashTableIterator implements Iterator {
       signature = "Lgl;"
    )
    @Export("head")
-   Node head = null;
+   Node head;
 
    @ObfuscatedSignature(
       signature = "(Lgx;)V"
    )
    HashTableIterator(IterableHashTable var1) {
+      this.head = null;
       this.table = var1;
       this.reset();
    }
@@ -46,11 +47,11 @@ public class HashTableIterator implements Iterator {
    }
 
    public boolean hasNext() {
-      if (this.table.buckets[this.index - 1] != this.tail) {
+      if(this.table.buckets[this.index - 1] != this.tail) {
          return true;
       } else {
          while(this.index < this.table.size) {
-            if (this.table.buckets[this.index++].next != this.table.buckets[this.index - 1]) {
+            if(this.table.buckets[this.index++].next != this.table.buckets[this.index - 1]) {
                this.tail = this.table.buckets[this.index - 1].next;
                return true;
             }
@@ -64,7 +65,7 @@ public class HashTableIterator implements Iterator {
 
    public Object next() {
       Node var1;
-      if (this.table.buckets[this.index - 1] != this.tail) {
+      if(this.table.buckets[this.index - 1] != this.tail) {
          var1 = this.tail;
          this.tail = var1.next;
          this.head = var1;
@@ -72,7 +73,7 @@ public class HashTableIterator implements Iterator {
       } else {
          while(this.index < this.table.size) {
             var1 = this.table.buckets[this.index++].next;
-            if (var1 != this.table.buckets[this.index - 1]) {
+            if(var1 != this.table.buckets[this.index - 1]) {
                this.tail = var1.next;
                this.head = var1;
                return var1;

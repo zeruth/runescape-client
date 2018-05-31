@@ -19,18 +19,18 @@ public class NetWriter {
       signature = "Lgt;"
    )
    @Export("packetBufferNodes")
-   CombatInfoList packetBufferNodes = new CombatInfoList();
+   CombatInfoList packetBufferNodes;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 327763393
    )
-   int field1242 = 0;
+   int field1242;
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lgy;"
    )
    @Export("buffer")
-   Buffer buffer = new Buffer(5000);
+   Buffer buffer;
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Lgh;"
@@ -41,31 +41,31 @@ public class NetWriter {
       signature = "Lge;"
    )
    @Export("packetBuffer")
-   PacketBuffer packetBuffer = new PacketBuffer(40000);
+   PacketBuffer packetBuffer;
    @ObfuscatedName("h")
    @ObfuscatedSignature(
       signature = "Lfk;"
    )
    @Export("serverPacket")
-   ServerPacket serverPacket = null;
+   ServerPacket serverPacket;
    @ObfuscatedName("x")
    @ObfuscatedGetter(
       intValue = -937288539
    )
    @Export("packetLength")
-   int packetLength = 0;
+   int packetLength;
    @ObfuscatedName("j")
-   boolean field1248 = true;
+   boolean field1248;
    @ObfuscatedName("a")
    @ObfuscatedGetter(
       intValue = 1639779673
    )
-   int field1249 = 0;
+   int field1249;
    @ObfuscatedName("l")
    @ObfuscatedGetter(
       intValue = 443275095
    )
-   int field1252 = 0;
+   int field1252;
    @ObfuscatedName("d")
    @ObfuscatedSignature(
       signature = "Lfk;"
@@ -81,6 +81,18 @@ public class NetWriter {
       signature = "Lfk;"
    )
    ServerPacket field1253;
+
+   NetWriter() {
+      this.packetBufferNodes = new CombatInfoList();
+      this.field1242 = 0;
+      this.buffer = new Buffer(5000);
+      this.packetBuffer = new PacketBuffer(40000);
+      this.serverPacket = null;
+      this.packetLength = 0;
+      this.field1248 = true;
+      this.field1249 = 0;
+      this.field1252 = 0;
+   }
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -98,12 +110,12 @@ public class NetWriter {
       garbageValue = "1"
    )
    final void method2034() throws IOException {
-      if (this.rssocket != null && this.field1242 > 0) {
+      if(this.rssocket != null && this.field1242 > 0) {
          this.buffer.offset = 0;
 
          while(true) {
             PacketNode var1 = (PacketNode)this.packetBufferNodes.last();
-            if (var1 == null || var1.field2280 > this.buffer.payload.length - this.buffer.offset) {
+            if(var1 == null || var1.field2280 > this.buffer.payload.length - this.buffer.offset) {
                this.rssocket.vmethod3385(this.buffer.payload, 0, this.buffer.offset);
                this.field1252 = 0;
                break;
@@ -148,7 +160,7 @@ public class NetWriter {
    )
    @Export("close")
    void close() {
-      if (this.rssocket != null) {
+      if(this.rssocket != null) {
          this.rssocket.vmethod3368();
          this.rssocket = null;
       }
@@ -182,15 +194,15 @@ public class NetWriter {
    static int method2047(int var0, Script var1, boolean var2) {
       int var3 = -1;
       Widget var4;
-      if (var0 >= 2000) {
+      if(var0 >= 2000) {
          var0 -= 1000;
          var3 = class69.intStack[--class45.intStackSize];
          var4 = OwnWorldComparator.getWidget(var3);
       } else {
-         var4 = var2 ? class184.field2379 : FriendManager.field996;
+         var4 = var2?class184.field2379:FriendManager.field996;
       }
 
-      if (var0 == 1000) {
+      if(var0 == 1000) {
          class45.intStackSize -= 4;
          var4.originalX = class69.intStack[class45.intStackSize];
          var4.originalY = class69.intStack[class45.intStackSize + 1];
@@ -198,12 +210,12 @@ public class NetWriter {
          var4.dynamicY = class69.intStack[class45.intStackSize + 3];
          DState.method3548(var4);
          class37.clientInstance.widgetMethod0(var4);
-         if (var3 != -1 && var4.type == 0) {
+         if(var3 != -1 && var4.type == 0) {
             class45.method818(Widget.widgets[var3 >> 16], var4, false);
          }
 
          return 1;
-      } else if (var0 == 1001) {
+      } else if(var0 == 1001) {
          class45.intStackSize -= 4;
          var4.originalWidth = class69.intStack[class45.intStackSize];
          var4.originalHeight = class69.intStack[class45.intStackSize + 1];
@@ -211,23 +223,23 @@ public class NetWriter {
          var4.buttonType = class69.intStack[class45.intStackSize + 3];
          DState.method3548(var4);
          class37.clientInstance.widgetMethod0(var4);
-         if (var3 != -1 && var4.type == 0) {
+         if(var3 != -1 && var4.type == 0) {
             class45.method818(Widget.widgets[var3 >> 16], var4, false);
          }
 
          return 1;
-      } else if (var0 == 1003) {
+      } else if(var0 == 1003) {
          boolean var5 = class69.intStack[--class45.intStackSize] == 1;
-         if (var5 != var4.isHidden) {
+         if(var5 != var4.isHidden) {
             var4.isHidden = var5;
             DState.method3548(var4);
          }
 
          return 1;
-      } else if (var0 == 1005) {
+      } else if(var0 == 1005) {
          var4.noClickThrough = class69.intStack[--class45.intStackSize] == 1;
          return 1;
-      } else if (var0 == 1006) {
+      } else if(var0 == 1006) {
          var4.noScrollThrough = class69.intStack[--class45.intStackSize] == 1;
          return 1;
       } else {
@@ -247,19 +259,19 @@ public class NetWriter {
       int var3;
       int var4;
       int var5;
-      if (Client.field678 == 0) {
+      if(Client.field678 == 0) {
          var0 = MilliTimer.localPlayer.x;
          var1 = MilliTimer.localPlayer.y;
-         if (Signlink.field1979 - var0 < -500 || Signlink.field1979 - var0 > 500 || ItemContainer.field481 - var1 < -500 || ItemContainer.field481 - var1 > 500) {
+         if(Signlink.field1979 - var0 < -500 || Signlink.field1979 - var0 > 500 || ItemContainer.field481 - var1 < -500 || ItemContainer.field481 - var1 > 500) {
             Signlink.field1979 = var0;
             ItemContainer.field481 = var1;
          }
 
-         if (var0 != Signlink.field1979) {
+         if(var0 != Signlink.field1979) {
             Signlink.field1979 += (var0 - Signlink.field1979) / 16;
          }
 
-         if (var1 != ItemContainer.field481) {
+         if(var1 != ItemContainer.field481) {
             ItemContainer.field481 += (var1 - ItemContainer.field481) / 16;
          }
 
@@ -268,16 +280,16 @@ public class NetWriter {
          var4 = class264.getTileHeight(Signlink.field1979, ItemContainer.field481, class192.plane);
          var5 = 0;
          int var6;
-         if (var2 > 3 && var3 > 3 && var2 < 100 && var3 < 100) {
+         if(var2 > 3 && var3 > 3 && var2 < 100 && var3 < 100) {
             for(var6 = var2 - 4; var6 <= var2 + 4; ++var6) {
                for(int var7 = var3 - 4; var7 <= var3 + 4; ++var7) {
                   int var8 = class192.plane;
-                  if (var8 < 3 && (class50.tileSettings[1][var6][var7] & 2) == 2) {
+                  if(var8 < 3 && (class50.tileSettings[1][var6][var7] & 2) == 2) {
                      ++var8;
                   }
 
                   int var9 = var4 - class50.tileHeights[var8][var6][var7];
-                  if (var9 > var5) {
+                  if(var9 > var5) {
                      var5 = var9;
                   }
                }
@@ -285,42 +297,42 @@ public class NetWriter {
          }
 
          var6 = var5 * 192;
-         if (var6 > 98048) {
+         if(var6 > 98048) {
             var6 = 98048;
          }
 
-         if (var6 < 32768) {
+         if(var6 < 32768) {
             var6 = 32768;
          }
 
-         if (var6 > Client.field723) {
+         if(var6 > Client.field723) {
             Client.field723 += (var6 - Client.field723) / 24;
-         } else if (var6 < Client.field723) {
+         } else if(var6 < Client.field723) {
             Client.field723 += (var6 - Client.field723) / 80;
          }
 
          Client.field857 = class264.getTileHeight(MilliTimer.localPlayer.x, MilliTimer.localPlayer.y, class192.plane) - Client.field668;
-      } else if (Client.field678 == 1) {
+      } else if(Client.field678 == 1) {
          ScriptState.method1061();
          short var11 = -1;
-         if (KeyFocusListener.keyPressed[33]) {
+         if(KeyFocusListener.keyPressed[33]) {
             var11 = 0;
-         } else if (KeyFocusListener.keyPressed[49]) {
+         } else if(KeyFocusListener.keyPressed[49]) {
             var11 = 1024;
          }
 
-         if (KeyFocusListener.keyPressed[48]) {
-            if (var11 == 0) {
+         if(KeyFocusListener.keyPressed[48]) {
+            if(var11 == 0) {
                var11 = 1792;
-            } else if (var11 == 1024) {
+            } else if(var11 == 1024) {
                var11 = 1280;
             } else {
                var11 = 1536;
             }
-         } else if (KeyFocusListener.keyPressed[50]) {
-            if (var11 == 0) {
+         } else if(KeyFocusListener.keyPressed[50]) {
+            if(var11 == 0) {
                var11 = 256;
-            } else if (var11 == 1024) {
+            } else if(var11 == 1024) {
                var11 = 768;
             } else {
                var11 = 512;
@@ -328,32 +340,32 @@ public class NetWriter {
          }
 
          byte var10 = 0;
-         if (KeyFocusListener.keyPressed[35]) {
+         if(KeyFocusListener.keyPressed[35]) {
             var10 = -1;
-         } else if (KeyFocusListener.keyPressed[51]) {
+         } else if(KeyFocusListener.keyPressed[51]) {
             var10 = 1;
          }
 
          var2 = 0;
-         if (var11 >= 0 || var10 != 0) {
-            var2 = KeyFocusListener.keyPressed[81] ? Client.field673 : Client.field672;
+         if(var11 >= 0 || var10 != 0) {
+            var2 = KeyFocusListener.keyPressed[81]?Client.field673:Client.field672;
             var2 *= 16;
             Client.field804 = var11;
             Client.field671 = var10;
          }
 
-         if (Client.field602 < var2) {
+         if(Client.field602 < var2) {
             Client.field602 += var2 / 8;
-            if (Client.field602 > var2) {
+            if(Client.field602 > var2) {
                Client.field602 = var2;
             }
-         } else if (Client.field602 > var2) {
+         } else if(Client.field602 > var2) {
             Client.field602 = Client.field602 * 9 / 10;
          }
 
-         if (Client.field602 > 0) {
+         if(Client.field602 > 0) {
             var3 = Client.field602 / 16;
-            if (Client.field804 >= 0) {
+            if(Client.field804 >= 0) {
                var0 = Client.field804 - WidgetNode.cameraYaw & 2047;
                var4 = Graphics3D.SINE[var0];
                var5 = Graphics3D.COSINE[var0];
@@ -361,9 +373,9 @@ public class NetWriter {
                ItemContainer.field481 += var3 * var5 / 65536;
             }
 
-            if (Client.field671 != 0) {
+            if(Client.field671 != 0) {
                Client.field857 += var3 * Client.field671;
-               if (Client.field857 > 0) {
+               if(Client.field857 > 0) {
                   Client.field857 = 0;
                }
             }
@@ -372,31 +384,31 @@ public class NetWriter {
             Client.field671 = -1;
          }
 
-         if (KeyFocusListener.keyPressed[13]) {
+         if(KeyFocusListener.keyPressed[13]) {
             Client.field739.method2019(DecorativeObject.method3115(ClientPacket.field2183, Client.field739.field1250));
             Client.field678 = 0;
          }
       }
 
-      if (MouseInput.mouseCurrentButton == 4 && class8.middleMouseMovesCamera) {
+      if(MouseInput.mouseCurrentButton == 4 && class8.middleMouseMovesCamera) {
          var0 = MouseInput.mouseLastY - Client.field627;
          Client.field767 = var0 * 2;
-         Client.field627 = var0 != -1 && var0 != 1 ? (MouseInput.mouseLastY + Client.field627) / 2 : MouseInput.mouseLastY;
+         Client.field627 = var0 != -1 && var0 != 1?(MouseInput.mouseLastY + Client.field627) / 2:MouseInput.mouseLastY;
          var1 = Client.field717 - MouseInput.mouseLastX;
          Client.field663 = var1 * 2;
-         Client.field717 = var1 != -1 && var1 != 1 ? (MouseInput.mouseLastX + Client.field717) / 2 : MouseInput.mouseLastX;
+         Client.field717 = var1 != -1 && var1 != 1?(MouseInput.mouseLastX + Client.field717) / 2:MouseInput.mouseLastX;
       } else {
-         if (KeyFocusListener.keyPressed[96]) {
+         if(KeyFocusListener.keyPressed[96]) {
             Client.field663 += (-24 - Client.field663) / 2;
-         } else if (KeyFocusListener.keyPressed[97]) {
+         } else if(KeyFocusListener.keyPressed[97]) {
             Client.field663 += (24 - Client.field663) / 2;
          } else {
             Client.field663 /= 2;
          }
 
-         if (KeyFocusListener.keyPressed[98]) {
+         if(KeyFocusListener.keyPressed[98]) {
             Client.field767 += (12 - Client.field767) / 2;
-         } else if (KeyFocusListener.keyPressed[99]) {
+         } else if(KeyFocusListener.keyPressed[99]) {
             Client.field767 += (-12 - Client.field767) / 2;
          } else {
             Client.field767 /= 2;
@@ -408,11 +420,11 @@ public class NetWriter {
 
       Client.mapAngle = Client.field663 / 2 + Client.mapAngle & 2047;
       Client.cameraPitchTarget += Client.field767 / 2;
-      if (Client.cameraPitchTarget < 128) {
+      if(Client.cameraPitchTarget < 128) {
          Client.cameraPitchTarget = 128;
       }
 
-      if (Client.cameraPitchTarget > 383) {
+      if(Client.cameraPitchTarget > 383) {
          Client.cameraPitchTarget = 383;
       }
 

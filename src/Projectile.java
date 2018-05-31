@@ -76,7 +76,7 @@ public final class Projectile extends Renderable {
    int interacting;
    @ObfuscatedName("d")
    @Export("isMoving")
-   boolean isMoving = false;
+   boolean isMoving;
    @ObfuscatedName("s")
    @Export("x")
    double x;
@@ -124,15 +124,18 @@ public final class Projectile extends Renderable {
       intValue = -1323424599
    )
    @Export("int7")
-   int int7 = 0;
+   int int7;
    @ObfuscatedName("v")
    @ObfuscatedGetter(
       intValue = 1430258759
    )
    @Export("int6")
-   int int6 = 0;
+   int int6;
 
    Projectile(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
+      this.isMoving = false;
+      this.int7 = 0;
+      this.int6 = 0;
       this.id = var1;
       this.floor = var2;
       this.x1 = var3;
@@ -146,7 +149,7 @@ public final class Projectile extends Renderable {
       this.endHeight = var11;
       this.isMoving = false;
       int var12 = ScriptState.getSpotAnimType(this.id).field3292;
-      if (var12 != -1) {
+      if(var12 != -1) {
          this.animationSequence = class137.getAnimation(var12);
       } else {
          this.animationSequence = null;
@@ -163,7 +166,7 @@ public final class Projectile extends Renderable {
    @Hook("projectileMoved")
    final void moveProjectile(int var1, int var2, int var3, int var4) {
       double var5;
-      if (!this.isMoving) {
+      if(!this.isMoving) {
          var5 = (double)(var1 - this.x1);
          double var7 = (double)(var2 - this.y1);
          double var9 = Math.sqrt(var5 * var5 + var7 * var7);
@@ -176,7 +179,7 @@ public final class Projectile extends Renderable {
       this.velocityX = ((double)var1 - this.x) / var5;
       this.velocityY = ((double)var2 - this.y) / var5;
       this.scalar = Math.sqrt(this.velocityX * this.velocityX + this.velocityY * this.velocityY);
-      if (!this.isMoving) {
+      if(!this.isMoving) {
          this.velocityZ = -this.scalar * Math.tan(0.02454369D * (double)this.slope);
       }
 
@@ -197,13 +200,13 @@ public final class Projectile extends Renderable {
       this.velocityZ += (double)var1 * this.heightOffset;
       this.rotationX = (int)(Math.atan2(this.velocityX, this.velocityY) * 325.949D) + 1024 & 2047;
       this.rotationY = (int)(Math.atan2(this.velocityZ, this.scalar) * 325.949D) & 2047;
-      if (this.animationSequence != null) {
+      if(this.animationSequence != null) {
          this.int6 += var1;
 
          while(true) {
             do {
                do {
-                  if (this.int6 <= this.animationSequence.frameLengths[this.int7]) {
+                  if(this.int6 <= this.animationSequence.frameLengths[this.int7]) {
                      return;
                   }
 
@@ -227,7 +230,7 @@ public final class Projectile extends Renderable {
    protected final Model getModel() {
       Spotanim var1 = ScriptState.getSpotAnimType(this.id);
       Model var2 = var1.getModel(this.int7);
-      if (var2 == null) {
+      if(var2 == null) {
          return null;
       } else {
          var2.rotateZ(this.rotationY);
@@ -242,6 +245,6 @@ public final class Projectile extends Renderable {
    )
    static int method1900(int var0) {
       MessageNode var1 = (MessageNode)class83.messages.get((long)var0);
-      return var1 == null ? -1 : (var1.next == class83.field1205.sentinel ? -1 : ((MessageNode)var1.next).id);
+      return var1 == null?-1:(var1.next == class83.field1205.sentinel?-1:((MessageNode)var1.next).id);
    }
 }

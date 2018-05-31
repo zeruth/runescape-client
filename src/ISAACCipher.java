@@ -15,10 +15,10 @@ public final class ISAACCipher {
    int valuesRemaining;
    @ObfuscatedName("f")
    @Export("randResult")
-   int[] randResult = new int[256];
+   int[] randResult;
    @ObfuscatedName("n")
    @Export("mm")
-   int[] mm = new int[256];
+   int[] mm;
    @ObfuscatedName("h")
    @ObfuscatedGetter(
       intValue = 970541073
@@ -36,6 +36,9 @@ public final class ISAACCipher {
    int field2408;
 
    public ISAACCipher(int[] var1) {
+      this.mm = new int[256];
+      this.randResult = new int[256];
+
       for(int var2 = 0; var2 < var1.length; ++var2) {
          this.randResult[var2] = var1[var2];
       }
@@ -50,7 +53,7 @@ public final class ISAACCipher {
    )
    @Export("nextInt")
    final int nextInt() {
-      if (--this.valuesRemaining + 1 == 0) {
+      if(--this.valuesRemaining + 1 == 0) {
          this.generateMoreResults();
          this.valuesRemaining = 255;
       }
@@ -64,7 +67,7 @@ public final class ISAACCipher {
       garbageValue = "1220190858"
    )
    final int method3905() {
-      if (this.valuesRemaining == 0) {
+      if(this.valuesRemaining == 0) {
          this.generateMoreResults();
          this.valuesRemaining = 256;
       }
@@ -83,13 +86,13 @@ public final class ISAACCipher {
 
       for(int var1 = 0; var1 < 256; ++var1) {
          int var2 = this.mm[var1];
-         if ((var1 & 2) == 0) {
-            if ((var1 & 1) == 0) {
+         if((var1 & 2) == 0) {
+            if((var1 & 1) == 0) {
                this.field2410 ^= this.field2410 << 13;
             } else {
                this.field2410 ^= this.field2410 >>> 6;
             }
-         } else if ((var1 & 1) == 0) {
+         } else if((var1 & 1) == 0) {
             this.field2410 ^= this.field2410 << 2;
          } else {
             this.field2410 ^= this.field2410 >>> 16;
