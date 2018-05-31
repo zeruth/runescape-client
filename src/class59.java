@@ -276,7 +276,7 @@ public class class59 extends class166 {
                var14.setDoOutput(true);
                var14.setConnectTimeout(5000);
                OutputStreamWriter var15 = new OutputStreamWriter(var14.getOutputStream());
-               var15.write("data2=" + oginPacke.method3466(var11) + "&dest=" + oginPacke.method3466("passwordchoice.ws"));
+               var15.write("data2=" + LoginPacket.method3466(var11) + "&dest=" + LoginPacket.method3466("passwordchoice.ws"));
                var15.flush();
                InputStream var16 = var14.getInputStream();
                var10 = new Buffer(new byte[1000]);
