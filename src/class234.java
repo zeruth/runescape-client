@@ -12,9 +12,9 @@ public class class234 {
    )
    static int field2801;
    @ObfuscatedName("m")
-   public static final boolean[] field2797;
+   public static final boolean[] field2797 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false};
    @ObfuscatedName("q")
-   public static int[] field2798;
+   public static int[] field2798 = new int[99];
    @ObfuscatedName("ag")
    static Image field2799;
    @ObfuscatedName("cr")
@@ -25,8 +25,6 @@ public class class234 {
    static IndexData indexMaps;
 
    static {
-      field2797 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false};
-      field2798 = new int[99];
       int var0 = 0;
 
       for(int var1 = 0; var1 < 99; ++var1) {
@@ -44,6 +42,6 @@ public class class234 {
       garbageValue = "-71"
    )
    static String method4595(int var0) {
-      return var0 < 0?"":(Client.menuTargets[var0].length() > 0?Client.menuOptions[var0] + " " + Client.menuTargets[var0]:Client.menuOptions[var0]);
+      return var0 < 0 ? "" : (Client.menuTargets[var0].length() > 0 ? Client.menuOptions[var0] + " " + Client.menuTargets[var0] : Client.menuOptions[var0]);
    }
 }

@@ -48,11 +48,11 @@ public class Fonts {
 
       for(int var4 = 0; var4 < var3.length; ++var4) {
          FontName var5 = var3[var4];
-         if(this.map.containsKey(var5)) {
+         if (this.map.containsKey(var5)) {
             var2.put(var5, this.map.get(var5));
          } else {
             Font var6 = class313.method5759(this.field3694, this.field3689, var5.field3686, "");
-            if(var6 != null) {
+            if (var6 != null) {
                this.map.put(var5, var6);
                var2.put(var5, var6);
             }

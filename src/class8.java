@@ -33,12 +33,12 @@ public class class8 {
    )
    public static class267 method92(int var0) {
       class267 var1 = (class267)class267.field3367.get((long)var0);
-      if(var1 != null) {
+      if (var1 != null) {
          return var1;
       } else {
          byte[] var2 = class267.field3386.getConfigData(32, var0);
          var1 = new class267();
-         if(var2 != null) {
+         if (var2 != null) {
             var1.method5010(new Buffer(var2));
          }
 
@@ -54,7 +54,7 @@ public class class8 {
    )
    static int method91(int var0, int var1) {
       long var2 = (long)((var0 << 16) + var1);
-      return class320.currentRequest != null && var2 == class320.currentRequest.hash?class232.NetCache_responseArchiveBuffer.offset * 99 / (class232.NetCache_responseArchiveBuffer.payload.length - class320.currentRequest.padding) + 1:0;
+      return class320.currentRequest != null && var2 == class320.currentRequest.hash ? class232.NetCache_responseArchiveBuffer.offset * 99 / (class232.NetCache_responseArchiveBuffer.payload.length - class320.currentRequest.padding) + 1 : 0;
    }
 
    @ObfuscatedName("l")

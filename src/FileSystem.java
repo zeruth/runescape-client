@@ -62,13 +62,13 @@ public class FileSystem extends Node {
       int var4;
       for(var2 = 0; var2 < class81.playerIndexesCount; ++var2) {
          var3 = class81.playerIndices[var2];
-         if((class81.field1183[var3] & 1) == 0) {
-            if(var1 > 0) {
+         if ((class81.field1183[var3] & 1) == 0) {
+            if (var1 > 0) {
                --var1;
                class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
             } else {
                var4 = var0.getBits(1);
-               if(var4 == 0) {
+               if (var4 == 0) {
                   var1 = class73.method1843(var0);
                   class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
                } else {
@@ -79,20 +79,20 @@ public class FileSystem extends Node {
       }
 
       var0.byteAccess();
-      if(var1 != 0) {
+      if (var1 != 0) {
          throw new RuntimeException();
       } else {
          var0.bitAccess();
 
          for(var2 = 0; var2 < class81.playerIndexesCount; ++var2) {
             var3 = class81.playerIndices[var2];
-            if((class81.field1183[var3] & 1) != 0) {
-               if(var1 > 0) {
+            if ((class81.field1183[var3] & 1) != 0) {
+               if (var1 > 0) {
                   --var1;
                   class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
                } else {
                   var4 = var0.getBits(1);
-                  if(var4 == 0) {
+                  if (var4 == 0) {
                      var1 = class73.method1843(var0);
                      class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
                   } else {
@@ -103,23 +103,23 @@ public class FileSystem extends Node {
          }
 
          var0.byteAccess();
-         if(var1 != 0) {
+         if (var1 != 0) {
             throw new RuntimeException();
          } else {
             var0.bitAccess();
 
             for(var2 = 0; var2 < class81.field1182; ++var2) {
                var3 = class81.field1175[var2];
-               if((class81.field1183[var3] & 1) != 0) {
-                  if(var1 > 0) {
+               if ((class81.field1183[var3] & 1) != 0) {
+                  if (var1 > 0) {
                      --var1;
                      class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
                   } else {
                      var4 = var0.getBits(1);
-                     if(var4 == 0) {
+                     if (var4 == 0) {
                         var1 = class73.method1843(var0);
                         class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
-                     } else if(Widget.decodeRegionHash(var0, var3)) {
+                     } else if (Widget.decodeRegionHash(var0, var3)) {
                         class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
                      }
                   }
@@ -127,23 +127,23 @@ public class FileSystem extends Node {
             }
 
             var0.byteAccess();
-            if(var1 != 0) {
+            if (var1 != 0) {
                throw new RuntimeException();
             } else {
                var0.bitAccess();
 
                for(var2 = 0; var2 < class81.field1182; ++var2) {
                   var3 = class81.field1175[var2];
-                  if((class81.field1183[var3] & 1) == 0) {
-                     if(var1 > 0) {
+                  if ((class81.field1183[var3] & 1) == 0) {
+                     if (var1 > 0) {
                         --var1;
                         class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
                      } else {
                         var4 = var0.getBits(1);
-                        if(var4 == 0) {
+                        if (var4 == 0) {
                            var1 = class73.method1843(var0);
                            class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
-                        } else if(Widget.decodeRegionHash(var0, var3)) {
+                        } else if (Widget.decodeRegionHash(var0, var3)) {
                            class81.field1183[var3] = (byte)(class81.field1183[var3] | 2);
                         }
                      }
@@ -151,7 +151,7 @@ public class FileSystem extends Node {
                }
 
                var0.byteAccess();
-               if(var1 != 0) {
+               if (var1 != 0) {
                   throw new RuntimeException();
                } else {
                   class81.playerIndexesCount = 0;
@@ -160,7 +160,7 @@ public class FileSystem extends Node {
                   for(var2 = 1; var2 < 2048; ++var2) {
                      class81.field1183[var2] = (byte)(class81.field1183[var2] >> 1);
                      Player var5 = Client.cachedPlayers[var2];
-                     if(var5 != null) {
+                     if (var5 != null) {
                         class81.playerIndices[++class81.playerIndexesCount - 1] = var2;
                      } else {
                         class81.field1175[++class81.field1182 - 1] = var2;
@@ -183,7 +183,7 @@ public class FileSystem extends Node {
       class78.loginMessage2 = "Enter your username/email & password.";
       class78.loginMessage3 = "";
       class78.loginIndex = 2;
-      if(var0) {
+      if (var0) {
          class78.password = "";
       }
 
@@ -197,7 +197,7 @@ public class FileSystem extends Node {
       garbageValue = "1715888302"
    )
    static final void method4618(Widget var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-      if(Client.field659) {
+      if (Client.field659) {
          Client.field736 = 32;
       } else {
          Client.field736 = 0;
@@ -205,16 +205,16 @@ public class FileSystem extends Node {
 
       Client.field659 = false;
       int var7;
-      if(MouseInput.mouseCurrentButton == 1 || !class8.middleMouseMovesCamera && MouseInput.mouseCurrentButton == 4) {
-         if(var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
+      if (MouseInput.mouseCurrentButton == 1 || !class8.middleMouseMovesCamera && MouseInput.mouseCurrentButton == 4) {
+         if (var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
             var0.scrollY -= 4;
             DState.method3548(var0);
-         } else if(var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
+         } else if (var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
             var0.scrollY += 4;
             DState.method3548(var0);
-         } else if(var5 >= var1 - Client.field736 && var5 < Client.field736 + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
+         } else if (var5 >= var1 - Client.field736 && var5 < Client.field736 + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
             var7 = var3 * (var3 - 32) / var4;
-            if(var7 < 8) {
+            if (var7 < 8) {
                var7 = 8;
             }
 
@@ -226,9 +226,9 @@ public class FileSystem extends Node {
          }
       }
 
-      if(Client.mouseWheelRotation != 0) {
+      if (Client.mouseWheelRotation != 0) {
          var7 = var0.width;
-         if(var5 >= var1 - var7 && var6 >= var2 && var5 < var1 + 16 && var6 <= var3 + var2) {
+         if (var5 >= var1 - var7 && var6 >= var2 && var5 < var1 + 16 && var6 <= var3 + var2) {
             var0.scrollY += Client.mouseWheelRotation * 45;
             DState.method3548(var0);
          }

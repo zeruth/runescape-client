@@ -42,18 +42,18 @@ public class class284 extends NameableContainer {
    )
    public void method5333(Buffer var1, int var2) {
       while(true) {
-         if(var1.offset < var2) {
+         if (var1.offset < var2) {
             int var3 = var1.readUnsignedByte();
             boolean var4 = (var3 & 1) == 1;
             Name var5 = new Name(var1.readString(), this.field3636);
             Name var6 = new Name(var1.readString(), this.field3636);
             var1.readString();
-            if(var5 != null && var5.isCleanNameValid()) {
+            if (var5 != null && var5.isCleanNameValid()) {
                Ignore var7 = (Ignore)this.method5374(var5);
-               if(var4) {
+               if (var4) {
                   Ignore var8 = (Ignore)this.method5374(var6);
-                  if(var8 != null && var7 != var8) {
-                     if(var7 != null) {
+                  if (var8 != null && var7 != var8) {
+                     if (var7 != null) {
                         this.method5362(var8);
                      } else {
                         var7 = var8;
@@ -61,12 +61,12 @@ public class class284 extends NameableContainer {
                   }
                }
 
-               if(var7 != null) {
+               if (var7 != null) {
                   this.method5339(var7, var5, var6);
                   continue;
                }
 
-               if(this.getCount() < 400) {
+               if (this.getCount() < 400) {
                   int var9 = this.getCount();
                   var7 = (Ignore)this.method5373(var5, var6);
                   var7.field3646 = var9;

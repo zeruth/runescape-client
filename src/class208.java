@@ -7,7 +7,7 @@ public class class208 {
    @ObfuscatedSignature(
       signature = "Lhm;"
    )
-   class209 field2456;
+   class209 field2456 = new class209();
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lhm;"
@@ -15,7 +15,6 @@ public class class208 {
    class209 field2457;
 
    public class208() {
-      this.field2456 = new class209();
       this.field2456.field2458 = this.field2456;
       this.field2456.field2459 = this.field2456;
    }
@@ -25,7 +24,7 @@ public class class208 {
       signature = "(Lhm;)V"
    )
    public void method4149(class209 var1) {
-      if(var1.field2459 != null) {
+      if (var1.field2459 != null) {
          var1.method4156();
       }
 
@@ -41,7 +40,7 @@ public class class208 {
    )
    public class209 method4147() {
       class209 var1 = this.field2456.field2458;
-      if(var1 == this.field2456) {
+      if (var1 == this.field2456) {
          this.field2457 = null;
          return null;
       } else {
@@ -56,7 +55,7 @@ public class class208 {
    )
    public class209 method4146() {
       class209 var1 = this.field2457;
-      if(var1 == this.field2456) {
+      if (var1 == this.field2456) {
          this.field2457 = null;
          return null;
       } else {

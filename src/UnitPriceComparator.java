@@ -20,7 +20,7 @@ final class UnitPriceComparator implements Comparator {
       garbageValue = "79"
    )
    int method67(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-      return var1.grandExchangeOffer.price < var2.grandExchangeOffer.price?-1:(var2.grandExchangeOffer.price == var1.grandExchangeOffer.price?0:1);
+      return var1.grandExchangeOffer.price < var2.grandExchangeOffer.price ? -1 : (var2.grandExchangeOffer.price == var1.grandExchangeOffer.price ? 0 : 1);
    }
 
    public int compare(Object var1, Object var2) {

@@ -22,12 +22,12 @@ public class class142 extends class283 {
       garbageValue = "1971585662"
    )
    int method3181(ChatPlayer var1, ChatPlayer var2) {
-      if(var1.world != 0) {
-         if(var2.world == 0) {
-            return this.field1909?-1:1;
+      if (var1.world != 0) {
+         if (var2.world == 0) {
+            return this.field1909 ? -1 : 1;
          }
-      } else if(var2.world != 0) {
-         return this.field1909?1:-1;
+      } else if (var2.world != 0) {
+         return this.field1909 ? 1 : -1;
       }
 
       return this.method5320(var1, var2);

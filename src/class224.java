@@ -34,9 +34,9 @@ public class class224 extends CacheableNode {
       garbageValue = "1611464927"
    )
    public boolean method4459(int var1, int var2) {
-      if(var2 >= 0 && var2 < this.field2573.length) {
+      if (var2 >= 0 && var2 < this.field2573.length) {
          int var3 = this.field2573[var2];
-         if(var1 >= var3 && var1 <= var3 + this.field2572[var2]) {
+         if (var1 >= var3 && var1 <= var3 + this.field2572[var2]) {
             return true;
          }
       }
@@ -59,11 +59,11 @@ public class class224 extends CacheableNode {
       garbageValue = "0"
    )
    public static File method4458(String var0) {
-      if(!class158.field2001) {
+      if (!class158.field2001) {
          throw new RuntimeException("");
       } else {
          File var1 = (File)class158.field2002.get(var0);
-         if(var1 != null) {
+         if (var1 != null) {
             return var1;
          } else {
             File var2 = new File(class158.field2000, var0);
@@ -71,7 +71,7 @@ public class class224 extends CacheableNode {
 
             try {
                File var4 = new File(var2.getParent());
-               if(!var4.exists()) {
+               if (!var4.exists()) {
                   throw new RuntimeException("");
                } else {
                   var3 = new RandomAccessFile(var2, "rw");
@@ -83,13 +83,13 @@ public class class224 extends CacheableNode {
                   class158.field2002.put(var0, var2);
                   return var2;
                }
-            } catch (Exception var8) {
+            } catch (Exception var7) {
                try {
-                  if(var3 != null) {
+                  if (var3 != null) {
                      var3.close();
                      var3 = null;
                   }
-               } catch (Exception var7) {
+               } catch (Exception var6) {
                   ;
                }
 

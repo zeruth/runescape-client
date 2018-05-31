@@ -7,7 +7,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("TaskDataNode")
 public abstract class TaskDataNode extends Node {
    @ObfuscatedName("w")
-   volatile boolean field1409;
+   volatile boolean field1409 = true;
    @ObfuscatedName("c")
    @ObfuscatedSignature(
       signature = "Ldu;"
@@ -21,10 +21,6 @@ public abstract class TaskDataNode extends Node {
    )
    @Export("data")
    AbstractIntegerNode0 data;
-
-   protected TaskDataNode() {
-      this.field1409 = true;
-   }
 
    @ObfuscatedName("a")
    @ObfuscatedSignature(
@@ -54,7 +50,7 @@ public abstract class TaskDataNode extends Node {
 
    @ObfuscatedName("ff")
    final void method2488(int[] var1, int var2, int var3) {
-      if(this.field1409) {
+      if (this.field1409) {
          this.vmethod4424(var1, var2, var3);
       } else {
          this.vmethod4425(var3);

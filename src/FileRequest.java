@@ -30,12 +30,12 @@ public class FileRequest extends CacheableNode {
    )
    public static InvType method4622(int var0) {
       InvType var1 = (InvType)InvType.inventoryCache.get((long)var0);
-      if(var1 != null) {
+      if (var1 != null) {
          return var1;
       } else {
          byte[] var2 = InvType.field3247.getConfigData(5, var0);
          var1 = new InvType();
-         if(var2 != null) {
+         if (var2 != null) {
             var1.decode(new Buffer(var2));
          }
 
@@ -50,11 +50,11 @@ public class FileRequest extends CacheableNode {
       garbageValue = "240844690"
    )
    static String method4621(String var0, Widget var1) {
-      if(var0.indexOf("%") != -1) {
+      if (var0.indexOf("%") != -1) {
          for(int var2 = 1; var2 <= 5; ++var2) {
             while(true) {
                int var3 = var0.indexOf("%" + var2);
-               if(var3 == -1) {
+               if (var3 == -1) {
                   break;
                }
 

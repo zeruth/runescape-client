@@ -68,18 +68,13 @@ public final class PendingSpawn extends Node {
       intValue = -1278571041
    )
    @Export("delay")
-   int delay;
+   int delay = 0;
    @ObfuscatedName("d")
    @ObfuscatedGetter(
       intValue = -1231655143
    )
    @Export("hitpoints")
-   int hitpoints;
-
-   PendingSpawn() {
-      this.delay = 0;
-      this.hitpoints = -1;
-   }
+   int hitpoints = -1;
 
    @ObfuscatedName("q")
    @ObfuscatedSignature(
@@ -87,7 +82,7 @@ public final class PendingSpawn extends Node {
       garbageValue = "122"
    )
    public static void method1578(int var0) {
-      if(class217.field2486 != 0) {
+      if (class217.field2486 != 0) {
          class21.field185 = var0;
       } else {
          class217.field2485.method4302(var0);

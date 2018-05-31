@@ -73,20 +73,20 @@ public class DynamicObject extends Renderable {
       this.level = var4;
       this.sceneX = var5;
       this.sceneY = var6;
-      if(var7 != -1) {
+      if (var7 != -1) {
          this.field1233 = class137.getAnimation(var7);
          this.animFrame = 0;
          this.animCycleCount = Client.gameCycle - 1;
-         if(this.field1233.replyMode == 0 && var9 != null && var9 instanceof DynamicObject) {
+         if (this.field1233.replyMode == 0 && var9 != null && var9 instanceof DynamicObject) {
             DynamicObject var10 = (DynamicObject)var9;
-            if(this.field1233 == var10.field1233) {
+            if (this.field1233 == var10.field1233) {
                this.animFrame = var10.animFrame;
                this.animCycleCount = var10.animCycleCount;
                return;
             }
          }
 
-         if(var8 && this.field1233.frameStep != -1) {
+         if (var8 && this.field1233.frameStep != -1) {
             this.animFrame = (int)(Math.random() * (double)this.field1233.frameIDs.length);
             this.animCycleCount -= (int)(Math.random() * (double)this.field1233.frameLengths[this.animFrame]);
          }
@@ -100,17 +100,17 @@ public class DynamicObject extends Renderable {
       garbageValue = "111"
    )
    protected final Model getModel() {
-      if(this.field1233 != null) {
+      if (this.field1233 != null) {
          int var1 = Client.gameCycle - this.animCycleCount;
-         if(var1 > 100 && this.field1233.frameStep > 0) {
+         if (var1 > 100 && this.field1233.frameStep > 0) {
             var1 = 100;
          }
 
-         label54: {
+         label47: {
             do {
                do {
-                  if(var1 <= this.field1233.frameLengths[this.animFrame]) {
-                     break label54;
+                  if (var1 <= this.field1233.frameLengths[this.animFrame]) {
+                     break label47;
                   }
 
                   var1 -= this.field1233.frameLengths[this.animFrame];
@@ -127,16 +127,16 @@ public class DynamicObject extends Renderable {
       }
 
       ObjectComposition var12 = SoundTaskDataProvider.getObjectDefinition(this.id);
-      if(var12.impostorIds != null) {
+      if (var12.impostorIds != null) {
          var12 = var12.getImpostor();
       }
 
-      if(var12 == null) {
+      if (var12 == null) {
          return null;
       } else {
          int var2;
          int var3;
-         if(this.orientation != 1 && this.orientation != 3) {
+         if (this.orientation != 1 && this.orientation != 3) {
             var2 = var12.width;
             var3 = var12.length;
          } else {

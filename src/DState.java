@@ -8,17 +8,17 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("DState")
 public final class DState {
    @ObfuscatedName("w")
-   final int field2346;
+   final int field2346 = 4096;
    @ObfuscatedName("m")
-   final int field2321;
+   final int field2321 = 16;
    @ObfuscatedName("q")
-   final int field2331;
+   final int field2331 = 258;
    @ObfuscatedName("b")
-   final int field2323;
+   final int field2323 = 6;
    @ObfuscatedName("f")
-   final int field2324;
+   final int field2324 = 50;
    @ObfuscatedName("n")
-   final int field2325;
+   final int field2325 = 18002;
    @ObfuscatedName("h")
    @Export("strm")
    byte[] strm;
@@ -27,7 +27,7 @@ public final class DState {
       intValue = -1800892977
    )
    @Export("next_in")
-   int next_in;
+   int next_in = 0;
    @ObfuscatedName("j")
    @ObfuscatedGetter(
       intValue = 910858041
@@ -42,7 +42,7 @@ public final class DState {
       intValue = 1761265269
    )
    @Export("next_out")
-   int next_out;
+   int next_out = 0;
    @ObfuscatedName("d")
    @ObfuscatedGetter(
       intValue = 1243729503
@@ -99,7 +99,7 @@ public final class DState {
    @Export("k0")
    int k0;
    @ObfuscatedName("z")
-   int[] field2341;
+   int[] field2341 = new int[256];
    @ObfuscatedName("k")
    @ObfuscatedGetter(
       intValue = -532253957
@@ -107,7 +107,7 @@ public final class DState {
    @Export("nblock_used")
    int nblock_used;
    @ObfuscatedName("r")
-   int[] field2335;
+   int[] field2335 = new int[257];
    @ObfuscatedName("o")
    @ObfuscatedGetter(
       intValue = 202945097
@@ -116,60 +116,35 @@ public final class DState {
    int nInUse;
    @ObfuscatedName("ai")
    @Export("inUse")
-   boolean[] inUse;
+   boolean[] inUse = new boolean[256];
    @ObfuscatedName("at")
-   boolean[] field2344;
+   boolean[] field2344 = new boolean[16];
    @ObfuscatedName("ad")
    @Export("seqToUnseq")
-   byte[] seqToUnseq;
+   byte[] seqToUnseq = new byte[256];
    @ObfuscatedName("ac")
-   byte[] field2348;
+   byte[] field2348 = new byte[4096];
    @ObfuscatedName("ay")
-   int[] field2349;
+   int[] field2349 = new int[16];
    @ObfuscatedName("an")
-   byte[] field2327;
+   byte[] field2327 = new byte[18002];
    @ObfuscatedName("as")
-   byte[] field2351;
+   byte[] field2351 = new byte[18002];
    @ObfuscatedName("aw")
-   byte[][] field2343;
+   byte[][] field2343 = new byte[6][258];
    @ObfuscatedName("ag")
-   int[][] field2352;
+   int[][] field2352 = new int[6][258];
    @ObfuscatedName("ah")
-   int[][] field2354;
+   int[][] field2354 = new int[6][258];
    @ObfuscatedName("az")
-   int[][] field2355;
+   int[][] field2355 = new int[6][258];
    @ObfuscatedName("ao")
-   int[] field2356;
+   int[] field2356 = new int[6];
    @ObfuscatedName("ap")
    @ObfuscatedGetter(
       intValue = -7269037
    )
    int field2330;
-
-   DState() {
-      this.field2346 = 4096;
-      this.field2321 = 16;
-      this.field2331 = 258;
-      this.field2323 = 6;
-      this.field2324 = 50;
-      this.field2325 = 18002;
-      this.next_in = 0;
-      this.next_out = 0;
-      this.field2341 = new int[256];
-      this.field2335 = new int[257];
-      this.inUse = new boolean[256];
-      this.field2344 = new boolean[16];
-      this.seqToUnseq = new byte[256];
-      this.field2348 = new byte[4096];
-      this.field2349 = new int[16];
-      this.field2327 = new byte[18002];
-      this.field2351 = new byte[18002];
-      this.field2343 = new byte[6][258];
-      this.field2352 = new int[6][258];
-      this.field2354 = new int[6][258];
-      this.field2355 = new int[6][258];
-      this.field2356 = new int[6];
-   }
 
    @ObfuscatedName("jm")
    @ObfuscatedSignature(
@@ -177,7 +152,7 @@ public final class DState {
       garbageValue = "229987315"
    )
    static void method3548(Widget var0) {
-      if(var0.loopCycle == Client.field794) {
+      if (var0.loopCycle == Client.field794) {
          Client.field795[var0.boundsIndex] = true;
       }
 

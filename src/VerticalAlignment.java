@@ -35,7 +35,7 @@ public enum VerticalAlignment implements Enumerated {
    )
    final int field3245;
 
-   VerticalAlignment(int var3, int var4) {
+   private VerticalAlignment(int var3, int var4) {
       this.value = var3;
       this.field3245 = var4;
    }

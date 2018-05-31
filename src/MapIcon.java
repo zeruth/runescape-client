@@ -66,7 +66,7 @@ public class MapIcon {
       this.field255 = var4;
       Area var5 = Area.mapAreaType[this.areaId];
       SpritePixels var6 = var5.getMapIcon(false);
-      if(var6 != null) {
+      if (var6 != null) {
          this.field249 = var6.width;
          this.field250 = var6.height;
       } else {
@@ -82,7 +82,7 @@ public class MapIcon {
       garbageValue = "1416629849"
    )
    boolean method504(int var1, int var2) {
-      return this.method514(var1, var2)?true:this.method513(var1, var2);
+      return this.method514(var1, var2) ? true : this.method513(var1, var2);
    }
 
    @ObfuscatedName("m")
@@ -94,37 +94,34 @@ public class MapIcon {
       Area var3 = Area.mapAreaType[this.areaId];
       switch(var3.horizontalAlignment.value) {
       case 0:
-         if(var1 >= this.screenX - this.field249 / 2 && var1 <= this.field249 / 2 + this.screenX) {
-            break;
+         if (var1 < this.screenX - this.field249 / 2 || var1 > this.field249 / 2 + this.screenX) {
+            return false;
          }
-
-         return false;
+         break;
       case 1:
-         if(var1 >= this.screenX && var1 < this.field249 + this.screenX) {
-            break;
+         if (var1 < this.screenX || var1 >= this.field249 + this.screenX) {
+            return false;
          }
-
-         return false;
+         break;
       case 2:
-         if(var1 <= this.screenX - this.field249 || var1 > this.screenX) {
+         if (var1 <= this.screenX - this.field249 || var1 > this.screenX) {
             return false;
          }
       }
 
       switch(var3.verticalAlignment.value) {
       case 0:
-         if(var2 >= this.screenY && var2 < this.screenY + this.field250) {
-            break;
+         if (var2 < this.screenY || var2 >= this.screenY + this.field250) {
+            return false;
          }
-
-         return false;
+         break;
       case 1:
-         if(var2 < this.screenY - this.field250 / 2 || var2 > this.field250 / 2 + this.screenY) {
+         if (var2 < this.screenY - this.field250 / 2 || var2 > this.field250 / 2 + this.screenY) {
             return false;
          }
          break;
       case 2:
-         if(var2 <= this.screenY - this.field250 || var2 > this.screenY) {
+         if (var2 <= this.screenY - this.field250 || var2 > this.screenY) {
             return false;
          }
       }
@@ -138,7 +135,7 @@ public class MapIcon {
       garbageValue = "-1116017209"
    )
    boolean method513(int var1, int var2) {
-      return this.field255 == null?false:(var1 >= this.screenX - this.field255.field192 / 2 && var1 <= this.field255.field192 / 2 + this.screenX?var2 >= this.screenY && var2 <= this.field255.field193 + this.screenY:false);
+      return this.field255 == null ? false : (var1 >= this.screenX - this.field255.field192 / 2 && var1 <= this.field255.field192 / 2 + this.screenX ? var2 >= this.screenY && var2 <= this.field255.field193 + this.screenY : false);
    }
 
    @ObfuscatedName("q")
@@ -147,36 +144,36 @@ public class MapIcon {
       garbageValue = "-51"
    )
    public static String method517(int var0, boolean var1) {
-      if(var1 && var0 >= 0) {
-         int var3 = var0;
-         String var2;
-         if(var1 && var0 >= 0) {
+      if (var1 && var0 >= 0) {
+         int var2 = var0;
+         String var3;
+         if (var1 && var0 >= 0) {
             int var4 = 2;
 
             for(int var5 = var0 / 10; var5 != 0; ++var4) {
                var5 /= 10;
             }
 
-            char[] var6 = new char[var4];
-            var6[0] = '+';
+            char[] var9 = new char[var4];
+            var9[0] = '+';
 
-            for(int var7 = var4 - 1; var7 > 0; --var7) {
-               int var8 = var3;
-               var3 /= 10;
-               int var9 = var8 - var3 * 10;
-               if(var9 >= 10) {
-                  var6[var7] = (char)(var9 + 87);
+            for(int var6 = var4 - 1; var6 > 0; --var6) {
+               int var7 = var2;
+               var2 /= 10;
+               int var8 = var7 - var2 * 10;
+               if (var8 >= 10) {
+                  var9[var6] = (char)(var8 + 87);
                } else {
-                  var6[var7] = (char)(var9 + 48);
+                  var9[var6] = (char)(var8 + 48);
                }
             }
 
-            var2 = new String(var6);
+            var3 = new String(var9);
          } else {
-            var2 = Integer.toString(var0, 10);
+            var3 = Integer.toString(var0, 10);
          }
 
-         return var2;
+         return var3;
       } else {
          return Integer.toString(var0);
       }
@@ -188,9 +185,10 @@ public class MapIcon {
       garbageValue = "1207880527"
    )
    static final void method515(int var0, int var1, int var2, boolean var3) {
-      if(GameCanvas.loadWidget(var0)) {
+      if (GameCanvas.loadWidget(var0)) {
          class9.method100(Widget.widgets[var0], -1, var1, var2, var3);
       }
+
    }
 
    @ObfuscatedName("jw")
@@ -201,7 +199,7 @@ public class MapIcon {
    @Export("worldToMinimap")
    static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, class224 var5) {
       int var6 = var3 * var3 + var2 * var2;
-      if(var6 > 4225 && var6 < 90000) {
+      if (var6 > 4225 && var6 < 90000) {
          int var7 = Client.mapAngle & 2047;
          int var8 = Graphics3D.SINE[var7];
          int var9 = Graphics3D.COSINE[var7];

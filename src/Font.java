@@ -21,7 +21,7 @@ public final class Font extends FontTypeFace {
       int var9 = 0;
       int var10 = 0;
       int var11;
-      if(var3 < Rasterizer2D.drawingAreaTop) {
+      if (var3 < Rasterizer2D.drawingAreaTop) {
          var11 = Rasterizer2D.drawingAreaTop - var3;
          var5 -= var11;
          var3 = Rasterizer2D.drawingAreaTop;
@@ -29,11 +29,11 @@ public final class Font extends FontTypeFace {
          var7 += var11 * Rasterizer2D.graphicsPixelsWidth;
       }
 
-      if(var3 + var5 > Rasterizer2D.drawingAreaRight) {
+      if (var3 + var5 > Rasterizer2D.drawingAreaRight) {
          var5 -= var3 + var5 - Rasterizer2D.drawingAreaRight;
       }
 
-      if(var2 < Rasterizer2D.draw_region_x) {
+      if (var2 < Rasterizer2D.draw_region_x) {
          var11 = Rasterizer2D.draw_region_x - var2;
          var4 -= var11;
          var2 = Rasterizer2D.draw_region_x;
@@ -43,16 +43,17 @@ public final class Font extends FontTypeFace {
          var8 += var11;
       }
 
-      if(var2 + var4 > Rasterizer2D.drawingAreaBottom) {
+      if (var2 + var4 > Rasterizer2D.drawingAreaBottom) {
          var11 = var2 + var4 - Rasterizer2D.drawingAreaBottom;
          var4 -= var11;
          var9 += var11;
          var8 += var11;
       }
 
-      if(var4 > 0 && var5 > 0) {
+      if (var4 > 0 && var5 > 0) {
          FontTypeFace.render(Rasterizer2D.graphicsPixels, var1, var6, var10, var7, var4, var5, var8, var9);
       }
+
    }
 
    @ObfuscatedName("m")
@@ -63,7 +64,7 @@ public final class Font extends FontTypeFace {
       int var10 = 0;
       int var11 = 0;
       int var12;
-      if(var3 < Rasterizer2D.drawingAreaTop) {
+      if (var3 < Rasterizer2D.drawingAreaTop) {
          var12 = Rasterizer2D.drawingAreaTop - var3;
          var5 -= var12;
          var3 = Rasterizer2D.drawingAreaTop;
@@ -71,11 +72,11 @@ public final class Font extends FontTypeFace {
          var8 += var12 * Rasterizer2D.graphicsPixelsWidth;
       }
 
-      if(var3 + var5 > Rasterizer2D.drawingAreaRight) {
+      if (var3 + var5 > Rasterizer2D.drawingAreaRight) {
          var5 -= var3 + var5 - Rasterizer2D.drawingAreaRight;
       }
 
-      if(var2 < Rasterizer2D.draw_region_x) {
+      if (var2 < Rasterizer2D.draw_region_x) {
          var12 = Rasterizer2D.draw_region_x - var2;
          var4 -= var12;
          var2 = Rasterizer2D.draw_region_x;
@@ -85,15 +86,16 @@ public final class Font extends FontTypeFace {
          var9 += var12;
       }
 
-      if(var2 + var4 > Rasterizer2D.drawingAreaBottom) {
+      if (var2 + var4 > Rasterizer2D.drawingAreaBottom) {
          var12 = var2 + var4 - Rasterizer2D.drawingAreaBottom;
          var4 -= var12;
          var10 += var12;
          var9 += var12;
       }
 
-      if(var4 > 0 && var5 > 0) {
+      if (var4 > 0 && var5 > 0) {
          FontTypeFace.renderRGBA(Rasterizer2D.graphicsPixels, var1, var6, var11, var8, var4, var5, var9, var10, var7);
       }
+
    }
 }

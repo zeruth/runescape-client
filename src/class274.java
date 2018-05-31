@@ -21,7 +21,7 @@ public class class274 {
       garbageValue = "479413406"
    )
    static void method5248() {
-      if(class78.Login_isUsernameRemembered && class78.username != null && class78.username.length() > 0) {
+      if (class78.Login_isUsernameRemembered && class78.username != null && class78.username.length() > 0) {
          class78.currentLoginField = 1;
       } else {
          class78.currentLoginField = 0;

@@ -13,7 +13,7 @@ public class ItemContainer extends Node {
       signature = "Lgd;"
    )
    @Export("itemContainers")
-   static HashTable itemContainers;
+   static HashTable itemContainers = new HashTable(32);
    @ObfuscatedName("fo")
    @Export("landRegionFileIds")
    static int[] landRegionFileIds;
@@ -24,19 +24,10 @@ public class ItemContainer extends Node {
    static int field481;
    @ObfuscatedName("m")
    @Export("itemIds")
-   int[] itemIds;
+   int[] itemIds = new int[]{-1};
    @ObfuscatedName("q")
    @Export("stackSizes")
-   int[] stackSizes;
-
-   static {
-      itemContainers = new HashTable(32);
-   }
-
-   ItemContainer() {
-      this.itemIds = new int[]{-1};
-      this.stackSizes = new int[]{0};
-   }
+   int[] stackSizes = new int[1];
 
    @ObfuscatedName("hd")
    @ObfuscatedSignature(
@@ -47,9 +38,9 @@ public class ItemContainer extends Node {
    static final void flush(boolean var0) {
       Varbit.method4951();
       ++Client.field739.field1252;
-      if(Client.field739.field1252 >= 50 || var0) {
+      if (Client.field739.field1252 >= 50 || var0) {
          Client.field739.field1252 = 0;
-         if(!Client.socketError && Client.field739.getSocket() != null) {
+         if (!Client.socketError && Client.field739.getSocket() != null) {
             PacketNode var1 = DecorativeObject.method3115(ClientPacket.field2217, Client.field739.field1250);
             Client.field739.method2019(var1);
 
@@ -59,7 +50,7 @@ public class ItemContainer extends Node {
                Client.socketError = true;
             }
          }
-
       }
+
    }
 }

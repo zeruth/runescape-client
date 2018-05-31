@@ -128,22 +128,22 @@ public class class219 extends Node {
       garbageValue = "74"
    )
    static int method4361(World var0, World var1, int var2, boolean var3) {
-      if(var2 == 1) {
+      if (var2 == 1) {
          int var4 = var0.playerCount;
          int var5 = var1.playerCount;
-         if(!var3) {
-            if(var4 == -1) {
+         if (!var3) {
+            if (var4 == -1) {
                var4 = 2001;
             }
 
-            if(var5 == -1) {
+            if (var5 == -1) {
                var5 = 2001;
             }
          }
 
          return var4 - var5;
       } else {
-         return var2 == 2?var0.location - var1.location:(var2 == 3?(var0.activity.equals("-")?(var1.activity.equals("-")?0:(var3?-1:1)):(var1.activity.equals("-")?(var3?1:-1):var0.activity.compareTo(var1.activity))):(var2 == 4?(var0.method1606()?(var1.method1606()?0:1):(var1.method1606()?-1:0)):(var2 == 5?(var0.method1629()?(var1.method1629()?0:1):(var1.method1629()?-1:0)):(var2 == 6?(var0.method1605()?(var1.method1605()?0:1):(var1.method1605()?-1:0)):(var2 == 7?(var0.method1603()?(var1.method1603()?0:1):(var1.method1603()?-1:0)):var0.id - var1.id)))));
+         return var2 == 2 ? var0.location - var1.location : (var2 == 3 ? (var0.activity.equals("-") ? (var1.activity.equals("-") ? 0 : (var3 ? -1 : 1)) : (var1.activity.equals("-") ? (var3 ? 1 : -1) : var0.activity.compareTo(var1.activity))) : (var2 == 4 ? (var0.method1606() ? (var1.method1606() ? 0 : 1) : (var1.method1606() ? -1 : 0)) : (var2 == 5 ? (var0.method1629() ? (var1.method1629() ? 0 : 1) : (var1.method1629() ? -1 : 0)) : (var2 == 6 ? (var0.method1605() ? (var1.method1605() ? 0 : 1) : (var1.method1605() ? -1 : 0)) : (var2 == 7 ? (var0.method1603() ? (var1.method1603() ? 0 : 1) : (var1.method1603() ? -1 : 0)) : var0.id - var1.id)))));
       }
    }
 

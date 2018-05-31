@@ -23,21 +23,13 @@ public class VarPlayerType extends CacheableNode {
       signature = "Lgj;"
    )
    @Export("varplayers")
-   public static NodeCache varplayers;
+   public static NodeCache varplayers = new NodeCache(64);
    @ObfuscatedName("b")
    @ObfuscatedGetter(
       intValue = 1332449801
    )
    @Export("configType")
-   public int configType;
-
-   static {
-      varplayers = new NodeCache(64);
-   }
-
-   public VarPlayerType() {
-      this.configType = 0;
-   }
+   public int configType = 0;
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -48,7 +40,7 @@ public class VarPlayerType extends CacheableNode {
    public void decode(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
-         if(var2 == 0) {
+         if (var2 == 0) {
             return;
          }
 
@@ -63,7 +55,7 @@ public class VarPlayerType extends CacheableNode {
    )
    @Export("decode")
    void decode(Buffer var1, int var2) {
-      if(var2 == 5) {
+      if (var2 == 5) {
          this.configType = var1.readUnsignedShort();
       }
 

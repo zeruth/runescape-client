@@ -12,11 +12,7 @@ public class NanoTimer extends Timer {
       longValue = 4181979056816616911L
    )
    @Export("nanoTime")
-   long nanoTime;
-
-   public NanoTimer() {
-      this.nanoTime = System.nanoTime();
-   }
+   long nanoTime = System.nanoTime();
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -35,7 +31,7 @@ public class NanoTimer extends Timer {
    public int vmethod3348(int var1, int var2) {
       long var3 = (long)var2 * 1000000L;
       long var5 = this.nanoTime - System.nanoTime();
-      if(var5 < var3) {
+      if (var5 < var3) {
          var5 = var3;
       }
 
@@ -47,7 +43,7 @@ public class NanoTimer extends Timer {
          ++var9;
       }
 
-      if(this.nanoTime < var7) {
+      if (this.nanoTime < var7) {
          this.nanoTime = var7;
       }
 

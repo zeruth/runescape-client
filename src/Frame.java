@@ -7,22 +7,22 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("Frame")
 public class Frame {
    @ObfuscatedName("w")
-   static int[] field1574;
+   static int[] field1574 = new int[500];
    @ObfuscatedName("m")
-   static int[] field1576;
+   static int[] field1576 = new int[500];
    @ObfuscatedName("q")
-   static int[] field1573;
+   static int[] field1573 = new int[500];
    @ObfuscatedName("b")
-   static int[] field1583;
+   static int[] field1583 = new int[500];
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Ldx;"
    )
    @Export("skin")
-   FrameMap skin;
+   FrameMap skin = null;
    @ObfuscatedName("n")
    @Export("transformCount")
-   int transformCount;
+   int transformCount = -1;
    @ObfuscatedName("h")
    @Export("transformTypes")
    int[] transformTypes;
@@ -37,22 +37,12 @@ public class Frame {
    int[] translator_z;
    @ObfuscatedName("l")
    @Export("showing")
-   boolean showing;
-
-   static {
-      field1574 = new int[500];
-      field1576 = new int[500];
-      field1573 = new int[500];
-      field1583 = new int[500];
-   }
+   boolean showing = false;
 
    @ObfuscatedSignature(
       signature = "([BLdx;)V"
    )
    Frame(byte[] var1, FrameMap var2) {
-      this.skin = null;
-      this.transformCount = -1;
-      this.showing = false;
       this.skin = var2;
       Buffer var3 = new Buffer(var1);
       Buffer var4 = new Buffer(var1);
@@ -65,10 +55,10 @@ public class Frame {
       int var8;
       for(var8 = 0; var8 < var5; ++var8) {
          int var9 = var3.readUnsignedByte();
-         if(var9 > 0) {
-            if(this.skin.types[var8] != 0) {
+         if (var9 > 0) {
+            if (this.skin.types[var8] != 0) {
                for(int var10 = var8 - 1; var10 > var6; --var10) {
-                  if(this.skin.types[var10] == 0) {
+                  if (this.skin.types[var10] == 0) {
                      field1574[var7] = var10;
                      field1576[var7] = 0;
                      field1573[var7] = 0;
@@ -81,23 +71,23 @@ public class Frame {
 
             field1574[var7] = var8;
             short var11 = 0;
-            if(this.skin.types[var8] == 3) {
+            if (this.skin.types[var8] == 3) {
                var11 = 128;
             }
 
-            if((var9 & 1) != 0) {
+            if ((var9 & 1) != 0) {
                field1576[var7] = var4.readShortSmart();
             } else {
                field1576[var7] = var11;
             }
 
-            if((var9 & 2) != 0) {
+            if ((var9 & 2) != 0) {
                field1573[var7] = var4.readShortSmart();
             } else {
                field1573[var7] = var11;
             }
 
-            if((var9 & 4) != 0) {
+            if ((var9 & 4) != 0) {
                field1583[var7] = var4.readShortSmart();
             } else {
                field1583[var7] = var11;
@@ -105,13 +95,13 @@ public class Frame {
 
             var6 = var8;
             ++var7;
-            if(this.skin.types[var8] == 5) {
+            if (this.skin.types[var8] == 5) {
                this.showing = true;
             }
          }
       }
 
-      if(var1.length != var4.offset) {
+      if (var1.length != var4.offset) {
          throw new RuntimeException();
       } else {
          this.transformCount = var7;

@@ -24,11 +24,12 @@ public class CacheableNode extends Node {
    @ObfuscatedName("cv")
    @Export("unlinkDual")
    public void unlinkDual() {
-      if(this.next != null) {
+      if (this.next != null) {
          this.next.previous = this.previous;
          this.previous.next = this.next;
          this.previous = null;
          this.next = null;
       }
+
    }
 }

@@ -16,28 +16,28 @@ public class MilliTimer extends Timer {
    @Export("localPlayer")
    static Player localPlayer;
    @ObfuscatedName("w")
-   long[] field1942;
+   long[] field1942 = new long[10];
    @ObfuscatedName("m")
    @ObfuscatedGetter(
       intValue = 560823093
    )
-   int field1945;
+   int field1945 = 256;
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 1200752949
    )
    @Export("sleepTime")
-   int sleepTime;
+   int sleepTime = 1;
    @ObfuscatedName("b")
    @ObfuscatedGetter(
       longValue = -3208137276938429889L
    )
-   long field1941;
+   long field1941 = class166.method3456();
    @ObfuscatedName("f")
    @ObfuscatedGetter(
       intValue = 1461135101
    )
-   int field1944;
+   int field1944 = 0;
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = -642566619
@@ -45,12 +45,6 @@ public class MilliTimer extends Timer {
    int field1946;
 
    public MilliTimer() {
-      this.field1942 = new long[10];
-      this.field1945 = 256;
-      this.sleepTime = 1;
-      this.field1944 = 0;
-      this.field1941 = class166.method3456();
-
       for(int var1 = 0; var1 < 10; ++var1) {
          this.field1942[var1] = this.field1941;
       }
@@ -80,38 +74,38 @@ public class MilliTimer extends Timer {
       this.field1945 = 300;
       this.sleepTime = 1;
       this.field1941 = class166.method3456();
-      if(this.field1942[this.field1946] == 0L) {
+      if (this.field1942[this.field1946] == 0L) {
          this.field1945 = var3;
          this.sleepTime = var4;
-      } else if(this.field1941 > this.field1942[this.field1946]) {
+      } else if (this.field1941 > this.field1942[this.field1946]) {
          this.field1945 = (int)((long)(var1 * 2560) / (this.field1941 - this.field1942[this.field1946]));
       }
 
-      if(this.field1945 < 25) {
+      if (this.field1945 < 25) {
          this.field1945 = 25;
       }
 
-      if(this.field1945 > 256) {
+      if (this.field1945 > 256) {
          this.field1945 = 256;
          this.sleepTime = (int)((long)var1 - (this.field1941 - this.field1942[this.field1946]) / 10L);
       }
 
-      if(this.sleepTime > var1) {
+      if (this.sleepTime > var1) {
          this.sleepTime = var1;
       }
 
       this.field1942[this.field1946] = this.field1941;
       this.field1946 = (this.field1946 + 1) % 10;
       int var5;
-      if(this.sleepTime > 1) {
+      if (this.sleepTime > 1) {
          for(var5 = 0; var5 < 10; ++var5) {
-            if(0L != this.field1942[var5]) {
+            if (0L != this.field1942[var5]) {
                this.field1942[var5] += (long)this.sleepTime;
             }
          }
       }
 
-      if(this.sleepTime < var2) {
+      if (this.sleepTime < var2) {
          this.sleepTime = var2;
       }
 

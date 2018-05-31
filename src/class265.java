@@ -12,16 +12,12 @@ public class class265 extends CacheableNode {
    @ObfuscatedSignature(
       signature = "Lgj;"
    )
-   public static NodeCache field3352;
+   public static NodeCache field3352 = new NodeCache(64);
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lgx;"
    )
    IterableHashTable field3353;
-
-   static {
-      field3352 = new NodeCache(64);
-   }
 
    @ObfuscatedName("m")
    @ObfuscatedSignature(
@@ -39,7 +35,7 @@ public class class265 extends CacheableNode {
    public void method4990(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
-         if(var2 == 0) {
+         if (var2 == 0) {
             return;
          }
 
@@ -53,7 +49,7 @@ public class class265 extends CacheableNode {
       garbageValue = "-132881650"
    )
    void method4978(Buffer var1, int var2) {
-      if(var2 == 249) {
+      if (var2 == 249) {
          this.field3353 = CacheFile.readStringIntParameters(var1, this.field3353);
       }
 
@@ -65,20 +61,20 @@ public class class265 extends CacheableNode {
       garbageValue = "1681148037"
    )
    public int method4982(int var1, int var2) {
-      IterableHashTable var4 = this.field3353;
-      int var3;
-      if(var4 == null) {
-         var3 = var2;
+      IterableHashTable var3 = this.field3353;
+      int var4;
+      if (var3 == null) {
+         var4 = var2;
       } else {
-         IntegerNode var5 = (IntegerNode)var4.get((long)var1);
-         if(var5 == null) {
-            var3 = var2;
+         IntegerNode var5 = (IntegerNode)var3.get((long)var1);
+         if (var5 == null) {
+            var4 = var2;
          } else {
-            var3 = var5.value;
+            var4 = var5.value;
          }
       }
 
-      return var3;
+      return var4;
    }
 
    @ObfuscatedName("a")
@@ -103,7 +99,7 @@ public class class265 extends CacheableNode {
       class25.method465(var1);
       Widget var4 = OwnWorldComparator.getWidget(var0);
       DState.method3548(var4);
-      if(Client.field756 != null) {
+      if (Client.field756 != null) {
          DState.method3548(Client.field756);
          Client.field756 = null;
       }
@@ -111,7 +107,7 @@ public class class265 extends CacheableNode {
       WorldComparator.method9();
       class45.method818(Widget.widgets[var0 >> 16], var4, false);
       GrandExchangeOffer.runWidgetOnLoadListener(var1);
-      if(Client.widgetRoot != -1) {
+      if (Client.widgetRoot != -1) {
          class76.method1849(Client.widgetRoot, 1);
       }
 

@@ -17,7 +17,7 @@ public class class262 {
       garbageValue = "-2069142999"
    )
    static void method4940() {
-      if(Signlink.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
+      if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
          KeyFocusListener.KeyHandler_keyCodes[186] = 57;
          KeyFocusListener.KeyHandler_keyCodes[187] = 27;
          KeyFocusListener.KeyHandler_keyCodes[188] = 71;

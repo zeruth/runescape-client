@@ -11,7 +11,7 @@ public class Script extends CacheableNode {
    @ObfuscatedSignature(
       signature = "Lgj;"
    )
-   static NodeCache field1214;
+   static NodeCache field1214 = new NodeCache(128);
    @ObfuscatedName("fk")
    @ObfuscatedGetter(
       intValue = 1986819395
@@ -56,10 +56,6 @@ public class Script extends CacheableNode {
    )
    @Export("switches")
    IterableHashTable[] switches;
-
-   static {
-      field1214 = new NodeCache(128);
-   }
 
    @ObfuscatedName("x")
    @ObfuscatedSignature(

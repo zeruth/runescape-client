@@ -15,7 +15,7 @@ public class VarCString extends CacheableNode {
    @ObfuscatedSignature(
       signature = "Lgj;"
    )
-   public static NodeCache field3285;
+   public static NodeCache field3285 = new NodeCache(64);
    @ObfuscatedName("bf")
    @ObfuscatedSignature(
       signature = "Lbk;"
@@ -23,15 +23,7 @@ public class VarCString extends CacheableNode {
    @Export("mouseRecorder")
    static MouseRecorder mouseRecorder;
    @ObfuscatedName("q")
-   public boolean field3284;
-
-   static {
-      field3285 = new NodeCache(64);
-   }
-
-   public VarCString() {
-      this.field3284 = false;
-   }
+   public boolean field3284 = false;
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -41,7 +33,7 @@ public class VarCString extends CacheableNode {
    public void method4856(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
-         if(var2 == 0) {
+         if (var2 == 0) {
             return;
          }
 
@@ -55,7 +47,7 @@ public class VarCString extends CacheableNode {
       garbageValue = "-693004220"
    )
    void method4857(Buffer var1, int var2) {
-      if(var2 == 2) {
+      if (var2 == 2) {
          this.field3284 = true;
       }
 

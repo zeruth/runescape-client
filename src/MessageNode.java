@@ -114,7 +114,7 @@ public class MessageNode extends CacheableNode {
       garbageValue = "-116601790"
    )
    final boolean method1096() {
-      if(this.field541 == class289.field3652) {
+      if (this.field541 == class289.field3652) {
          this.method1109();
       }
 
@@ -127,7 +127,7 @@ public class MessageNode extends CacheableNode {
       garbageValue = "295077887"
    )
    void method1109() {
-      this.field541 = CacheFile.friendManager.friendContainer.isMember(this.field540)?class289.field3651:class289.field3650;
+      this.field541 = CacheFile.friendManager.friendContainer.isMember(this.field540) ? class289.field3651 : class289.field3650;
    }
 
    @ObfuscatedName("j")
@@ -145,7 +145,7 @@ public class MessageNode extends CacheableNode {
       garbageValue = "14"
    )
    final boolean method1099() {
-      if(this.field551 == class289.field3652) {
+      if (this.field551 == class289.field3652) {
          this.method1100();
       }
 
@@ -158,7 +158,7 @@ public class MessageNode extends CacheableNode {
       garbageValue = "-98"
    )
    void method1100() {
-      this.field551 = CacheFile.friendManager.ignoreContainer.isMember(this.field540)?class289.field3651:class289.field3650;
+      this.field551 = CacheFile.friendManager.ignoreContainer.isMember(this.field540) ? class289.field3651 : class289.field3650;
    }
 
    @ObfuscatedName("d")
@@ -167,7 +167,7 @@ public class MessageNode extends CacheableNode {
       garbageValue = "-1378703733"
    )
    final void method1101() {
-      if(this.name != null) {
+      if (this.name != null) {
          this.field540 = new Name(class9.method97(this.name), WorldMapDecoration.loginType);
       } else {
          this.field540 = null;
@@ -183,21 +183,21 @@ public class MessageNode extends CacheableNode {
    static final void method1105() {
       short var0 = 256;
       int var1;
-      if(class78.field1114 > 0) {
+      if (class78.field1114 > 0) {
          for(var1 = 0; var1 < 256; ++var1) {
-            if(class78.field1114 > 768) {
+            if (class78.field1114 > 768) {
                class45.field376[var1] = WorldMapManager.method559(WorldComparator.field4[var1], class81.field1178[var1], 1024 - class78.field1114);
-            } else if(class78.field1114 > 256) {
+            } else if (class78.field1114 > 256) {
                class45.field376[var1] = class81.field1178[var1];
             } else {
                class45.field376[var1] = WorldMapManager.method559(class81.field1178[var1], WorldComparator.field4[var1], 256 - class78.field1114);
             }
          }
-      } else if(class78.field1138 > 0) {
+      } else if (class78.field1138 > 0) {
          for(var1 = 0; var1 < 256; ++var1) {
-            if(class78.field1138 > 768) {
+            if (class78.field1138 > 768) {
                class45.field376[var1] = WorldMapManager.method559(WorldComparator.field4[var1], DynamicObject.field1228[var1], 1024 - class78.field1138);
-            } else if(class78.field1138 > 256) {
+            } else if (class78.field1138 > 256) {
                class45.field376[var1] = DynamicObject.field1228[var1];
             } else {
                class45.field376[var1] = WorldMapManager.method559(DynamicObject.field1228[var1], WorldComparator.field4[var1], 256 - class78.field1138);
@@ -226,7 +226,7 @@ public class MessageNode extends CacheableNode {
       for(var3 = 1; var3 < var0 - 1; ++var3) {
          var4 = class78.field1128[var3] * (var0 - var3) / var0;
          var5 = var4 + 22;
-         if(var5 < 0) {
+         if (var5 < 0) {
             var5 = 0;
          }
 
@@ -234,12 +234,12 @@ public class MessageNode extends CacheableNode {
 
          for(var6 = var5; var6 < 128; ++var6) {
             var7 = class297.field3701[var1++];
-            if(var7 != 0) {
+            if (var7 != 0) {
                var8 = var7;
                var9 = 256 - var7;
                var7 = class45.field376[var7];
                var10 = class50.rasterProvider.pixels[var2];
-               class50.rasterProvider.pixels[var2++] = (var8 * (var7 & 65280) + var9 * (var10 & 65280) & 16711680) + ((var7 & 16711935) * var8 + (var10 & 16711935) * var9 & -16711936) >> 8;
+               class50.rasterProvider.pixels[var2++] = (var8 * (var7 & '\uff00') + var9 * (var10 & '\uff00') & 16711680) + ((var7 & 16711935) * var8 + (var10 & 16711935) * var9 & -16711936) >> 8;
             } else {
                ++var2;
             }
@@ -261,12 +261,12 @@ public class MessageNode extends CacheableNode {
 
          for(var6 = 0; var6 < var5; ++var6) {
             var7 = class297.field3701[var1++];
-            if(var7 != 0) {
+            if (var7 != 0) {
                var8 = var7;
                var9 = 256 - var7;
                var7 = class45.field376[var7];
                var10 = class50.rasterProvider.pixels[var2];
-               class50.rasterProvider.pixels[var2++] = (var9 * (var10 & 65280) + var8 * (var7 & 65280) & 16711680) + ((var10 & 16711935) * var9 + (var7 & 16711935) * var8 & -16711936) >> 8;
+               class50.rasterProvider.pixels[var2++] = (var9 * (var10 & '\uff00') + var8 * (var7 & '\uff00') & 16711680) + ((var10 & 16711935) * var9 + (var7 & 16711935) * var8 & -16711936) >> 8;
             } else {
                ++var2;
             }
@@ -285,12 +285,12 @@ public class MessageNode extends CacheableNode {
    )
    static int method1118(int var0, Script var1, boolean var2) {
       int var3;
-      if(var0 == 3200) {
+      if (var0 == 3200) {
          class45.intStackSize -= 3;
          var3 = class69.intStack[class45.intStackSize];
          int var4 = class69.intStack[class45.intStackSize + 1];
          int var5 = class69.intStack[class45.intStackSize + 2];
-         if(Client.field768 != 0 && var4 != 0 && Client.queuedSoundEffectCount < 50) {
+         if (Client.field768 != 0 && var4 != 0 && Client.queuedSoundEffectCount < 50) {
             Client.queuedSoundEffectIDs[Client.queuedSoundEffectCount] = var3;
             Client.unknownSoundValues1[Client.queuedSoundEffectCount] = var4;
             Client.unknownSoundValues2[Client.queuedSoundEffectCount] = var5;
@@ -300,8 +300,8 @@ public class MessageNode extends CacheableNode {
          }
 
          return 1;
-      } else if(var0 != 3201) {
-         if(var0 == 3202) {
+      } else if (var0 != 3201) {
+         if (var0 == 3202) {
             class45.intStackSize -= 2;
             FloorUnderlayDefinition.method4879(class69.intStack[class45.intStackSize], class69.intStack[class45.intStackSize + 1]);
             return 1;
@@ -310,9 +310,9 @@ public class MessageNode extends CacheableNode {
          }
       } else {
          var3 = class69.intStack[--class45.intStackSize];
-         if(var3 == -1 && !Client.field825) {
+         if (var3 == -1 && !Client.field825) {
             class37.method721();
-         } else if(var3 != -1 && var3 != Client.field824 && Client.field693 != 0 && !Client.field825) {
+         } else if (var3 != -1 && var3 != Client.field824 && Client.field693 != 0 && !Client.field825) {
             ClientPacket.method3459(2, MouseInput.indexTrack1, var3, 0, Client.field693, false);
          }
 
@@ -328,307 +328,301 @@ public class MessageNode extends CacheableNode {
    )
    static final void method1117(class171 var0) {
       PacketBuffer var1 = Client.field739.packetBuffer;
+      int var2;
       int var3;
-      int var5;
+      int var4;
+      Item var5;
       int var6;
-      Item var7;
-      int var37;
-      int var38;
-      if(class171.field2267 == var0) {
-         var37 = var1.readUnsignedShort();
-         var3 = var1.readUnsignedShortOb1();
-         var38 = (var3 >> 4 & 7) + field545;
-         var5 = (var3 & 7) + Script.field1219;
+      int var7;
+      if (class171.field2267 == var0) {
          var6 = var1.readUnsignedShort();
-         if(var38 >= 0 && var5 >= 0 && var38 < 104 && var5 < 104) {
-            var7 = new Item();
-            var7.id = var37;
-            var7.quantity = var6;
-            if(Client.groundItemDeque[class192.plane][var38][var5] == null) {
-               Client.groundItemDeque[class192.plane][var38][var5] = new Deque();
+         var2 = var1.readUnsignedShortOb1();
+         var7 = (var2 >> 4 & 7) + field545;
+         var3 = (var2 & 7) + Script.field1219;
+         var4 = var1.readUnsignedShort();
+         if (var7 >= 0 && var3 >= 0 && var7 < 104 && var3 < 104) {
+            var5 = new Item();
+            var5.id = var6;
+            var5.quantity = var4;
+            if (Client.groundItemDeque[class192.plane][var7][var3] == null) {
+               Client.groundItemDeque[class192.plane][var7][var3] = new Deque();
             }
 
-            Client.groundItemDeque[class192.plane][var38][var5].addFront(var7);
-            class171.groundItemSpawned(var38, var5);
+            Client.groundItemDeque[class192.plane][var7][var3].addFront(var5);
+            class171.groundItemSpawned(var7, var3);
          }
-
       } else {
-         byte var2;
-         int var8;
+         byte var8;
          int var9;
+         int var10;
          int var11;
+         int var12;
          int var13;
          int var14;
-         int var31;
-         if(class171.field2274 == var0) {
-            var2 = var1.method3702();
-            var3 = var1.readUnsignedShort();
-            byte var4 = var1.readByte();
-            var5 = var1.method3553();
-            var6 = (var5 >> 4 & 7) + field545;
-            var31 = (var5 & 7) + Script.field1219;
-            var8 = var1.method3784();
-            var9 = var1.method3562();
-            byte var10 = var1.method3765();
+         byte var17;
+         if (class171.field2274 == var0) {
+            var8 = var1.method3702();
+            var2 = var1.readUnsignedShort();
+            byte var15 = var1.readByte();
+            var3 = var1.method3553();
+            var4 = (var3 >> 4 & 7) + field545;
+            var14 = (var3 & 7) + Script.field1219;
+            var9 = var1.method3784();
+            var10 = var1.method3562();
+            byte var16 = var1.method3765();
             var11 = var1.readUnsignedShort();
-            byte var12 = var1.method3600();
-            var13 = var1.readUnsignedByte();
-            var14 = var13 >> 2;
-            int var15 = var13 & 3;
-            int var16 = Client.field653[var14];
-            Player var17;
-            if(var9 == Client.localInteractingIndex) {
-               var17 = MilliTimer.localPlayer;
+            var17 = var1.method3600();
+            var12 = var1.readUnsignedByte();
+            var13 = var12 >> 2;
+            int var18 = var12 & 3;
+            int var19 = Client.field653[var13];
+            Player var20;
+            if (var10 == Client.localInteractingIndex) {
+               var20 = MilliTimer.localPlayer;
             } else {
-               var17 = Client.cachedPlayers[var9];
+               var20 = Client.cachedPlayers[var10];
             }
 
-            if(var17 != null) {
-               ObjectComposition var18 = SoundTaskDataProvider.getObjectDefinition(var8);
-               int var19;
-               int var20;
-               if(var15 != 1 && var15 != 3) {
-                  var19 = var18.width;
-                  var20 = var18.length;
+            if (var20 != null) {
+               ObjectComposition var21 = SoundTaskDataProvider.getObjectDefinition(var9);
+               int var22;
+               int var23;
+               if (var18 != 1 && var18 != 3) {
+                  var22 = var21.width;
+                  var23 = var21.length;
                } else {
-                  var19 = var18.length;
-                  var20 = var18.width;
+                  var22 = var21.length;
+                  var23 = var21.width;
                }
 
-               int var21 = var6 + (var19 >> 1);
-               int var22 = var6 + (var19 + 1 >> 1);
-               int var23 = var31 + (var20 >> 1);
-               int var24 = var31 + (var20 + 1 >> 1);
-               int[][] var25 = class50.tileHeights[class192.plane];
-               int var26 = var25[var21][var23] + var25[var22][var23] + var25[var21][var24] + var25[var22][var24] >> 2;
-               int var27 = (var6 << 7) + (var19 << 6);
-               int var28 = (var31 << 7) + (var20 << 6);
-               Model var29 = var18.method5052(var14, var15, var25, var27, var26, var28);
-               if(var29 != null) {
-                  class222.method4447(class192.plane, var6, var31, var16, -1, 0, 0, var11 + 1, var3 + 1);
-                  var17.animationCycleStart = var11 + Client.gameCycle;
-                  var17.animationCycleEnd = var3 + Client.gameCycle;
-                  var17.model = var29;
-                  var17.field571 = var6 * 128 + var19 * 64;
-                  var17.field582 = var31 * 128 + var20 * 64;
-                  var17.field562 = var26;
-                  byte var30;
-                  if(var10 > var12) {
-                     var30 = var10;
-                     var10 = var12;
-                     var12 = var30;
+               int var24 = var4 + (var22 >> 1);
+               int var25 = var4 + (var22 + 1 >> 1);
+               int var26 = var14 + (var23 >> 1);
+               int var27 = var14 + (var23 + 1 >> 1);
+               int[][] var28 = class50.tileHeights[class192.plane];
+               int var29 = var28[var24][var26] + var28[var25][var26] + var28[var24][var27] + var28[var25][var27] >> 2;
+               int var30 = (var4 << 7) + (var22 << 6);
+               int var31 = (var14 << 7) + (var23 << 6);
+               Model var32 = var21.method5052(var13, var18, var28, var30, var29, var31);
+               if (var32 != null) {
+                  class222.method4447(class192.plane, var4, var14, var19, -1, 0, 0, var11 + 1, var2 + 1);
+                  var20.animationCycleStart = var11 + Client.gameCycle;
+                  var20.animationCycleEnd = var2 + Client.gameCycle;
+                  var20.model = var32;
+                  var20.field571 = var4 * 128 + var22 * 64;
+                  var20.field582 = var14 * 128 + var23 * 64;
+                  var20.field562 = var29;
+                  byte var33;
+                  if (var16 > var17) {
+                     var33 = var16;
+                     var16 = var17;
+                     var17 = var33;
                   }
 
-                  if(var2 > var4) {
-                     var30 = var2;
-                     var2 = var4;
-                     var4 = var30;
+                  if (var8 > var15) {
+                     var33 = var8;
+                     var8 = var15;
+                     var15 = var33;
                   }
 
-                  var17.field568 = var10 + var6;
-                  var17.field577 = var12 + var6;
-                  var17.field573 = var31 + var2;
-                  var17.field578 = var31 + var4;
+                  var20.field568 = var16 + var4;
+                  var20.field577 = var17 + var4;
+                  var20.field573 = var14 + var8;
+                  var20.field578 = var14 + var15;
                }
             }
          }
 
-         if(class171.field2269 == var0) {
-            var37 = var1.readUnsignedByte();
-            var3 = (var37 >> 4 & 7) + field545;
-            var38 = (var37 & 7) + Script.field1219;
-            var5 = var1.method3553();
-            var6 = var5 >> 2;
-            var31 = var5 & 3;
-            var8 = Client.field653[var6];
-            if(var3 >= 0 && var38 >= 0 && var3 < 104 && var38 < 104) {
-               class222.method4447(class192.plane, var3, var38, var8, -1, var6, var31, 0, -1);
+         if (class171.field2269 == var0) {
+            var6 = var1.readUnsignedByte();
+            var2 = (var6 >> 4 & 7) + field545;
+            var7 = (var6 & 7) + Script.field1219;
+            var3 = var1.method3553();
+            var4 = var3 >> 2;
+            var14 = var3 & 3;
+            var9 = Client.field653[var4];
+            if (var2 >= 0 && var7 >= 0 && var2 < 104 && var7 < 104) {
+               class222.method4447(class192.plane, var2, var7, var9, -1, var4, var14, 0, -1);
             }
-
-         } else if(class171.field2272 == var0) {
-            var37 = var1.method3784();
-            var3 = var1.method3597();
-            var38 = (var3 >> 4 & 7) + field545;
-            var5 = (var3 & 7) + Script.field1219;
-            if(var38 >= 0 && var5 >= 0 && var38 < 104 && var5 < 104) {
-               Deque var32 = Client.groundItemDeque[class192.plane][var38][var5];
-               if(var32 != null) {
-                  for(var7 = (Item)var32.getFront(); var7 != null; var7 = (Item)var32.getNext()) {
-                     if((var37 & 32767) == var7.id) {
-                        var7.unlink();
+         } else if (class171.field2272 == var0) {
+            var6 = var1.method3784();
+            var2 = var1.method3597();
+            var7 = (var2 >> 4 & 7) + field545;
+            var3 = (var2 & 7) + Script.field1219;
+            if (var7 >= 0 && var3 >= 0 && var7 < 104 && var3 < 104) {
+               Deque var34 = Client.groundItemDeque[class192.plane][var7][var3];
+               if (var34 != null) {
+                  for(var5 = (Item)var34.getFront(); var5 != null; var5 = (Item)var34.getNext()) {
+                     if ((var6 & 32767) == var5.id) {
+                        var5.unlink();
                         break;
                      }
                   }
 
-                  if(var32.getFront() == null) {
-                     Client.groundItemDeque[class192.plane][var38][var5] = null;
+                  if (var34.getFront() == null) {
+                     Client.groundItemDeque[class192.plane][var7][var3] = null;
                   }
 
-                  class171.groundItemSpawned(var38, var5);
+                  class171.groundItemSpawned(var7, var3);
                }
             }
-
          } else {
-            int var39;
-            if(class171.field2276 == var0) {
-               var37 = var1.method3597();
-               var3 = var1.method3597();
-               var38 = var3 >> 4 & 15;
-               var5 = var3 & 7;
-               var6 = var1.readUnsignedShort();
-               var31 = var1.method3553();
-               var8 = (var31 >> 4 & 7) + field545;
-               var9 = (var31 & 7) + Script.field1219;
-               if(var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104) {
-                  var39 = var38 + 1;
-                  if(MilliTimer.localPlayer.pathX[0] >= var8 - var39 && MilliTimer.localPlayer.pathX[0] <= var8 + var39 && MilliTimer.localPlayer.pathY[0] >= var9 - var39 && MilliTimer.localPlayer.pathY[0] <= var39 + var9 && Client.field827 != 0 && var5 > 0 && Client.queuedSoundEffectCount < 50) {
-                     Client.queuedSoundEffectIDs[Client.queuedSoundEffectCount] = var6;
-                     Client.unknownSoundValues1[Client.queuedSoundEffectCount] = var5;
-                     Client.unknownSoundValues2[Client.queuedSoundEffectCount] = var37;
+            int var35;
+            if (class171.field2276 == var0) {
+               var6 = var1.method3597();
+               var2 = var1.method3597();
+               var7 = var2 >> 4 & 15;
+               var3 = var2 & 7;
+               var4 = var1.readUnsignedShort();
+               var14 = var1.method3553();
+               var9 = (var14 >> 4 & 7) + field545;
+               var10 = (var14 & 7) + Script.field1219;
+               if (var9 >= 0 && var10 >= 0 && var9 < 104 && var10 < 104) {
+                  var35 = var7 + 1;
+                  if (MilliTimer.localPlayer.pathX[0] >= var9 - var35 && MilliTimer.localPlayer.pathX[0] <= var9 + var35 && MilliTimer.localPlayer.pathY[0] >= var10 - var35 && MilliTimer.localPlayer.pathY[0] <= var35 + var10 && Client.field827 != 0 && var3 > 0 && Client.queuedSoundEffectCount < 50) {
+                     Client.queuedSoundEffectIDs[Client.queuedSoundEffectCount] = var4;
+                     Client.unknownSoundValues1[Client.queuedSoundEffectCount] = var3;
+                     Client.unknownSoundValues2[Client.queuedSoundEffectCount] = var6;
                      Client.audioEffects[Client.queuedSoundEffectCount] = null;
-                     Client.soundLocations[Client.queuedSoundEffectCount] = var38 + (var9 << 8) + (var8 << 16);
+                     Client.soundLocations[Client.queuedSoundEffectCount] = var7 + (var10 << 8) + (var9 << 16);
                      ++Client.queuedSoundEffectCount;
                   }
                }
             }
 
-            if(class171.field2271 == var0) {
-               var2 = var1.method3765();
-               var3 = var1.readUnsignedByte();
-               var38 = var1.method3609();
-               var5 = var1.method3676();
-               var6 = var1.readUnsignedByte() * 4;
-               var31 = var1.method3676();
-               var8 = var1.method3553() * 4;
-               var9 = var1.method3597();
-               var39 = (var9 >> 4 & 7) + field545;
-               var11 = (var9 & 7) + Script.field1219;
-               int var40 = var1.method3553();
-               byte var41 = var1.method3765();
-               var14 = var1.readUnsignedShort();
-               var13 = var41 + var39;
-               var37 = var2 + var11;
-               if(var39 >= 0 && var11 >= 0 && var39 < 104 && var11 < 104 && var13 >= 0 && var37 >= 0 && var13 < 104 && var37 < 104 && var14 != 65535) {
-                  var39 = var39 * 128 + 64;
+            if (class171.field2271 == var0) {
+               var8 = var1.method3765();
+               var2 = var1.readUnsignedByte();
+               var7 = var1.method3609();
+               var3 = var1.method3676();
+               var4 = var1.readUnsignedByte() * 4;
+               var14 = var1.method3676();
+               var9 = var1.method3553() * 4;
+               var10 = var1.method3597();
+               var35 = (var10 >> 4 & 7) + field545;
+               var11 = (var10 & 7) + Script.field1219;
+               int var36 = var1.method3553();
+               var17 = var1.method3765();
+               var13 = var1.readUnsignedShort();
+               var12 = var17 + var35;
+               var6 = var8 + var11;
+               if (var35 >= 0 && var11 >= 0 && var35 < 104 && var11 < 104 && var12 >= 0 && var6 >= 0 && var12 < 104 && var6 < 104 && var13 != 65535) {
+                  var35 = var35 * 128 + 64;
                   var11 = var11 * 128 + 64;
-                  var13 = var13 * 128 + 64;
-                  var37 = var37 * 128 + 64;
-                  Projectile var33 = new Projectile(var14, class192.plane, var39, var11, class264.getTileHeight(var39, var11, class192.plane) - var8, var31 + Client.gameCycle, var5 + Client.gameCycle, var40, var3, var38, var6);
-                  var33.moveProjectile(var13, var37, class264.getTileHeight(var13, var37, class192.plane) - var6, var31 + Client.gameCycle);
-                  Client.projectiles.addFront(var33);
+                  var12 = var12 * 128 + 64;
+                  var6 = var6 * 128 + 64;
+                  Projectile var40 = new Projectile(var13, class192.plane, var35, var11, class264.getTileHeight(var35, var11, class192.plane) - var9, var14 + Client.gameCycle, var3 + Client.gameCycle, var36, var2, var7, var4);
+                  var40.moveProjectile(var12, var6, class264.getTileHeight(var12, var6, class192.plane) - var4, var14 + Client.gameCycle);
+                  Client.projectiles.addFront(var40);
                }
-
-            } else if(class171.field2275 == var0) {
-               var37 = var1.readUnsignedByte();
-               var3 = (var37 >> 4 & 7) + field545;
-               var38 = (var37 & 7) + Script.field1219;
-               var5 = var1.readUnsignedShort();
-               var6 = var1.method3553();
-               var31 = var6 >> 2;
-               var8 = var6 & 3;
-               var9 = Client.field653[var31];
-               if(var3 >= 0 && var38 >= 0 && var3 < 104 && var38 < 104) {
-                  class222.method4447(class192.plane, var3, var38, var9, var5, var31, var8, 0, -1);
+            } else if (class171.field2275 == var0) {
+               var6 = var1.readUnsignedByte();
+               var2 = (var6 >> 4 & 7) + field545;
+               var7 = (var6 & 7) + Script.field1219;
+               var3 = var1.readUnsignedShort();
+               var4 = var1.method3553();
+               var14 = var4 >> 2;
+               var9 = var4 & 3;
+               var10 = Client.field653[var14];
+               if (var2 >= 0 && var7 >= 0 && var2 < 104 && var7 < 104) {
+                  class222.method4447(class192.plane, var2, var7, var10, var3, var14, var9, 0, -1);
                }
-
-            } else if(class171.field2270 == var0) {
-               var37 = var1.readUnsignedShortOb1();
-               var3 = (var37 >> 4 & 7) + field545;
-               var38 = (var37 & 7) + Script.field1219;
-               var5 = var1.method3784();
+            } else if (class171.field2270 == var0) {
                var6 = var1.readUnsignedShortOb1();
-               var31 = var6 >> 2;
-               var8 = var6 & 3;
-               var9 = Client.field653[var31];
-               if(var3 >= 0 && var38 >= 0 && var3 < 103 && var38 < 103) {
-                  if(var9 == 0) {
-                     WallObject var34 = ScriptEvent.region.method3049(class192.plane, var3, var38);
-                     if(var34 != null) {
-                        var11 = class8.method93(var34.hash);
-                        if(var31 == 2) {
-                           var34.renderable1 = new DynamicObject(var11, 2, var8 + 4, class192.plane, var3, var38, var5, false, var34.renderable1);
-                           var34.renderable2 = new DynamicObject(var11, 2, var8 + 1 & 3, class192.plane, var3, var38, var5, false, var34.renderable2);
+               var2 = (var6 >> 4 & 7) + field545;
+               var7 = (var6 & 7) + Script.field1219;
+               var3 = var1.method3784();
+               var4 = var1.readUnsignedShortOb1();
+               var14 = var4 >> 2;
+               var9 = var4 & 3;
+               var10 = Client.field653[var14];
+               if (var2 >= 0 && var7 >= 0 && var2 < 103 && var7 < 103) {
+                  if (var10 == 0) {
+                     WallObject var37 = ScriptEvent.region.method3049(class192.plane, var2, var7);
+                     if (var37 != null) {
+                        var11 = class8.method93(var37.hash);
+                        if (var14 == 2) {
+                           var37.renderable1 = new DynamicObject(var11, 2, var9 + 4, class192.plane, var2, var7, var3, false, var37.renderable1);
+                           var37.renderable2 = new DynamicObject(var11, 2, var9 + 1 & 3, class192.plane, var2, var7, var3, false, var37.renderable2);
                         } else {
-                           var34.renderable1 = new DynamicObject(var11, var31, var8, class192.plane, var3, var38, var5, false, var34.renderable1);
+                           var37.renderable1 = new DynamicObject(var11, var14, var9, class192.plane, var2, var7, var3, false, var37.renderable1);
                         }
                      }
                   }
 
-                  if(var9 == 1) {
-                     DecorativeObject var42 = ScriptEvent.region.method2924(class192.plane, var3, var38);
-                     if(var42 != null) {
-                        var11 = class8.method93(var42.hash);
-                        if(var31 != 4 && var31 != 5) {
-                           if(var31 == 6) {
-                              var42.renderable1 = new DynamicObject(var11, 4, var8 + 4, class192.plane, var3, var38, var5, false, var42.renderable1);
-                           } else if(var31 == 7) {
-                              var42.renderable1 = new DynamicObject(var11, 4, (var8 + 2 & 3) + 4, class192.plane, var3, var38, var5, false, var42.renderable1);
-                           } else if(var31 == 8) {
-                              var42.renderable1 = new DynamicObject(var11, 4, var8 + 4, class192.plane, var3, var38, var5, false, var42.renderable1);
-                              var42.renderable2 = new DynamicObject(var11, 4, (var8 + 2 & 3) + 4, class192.plane, var3, var38, var5, false, var42.renderable2);
+                  if (var10 == 1) {
+                     DecorativeObject var38 = ScriptEvent.region.method2924(class192.plane, var2, var7);
+                     if (var38 != null) {
+                        var11 = class8.method93(var38.hash);
+                        if (var14 != 4 && var14 != 5) {
+                           if (var14 == 6) {
+                              var38.renderable1 = new DynamicObject(var11, 4, var9 + 4, class192.plane, var2, var7, var3, false, var38.renderable1);
+                           } else if (var14 == 7) {
+                              var38.renderable1 = new DynamicObject(var11, 4, (var9 + 2 & 3) + 4, class192.plane, var2, var7, var3, false, var38.renderable1);
+                           } else if (var14 == 8) {
+                              var38.renderable1 = new DynamicObject(var11, 4, var9 + 4, class192.plane, var2, var7, var3, false, var38.renderable1);
+                              var38.renderable2 = new DynamicObject(var11, 4, (var9 + 2 & 3) + 4, class192.plane, var2, var7, var3, false, var38.renderable2);
                            }
                         } else {
-                           var42.renderable1 = new DynamicObject(var11, 4, var8, class192.plane, var3, var38, var5, false, var42.renderable1);
+                           var38.renderable1 = new DynamicObject(var11, 4, var9, class192.plane, var2, var7, var3, false, var38.renderable1);
                         }
                      }
                   }
 
-                  if(var9 == 2) {
-                     GameObject var43 = ScriptEvent.region.method2925(class192.plane, var3, var38);
-                     if(var31 == 11) {
-                        var31 = 10;
+                  if (var10 == 2) {
+                     GameObject var39 = ScriptEvent.region.method2925(class192.plane, var2, var7);
+                     if (var14 == 11) {
+                        var14 = 10;
                      }
 
-                     if(var43 != null) {
-                        var43.renderable = new DynamicObject(class8.method93(var43.hash), var31, var8, class192.plane, var3, var38, var5, false, var43.renderable);
+                     if (var39 != null) {
+                        var39.renderable = new DynamicObject(class8.method93(var39.hash), var14, var9, class192.plane, var2, var7, var3, false, var39.renderable);
                      }
                   }
 
-                  if(var9 == 3) {
-                     GroundObject var44 = ScriptEvent.region.getFloorDecoration(class192.plane, var3, var38);
-                     if(var44 != null) {
-                        var44.renderable = new DynamicObject(class8.method93(var44.hash), 22, var8, class192.plane, var3, var38, var5, false, var44.renderable);
+                  if (var10 == 3) {
+                     GroundObject var42 = ScriptEvent.region.getFloorDecoration(class192.plane, var2, var7);
+                     if (var42 != null) {
+                        var42.renderable = new DynamicObject(class8.method93(var42.hash), 22, var9, class192.plane, var2, var7, var3, false, var42.renderable);
                      }
                   }
                }
-
-            } else if(class171.field2268 == var0) {
-               var37 = var1.method3597();
-               var3 = (var37 >> 4 & 7) + field545;
-               var38 = (var37 & 7) + Script.field1219;
-               var5 = var1.method3676();
-               var6 = var1.readUnsignedShort();
-               var31 = var1.readUnsignedShortOb1();
-               if(var3 >= 0 && var38 >= 0 && var3 < 104 && var38 < 104) {
-                  var3 = var3 * 128 + 64;
-                  var38 = var38 * 128 + 64;
-                  GraphicsObject var45 = new GraphicsObject(var5, class192.plane, var3, var38, class264.getTileHeight(var3, var38, class192.plane) - var31, var6, Client.gameCycle);
-                  Client.graphicsObjectDeque.addFront(var45);
+            } else if (class171.field2268 == var0) {
+               var6 = var1.method3597();
+               var2 = (var6 >> 4 & 7) + field545;
+               var7 = (var6 & 7) + Script.field1219;
+               var3 = var1.method3676();
+               var4 = var1.readUnsignedShort();
+               var14 = var1.readUnsignedShortOb1();
+               if (var2 >= 0 && var7 >= 0 && var2 < 104 && var7 < 104) {
+                  var2 = var2 * 128 + 64;
+                  var7 = var7 * 128 + 64;
+                  GraphicsObject var43 = new GraphicsObject(var3, class192.plane, var2, var7, class264.getTileHeight(var2, var7, class192.plane) - var14, var4, Client.gameCycle);
+                  Client.graphicsObjectDeque.addFront(var43);
                }
-
-            } else if(class171.field2273 == var0) {
-               var37 = var1.method3784();
-               var3 = var1.method3562();
-               var38 = var1.readUnsignedByte();
-               var5 = (var38 >> 4 & 7) + field545;
-               var6 = (var38 & 7) + Script.field1219;
-               var31 = var1.readUnsignedShort();
-               if(var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
-                  Deque var35 = Client.groundItemDeque[class192.plane][var5][var6];
-                  if(var35 != null) {
-                     for(Item var36 = (Item)var35.getFront(); var36 != null; var36 = (Item)var35.getNext()) {
-                        if((var3 & 32767) == var36.id && var31 == var36.quantity) {
-                           var36.quantity = var37;
+            } else if (class171.field2273 == var0) {
+               var6 = var1.method3784();
+               var2 = var1.method3562();
+               var7 = var1.readUnsignedByte();
+               var3 = (var7 >> 4 & 7) + field545;
+               var4 = (var7 & 7) + Script.field1219;
+               var14 = var1.readUnsignedShort();
+               if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
+                  Deque var44 = Client.groundItemDeque[class192.plane][var3][var4];
+                  if (var44 != null) {
+                     for(Item var41 = (Item)var44.getFront(); var41 != null; var41 = (Item)var44.getNext()) {
+                        if ((var2 & 32767) == var41.id && var14 == var41.quantity) {
+                           var41.quantity = var6;
                            break;
                         }
                      }
 
-                     class171.groundItemSpawned(var5, var6);
+                     class171.groundItemSpawned(var3, var4);
                   }
                }
-
             }
          }
       }
+
    }
 }

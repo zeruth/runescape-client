@@ -32,7 +32,7 @@ public class class34 extends class16 {
    )
    void method611(Buffer var1, Buffer var2) {
       int var3 = var2.readUnsignedByte();
-      if(var3 != class25.field233.field228) {
+      if (var3 != class25.field233.field228) {
          throw new IllegalStateException("");
       } else {
          super.field133 = var2.readUnsignedByte();
@@ -52,14 +52,14 @@ public class class34 extends class16 {
          super.field138 = new byte[super.field134][64][64];
          super.decorations = new WorldMapDecoration[super.field134][64][64][];
          var3 = var1.readUnsignedByte();
-         if(var3 != class24.field217.field219) {
+         if (var3 != class24.field217.field219) {
             throw new IllegalStateException("");
          } else {
             int var4 = var1.readUnsignedByte();
             int var5 = var1.readUnsignedByte();
             int var6 = var1.readUnsignedByte();
             int var7 = var1.readUnsignedByte();
-            if(var4 == super.field141 && var5 == super.field132 && var6 == this.field297 && var7 == this.field298) {
+            if (var4 == super.field141 && var5 == super.field132 && var6 == this.field297 && var7 == this.field298) {
                for(int var8 = 0; var8 < 8; ++var8) {
                   for(int var9 = 0; var9 < 8; ++var9) {
                      this.method165(var8 + this.field297 * 8, var9 + this.field298 * 8, var1);
@@ -79,7 +79,7 @@ public class class34 extends class16 {
       garbageValue = "-1449699656"
    )
    boolean method610(int var1, int var2) {
-      return var1 < this.field297 * 8?false:(var2 < this.field298 * 8?false:(var1 >= this.field297 * 8 + 8?false:var2 < this.field298 * 8 + 8));
+      return var1 < this.field297 * 8 ? false : (var2 < this.field298 * 8 ? false : (var1 >= this.field297 * 8 + 8 ? false : var2 < this.field298 * 8 + 8));
    }
 
    @ObfuscatedName("ac")
@@ -119,11 +119,11 @@ public class class34 extends class16 {
    }
 
    public boolean equals(Object var1) {
-      if(!(var1 instanceof class34)) {
+      if (!(var1 instanceof class34)) {
          return false;
       } else {
          class34 var2 = (class34)var1;
-         return var2.field141 == super.field141 && var2.field132 == super.field132?var2.field297 == this.field297 && this.field298 == var2.field298:false;
+         return var2.field141 == super.field141 && var2.field132 == super.field132 ? var2.field297 == this.field297 && this.field298 == var2.field298 : false;
       }
    }
 
@@ -148,7 +148,7 @@ public class class34 extends class16 {
    )
    static final void method626(int var0, int var1, int var2, int var3) {
       for(int var4 = 0; var4 < Client.widgetCount; ++var4) {
-         if(Client.widgetBoundsWidth[var4] + Client.widgetPositionX[var4] > var0 && Client.widgetPositionX[var4] < var0 + var2 && Client.widgetBoundsHeight[var4] + Client.widgetPositionY[var4] > var1 && Client.widgetPositionY[var4] < var3 + var1) {
+         if (Client.widgetBoundsWidth[var4] + Client.widgetPositionX[var4] > var0 && Client.widgetPositionX[var4] < var0 + var2 && Client.widgetBoundsHeight[var4] + Client.widgetPositionY[var4] > var1 && Client.widgetPositionY[var4] < var3 + var1) {
             Client.field795[var4] = true;
          }
       }
@@ -161,11 +161,12 @@ public class class34 extends class16 {
       garbageValue = "2064352901"
    )
    static final void method633(String var0) {
-      if(!var0.equals("")) {
+      if (!var0.equals("")) {
          PacketNode var1 = DecorativeObject.method3115(ClientPacket.field2176, Client.field739.field1250);
          var1.packetBuffer.putByte(Size.getLength(var0));
          var1.packetBuffer.putString(var0);
          Client.field739.method2019(var1);
       }
+
    }
 }

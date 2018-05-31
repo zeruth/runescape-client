@@ -12,7 +12,7 @@ public class Enum extends CacheableNode {
       signature = "Lgj;"
    )
    @Export("EnumDefinition_cached")
-   static NodeCache EnumDefinition_cached;
+   static NodeCache EnumDefinition_cached = new NodeCache(64);
    @ObfuscatedName("q")
    @Export("keyType")
    public char keyType;
@@ -21,7 +21,7 @@ public class Enum extends CacheableNode {
    public char valType;
    @ObfuscatedName("f")
    @Export("defaultString")
-   public String defaultString;
+   public String defaultString = "null";
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = 67416857
@@ -33,7 +33,7 @@ public class Enum extends CacheableNode {
       intValue = -303547453
    )
    @Export("size")
-   public int size;
+   public int size = 0;
    @ObfuscatedName("x")
    @Export("keys")
    public int[] keys;
@@ -44,15 +44,6 @@ public class Enum extends CacheableNode {
    @Export("stringVals")
    public String[] stringVals;
 
-   static {
-      EnumDefinition_cached = new NodeCache(64);
-   }
-
-   Enum() {
-      this.defaultString = "null";
-      this.size = 0;
-   }
-
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "(Lgy;I)V",
@@ -62,7 +53,7 @@ public class Enum extends CacheableNode {
    void decode(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
-         if(var2 == 0) {
+         if (var2 == 0) {
             return;
          }
 
@@ -77,17 +68,17 @@ public class Enum extends CacheableNode {
    )
    @Export("readNext")
    void readNext(Buffer var1, int var2) {
-      if(var2 == 1) {
+      if (var2 == 1) {
          this.keyType = (char)var1.readUnsignedByte();
-      } else if(var2 == 2) {
+      } else if (var2 == 2) {
          this.valType = (char)var1.readUnsignedByte();
-      } else if(var2 == 3) {
+      } else if (var2 == 3) {
          this.defaultString = var1.readString();
-      } else if(var2 == 4) {
+      } else if (var2 == 4) {
          this.defaultInt = var1.readInt();
       } else {
          int var3;
-         if(var2 == 5) {
+         if (var2 == 5) {
             this.size = var1.readUnsignedShort();
             this.keys = new int[this.size];
             this.stringVals = new String[this.size];
@@ -96,7 +87,7 @@ public class Enum extends CacheableNode {
                this.keys[var3] = var1.readInt();
                this.stringVals[var3] = var1.readString();
             }
-         } else if(var2 == 6) {
+         } else if (var2 == 6) {
             this.size = var1.readUnsignedShort();
             this.keys = new int[this.size];
             this.intVals = new int[this.size];
@@ -136,7 +127,7 @@ public class Enum extends CacheableNode {
       }
 
       try {
-         if(var0 != null) {
+         if (var0 != null) {
             var0.closeSync(true);
          }
       } catch (Exception var2) {

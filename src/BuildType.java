@@ -12,25 +12,25 @@ public class BuildType {
       signature = "Lip;"
    )
    @Export("RC")
-   static final BuildType RC;
+   static final BuildType RC = new BuildType("LIVE", 0);
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lip;"
    )
    @Export("WIP")
-   static final BuildType WIP;
+   static final BuildType WIP = new BuildType("BUILDLIVE", 3);
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lip;"
    )
    @Export("LIVE")
-   static final BuildType LIVE;
+   static final BuildType LIVE = new BuildType("RC", 1);
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lip;"
    )
    @Export("BUILD_LIVE")
-   static final BuildType BUILD_LIVE;
+   static final BuildType BUILD_LIVE = new BuildType("WIP", 2);
    @ObfuscatedName("f")
    @Export("identifier")
    public final String identifier;
@@ -39,13 +39,6 @@ public class BuildType {
       intValue = 1213546159
    )
    public final int field3149;
-
-   static {
-      RC = new BuildType("LIVE", 0);
-      WIP = new BuildType("BUILDLIVE", 3);
-      LIVE = new BuildType("RC", 1);
-      BUILD_LIVE = new BuildType("WIP", 2);
-   }
 
    BuildType(String var1, int var2) {
       this.identifier = var1;
@@ -59,7 +52,7 @@ public class BuildType {
    )
    static final void method4608(int var0, int var1, int var2, int var3) {
       for(int var4 = 0; var4 < Client.widgetCount; ++var4) {
-         if(Client.widgetPositionX[var4] + Client.widgetBoundsWidth[var4] > var0 && Client.widgetPositionX[var4] < var0 + var2 && Client.widgetPositionY[var4] + Client.widgetBoundsHeight[var4] > var1 && Client.widgetPositionY[var4] < var3 + var1) {
+         if (Client.widgetPositionX[var4] + Client.widgetBoundsWidth[var4] > var0 && Client.widgetPositionX[var4] < var0 + var2 && Client.widgetPositionY[var4] + Client.widgetBoundsHeight[var4] > var1 && Client.widgetPositionY[var4] < var3 + var1) {
             Client.field796[var4] = true;
          }
       }
@@ -72,7 +65,7 @@ public class BuildType {
       garbageValue = "-1551283972"
    )
    static final void method4609(int var0, int var1, int var2, int var3) {
-      if(Client.itemSelectionState == 0 && !Client.spellSelected) {
+      if (Client.itemSelectionState == 0 && !Client.spellSelected) {
          VertexNormal.addMenuEntry("Walk here", "", 23, 0, var0 - var2, var1 - var3);
       }
 
@@ -81,189 +74,189 @@ public class BuildType {
       int var8 = 0;
 
       while(true) {
-         int var10 = class120.Viewport_entityCountAtMouse;
-         if(var8 >= var10) {
-            if(-1L != var4) {
+         int var9 = class120.Viewport_entityCountAtMouse;
+         if (var8 >= var9) {
+            if (-1L != var4) {
                var8 = (int)(var4 >>> 0 & 127L);
-               var10 = UnitPriceComparator.method59(var4);
-               Player var11 = Client.cachedPlayers[Client.field719];
-               Varcs.method1942(var11, Client.field719, var8, var10);
+               var9 = UnitPriceComparator.method59(var4);
+               Player var30 = Client.cachedPlayers[Client.field719];
+               Varcs.method1942(var30, Client.field719, var8, var9);
             }
 
             return;
          }
 
-         long var25 = CacheFile.method2522(var8);
-         if(var6 != var25) {
-            label331: {
-               var6 = var25;
-               long var15 = class120.field1688[var8];
-               int var14 = (int)(var15 >>> 0 & 127L);
+         long var10 = CacheFile.method2522(var8);
+         if (var6 != var10) {
+            label276: {
+               var6 = var10;
+               long var12 = class120.field1688[var8];
+               int var14 = (int)(var12 >>> 0 & 127L);
                var14 = var14;
-               int var27 = class177.method3533(var8);
+               int var15 = class177.method3533(var8);
                int var16 = class59.method1122(var8);
                int var17 = class8.method93(class120.field1688[var8]);
                int var18 = var17;
-               if(var16 == 2 && ScriptEvent.region.method2931(class192.plane, var14, var27, var25) >= 0) {
+               if (var16 == 2 && ScriptEvent.region.method2931(class192.plane, var14, var15, var10) >= 0) {
                   ObjectComposition var19 = SoundTaskDataProvider.getObjectDefinition(var17);
-                  if(var19.impostorIds != null) {
+                  if (var19.impostorIds != null) {
                      var19 = var19.getImpostor();
                   }
 
-                  if(var19 == null) {
-                     break label331;
+                  if (var19 == null) {
+                     break label276;
                   }
 
-                  if(Client.itemSelectionState == 1) {
-                     VertexNormal.addMenuEntry("Use", Client.lastSelectedItemName + " " + "->" + " " + class50.getColTags(65535) + var19.name, 1, var17, var14, var27);
-                  } else if(Client.spellSelected) {
-                     if((class45.field373 & 4) == 4) {
-                        VertexNormal.addMenuEntry(Client.field750, Client.field751 + " " + "->" + " " + class50.getColTags(65535) + var19.name, 2, var17, var14, var27);
+                  if (Client.itemSelectionState == 1) {
+                     VertexNormal.addMenuEntry("Use", Client.lastSelectedItemName + " " + "->" + " " + class50.getColTags(65535) + var19.name, 1, var17, var14, var15);
+                  } else if (Client.spellSelected) {
+                     if ((class45.field373 & 4) == 4) {
+                        VertexNormal.addMenuEntry(Client.field750, Client.field751 + " " + "->" + " " + class50.getColTags(65535) + var19.name, 2, var17, var14, var15);
                      }
                   } else {
-                     String[] var28 = var19.actions;
-                     if(var28 != null) {
-                        for(int var31 = 4; var31 >= 0; --var31) {
-                           if(var28[var31] != null) {
+                     String[] var20 = var19.actions;
+                     if (var20 != null) {
+                        for(int var21 = 4; var21 >= 0; --var21) {
+                           if (var20[var21] != null) {
                               short var22 = 0;
-                              if(var31 == 0) {
+                              if (var21 == 0) {
                                  var22 = 3;
                               }
 
-                              if(var31 == 1) {
+                              if (var21 == 1) {
                                  var22 = 4;
                               }
 
-                              if(var31 == 2) {
+                              if (var21 == 2) {
                                  var22 = 5;
                               }
 
-                              if(var31 == 3) {
+                              if (var21 == 3) {
                                  var22 = 6;
                               }
 
-                              if(var31 == 4) {
+                              if (var21 == 4) {
                                  var22 = 1001;
                               }
 
-                              VertexNormal.addMenuEntry(var28[var31], class50.getColTags(65535) + var19.name, var22, var18, var14, var27);
+                              VertexNormal.addMenuEntry(var20[var21], class50.getColTags(65535) + var19.name, var22, var18, var14, var15);
                            }
                         }
                      }
 
-                     VertexNormal.addMenuEntry("Examine", class50.getColTags(65535) + var19.name, 1002, var19.id, var14, var27);
+                     VertexNormal.addMenuEntry("Examine", class50.getColTags(65535) + var19.name, 1002, var19.id, var14, var15);
                   }
                }
 
-               int var20;
-               NPC var21;
-               Player var23;
+               int var23;
+               int var31;
+               NPC var32;
+               Player var33;
                int[] var35;
-               int var37;
-               if(var16 == 1) {
-                  NPC var32 = Client.cachedNPCs[var18];
-                  if(var32 == null) {
-                     break label331;
+               if (var16 == 1) {
+                  NPC var24 = Client.cachedNPCs[var18];
+                  if (var24 == null) {
+                     break label276;
                   }
 
-                  if(var32.composition.size == 1 && (var32.x & 127) == 64 && (var32.y & 127) == 64) {
-                     for(var20 = 0; var20 < Client.npcIndexesCount; ++var20) {
-                        var21 = Client.cachedNPCs[Client.npcIndices[var20]];
-                        if(var21 != null && var21 != var32 && var21.composition.size == 1 && var21.x == var32.x && var21.y == var32.y) {
-                           class184.method3829(var21.composition, Client.npcIndices[var20], var14, var27);
+                  if (var24.composition.size == 1 && (var24.x & 127) == 64 && (var24.y & 127) == 64) {
+                     for(var31 = 0; var31 < Client.npcIndexesCount; ++var31) {
+                        var32 = Client.cachedNPCs[Client.npcIndices[var31]];
+                        if (var32 != null && var32 != var24 && var32.composition.size == 1 && var32.x == var24.x && var32.y == var24.y) {
+                           class184.method3829(var32.composition, Client.npcIndices[var31], var14, var15);
                         }
                      }
 
-                     var20 = class81.playerIndexesCount;
+                     var31 = class81.playerIndexesCount;
                      var35 = class81.playerIndices;
 
-                     for(var37 = 0; var37 < var20; ++var37) {
-                        var23 = Client.cachedPlayers[var35[var37]];
-                        if(var23 != null && var23.x == var32.x && var32.y == var23.y) {
-                           Varcs.method1942(var23, var35[var37], var14, var27);
+                     for(var23 = 0; var23 < var31; ++var23) {
+                        var33 = Client.cachedPlayers[var35[var23]];
+                        if (var33 != null && var33.x == var24.x && var24.y == var33.y) {
+                           Varcs.method1942(var33, var35[var23], var14, var15);
                         }
                      }
                   }
 
-                  class184.method3829(var32.composition, var18, var14, var27);
+                  class184.method3829(var24.composition, var18, var14, var15);
                }
 
-               if(var16 == 0) {
-                  Player var33 = Client.cachedPlayers[var18];
-                  if(var33 == null) {
-                     break label331;
+               if (var16 == 0) {
+                  Player var34 = Client.cachedPlayers[var18];
+                  if (var34 == null) {
+                     break label276;
                   }
 
-                  if((var33.x & 127) == 64 && (var33.y & 127) == 64) {
-                     for(var20 = 0; var20 < Client.npcIndexesCount; ++var20) {
-                        var21 = Client.cachedNPCs[Client.npcIndices[var20]];
-                        if(var21 != null && var21.composition.size == 1 && var21.x == var33.x && var21.y == var33.y) {
-                           class184.method3829(var21.composition, Client.npcIndices[var20], var14, var27);
+                  if ((var34.x & 127) == 64 && (var34.y & 127) == 64) {
+                     for(var31 = 0; var31 < Client.npcIndexesCount; ++var31) {
+                        var32 = Client.cachedNPCs[Client.npcIndices[var31]];
+                        if (var32 != null && var32.composition.size == 1 && var32.x == var34.x && var32.y == var34.y) {
+                           class184.method3829(var32.composition, Client.npcIndices[var31], var14, var15);
                         }
                      }
 
-                     var20 = class81.playerIndexesCount;
+                     var31 = class81.playerIndexesCount;
                      var35 = class81.playerIndices;
 
-                     for(var37 = 0; var37 < var20; ++var37) {
-                        var23 = Client.cachedPlayers[var35[var37]];
-                        if(var23 != null && var23 != var33 && var23.x == var33.x && var23.y == var33.y) {
-                           Varcs.method1942(var23, var35[var37], var14, var27);
+                     for(var23 = 0; var23 < var31; ++var23) {
+                        var33 = Client.cachedPlayers[var35[var23]];
+                        if (var33 != null && var33 != var34 && var33.x == var34.x && var33.y == var34.y) {
+                           Varcs.method1942(var33, var35[var23], var14, var15);
                         }
                      }
                   }
 
-                  if(var18 != Client.field719) {
-                     Varcs.method1942(var33, var18, var14, var27);
+                  if (var18 != Client.field719) {
+                     Varcs.method1942(var34, var18, var14, var15);
                   } else {
-                     var4 = var25;
+                     var4 = var10;
                   }
                }
 
-               if(var16 == 3) {
-                  Deque var34 = Client.groundItemDeque[class192.plane][var14][var27];
-                  if(var34 != null) {
-                     for(Item var38 = (Item)var34.getTail(); var38 != null; var38 = (Item)var34.getPrevious()) {
-                        ItemComposition var36 = class120.getItemDefinition(var38.id);
-                        if(Client.itemSelectionState == 1) {
-                           VertexNormal.addMenuEntry("Use", Client.lastSelectedItemName + " " + "->" + " " + class50.getColTags(16748608) + var36.name, 16, var38.id, var14, var27);
-                        } else if(Client.spellSelected) {
-                           if((class45.field373 & 1) == 1) {
-                              VertexNormal.addMenuEntry(Client.field750, Client.field751 + " " + "->" + " " + class50.getColTags(16748608) + var36.name, 17, var38.id, var14, var27);
+               if (var16 == 3) {
+                  Deque var36 = Client.groundItemDeque[class192.plane][var14][var15];
+                  if (var36 != null) {
+                     for(Item var25 = (Item)var36.getTail(); var25 != null; var25 = (Item)var36.getPrevious()) {
+                        ItemComposition var26 = class120.getItemDefinition(var25.id);
+                        if (Client.itemSelectionState == 1) {
+                           VertexNormal.addMenuEntry("Use", Client.lastSelectedItemName + " " + "->" + " " + class50.getColTags(16748608) + var26.name, 16, var25.id, var14, var15);
+                        } else if (Client.spellSelected) {
+                           if ((class45.field373 & 1) == 1) {
+                              VertexNormal.addMenuEntry(Client.field750, Client.field751 + " " + "->" + " " + class50.getColTags(16748608) + var26.name, 17, var25.id, var14, var15);
                            }
                         } else {
-                           String[] var29 = var36.groundActions;
+                           String[] var27 = var26.groundActions;
 
-                           for(int var30 = 4; var30 >= 0; --var30) {
-                              if(var29 != null && var29[var30] != null) {
-                                 byte var24 = 0;
-                                 if(var30 == 0) {
-                                    var24 = 18;
+                           for(int var28 = 4; var28 >= 0; --var28) {
+                              if (var27 != null && var27[var28] != null) {
+                                 byte var29 = 0;
+                                 if (var28 == 0) {
+                                    var29 = 18;
                                  }
 
-                                 if(var30 == 1) {
-                                    var24 = 19;
+                                 if (var28 == 1) {
+                                    var29 = 19;
                                  }
 
-                                 if(var30 == 2) {
-                                    var24 = 20;
+                                 if (var28 == 2) {
+                                    var29 = 20;
                                  }
 
-                                 if(var30 == 3) {
-                                    var24 = 21;
+                                 if (var28 == 3) {
+                                    var29 = 21;
                                  }
 
-                                 if(var30 == 4) {
-                                    var24 = 22;
+                                 if (var28 == 4) {
+                                    var29 = 22;
                                  }
 
-                                 VertexNormal.addMenuEntry(var29[var30], class50.getColTags(16748608) + var36.name, var24, var38.id, var14, var27);
-                              } else if(var30 == 2) {
-                                 VertexNormal.addMenuEntry("Take", class50.getColTags(16748608) + var36.name, 20, var38.id, var14, var27);
+                                 VertexNormal.addMenuEntry(var27[var28], class50.getColTags(16748608) + var26.name, var29, var25.id, var14, var15);
+                              } else if (var28 == 2) {
+                                 VertexNormal.addMenuEntry("Take", class50.getColTags(16748608) + var26.name, 20, var25.id, var14, var15);
                               }
                            }
 
-                           VertexNormal.addMenuEntry("Examine", class50.getColTags(16748608) + var36.name, 1004, var38.id, var14, var27);
+                           VertexNormal.addMenuEntry("Examine", class50.getColTags(16748608) + var26.name, 1004, var25.id, var14, var15);
                         }
                      }
                   }

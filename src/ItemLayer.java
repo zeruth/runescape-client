@@ -67,274 +67,273 @@ public final class ItemLayer {
    static int method2617(int var0, Script var1, boolean var2) {
       String var3;
       int var4;
-      if(var0 == 4100) {
+      if (var0 == 4100) {
          var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
          var4 = class69.intStack[--class45.intStackSize];
          class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3 + var4;
          return 1;
       } else {
-         String var35;
-         if(var0 == 4101) {
+         String var5;
+         if (var0 == 4101) {
             class83.scriptStringStackSize -= 2;
             var3 = class69.scriptStringStack[class83.scriptStringStackSize];
-            var35 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
-            class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3 + var35;
+            var5 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
+            class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3 + var5;
             return 1;
-         } else if(var0 == 4102) {
+         } else if (var0 == 4102) {
             var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
             var4 = class69.intStack[--class45.intStackSize];
             class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3 + MapIcon.method517(var4, true);
             return 1;
-         } else if(var0 == 4103) {
+         } else if (var0 == 4103) {
             var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
             class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3.toLowerCase();
             return 1;
          } else {
+            int var6;
+            int var7;
             int var8;
-            int var21;
-            int var29;
-            if(var0 == 4104) {
-               var21 = class69.intStack[--class45.intStackSize];
-               long var22 = (11745L + (long)var21) * 86400000L;
-               class69.field1024.setTime(new Date(var22));
-               var29 = class69.field1024.get(5);
-               int var28 = class69.field1024.get(2);
-               var8 = class69.field1024.get(1);
-               class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var29 + "-" + class69.field1018[var28] + "-" + var8;
+            if (var0 == 4104) {
+               var7 = class69.intStack[--class45.intStackSize];
+               long var28 = (11745L + (long)var7) * 86400000L;
+               class69.field1024.setTime(new Date(var28));
+               var8 = class69.field1024.get(5);
+               int var26 = class69.field1024.get(2);
+               var6 = class69.field1024.get(1);
+               class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var8 + "-" + class69.field1018[var26] + "-" + var6;
                return 1;
-            } else if(var0 == 4105) {
+            } else if (var0 == 4105) {
                class83.scriptStringStackSize -= 2;
                var3 = class69.scriptStringStack[class83.scriptStringStackSize];
-               var35 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
-               if(MilliTimer.localPlayer.composition != null && MilliTimer.localPlayer.composition.isFemale) {
-                  class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var35;
+               var5 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
+               if (MilliTimer.localPlayer.composition != null && MilliTimer.localPlayer.composition.isFemale) {
+                  class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var5;
                } else {
                   class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3;
                }
 
                return 1;
-            } else if(var0 == 4106) {
-               var21 = class69.intStack[--class45.intStackSize];
-               class69.scriptStringStack[++class83.scriptStringStackSize - 1] = Integer.toString(var21);
+            } else if (var0 == 4106) {
+               var7 = class69.intStack[--class45.intStackSize];
+               class69.scriptStringStack[++class83.scriptStringStackSize - 1] = Integer.toString(var7);
                return 1;
             } else {
-               int var5;
-               if(var0 == 4107) {
+               int var9;
+               if (var0 == 4107) {
                   class83.scriptStringStackSize -= 2;
-                  int[] var27 = class69.intStack;
+                  int[] var24 = class69.intStack;
                   var4 = ++class45.intStackSize - 1;
-                  String var37 = class69.scriptStringStack[class83.scriptStringStackSize];
-                  String var38 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
-                  var8 = Client.languageId;
-                  int var9 = var37.length();
-                  int var10 = var38.length();
-                  int var11 = 0;
-                  int var12 = 0;
-                  char var13 = 0;
-                  char var14 = 0;
+                  String var25 = class69.scriptStringStack[class83.scriptStringStackSize];
+                  String var27 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
+                  var6 = Client.languageId;
+                  int var30 = var25.length();
+                  int var31 = var27.length();
+                  int var15 = 0;
+                  int var16 = 0;
+                  char var17 = 0;
+                  char var18 = 0;
 
-                  label258:
+                  label210:
                   while(true) {
-                     if(var11 - var13 >= var9 && var12 - var14 >= var10) {
-                        int var32 = Math.min(var9, var10);
+                     char var32;
+                     if (var15 - var17 >= var30 && var16 - var18 >= var31) {
+                        int var33 = Math.min(var30, var31);
 
-                        char var18;
-                        int var33;
-                        for(var33 = 0; var33 < var32; ++var33) {
-                           char var17 = var37.charAt(var33);
-                           var18 = var38.charAt(var33);
-                           if(var18 != var17 && Character.toUpperCase(var17) != Character.toUpperCase(var18)) {
-                              var17 = Character.toLowerCase(var17);
-                              var18 = Character.toLowerCase(var18);
-                              if(var17 != var18) {
-                                 var5 = class236.method4597(var17, var8) - class236.method4597(var18, var8);
-                                 break label258;
+                        int var34;
+                        for(var34 = 0; var34 < var33; ++var34) {
+                           char var22 = var25.charAt(var34);
+                           var32 = var27.charAt(var34);
+                           if (var32 != var22 && Character.toUpperCase(var22) != Character.toUpperCase(var32)) {
+                              var22 = Character.toLowerCase(var22);
+                              var32 = Character.toLowerCase(var32);
+                              if (var22 != var32) {
+                                 var9 = class236.method4597(var22, var6) - class236.method4597(var32, var6);
+                                 break label210;
                               }
                            }
                         }
 
-                        var33 = var9 - var10;
-                        if(var33 != 0) {
-                           var5 = var33;
+                        var34 = var30 - var31;
+                        if (var34 != 0) {
+                           var9 = var34;
                         } else {
-                           for(int var34 = 0; var34 < var32; ++var34) {
-                              var18 = var37.charAt(var34);
-                              char var19 = var38.charAt(var34);
-                              if(var19 != var18) {
-                                 var5 = class236.method4597(var18, var8) - class236.method4597(var19, var8);
-                                 break label258;
+                           for(int var35 = 0; var35 < var33; ++var35) {
+                              var32 = var25.charAt(var35);
+                              char var23 = var27.charAt(var35);
+                              if (var23 != var32) {
+                                 var9 = class236.method4597(var32, var6) - class236.method4597(var23, var6);
+                                 break label210;
                               }
                            }
 
-                           var5 = 0;
+                           var9 = 0;
                         }
                         break;
                      }
 
-                     if(var11 - var13 >= var9) {
-                        var5 = -1;
+                     if (var15 - var17 >= var30) {
+                        var9 = -1;
                         break;
                      }
 
-                     if(var12 - var14 >= var10) {
-                        var5 = 1;
+                     if (var16 - var18 >= var31) {
+                        var9 = 1;
                         break;
                      }
 
-                     char var15;
-                     if(var13 != 0) {
-                        var15 = var13;
-                        boolean var30 = false;
+                     char var19;
+                     if (var17 != 0) {
+                        var19 = var17;
+                        boolean var20 = false;
                      } else {
-                        var15 = var37.charAt(var11++);
+                        var19 = var25.charAt(var15++);
                      }
 
-                     char var16;
-                     if(var14 != 0) {
-                        var16 = var14;
-                        boolean var31 = false;
+                     if (var18 != 0) {
+                        var32 = var18;
+                        boolean var21 = false;
                      } else {
-                        var16 = var38.charAt(var12++);
+                        var32 = var27.charAt(var16++);
                      }
 
-                     var13 = class76.method1850(var15);
-                     var14 = class76.method1850(var16);
-                     var15 = class222.method4446(var15, var8);
-                     var16 = class222.method4446(var16, var8);
-                     if(var16 != var15 && Character.toUpperCase(var15) != Character.toUpperCase(var16)) {
-                        var15 = Character.toLowerCase(var15);
-                        var16 = Character.toLowerCase(var16);
-                        if(var16 != var15) {
-                           var5 = class236.method4597(var15, var8) - class236.method4597(var16, var8);
+                     var17 = class76.method1850(var19);
+                     var18 = class76.method1850(var32);
+                     var19 = class222.method4446(var19, var6);
+                     var32 = class222.method4446(var32, var6);
+                     if (var32 != var19 && Character.toUpperCase(var19) != Character.toUpperCase(var32)) {
+                        var19 = Character.toLowerCase(var19);
+                        var32 = Character.toLowerCase(var32);
+                        if (var32 != var19) {
+                           var9 = class236.method4597(var19, var6) - class236.method4597(var32, var6);
                            break;
                         }
                      }
                   }
 
-                  var27[var4] = class183.method3824(var5);
+                  var24[var4] = class183.method3824(var9);
                   return 1;
                } else {
-                  byte[] var24;
-                  Font var25;
-                  if(var0 == 4108) {
+                  byte[] var10;
+                  Font var11;
+                  if (var0 == 4108) {
                      var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                      class45.intStackSize -= 2;
                      var4 = class69.intStack[class45.intStackSize];
-                     var5 = class69.intStack[class45.intStackSize + 1];
-                     var24 = TotalQuantityComparator.indexCache13.getConfigData(var5, 0);
-                     var25 = new Font(var24);
-                     class69.intStack[++class45.intStackSize - 1] = var25.method5539(var3, var4);
+                     var9 = class69.intStack[class45.intStackSize + 1];
+                     var10 = TotalQuantityComparator.indexCache13.getConfigData(var9, 0);
+                     var11 = new Font(var10);
+                     class69.intStack[++class45.intStackSize - 1] = var11.method5539(var3, var4);
                      return 1;
-                  } else if(var0 == 4109) {
+                  } else if (var0 == 4109) {
                      var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                      class45.intStackSize -= 2;
                      var4 = class69.intStack[class45.intStackSize];
-                     var5 = class69.intStack[class45.intStackSize + 1];
-                     var24 = TotalQuantityComparator.indexCache13.getConfigData(var5, 0);
-                     var25 = new Font(var24);
-                     class69.intStack[++class45.intStackSize - 1] = var25.method5538(var3, var4);
+                     var9 = class69.intStack[class45.intStackSize + 1];
+                     var10 = TotalQuantityComparator.indexCache13.getConfigData(var9, 0);
+                     var11 = new Font(var10);
+                     class69.intStack[++class45.intStackSize - 1] = var11.method5538(var3, var4);
                      return 1;
-                  } else if(var0 == 4110) {
+                  } else if (var0 == 4110) {
                      class83.scriptStringStackSize -= 2;
                      var3 = class69.scriptStringStack[class83.scriptStringStackSize];
-                     var35 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
-                     if(class69.intStack[--class45.intStackSize] == 1) {
+                     var5 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
+                     if (class69.intStack[--class45.intStackSize] == 1) {
                         class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3;
                      } else {
-                        class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var35;
+                        class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var5;
                      }
 
                      return 1;
-                  } else if(var0 == 4111) {
+                  } else if (var0 == 4111) {
                      var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                      class69.scriptStringStack[++class83.scriptStringStackSize - 1] = FontTypeFace.appendTags(var3);
                      return 1;
-                  } else if(var0 == 4112) {
+                  } else if (var0 == 4112) {
                      var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                      var4 = class69.intStack[--class45.intStackSize];
                      class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3 + (char)var4;
                      return 1;
                   } else {
-                     char var7;
-                     if(var0 != 4113) {
-                        if(var0 == 4114) {
-                           var21 = class69.intStack[--class45.intStackSize];
-                           class69.intStack[++class45.intStackSize - 1] = class148.method3206((char)var21)?1:0;
+                     char var12;
+                     boolean var14;
+                     if (var0 != 4113) {
+                        if (var0 == 4114) {
+                           var7 = class69.intStack[--class45.intStackSize];
+                           class69.intStack[++class45.intStackSize - 1] = class148.method3206((char)var7) ? 1 : 0;
                            return 1;
-                        } else if(var0 == 4115) {
-                           var21 = class69.intStack[--class45.intStackSize];
-                           class69.intStack[++class45.intStackSize - 1] = Frames.method3095((char)var21)?1:0;
+                        } else if (var0 == 4115) {
+                           var7 = class69.intStack[--class45.intStackSize];
+                           class69.intStack[++class45.intStackSize - 1] = Frames.method3095((char)var7) ? 1 : 0;
                            return 1;
-                        } else if(var0 == 4116) {
-                           var21 = class69.intStack[--class45.intStackSize];
-                           class69.intStack[++class45.intStackSize - 1] = class184.method3830((char)var21)?1:0;
+                        } else if (var0 == 4116) {
+                           var7 = class69.intStack[--class45.intStackSize];
+                           class69.intStack[++class45.intStackSize - 1] = class184.method3830((char)var7) ? 1 : 0;
                            return 1;
-                        } else if(var0 == 4117) {
+                        } else if (var0 == 4117) {
                            var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
-                           if(var3 != null) {
+                           if (var3 != null) {
                               class69.intStack[++class45.intStackSize - 1] = var3.length();
                            } else {
                               class69.intStack[++class45.intStackSize - 1] = 0;
                            }
 
                            return 1;
-                        } else if(var0 == 4118) {
+                        } else if (var0 == 4118) {
                            var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                            class45.intStackSize -= 2;
                            var4 = class69.intStack[class45.intStackSize];
-                           var5 = class69.intStack[class45.intStackSize + 1];
-                           class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3.substring(var4, var5);
+                           var9 = class69.intStack[class45.intStackSize + 1];
+                           class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var3.substring(var4, var9);
                            return 1;
-                        } else if(var0 == 4119) {
+                        } else if (var0 == 4119) {
                            var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
-                           StringBuilder var36 = new StringBuilder(var3.length());
-                           boolean var26 = false;
+                           StringBuilder var29 = new StringBuilder(var3.length());
+                           var14 = false;
 
-                           for(var29 = 0; var29 < var3.length(); ++var29) {
-                              var7 = var3.charAt(var29);
-                              if(var7 == '<') {
-                                 var26 = true;
-                              } else if(var7 == '>') {
-                                 var26 = false;
-                              } else if(!var26) {
-                                 var36.append(var7);
+                           for(var8 = 0; var8 < var3.length(); ++var8) {
+                              var12 = var3.charAt(var8);
+                              if (var12 == '<') {
+                                 var14 = true;
+                              } else if (var12 == '>') {
+                                 var14 = false;
+                              } else if (!var14) {
+                                 var29.append(var12);
                               }
                            }
 
-                           class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var36.toString();
+                           class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var29.toString();
                            return 1;
-                        } else if(var0 == 4120) {
+                        } else if (var0 == 4120) {
                            var3 = class69.scriptStringStack[--class83.scriptStringStackSize];
                            var4 = class69.intStack[--class45.intStackSize];
                            class69.intStack[++class45.intStackSize - 1] = var3.indexOf(var4);
                            return 1;
-                        } else if(var0 == 4121) {
+                        } else if (var0 == 4121) {
                            class83.scriptStringStackSize -= 2;
                            var3 = class69.scriptStringStack[class83.scriptStringStackSize];
-                           var35 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
-                           var5 = class69.intStack[--class45.intStackSize];
-                           class69.intStack[++class45.intStackSize - 1] = var3.indexOf(var35, var5);
+                           var5 = class69.scriptStringStack[class83.scriptStringStackSize + 1];
+                           var9 = class69.intStack[--class45.intStackSize];
+                           class69.intStack[++class45.intStackSize - 1] = var3.indexOf(var5, var9);
                            return 1;
                         } else {
                            return 2;
                         }
                      } else {
-                        var21 = class69.intStack[--class45.intStackSize];
-                        int[] var20 = class69.intStack;
-                        var5 = ++class45.intStackSize - 1;
-                        var7 = (char)var21;
-                        boolean var6;
-                        if(var7 >= ' ' && var7 <= '~') {
-                           var6 = true;
-                        } else if(var7 >= 160 && var7 <= 255) {
-                           var6 = true;
-                        } else if(var7 != 8364 && var7 != 338 && var7 != 8212 && var7 != 339 && var7 != 376) {
-                           var6 = false;
+                        var7 = class69.intStack[--class45.intStackSize];
+                        int[] var13 = class69.intStack;
+                        var9 = ++class45.intStackSize - 1;
+                        var12 = (char)var7;
+                        if (var12 >= ' ' && var12 <= '~') {
+                           var14 = true;
+                        } else if (var12 >= 160 && var12 <= 255) {
+                           var14 = true;
+                        } else if (var12 != 8364 && var12 != 338 && var12 != 8212 && var12 != 339 && var12 != 376) {
+                           var14 = false;
                         } else {
-                           var6 = true;
+                           var14 = true;
                         }
 
-                        var20[var5] = var6?1:0;
+                        var13[var9] = var14 ? 1 : 0;
                         return 1;
                      }
                   }

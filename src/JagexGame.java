@@ -48,7 +48,7 @@ public enum JagexGame implements Enumerated {
    @Export("id")
    final int id;
 
-   JagexGame(String var3, String var4, int var5) {
+   private JagexGame(String var3, String var4, int var5) {
       this.name = var3;
       this.id = var5;
    }

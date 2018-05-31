@@ -8,28 +8,23 @@ public class class251 {
    @ObfuscatedName("j")
    static int[] field3229;
    @ObfuscatedName("w")
-   final HashMap field3240;
+   final HashMap field3240 = new HashMap();
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lka;"
    )
-   Bounds field3231;
+   Bounds field3231 = new Bounds(0, 0);
    @ObfuscatedName("q")
-   int[] field3237;
+   int[] field3237 = new int[2048];
    @ObfuscatedName("b")
-   int[] field3232;
+   int[] field3232 = new int[2048];
    @ObfuscatedName("f")
    @ObfuscatedGetter(
       intValue = 1614131407
    )
-   int field3233;
+   int field3233 = 0;
 
    public class251() {
-      this.field3240 = new HashMap();
-      this.field3231 = new Bounds(0, 0);
-      this.field3237 = new int[2048];
-      this.field3232 = new int[2048];
-      this.field3233 = 0;
       Frames.method3084();
    }
 
@@ -40,32 +35,32 @@ public class class251 {
    )
    void method4786(int var1) {
       int var2 = var1 * 2 + 1;
-      double var4 = (double)((float)var1 / 3.0F);
-      int var6 = var1 * 2 + 1;
-      double[] var7 = new double[var6];
-      int var8 = -var1;
+      double var3 = (double)((float)var1 / 3.0F);
+      int var5 = var1 * 2 + 1;
+      double[] var6 = new double[var5];
+      int var7 = -var1;
 
-      for(int var9 = 0; var8 <= var1; ++var9) {
-         var7[var9] = class157.method3303((double)var8, 0.0D, var4);
-         ++var8;
+      for(int var8 = 0; var7 <= var1; ++var8) {
+         var6[var8] = class157.method3303((double)var7, 0.0D, var3);
+         ++var7;
       }
 
-      double[] var14 = var7;
-      double var15 = var7[var1] * var7[var1];
-      int[] var17 = new int[var2 * var2];
-      boolean var10 = false;
+      double[] var16 = var6;
+      double var9 = var6[var1] * var6[var1];
+      int[] var11 = new int[var2 * var2];
+      boolean var12 = false;
 
-      for(int var11 = 0; var11 < var2; ++var11) {
-         for(int var12 = 0; var12 < var2; ++var12) {
-            int var13 = var17[var12 + var11 * var2] = (int)(var14[var11] * var14[var12] / var15 * 256.0D);
-            if(!var10 && var13 > 0) {
-               var10 = true;
+      for(int var13 = 0; var13 < var2; ++var13) {
+         for(int var14 = 0; var14 < var2; ++var14) {
+            int var15 = var11[var14 + var13 * var2] = (int)(var16[var13] * var16[var14] / var9 * 256.0D);
+            if (!var12 && var15 > 0) {
+               var12 = true;
             }
          }
       }
 
-      SpritePixels var18 = new SpritePixels(var17, var2, var2);
-      this.field3240.put(Integer.valueOf(var1), var18);
+      SpritePixels var17 = new SpritePixels(var11, var2, var2);
+      this.field3240.put(var1, var17);
    }
 
    @ObfuscatedName("q")
@@ -74,11 +69,11 @@ public class class251 {
       garbageValue = "-114"
    )
    SpritePixels method4788(int var1) {
-      if(!this.field3240.containsKey(Integer.valueOf(var1))) {
+      if (!this.field3240.containsKey(var1)) {
          this.method4786(var1);
       }
 
-      return (SpritePixels)this.field3240.get(Integer.valueOf(var1));
+      return (SpritePixels)this.field3240.get(var1);
    }
 
    @ObfuscatedName("x")
@@ -87,11 +82,12 @@ public class class251 {
       garbageValue = "711608578"
    )
    public final void method4796(int var1, int var2) {
-      if(this.field3233 < this.field3237.length) {
+      if (this.field3233 < this.field3237.length) {
          this.field3237[this.field3233] = var1;
          this.field3232[this.field3233] = var2;
          ++this.field3233;
       }
+
    }
 
    @ObfuscatedName("j")
@@ -134,14 +130,14 @@ public class class251 {
       System.nanoTime();
 
       for(var10 = 0; var10 < var3.pixels.length; ++var10) {
-         if(var3.pixels[var10] == 0) {
+         if (var3.pixels[var10] == 0) {
             var3.pixels[var10] = -16777216;
          } else {
             var11 = (var3.pixels[var10] + 64 - 1) / 256;
-            if(var11 <= 0) {
+            if (var11 <= 0) {
                var3.pixels[var10] = -16777216;
             } else {
-               if(var11 > field3229.length) {
+               if (var11 > field3229.length) {
                   var11 = field3229.length;
                }
 
@@ -160,14 +156,14 @@ public class class251 {
       garbageValue = "768553009"
    )
    void method4790(SpritePixels var1, SpritePixels var2, Bounds var3) {
-      if(var3.field3750 != 0 && var3.field3751 != 0) {
+      if (var3.field3750 != 0 && var3.field3751 != 0) {
          int var4 = 0;
          int var5 = 0;
-         if(var3.field3752 == 0) {
+         if (var3.field3752 == 0) {
             var4 = var1.width - var3.field3750;
          }
 
-         if(var3.field3749 == 0) {
+         if (var3.field3749 == 0) {
             var5 = var1.height - var3.field3751;
          }
 
@@ -176,14 +172,14 @@ public class class251 {
 
          for(int var8 = 0; var8 < var3.field3751; ++var8) {
             for(int var9 = 0; var9 < var3.field3750; ++var9) {
-               int var10001 = var7++;
-               var2.pixels[var10001] += var1.pixels[var6++];
+               int var10 = var7++;
+               var2.pixels[var10] += var1.pixels[var6++];
             }
 
             var6 += var1.width - var3.field3750;
             var7 += var2.width - var3.field3750;
          }
-
       }
+
    }
 }

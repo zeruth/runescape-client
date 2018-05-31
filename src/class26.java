@@ -25,11 +25,11 @@ public class class26 {
    )
    static final boolean method470(int var0, int var1) {
       ObjectComposition var2 = SoundTaskDataProvider.getObjectDefinition(var0);
-      if(var1 == 11) {
+      if (var1 == 11) {
          var1 = 10;
       }
 
-      if(var1 >= 5 && var1 <= 8) {
+      if (var1 >= 5 && var1 <= 8) {
          var1 = 4;
       }
 

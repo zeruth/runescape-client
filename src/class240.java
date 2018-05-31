@@ -59,7 +59,7 @@ public enum class240 implements Enumerated {
    )
    final int field3129;
 
-   class240(int var3, int var4) {
+   private class240(int var3, int var4) {
       this.field3126 = var3;
       this.field3129 = var4;
    }
@@ -90,29 +90,29 @@ public enum class240 implements Enumerated {
    @Export("getPreferencesFile")
    public static FileOnDisk getPreferencesFile(String var0, String var1, boolean var2) {
       File var3 = new File(class155.field1985, "preferences" + var0 + ".dat");
-      if(var3.exists()) {
+      if (var3.exists()) {
          try {
-            FileOnDisk var10 = new FileOnDisk(var3, "rw", 10000L);
-            return var10;
-         } catch (IOException var9) {
+            FileOnDisk var11 = new FileOnDisk(var3, "rw", 10000L);
+            return var11;
+         } catch (IOException var10) {
             ;
          }
       }
 
       String var4 = "";
-      if(class313.field3765 == 33) {
+      if (class313.field3765 == 33) {
          var4 = "_rc";
-      } else if(class313.field3765 == 34) {
+      } else if (class313.field3765 == 34) {
          var4 = "_wip";
       }
 
       File var5 = new File(FaceNormal.userHome, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
       FileOnDisk var6;
-      if(!var2 && var5.exists()) {
+      if (!var2 && var5.exists()) {
          try {
             var6 = new FileOnDisk(var5, "rw", 10000L);
             return var6;
-         } catch (IOException var8) {
+         } catch (IOException var9) {
             ;
          }
       }
@@ -120,7 +120,7 @@ public enum class240 implements Enumerated {
       try {
          var6 = new FileOnDisk(var3, "rw", 10000L);
          return var6;
-      } catch (IOException var7) {
+      } catch (IOException var8) {
          throw new RuntimeException();
       }
    }

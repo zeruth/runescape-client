@@ -3,19 +3,14 @@ import net.runelite.mapping.ObfuscatedName;
 @ObfuscatedName("kk")
 public class class302 {
    @ObfuscatedName("q")
-   static final char[] field3730;
+   static final char[] field3730 = new char[]{' ', '_', '-'};
    @ObfuscatedName("b")
-   static final char[] field3729;
-
-   static {
-      field3730 = new char[]{' ', '_', '-'};
-      field3729 = new char[]{'[', ']', '#'};
-   }
+   static final char[] field3729 = new char[]{'[', ']', '#'};
 
    @ObfuscatedName("w")
    public static String method5659(long var0) {
-      if(var0 > 0L && var0 < 6582952005840035281L) {
-         if(0L == var0 % 37L) {
+      if (var0 > 0L && var0 < 6582952005840035281L) {
+         if (0L == var0 % 37L) {
             return null;
          } else {
             int var2 = 0;
@@ -24,26 +19,25 @@ public class class302 {
                ++var2;
             }
 
-            StringBuilder var5;
-            char var8;
-            for(var5 = new StringBuilder(var2); 0L != var0; var5.append(var8)) {
-               long var6 = var0;
+            char var4;
+            StringBuilder var8;
+            for(var8 = new StringBuilder(var2); 0L != var0; var8.append(var4)) {
+               long var5 = var0;
                var0 /= 37L;
-               var8 = class303.field3732[(int)(var6 - var0 * 37L)];
-               if(var8 == '_') {
-                  int var9 = var5.length() - 1;
-                  var5.setCharAt(var9, Character.toUpperCase(var5.charAt(var9)));
-                  var8 = 160;
+               var4 = class303.field3732[(int)(var5 - var0 * 37L)];
+               if (var4 == '_') {
+                  int var7 = var8.length() - 1;
+                  var8.setCharAt(var7, Character.toUpperCase(var8.charAt(var7)));
+                  var4 = 160;
                }
             }
 
-            var5.reverse();
-            var5.setCharAt(0, Character.toUpperCase(var5.charAt(0)));
-            return var5.toString();
+            var8.reverse();
+            var8.setCharAt(0, Character.toUpperCase(var8.charAt(0)));
+            return var8.toString();
          }
       } else {
          return null;
       }
    }
 }
-

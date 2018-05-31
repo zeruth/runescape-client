@@ -1,8 +1,4 @@
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.LinkedList;
 import java.util.Queue;
 import net.runelite.mapping.Export;
@@ -18,17 +14,15 @@ public class UrlRequester implements Runnable {
    public static String osName;
    @ObfuscatedName("w")
    @Export("thread")
-   final Thread thread;
+   final Thread thread = new Thread(this);
    @ObfuscatedName("m")
    @Export("isClosed")
    volatile boolean isClosed;
    @ObfuscatedName("q")
    @Export("requests")
-   Queue requests;
+   Queue requests = new LinkedList();
 
    public UrlRequester() {
-      this.requests = new LinkedList();
-      this.thread = new Thread(this);
       this.thread.setPriority(1);
       this.thread.start();
    }
@@ -63,63 +57,14 @@ public class UrlRequester implements Runnable {
          }
 
          this.thread.join();
-      } catch (InterruptedException var4) {
+      } catch (InterruptedException var3) {
          ;
       }
 
    }
 
    public void run() {
-      while(!this.isClosed) {
-         try {
-            UrlRequest var1;
-            synchronized(this) {
-               var1 = (UrlRequest)this.requests.poll();
-               if(var1 == null) {
-                  try {
-                     this.wait();
-                  } catch (InterruptedException var13) {
-                     ;
-                  }
-                  continue;
-               }
-            }
-
-            DataInputStream var2 = null;
-            URLConnection var3 = null;
-
-            try {
-               var3 = var1.url.openConnection();
-               var3.setConnectTimeout(5000);
-               var3.setReadTimeout(5000);
-               var3.setUseCaches(false);
-               var3.setRequestProperty("Connection", "close");
-               int var7 = var3.getContentLength();
-               if(var7 >= 0) {
-                  byte[] var5 = new byte[var7];
-                  var2 = new DataInputStream(var3.getInputStream());
-                  var2.readFully(var5);
-                  var1.response0 = var5;
-               }
-
-               var1.isDone0 = true;
-            } catch (IOException var14) {
-               var1.isDone0 = true;
-            } finally {
-               if(var2 != null) {
-                  var2.close();
-               }
-
-               if(var3 != null && var3 instanceof HttpURLConnection) {
-                  ((HttpURLConnection)var3).disconnect();
-               }
-
-            }
-         } catch (Exception var17) {
-            class43.processClientError((String)null, var17);
-         }
-      }
-
+      // $FF: Couldn't be decompiled
    }
 
    @ObfuscatedName("w")
@@ -139,12 +84,12 @@ public class UrlRequester implements Runnable {
    @Export("getUnderlayDefinition")
    public static FloorUnderlayDefinition getUnderlayDefinition(int var0) {
       FloorUnderlayDefinition var1 = (FloorUnderlayDefinition)FloorUnderlayDefinition.underlays.get((long)var0);
-      if(var1 != null) {
+      if (var1 != null) {
          return var1;
       } else {
          byte[] var2 = class231.underlay_ref.getConfigData(1, var0);
          var1 = new FloorUnderlayDefinition();
-         if(var2 != null) {
+         if (var2 != null) {
             var1.decode(new Buffer(var2), var0);
          }
 

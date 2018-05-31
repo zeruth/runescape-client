@@ -34,15 +34,15 @@ public class Frames extends CacheableNode {
          int var11 = (var9[0] & 255) << 8 | var9[1] & 255;
 
          for(FrameMap var12 = (FrameMap)var5.getFront(); var12 != null; var12 = (FrameMap)var5.getNext()) {
-            if(var11 == var12.id) {
+            if (var11 == var12.id) {
                var10 = var12;
                break;
             }
          }
 
-         if(var10 == null) {
+         if (var10 == null) {
             byte[] var13;
-            if(var4) {
+            if (var4) {
                var13 = var2.getChild(0, var11);
             } else {
                var13 = var2.getChild(var11, 0);
@@ -76,19 +76,19 @@ public class Frames extends CacheableNode {
       int var0 = 0;
       int var1 = 240;
 
-      int var3;
-      for(byte var2 = 12; var0 < 16; var1 -= var2) {
-         var3 = GrandExchangeEvents.method15((double)((float)var1 / 360.0F), 0.9998999834060669D, (double)(0.425F * (float)var0 / 16.0F + 0.075F));
-         class251.field3229[var0] = var3;
+      int var2;
+      for(byte var3 = 12; var0 < 16; var1 -= var3) {
+         var2 = GrandExchangeEvents.method15((double)((float)var1 / 360.0F), 0.9998999834060669D, (double)(0.425F * (float)var0 / 16.0F + 0.075F));
+         class251.field3229[var0] = var2;
          ++var0;
       }
 
       var1 = 48;
 
       for(int var5 = var1 / 6; var0 < class251.field3229.length; var1 -= var5) {
-         var3 = var0 * 2;
+         var2 = var0 * 2;
 
-         for(int var4 = GrandExchangeEvents.method15((double)((float)var1 / 360.0F), 0.9998999834060669D, 0.5D); var0 < var3 && var0 < class251.field3229.length; ++var0) {
+         for(int var4 = GrandExchangeEvents.method15((double)((float)var1 / 360.0F), 0.9998999834060669D, 0.5D); var0 < var2 && var0 < class251.field3229.length; ++var0) {
             class251.field3229[var0] = var4;
          }
       }
@@ -101,28 +101,28 @@ public class Frames extends CacheableNode {
       garbageValue = "-759113708"
    )
    public static String method3087(byte[] var0) {
-      int var2 = var0.length;
-      StringBuilder var3 = new StringBuilder();
+      int var1 = var0.length;
+      StringBuilder var2 = new StringBuilder();
 
-      for(int var4 = 0; var4 < var2 + 0; var4 += 3) {
-         int var5 = var0[var4] & 255;
-         var3.append(class304.field3736[var5 >>> 2]);
-         if(var4 < var2 - 1) {
-            int var6 = var0[var4 + 1] & 255;
-            var3.append(class304.field3736[(var5 & 3) << 4 | var6 >>> 4]);
-            if(var4 < var2 - 2) {
-               int var7 = var0[var4 + 2] & 255;
-               var3.append(class304.field3736[(var6 & 15) << 2 | var7 >>> 6]).append(class304.field3736[var7 & 63]);
+      for(int var3 = 0; var3 < var1 + 0; var3 += 3) {
+         int var4 = var0[var3] & 255;
+         var2.append(class304.field3736[var4 >>> 2]);
+         if (var3 < var1 - 1) {
+            int var5 = var0[var3 + 1] & 255;
+            var2.append(class304.field3736[(var4 & 3) << 4 | var5 >>> 4]);
+            if (var3 < var1 - 2) {
+               int var6 = var0[var3 + 2] & 255;
+               var2.append(class304.field3736[(var5 & 15) << 2 | var6 >>> 6]).append(class304.field3736[var6 & 63]);
             } else {
-               var3.append(class304.field3736[(var6 & 15) << 2]).append("=");
+               var2.append(class304.field3736[(var5 & 15) << 2]).append("=");
             }
          } else {
-            var3.append(class304.field3736[(var5 & 3) << 4]).append("==");
+            var2.append(class304.field3736[(var4 & 3) << 4]).append("==");
          }
       }
 
-      String var1 = var3.toString();
-      return var1;
+      String var7 = var2.toString();
+      return var7;
    }
 
    @ObfuscatedName("a")
@@ -159,8 +159,8 @@ public class Frames extends CacheableNode {
       garbageValue = "-1163381700"
    )
    static final void method3091() {
-      if(WorldMapType2.field245) {
-         if(WorldComparator.clanMemberManager != null) {
+      if (WorldMapType2.field245) {
+         if (WorldComparator.clanMemberManager != null) {
             WorldComparator.clanMemberManager.method5383();
          }
 
@@ -177,11 +177,11 @@ public class Frames extends CacheableNode {
    )
    static final void method3096(boolean var0, PacketBuffer var1) {
       while(true) {
-         if(var1.bitsAvail(Client.field739.packetLength) >= 27) {
+         if (var1.bitsAvail(Client.field739.packetLength) >= 27) {
             int var2 = var1.getBits(15);
-            if(var2 != 32767) {
+            if (var2 != 32767) {
                boolean var3 = false;
-               if(Client.cachedNPCs[var2] == null) {
+               if (Client.cachedNPCs[var2] == null) {
                   Client.cachedNPCs[var2] = new NPC();
                   var3 = true;
                }
@@ -190,38 +190,38 @@ public class Frames extends CacheableNode {
                Client.npcIndices[++Client.npcIndexesCount - 1] = var2;
                var4.npcCycle = Client.gameCycle;
                int var5;
-               if(var0) {
+               if (var0) {
                   var5 = var1.getBits(8);
-                  if(var5 > 127) {
+                  if (var5 > 127) {
                      var5 -= 256;
                   }
                } else {
                   var5 = var1.getBits(5);
-                  if(var5 > 15) {
+                  if (var5 > 15) {
                      var5 -= 32;
                   }
                }
 
                int var6 = var1.getBits(1);
-               if(var6 == 1) {
+               if (var6 == 1) {
                   Client.pendingNpcFlagsIndices[++Client.pendingNpcFlagsCount - 1] = var2;
                }
 
                int var7 = Client.field665[var1.getBits(3)];
-               if(var3) {
+               if (var3) {
                   var4.orientation = var4.angle = var7;
                }
 
                int var8 = var1.getBits(1);
                int var9;
-               if(var0) {
+               if (var0) {
                   var9 = var1.getBits(8);
-                  if(var9 > 127) {
+                  if (var9 > 127) {
                      var9 -= 256;
                   }
                } else {
                   var9 = var1.getBits(5);
-                  if(var9 > 15) {
+                  if (var9 > 15) {
                      var9 -= 32;
                   }
                }
@@ -229,7 +229,7 @@ public class Frames extends CacheableNode {
                var4.composition = class59.getNpcDefinition(var1.getBits(14));
                var4.field885 = var4.composition.size;
                var4.field929 = var4.composition.rotation;
-               if(var4.field929 == 0) {
+               if (var4.field929 == 0) {
                   var4.angle = 0;
                }
 

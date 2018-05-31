@@ -18,13 +18,13 @@ public class Mapping {
 
    Mapping() {
       class92.getInt(16);
-      this.field1413 = class92.getBit() != 0?class92.getInt(4) + 1:1;
-      if(class92.getBit() != 0) {
+      this.field1413 = class92.getBit() != 0 ? class92.getInt(4) + 1 : 1;
+      if (class92.getBit() != 0) {
          class92.getInt(8);
       }
 
       class92.getInt(2);
-      if(this.field1413 > 1) {
+      if (this.field1413 > 1) {
          this.mux = class92.getInt(4);
       }
 

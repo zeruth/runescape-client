@@ -21,7 +21,7 @@ public class class141 extends class283 {
       garbageValue = "3136"
    )
    int method3174(ChatPlayer var1, ChatPlayer var2) {
-      return var1.world != 0 && var2.world != 0?(this.field1905?var1.field3649 - var2.field3649:var2.field3649 - var1.field3649):this.method5320(var1, var2);
+      return var1.world != 0 && var2.world != 0 ? (this.field1905 ? var1.field3649 - var2.field3649 : var2.field3649 - var1.field3649) : this.method5320(var1, var2);
    }
 
    public int compare(Object var1, Object var2) {

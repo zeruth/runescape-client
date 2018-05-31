@@ -134,7 +134,7 @@ public enum WorldMapDecorationType implements Enumerated {
       signature = "(II)V",
       garbageValue = "0"
    )
-   WorldMapDecorationType(int var3, int var4) {
+   private WorldMapDecorationType(int var3, int var4) {
       this.rsOrdinal = var3;
    }
 

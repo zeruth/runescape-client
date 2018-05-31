@@ -6,16 +6,11 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("fz")
 public class class158 {
    @ObfuscatedName("w")
-   public static boolean field2001;
+   public static boolean field2001 = false;
    @ObfuscatedName("m")
    public static File field2000;
    @ObfuscatedName("q")
-   static Hashtable field2002;
-
-   static {
-      field2001 = false;
-      field2002 = new Hashtable(16);
-   }
+   static Hashtable field2002 = new Hashtable(16);
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -23,7 +18,7 @@ public class class158 {
       garbageValue = "1139858817"
    )
    static final int method3317(JagexLoginType var0) {
-      if(var0 == null) {
+      if (var0 == null) {
          return 12;
       } else {
          switch(var0.field3876) {
@@ -42,8 +37,9 @@ public class class158 {
    )
    static void method3313() {
       Object var0 = IndexStoreActionHandler.IndexStoreActionHandler_lock;
+      Object var1 = IndexStoreActionHandler.IndexStoreActionHandler_lock;
       synchronized(IndexStoreActionHandler.IndexStoreActionHandler_lock) {
-         if(IndexStoreActionHandler.field3191 == 0) {
+         if (IndexStoreActionHandler.field3191 == 0) {
             IndexStoreActionHandler.IndexStoreActionHandler_thread = new Thread(new IndexStoreActionHandler());
             IndexStoreActionHandler.IndexStoreActionHandler_thread.setDaemon(true);
             IndexStoreActionHandler.IndexStoreActionHandler_thread.start();
@@ -60,7 +56,7 @@ public class class158 {
       garbageValue = "1319609905"
    )
    public static boolean method3314() {
-      return class217.field2486 != 0?true:class217.field2485.method4354();
+      return class217.field2486 != 0 ? true : class217.field2485.method4354();
    }
 
    @ObfuscatedName("p")
@@ -79,19 +75,19 @@ public class class158 {
       garbageValue = "-1610310061"
    )
    static final int method3315(int var0, int var1, int var2) {
-      if(var2 > 179) {
+      if (var2 > 179) {
          var1 /= 2;
       }
 
-      if(var2 > 192) {
+      if (var2 > 192) {
          var1 /= 2;
       }
 
-      if(var2 > 217) {
+      if (var2 > 217) {
          var1 /= 2;
       }
 
-      if(var2 > 243) {
+      if (var2 > 243) {
          var1 /= 2;
       }
 

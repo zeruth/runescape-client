@@ -44,11 +44,7 @@ public class WidgetNode extends Node {
    @Export("owner")
    int owner;
    @ObfuscatedName("q")
-   boolean field500;
-
-   WidgetNode() {
-      this.field500 = false;
-   }
+   boolean field500 = false;
 
    @ObfuscatedName("x")
    @ObfuscatedSignature(
@@ -111,7 +107,7 @@ public class WidgetNode extends Node {
       garbageValue = "-2145213429"
    )
    static final void method1075() {
-      if(Client.field815 != class192.plane) {
+      if (Client.field815 != class192.plane) {
          Client.field815 = class192.plane;
          GameEngine.method983(class192.plane);
       }

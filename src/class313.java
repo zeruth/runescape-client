@@ -10,16 +10,12 @@ public class class313 {
       signature = "Lgt;"
    )
    @Export("classInfos")
-   public static CombatInfoList classInfos;
+   public static CombatInfoList classInfos = new CombatInfoList();
    @ObfuscatedName("y")
    @ObfuscatedGetter(
       intValue = 1642435029
    )
    public static int field3765;
-
-   static {
-      classInfos = new CombatInfoList();
-   }
 
    @ObfuscatedName("d")
    @ObfuscatedSignature(
@@ -30,7 +26,7 @@ public class class313 {
       int var4 = var0.getFile(var2);
       int var5 = var0.getChild(var4, var3);
       Font var6;
-      if(!class306.method5702(var0, var4, var5)) {
+      if (!class306.method5702(var0, var4, var5)) {
          var6 = null;
       } else {
          var6 = SoundTaskDataProvider.method767(var1.getConfigData(var4, var5));

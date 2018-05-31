@@ -8,51 +8,51 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("ct")
 public class class81 {
    @ObfuscatedName("q")
-   static byte[] field1183;
+   static byte[] field1183 = new byte[2048];
    @ObfuscatedName("b")
-   static byte[] field1177;
+   static byte[] field1177 = new byte[2048];
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "[Lgy;"
    )
-   static Buffer[] field1179;
+   static Buffer[] field1179 = new Buffer[2048];
    @ObfuscatedName("n")
    @ObfuscatedGetter(
       intValue = 1358551967
    )
    @Export("playerIndexesCount")
-   static int playerIndexesCount;
+   static int playerIndexesCount = 0;
    @ObfuscatedName("h")
    @Export("playerIndices")
-   static int[] playerIndices;
+   static int[] playerIndices = new int[2048];
    @ObfuscatedName("x")
    @ObfuscatedGetter(
       intValue = 1972551019
    )
-   static int field1182;
+   static int field1182 = 0;
    @ObfuscatedName("j")
-   static int[] field1175;
+   static int[] field1175 = new int[2048];
    @ObfuscatedName("a")
    @Export("Players_regions")
-   static int[] Players_regions;
+   static int[] Players_regions = new int[2048];
    @ObfuscatedName("l")
    @Export("Players_orientations")
-   static int[] Players_orientations;
+   static int[] Players_orientations = new int[2048];
    @ObfuscatedName("d")
    @Export("Players_targetIndices")
-   static int[] Players_targetIndices;
+   static int[] Players_targetIndices = new int[2048];
    @ObfuscatedName("s")
    @ObfuscatedGetter(
       intValue = 1296694293
    )
-   static int field1176;
+   static int field1176 = 0;
    @ObfuscatedName("p")
-   static int[] field1188;
+   static int[] field1188 = new int[2048];
    @ObfuscatedName("g")
    @ObfuscatedSignature(
       signature = "Lgy;"
    )
-   static Buffer field1189;
+   static Buffer field1189 = new Buffer(new byte[5000]);
    @ObfuscatedName("r")
    static int[] field1178;
    @ObfuscatedName("dm")
@@ -67,22 +67,6 @@ public class class81 {
    @Export("mapDots")
    static SpritePixels[] mapDots;
 
-   static {
-      field1183 = new byte[2048];
-      field1177 = new byte[2048];
-      field1179 = new Buffer[2048];
-      playerIndexesCount = 0;
-      playerIndices = new int[2048];
-      field1182 = 0;
-      field1175 = new int[2048];
-      Players_regions = new int[2048];
-      Players_orientations = new int[2048];
-      Players_targetIndices = new int[2048];
-      field1176 = 0;
-      field1188 = new int[2048];
-      field1189 = new Buffer(new byte[5000]);
-   }
-
    @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "(Ljava/io/File;Ljava/io/File;I)V",
@@ -93,9 +77,9 @@ public class class81 {
          FileOnDisk var2 = new FileOnDisk(class155.jagexClDat, "rw", 10000L);
          Buffer var3 = new Buffer(500);
          var3.putByte(3);
-         var3.putByte(var1 != null?1:0);
+         var3.putByte(var1 != null ? 1 : 0);
          var3.putCESU8(var0.getPath());
-         if(var1 != null) {
+         if (var1 != null) {
             var3.putCESU8("");
          }
 

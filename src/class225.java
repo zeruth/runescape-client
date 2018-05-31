@@ -5,7 +5,7 @@ import net.runelite.mapping.ObfuscatedName;
 public class class225 {
    @ObfuscatedName("w")
    @Export("varpsMasks")
-   static int[] varpsMasks;
+   static int[] varpsMasks = new int[32];
    @ObfuscatedName("m")
    @Export("serverVarps")
    public static int[] serverVarps;
@@ -14,7 +14,6 @@ public class class225 {
    public static int[] clientVarps;
 
    static {
-      varpsMasks = new int[32];
       int var0 = 2;
 
       for(int var1 = 0; var1 < 32; ++var1) {

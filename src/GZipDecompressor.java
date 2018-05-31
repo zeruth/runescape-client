@@ -29,8 +29,8 @@ public class GZipDecompressor {
    )
    @Export("decompress")
    public void decompress(Buffer var1, byte[] var2) {
-      if(var1.payload[var1.offset] == 31 && var1.payload[var1.offset + 1] == -117) {
-         if(this.inflator == null) {
+      if (var1.payload[var1.offset] == 31 && var1.payload[var1.offset + 1] == -117) {
+         if (this.inflator == null) {
             this.inflator = new Inflater(true);
          }
 
@@ -58,26 +58,28 @@ public class GZipDecompressor {
       Buffer var1 = new Buffer(var0);
       int var2 = var1.readUnsignedByte();
       int var3 = var1.readInt();
-      if(var3 < 0 || IndexDataBase.field3179 != 0 && var3 > IndexDataBase.field3179) {
-         throw new RuntimeException();
-      } else if(var2 == 0) {
-         byte[] var4 = new byte[var3];
-         var1.readBytes(var4, 0, var3);
-         return var4;
-      } else {
-         int var6 = var1.readInt();
-         if(var6 >= 0 && (IndexDataBase.field3179 == 0 || var6 <= IndexDataBase.field3179)) {
-            byte[] var5 = new byte[var6];
-            if(var2 == 1) {
-               class176.Bzip2Decompressor_decompress(var5, var6, var0, var3, 9);
-            } else {
-               IndexDataBase.gzip.decompress(var1, var5);
-            }
-
-            return var5;
+      if (var3 >= 0 && (IndexDataBase.field3179 == 0 || var3 <= IndexDataBase.field3179)) {
+         if (var2 == 0) {
+            byte[] var6 = new byte[var3];
+            var1.readBytes(var6, 0, var3);
+            return var6;
          } else {
-            throw new RuntimeException();
+            int var4 = var1.readInt();
+            if (var4 < 0 || IndexDataBase.field3179 != 0 && var4 > IndexDataBase.field3179) {
+               throw new RuntimeException();
+            } else {
+               byte[] var5 = new byte[var4];
+               if (var2 == 1) {
+                  class176.Bzip2Decompressor_decompress(var5, var4, var0, var3, 9);
+               } else {
+                  IndexDataBase.gzip.decompress(var1, var5);
+               }
+
+               return var5;
+            }
          }
+      } else {
+         throw new RuntimeException();
       }
    }
 }

@@ -10,104 +10,85 @@ public class Parameters {
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3612;
+   public static final Parameters field3612 = new Parameters("12", "12");
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3598;
+   public static final Parameters field3598 = new Parameters("5", "5");
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3605;
+   public static final Parameters field3605 = new Parameters("9", "9");
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3600;
+   public static final Parameters field3600 = new Parameters("6", "6");
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3599;
+   public static final Parameters field3599 = new Parameters("2", "2");
    @ObfuscatedName("n")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3601;
+   public static final Parameters field3601 = new Parameters("15", "15");
    @ObfuscatedName("h")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3603;
+   public static final Parameters field3603 = new Parameters("1", "1");
    @ObfuscatedName("x")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3604;
+   public static final Parameters field3604 = new Parameters("14", "14");
    @ObfuscatedName("j")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3597;
+   public static final Parameters field3597 = new Parameters("4", "4");
    @ObfuscatedName("a")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3606;
+   public static final Parameters field3606 = new Parameters("13", "13");
    @ObfuscatedName("l")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3602;
+   public static final Parameters field3602 = new Parameters("16", "16");
    @ObfuscatedName("d")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3608;
+   public static final Parameters field3608 = new Parameters("11", "11");
    @ObfuscatedName("s")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3609;
+   public static final Parameters field3609 = new Parameters("7", "7");
    @ObfuscatedName("p")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3610;
+   public static final Parameters field3610 = new Parameters("3", "3");
    @ObfuscatedName("g")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3607;
+   public static final Parameters field3607 = new Parameters("10", "10");
    @ObfuscatedName("y")
    @ObfuscatedSignature(
       signature = "Lji;"
    )
-   public static final Parameters field3611;
+   public static final Parameters field3611 = new Parameters("8", "8");
    @ObfuscatedName("c")
    @Export("key")
    public final String key;
-
-   static {
-      field3612 = new Parameters("12", "12");
-      field3598 = new Parameters("5", "5");
-      field3605 = new Parameters("9", "9");
-      field3600 = new Parameters("6", "6");
-      field3599 = new Parameters("2", "2");
-      field3601 = new Parameters("15", "15");
-      field3603 = new Parameters("1", "1");
-      field3604 = new Parameters("14", "14");
-      field3597 = new Parameters("4", "4");
-      field3606 = new Parameters("13", "13");
-      field3602 = new Parameters("16", "16");
-      field3608 = new Parameters("11", "11");
-      field3609 = new Parameters("7", "7");
-      field3610 = new Parameters("3", "3");
-      field3607 = new Parameters("10", "10");
-      field3611 = new Parameters("8", "8");
-   }
 
    Parameters(String var1, String var2) {
       this.key = var2;

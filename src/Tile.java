@@ -88,16 +88,16 @@ public final class Tile extends Node {
       signature = "[Leg;"
    )
    @Export("objects")
-   GameObject[] objects;
+   GameObject[] objects = new GameObject[5];
    @ObfuscatedName("s")
    @Export("entityFlags")
-   int[] entityFlags;
+   int[] entityFlags = new int[5];
    @ObfuscatedName("p")
    @ObfuscatedGetter(
       intValue = -148362437
    )
    @Export("flags")
-   int flags;
+   int flags = 0;
    @ObfuscatedName("g")
    @ObfuscatedGetter(
       intValue = -1028803959
@@ -145,9 +145,6 @@ public final class Tile extends Node {
    Tile bridge;
 
    Tile(int var1, int var2, int var3) {
-      this.objects = new GameObject[5];
-      this.entityFlags = new int[5];
-      this.flags = 0;
       this.renderLevel = this.plane = var1;
       this.x = var2;
       this.y = var3;

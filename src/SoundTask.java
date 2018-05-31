@@ -11,24 +11,10 @@ public class SoundTask implements Runnable {
       signature = "[Lcc;"
    )
    @Export("systems")
-   volatile AbstractSoundSystem[] systems;
-
-   SoundTask() {
-      this.systems = new AbstractSoundSystem[2];
-   }
+   volatile AbstractSoundSystem[] systems = new AbstractSoundSystem[2];
 
    public void run() {
-      try {
-         for(int var1 = 0; var1 < 2; ++var1) {
-            AbstractSoundSystem var2 = this.systems[var1];
-            if(var2 != null) {
-               var2.method2192();
-            }
-         }
-      } catch (Exception var4) {
-         class43.processClientError((String)null, var4);
-      }
-
+      // $FF: Couldn't be decompiled
    }
 
    @ObfuscatedName("j")

@@ -8,13 +8,13 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class AudioEnvelope {
    @ObfuscatedName("w")
    @Export("segments")
-   int segments;
+   int segments = 2;
    @ObfuscatedName("m")
    @Export("durations")
-   int[] durations;
+   int[] durations = new int[2];
    @ObfuscatedName("q")
    @Export("phases")
-   int[] phases;
+   int[] phases = new int[2];
    @ObfuscatedName("b")
    @Export("start")
    int start;
@@ -41,9 +41,6 @@ public class AudioEnvelope {
    int max;
 
    AudioEnvelope() {
-      this.segments = 2;
-      this.durations = new int[2];
-      this.phases = new int[2];
       this.durations[0] = 0;
       this.durations[1] = 65535;
       this.phases[0] = 0;
@@ -92,14 +89,14 @@ public class AudioEnvelope {
    @ObfuscatedName("x")
    @Export("step")
    final int step(int var1) {
-      if(this.max >= this.ticks) {
+      if (this.max >= this.ticks) {
          this.amplitude = this.phases[this.phaseIndex++] << 15;
-         if(this.phaseIndex >= this.segments) {
+         if (this.phaseIndex >= this.segments) {
             this.phaseIndex = this.segments - 1;
          }
 
          this.ticks = (int)((double)this.durations[this.phaseIndex] / 65536.0D * (double)var1);
-         if(this.ticks > this.max) {
+         if (this.ticks > this.max) {
             this.step = ((this.phases[this.phaseIndex] << 15) - this.amplitude) / (this.ticks - this.max);
          }
       }

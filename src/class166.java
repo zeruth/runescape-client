@@ -44,7 +44,7 @@ public abstract class class166 {
    )
    public static synchronized long method3456() {
       long var0 = System.currentTimeMillis();
-      if(var0 < class173.field2288) {
+      if (var0 < class173.field2288) {
          class184.field2380 += class173.field2288 - var0;
       }
 

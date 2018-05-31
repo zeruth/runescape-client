@@ -50,26 +50,26 @@ public class class9 {
    static void method100(Widget[] var0, int var1, int var2, int var3, boolean var4) {
       for(int var5 = 0; var5 < var0.length; ++var5) {
          Widget var6 = var0[var5];
-         if(var6 != null && var6.parentId == var1) {
+         if (var6 != null && var6.parentId == var1) {
             class138.method3155(var6, var2, var3, var4);
             class45.method820(var6, var2, var3);
-            if(var6.scrollX > var6.scrollWidth - var6.width) {
+            if (var6.scrollX > var6.scrollWidth - var6.width) {
                var6.scrollX = var6.scrollWidth - var6.width;
             }
 
-            if(var6.scrollX < 0) {
+            if (var6.scrollX < 0) {
                var6.scrollX = 0;
             }
 
-            if(var6.scrollY > var6.scrollHeight - var6.height) {
+            if (var6.scrollY > var6.scrollHeight - var6.height) {
                var6.scrollY = var6.scrollHeight - var6.height;
             }
 
-            if(var6.scrollY < 0) {
+            if (var6.scrollY < 0) {
                var6.scrollY = 0;
             }
 
-            if(var6.type == 0) {
+            if (var6.type == 0) {
                class45.method818(var0, var6, var4);
             }
          }
@@ -83,25 +83,25 @@ public class class9 {
       garbageValue = "945191862"
    )
    static final boolean method96(Widget var0) {
-      if(var0.tableActions == null) {
+      if (var0.tableActions == null) {
          return false;
       } else {
          for(int var1 = 0; var1 < var0.tableActions.length; ++var1) {
             int var2 = class11.method114(var0, var1);
             int var3 = var0.field2738[var1];
-            if(var0.tableActions[var1] == 2) {
-               if(var2 >= var3) {
+            if (var0.tableActions[var1] == 2) {
+               if (var2 >= var3) {
                   return false;
                }
-            } else if(var0.tableActions[var1] == 3) {
-               if(var2 <= var3) {
+            } else if (var0.tableActions[var1] == 3) {
+               if (var2 <= var3) {
                   return false;
                }
-            } else if(var0.tableActions[var1] == 4) {
-               if(var3 == var2) {
+            } else if (var0.tableActions[var1] == 4) {
+               if (var3 == var2) {
                   return false;
                }
-            } else if(var2 != var3) {
+            } else if (var2 != var3) {
                return false;
             }
          }
@@ -120,12 +120,12 @@ public class class9 {
       Client.field739.method2019(var0);
 
       for(WidgetNode var1 = (WidgetNode)Client.componentTable.first(); var1 != null; var1 = (WidgetNode)Client.componentTable.next()) {
-         if(var1.owner == 0 || var1.owner == 3) {
+         if (var1.owner == 0 || var1.owner == 3) {
             class21.closeWidget(var1, true);
          }
       }
 
-      if(Client.field756 != null) {
+      if (Client.field756 != null) {
          DState.method3548(Client.field756);
          Client.field756 = null;
       }
@@ -142,7 +142,7 @@ public class class9 {
 
       for(int var2 = 0; var2 < var1.length; ++var2) {
          Permission var3 = var1[var2];
-         if(var3.field3142 != -1 && var0.startsWith(MapIconReference.method687(var3.field3142))) {
+         if (var3.field3142 != -1 && var0.startsWith(MapIconReference.method687(var3.field3142))) {
             var0 = var0.substring(6 + Integer.toString(var3.field3142).length());
             break;
          }

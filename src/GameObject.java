@@ -84,16 +84,11 @@ public final class GameObject {
       longValue = -4805703617808557861L
    )
    @Export("hash")
-   public long hash;
+   public long hash = 0L;
    @ObfuscatedName("p")
    @ObfuscatedGetter(
       intValue = -1655703577
    )
    @Export("flags")
-   int flags;
-
-   GameObject() {
-      this.hash = 0L;
-      this.flags = 0;
-   }
+   int flags = 0;
 }

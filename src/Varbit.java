@@ -18,7 +18,7 @@ public class Varbit extends CacheableNode {
       signature = "Lgj;"
    )
    @Export("varbits")
-   public static NodeCache varbits;
+   public static NodeCache varbits = new NodeCache(64);
    @ObfuscatedName("q")
    @ObfuscatedGetter(
       intValue = 891453119
@@ -38,10 +38,6 @@ public class Varbit extends CacheableNode {
    @Export("mostSignificantBit")
    public int mostSignificantBit;
 
-   static {
-      varbits = new NodeCache(64);
-   }
-
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "(Lgy;I)V",
@@ -51,7 +47,7 @@ public class Varbit extends CacheableNode {
    public void decode(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
-         if(var2 == 0) {
+         if (var2 == 0) {
             return;
          }
 
@@ -66,7 +62,7 @@ public class Varbit extends CacheableNode {
    )
    @Export("readNext")
    void readNext(Buffer var1, int var2) {
-      if(var2 == 1) {
+      if (var2 == 1) {
          this.configId = var1.readUnsignedShort();
          this.leastSignificantBit = var1.readUnsignedByte();
          this.mostSignificantBit = var1.readUnsignedByte();
@@ -85,11 +81,11 @@ public class Varbit extends CacheableNode {
       garbageValue = "1750572180"
    )
    static final void method4951() {
-      if(class191.soundSystem1 != null) {
+      if (class191.soundSystem1 != null) {
          class191.soundSystem1.method2192();
       }
 
-      if(GrandExchangeEvent.soundSystem0 != null) {
+      if (GrandExchangeEvent.soundSystem0 != null) {
          GrandExchangeEvent.soundSystem0.method2192();
       }
 

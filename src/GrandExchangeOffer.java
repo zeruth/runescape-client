@@ -78,7 +78,7 @@ public class GrandExchangeOffer {
    )
    @Export("type")
    public int type() {
-      return (this.state & 8) == 8?1:0;
+      return (this.state & 8) == 8 ? 1 : 0;
    }
 
    @ObfuscatedName("x")
@@ -98,7 +98,7 @@ public class GrandExchangeOffer {
    )
    void method36(int var1) {
       this.state &= -9;
-      if(var1 == 1) {
+      if (var1 == 1) {
          this.state = (byte)(this.state | 8);
       }
 
@@ -121,7 +121,7 @@ public class GrandExchangeOffer {
       garbageValue = "96"
    )
    static IndexedSprite method54(boolean var0, boolean var1) {
-      return var0?(var1?Buffer.field2363:class78.field1110):(var1?CombatInfo1.field944:class78.field1109);
+      return var0 ? (var1 ? Buffer.field2363 : class78.field1110) : (var1 ? CombatInfo1.field944 : class78.field1109);
    }
 
    @ObfuscatedName("m")
@@ -130,14 +130,14 @@ public class GrandExchangeOffer {
       garbageValue = "0"
    )
    public static int method56(int var0, int var1, int var2, int var3, int var4, int var5) {
-      if((var5 & 1) == 1) {
+      if ((var5 & 1) == 1) {
          int var6 = var3;
          var3 = var4;
          var4 = var6;
       }
 
       var2 &= 3;
-      return var2 == 0?var1:(var2 == 1?7 - var0 - (var3 - 1):(var2 == 2?7 - var1 - (var4 - 1):var0));
+      return var2 == 0 ? var1 : (var2 == 1 ? 7 - var0 - (var3 - 1) : (var2 == 2 ? 7 - var1 - (var4 - 1) : var0));
    }
 
    @ObfuscatedName("o")
@@ -147,22 +147,20 @@ public class GrandExchangeOffer {
    )
    @Export("runWidgetOnLoadListener")
    static void runWidgetOnLoadListener(int var0) {
-      if(var0 != -1) {
-         if(GameCanvas.loadWidget(var0)) {
-            Widget[] var1 = Widget.widgets[var0];
+      if (var0 != -1 && GameCanvas.loadWidget(var0)) {
+         Widget[] var1 = Widget.widgets[var0];
 
-            for(int var2 = 0; var2 < var1.length; ++var2) {
-               Widget var3 = var1[var2];
-               if(var3.onLoadListener != null) {
-                  ScriptEvent var4 = new ScriptEvent();
-                  var4.source = var3;
-                  var4.params = var3.onLoadListener;
-                  MouseRecorder.runScript(var4, 5000000);
-               }
+         for(int var2 = 0; var2 < var1.length; ++var2) {
+            Widget var3 = var1[var2];
+            if (var3.onLoadListener != null) {
+               ScriptEvent var4 = new ScriptEvent();
+               var4.source = var3;
+               var4.params = var3.onLoadListener;
+               MouseRecorder.runScript(var4, 5000000);
             }
-
          }
       }
+
    }
 
    @ObfuscatedName("jg")
@@ -172,13 +170,13 @@ public class GrandExchangeOffer {
    )
    static final void method57(Widget var0, int var1, int var2, int var3) {
       class224 var4 = var0.method4561(false);
-      if(var4 != null) {
-         if(Client.field822 < 3) {
+      if (var4 != null) {
+         if (Client.field822 < 3) {
             class35.compass.method5948(var1, var2, var4.field2570, var4.field2575, 25, 25, Client.mapAngle, 256, var4.field2573, var4.field2572);
          } else {
             Rasterizer2D.method5786(var1, var2, 0, var4.field2573, var4.field2572);
          }
-
       }
+
    }
 }

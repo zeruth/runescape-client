@@ -15,7 +15,7 @@ public class class277 {
       var5.field1007 = var2 * 128;
       int var6 = var3.width;
       int var7 = var3.length;
-      if(var4 == 1 || var4 == 3) {
+      if (var4 == 1 || var4 == 3) {
          var6 = var3.length;
          var7 = var3.width;
       }
@@ -27,13 +27,13 @@ public class class277 {
       var5.field997 = var3.int5;
       var5.field1003 = var3.int6;
       var5.field1008 = var3.field3437;
-      if(var3.impostorIds != null) {
+      if (var3.impostorIds != null) {
          var5.field999 = var3;
          var5.method1730();
       }
 
       class68.field1002.addFront(var5);
-      if(var5.field1008 != null) {
+      if (var5.field1008 != null) {
          var5.field1009 = var5.field997 + (int)(Math.random() * (double)(var5.field1003 - var5.field997));
       }
 

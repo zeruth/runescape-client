@@ -29,7 +29,7 @@ public class class33 extends WorldMapData {
 
          try {
             var8.method104(var2, var3);
-         } catch (IllegalStateException var13) {
+         } catch (IllegalStateException var12) {
             continue;
          }
 
@@ -39,12 +39,12 @@ public class class33 extends WorldMapData {
       var7 = var3.readUnsignedShort();
       this.field293 = new HashSet(var7);
 
-      for(int var11 = 0; var11 < var7; ++var11) {
+      for(int var13 = 0; var13 < var7; ++var13) {
          class34 var9 = new class34();
 
          try {
             var9.method611(var2, var3);
-         } catch (IllegalStateException var12) {
+         } catch (IllegalStateException var11) {
             continue;
          }
 
@@ -67,7 +67,7 @@ public class class33 extends WorldMapData {
          int var5 = var1.method3585();
          Coordinates var6 = new Coordinates(var1.readInt());
          boolean var7 = var1.readUnsignedByte() == 1;
-         if(var2 || !var7) {
+         if (var2 || !var7) {
             this.field291.add(new class13(var5, var6));
          }
       }
@@ -82,9 +82,10 @@ public class class33 extends WorldMapData {
    static void method608(int var0, int var1) {
       long var2 = (long)((var0 << 16) + var1);
       FileRequest var4 = (FileRequest)class250.NetCache_pendingWrites.get(var2);
-      if(var4 != null) {
+      if (var4 != null) {
          class250.NetCache_pendingWritesQueue.setHead(var4);
       }
+
    }
 
    @ObfuscatedName("gi")
@@ -95,17 +96,17 @@ public class class33 extends WorldMapData {
    static final void method605(Actor var0) {
       var0.field884 = false;
       Sequence var1;
-      if(var0.poseAnimation != -1) {
+      if (var0.poseAnimation != -1) {
          var1 = class137.getAnimation(var0.poseAnimation);
-         if(var1 != null && var1.frameIDs != null) {
+         if (var1 != null && var1.frameIDs != null) {
             ++var0.poseFrameCycle;
-            if(var0.poseFrame < var1.frameIDs.length && var0.poseFrameCycle > var1.frameLengths[var0.poseFrame]) {
+            if (var0.poseFrame < var1.frameIDs.length && var0.poseFrameCycle > var1.frameLengths[var0.poseFrame]) {
                var0.poseFrameCycle = 1;
                ++var0.poseFrame;
                class173.queueAnimationSound(var1, var0.poseFrame, var0.x, var0.y);
             }
 
-            if(var0.poseFrame >= var1.frameIDs.length) {
+            if (var0.poseFrame >= var1.frameIDs.length) {
                var0.poseFrameCycle = 0;
                var0.poseFrame = 0;
                class173.queueAnimationSound(var1, var0.poseFrame, var0.x, var0.y);
@@ -115,23 +116,23 @@ public class class33 extends WorldMapData {
          }
       }
 
-      if(var0.graphic != -1 && Client.gameCycle >= var0.graphicsDelay) {
-         if(var0.spotAnimFrame < 0) {
+      if (var0.graphic != -1 && Client.gameCycle >= var0.graphicsDelay) {
+         if (var0.spotAnimFrame < 0) {
             var0.spotAnimFrame = 0;
          }
 
-         int var3 = ScriptState.getSpotAnimType(var0.graphic).field3292;
-         if(var3 != -1) {
-            Sequence var2 = class137.getAnimation(var3);
-            if(var2 != null && var2.frameIDs != null) {
+         int var2 = ScriptState.getSpotAnimType(var0.graphic).field3292;
+         if (var2 != -1) {
+            Sequence var3 = class137.getAnimation(var2);
+            if (var3 != null && var3.frameIDs != null) {
                ++var0.spotAnimFrameCycle;
-               if(var0.spotAnimFrame < var2.frameIDs.length && var0.spotAnimFrameCycle > var2.frameLengths[var0.spotAnimFrame]) {
+               if (var0.spotAnimFrame < var3.frameIDs.length && var0.spotAnimFrameCycle > var3.frameLengths[var0.spotAnimFrame]) {
                   var0.spotAnimFrameCycle = 1;
                   ++var0.spotAnimFrame;
-                  class173.queueAnimationSound(var2, var0.spotAnimFrame, var0.x, var0.y);
+                  class173.queueAnimationSound(var3, var0.spotAnimFrame, var0.x, var0.y);
                }
 
-               if(var0.spotAnimFrame >= var2.frameIDs.length && (var0.spotAnimFrame < 0 || var0.spotAnimFrame >= var2.frameIDs.length)) {
+               if (var0.spotAnimFrame >= var3.frameIDs.length && (var0.spotAnimFrame < 0 || var0.spotAnimFrame >= var3.frameIDs.length)) {
                   var0.graphic = -1;
                }
             } else {
@@ -142,30 +143,30 @@ public class class33 extends WorldMapData {
          }
       }
 
-      if(var0.animation != -1 && var0.actionAnimationDisable <= 1) {
+      if (var0.animation != -1 && var0.actionAnimationDisable <= 1) {
          var1 = class137.getAnimation(var0.animation);
-         if(var1.precedenceAnimating == 1 && var0.field942 > 0 && var0.field896 <= Client.gameCycle && var0.field901 < Client.gameCycle) {
+         if (var1.precedenceAnimating == 1 && var0.field942 > 0 && var0.field896 <= Client.gameCycle && var0.field901 < Client.gameCycle) {
             var0.actionAnimationDisable = 1;
             return;
          }
       }
 
-      if(var0.animation != -1 && var0.actionAnimationDisable == 0) {
+      if (var0.animation != -1 && var0.actionAnimationDisable == 0) {
          var1 = class137.getAnimation(var0.animation);
-         if(var1 != null && var1.frameIDs != null) {
+         if (var1 != null && var1.frameIDs != null) {
             ++var0.actionFrameCycle;
-            if(var0.actionFrame < var1.frameIDs.length && var0.actionFrameCycle > var1.frameLengths[var0.actionFrame]) {
+            if (var0.actionFrame < var1.frameIDs.length && var0.actionFrameCycle > var1.frameLengths[var0.actionFrame]) {
                var0.actionFrameCycle = 1;
                ++var0.actionFrame;
                class173.queueAnimationSound(var1, var0.actionFrame, var0.x, var0.y);
             }
 
-            if(var0.actionFrame >= var1.frameIDs.length) {
+            if (var0.actionFrame >= var1.frameIDs.length) {
                var0.actionFrame -= var1.frameStep;
                ++var0.field919;
-               if(var0.field919 >= var1.maxLoops) {
+               if (var0.field919 >= var1.maxLoops) {
                   var0.animation = -1;
-               } else if(var0.actionFrame >= 0 && var0.actionFrame < var1.frameIDs.length) {
+               } else if (var0.actionFrame >= 0 && var0.actionFrame < var1.frameIDs.length) {
                   class173.queueAnimationSound(var1, var0.actionFrame, var0.x, var0.y);
                } else {
                   var0.animation = -1;
@@ -178,7 +179,7 @@ public class class33 extends WorldMapData {
          }
       }
 
-      if(var0.actionAnimationDisable > 0) {
+      if (var0.actionAnimationDisable > 0) {
          --var0.actionAnimationDisable;
       }
 

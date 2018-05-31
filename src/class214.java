@@ -18,13 +18,12 @@ public class class214 implements Iterator {
    @ObfuscatedSignature(
       signature = "Lgc;"
    )
-   CacheableNode field2469;
+   CacheableNode field2469 = null;
 
    @ObfuscatedSignature(
       signature = "(Lhq;)V"
    )
    class214(IterableDualNodeQueue var1) {
-      this.field2469 = null;
       this.field2468 = var1;
       this.field2467 = this.field2468.sentinel.previous;
       this.field2469 = null;
@@ -32,7 +31,7 @@ public class class214 implements Iterator {
 
    public Object next() {
       CacheableNode var1 = this.field2467;
-      if(var1 == this.field2468.sentinel) {
+      if (var1 == this.field2468.sentinel) {
          var1 = null;
          this.field2467 = null;
       } else {
@@ -48,7 +47,7 @@ public class class214 implements Iterator {
    }
 
    public void remove() {
-      if(this.field2469 == null) {
+      if (this.field2469 == null) {
          throw new IllegalStateException();
       } else {
          this.field2469.unlinkDual();

@@ -54,20 +54,20 @@ public class Name implements Comparable {
    )
    @Export("compareCleanName")
    public int compareCleanName(Name var1) {
-      return this.cleanName == null?(var1.cleanName == null?0:1):(var1.cleanName == null?-1:this.cleanName.compareTo(var1.cleanName));
+      return this.cleanName == null ? (var1.cleanName == null ? 0 : 1) : (var1.cleanName == null ? -1 : this.cleanName.compareTo(var1.cleanName));
    }
 
    public boolean equals(Object var1) {
-      if(var1 instanceof Name) {
+      if (var1 instanceof Name) {
          Name var2 = (Name)var1;
-         return this.cleanName == null?var2.cleanName == null:(var2.cleanName == null?false:(this.hashCode() != var2.hashCode()?false:this.cleanName.equals(var2.cleanName)));
+         return this.cleanName == null ? var2.cleanName == null : (var2.cleanName == null ? false : (this.hashCode() != var2.hashCode() ? false : this.cleanName.equals(var2.cleanName)));
       } else {
          return false;
       }
    }
 
    public int hashCode() {
-      return this.cleanName == null?0:this.cleanName.hashCode();
+      return this.cleanName == null ? 0 : this.cleanName.hashCode();
    }
 
    public int compareTo(Object var1) {

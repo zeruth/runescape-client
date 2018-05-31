@@ -17,9 +17,9 @@ public class ClanMemberManager extends NameableContainer {
    )
    final class288 field3666;
    @ObfuscatedName("a")
-   public String field3667;
+   public String field3667 = null;
    @ObfuscatedName("l")
-   public String field3669;
+   public String field3669 = null;
    @ObfuscatedName("d")
    public byte field3674;
    @ObfuscatedName("s")
@@ -31,16 +31,13 @@ public class ClanMemberManager extends NameableContainer {
    @ObfuscatedGetter(
       intValue = 1322445059
    )
-   int field3672;
+   int field3672 = 1;
 
    @ObfuscatedSignature(
       signature = "(Lla;Lki;)V"
    )
    public ClanMemberManager(JagexLoginType var1, class288 var2) {
       super(100);
-      this.field3667 = null;
-      this.field3669 = null;
-      this.field3672 = 1;
       this.field3668 = var1;
       this.field3666 = var2;
    }
@@ -69,35 +66,35 @@ public class ClanMemberManager extends NameableContainer {
       garbageValue = "-1529272657"
    )
    final void method5493(String var1) {
-      long var5 = 0L;
-      int var7 = var1.length();
+      long var2 = 0L;
+      int var4 = var1.length();
 
-      for(int var8 = 0; var8 < var7; ++var8) {
-         var5 *= 37L;
-         char var9 = var1.charAt(var8);
-         if(var9 >= 'A' && var9 <= 'Z') {
-            var5 += (long)(var9 + 1 - 65);
-         } else if(var9 >= 'a' && var9 <= 'z') {
-            var5 += (long)(var9 + 1 - 97);
-         } else if(var9 >= '0' && var9 <= '9') {
-            var5 += (long)(var9 + 27 - 48);
+      for(int var5 = 0; var5 < var4; ++var5) {
+         var2 *= 37L;
+         char var6 = var1.charAt(var5);
+         if (var6 >= 'A' && var6 <= 'Z') {
+            var2 += (long)(var6 + 1 - 65);
+         } else if (var6 >= 'a' && var6 <= 'z') {
+            var2 += (long)(var6 + 1 - 97);
+         } else if (var6 >= '0' && var6 <= '9') {
+            var2 += (long)(var6 + 27 - 48);
          }
 
-         if(var5 >= 177917621779460413L) {
+         if (var2 >= 177917621779460413L) {
             break;
          }
       }
 
-      while(0L == var5 % 37L && 0L != var5) {
-         var5 /= 37L;
+      while(0L == var2 % 37L && 0L != var2) {
+         var2 /= 37L;
       }
 
-      String var10 = class302.method5659(var5);
-      if(var10 == null) {
-         var10 = "";
+      String var7 = class302.method5659(var2);
+      if (var7 == null) {
+         var7 = "";
       }
 
-      this.field3667 = var10;
+      this.field3667 = var7;
    }
 
    @ObfuscatedName("d")
@@ -106,35 +103,35 @@ public class ClanMemberManager extends NameableContainer {
       garbageValue = "128"
    )
    final void method5494(String var1) {
-      long var5 = 0L;
-      int var7 = var1.length();
+      long var2 = 0L;
+      int var4 = var1.length();
 
-      for(int var8 = 0; var8 < var7; ++var8) {
-         var5 *= 37L;
-         char var9 = var1.charAt(var8);
-         if(var9 >= 'A' && var9 <= 'Z') {
-            var5 += (long)(var9 + 1 - 65);
-         } else if(var9 >= 'a' && var9 <= 'z') {
-            var5 += (long)(var9 + 1 - 97);
-         } else if(var9 >= '0' && var9 <= '9') {
-            var5 += (long)(var9 + 27 - 48);
+      for(int var5 = 0; var5 < var4; ++var5) {
+         var2 *= 37L;
+         char var6 = var1.charAt(var5);
+         if (var6 >= 'A' && var6 <= 'Z') {
+            var2 += (long)(var6 + 1 - 65);
+         } else if (var6 >= 'a' && var6 <= 'z') {
+            var2 += (long)(var6 + 1 - 97);
+         } else if (var6 >= '0' && var6 <= '9') {
+            var2 += (long)(var6 + 27 - 48);
          }
 
-         if(var5 >= 177917621779460413L) {
+         if (var2 >= 177917621779460413L) {
             break;
          }
       }
 
-      while(0L == var5 % 37L && var5 != 0L) {
-         var5 /= 37L;
+      while(0L == var2 % 37L && var2 != 0L) {
+         var2 /= 37L;
       }
 
-      String var10 = class302.method5659(var5);
-      if(var10 == null) {
-         var10 = "";
+      String var7 = class302.method5659(var2);
+      if (var7 == null) {
+         var7 = "";
       }
 
-      this.field3669 = var10;
+      this.field3669 = var7;
    }
 
    @ObfuscatedName("s")
@@ -145,49 +142,49 @@ public class ClanMemberManager extends NameableContainer {
    public final void method5507(Buffer var1) {
       this.method5494(var1.readString());
       long var2 = var1.readLong();
-      long var5 = var2;
-      String var4;
+      long var4 = var2;
+      String var6;
       int var7;
-      if(var2 > 0L && var2 < 6582952005840035281L) {
-         if(0L == var2 % 37L) {
-            var4 = null;
+      if (var2 > 0L && var2 < 6582952005840035281L) {
+         if (0L == var2 % 37L) {
+            var6 = null;
          } else {
             var7 = 0;
 
-            for(long var13 = var2; var13 != 0L; var13 /= 37L) {
+            for(long var8 = var2; var8 != 0L; var8 /= 37L) {
                ++var7;
             }
 
-            StringBuilder var15 = new StringBuilder(var7);
+            StringBuilder var11 = new StringBuilder(var7);
 
-            while(var5 != 0L) {
-               long var11 = var5;
-               var5 /= 37L;
-               var15.append(class303.field3732[(int)(var11 - var5 * 37L)]);
+            while(var4 != 0L) {
+               long var9 = var4;
+               var4 /= 37L;
+               var11.append(class303.field3732[(int)(var9 - var4 * 37L)]);
             }
 
-            var4 = var15.reverse().toString();
+            var6 = var11.reverse().toString();
          }
       } else {
-         var4 = null;
+         var6 = null;
       }
 
-      this.method5493(var4);
+      this.method5493(var6);
       this.field3674 = var1.readByte();
       var7 = var1.readUnsignedByte();
-      if(var7 != 255) {
+      if (var7 != 255) {
          this.method5340();
 
-         for(int var8 = 0; var8 < var7; ++var8) {
-            ClanMember var9 = (ClanMember)this.method5349(new Name(var1.readString(), this.field3668));
+         for(int var12 = 0; var12 < var7; ++var12) {
+            ClanMember var13 = (ClanMember)this.method5349(new Name(var1.readString(), this.field3668));
             int var10 = var1.readUnsignedShort();
-            var9.method5432(var10, ++this.field3672 - 1);
-            var9.rank = var1.readByte();
+            var13.method5432(var10, ++this.field3672 - 1);
+            var13.rank = var1.readByte();
             var1.readString();
-            this.method5499(var9);
+            this.method5499(var13);
          }
-
       }
+
    }
 
    @ObfuscatedName("ca")
@@ -200,25 +197,25 @@ public class ClanMemberManager extends NameableContainer {
       int var3 = var1.readUnsignedShort();
       byte var4 = var1.readByte();
       boolean var5 = false;
-      if(var4 == -128) {
+      if (var4 == -128) {
          var5 = true;
       }
 
       ClanMember var6;
-      if(var5) {
-         if(this.getCount() == 0) {
+      if (var5) {
+         if (this.getCount() == 0) {
             return;
          }
 
          var6 = (ClanMember)this.method5374(var2);
-         if(var6 != null && var6.method5433() == var3) {
+         if (var6 != null && var6.method5433() == var3) {
             this.method5362(var6);
          }
       } else {
          var1.readString();
          var6 = (ClanMember)this.method5374(var2);
-         if(var6 == null) {
-            if(this.getCount() > super.field3642) {
+         if (var6 == null) {
+            if (this.getCount() > super.field3642) {
                return;
             }
 
@@ -262,7 +259,7 @@ public class ClanMemberManager extends NameableContainer {
       garbageValue = "18"
    )
    final void method5499(ClanMember var1) {
-      if(var1.getRsName().equals(this.field3666.vmethod5443())) {
+      if (var1.getRsName().equals(this.field3666.vmethod5443())) {
          this.field3671 = var1.rank;
       }
 
@@ -274,7 +271,7 @@ public class ClanMemberManager extends NameableContainer {
       garbageValue = "-10"
    )
    static final void method5501(int var0, int var1, boolean var2) {
-      if(!var2 || var0 != class11.field82 || class54.field495 != var1) {
+      if (!var2 || var0 != class11.field82 || class54.field495 != var1) {
          class11.field82 = var0;
          class54.field495 = var1;
          Resampler.setGameState(25);
@@ -289,76 +286,76 @@ public class ClanMemberManager extends NameableContainer {
          var4 = CombatInfoListHolder.baseY;
 
          int var7;
-         int var9;
+         int var8;
          for(var7 = 0; var7 < 32768; ++var7) {
-            NPC var8 = Client.cachedNPCs[var7];
-            if(var8 != null) {
-               for(var9 = 0; var9 < 10; ++var9) {
-                  var8.pathX[var9] -= var5;
-                  var8.pathY[var9] -= var6;
+            NPC var9 = Client.cachedNPCs[var7];
+            if (var9 != null) {
+               for(var8 = 0; var8 < 10; ++var8) {
+                  var9.pathX[var8] -= var5;
+                  var9.pathY[var8] -= var6;
                }
 
-               var8.x -= var5 * 128;
-               var8.y -= var6 * 128;
+               var9.x -= var5 * 128;
+               var9.y -= var6 * 128;
             }
          }
 
          for(var7 = 0; var7 < 2048; ++var7) {
-            Player var21 = Client.cachedPlayers[var7];
-            if(var21 != null) {
-               for(var9 = 0; var9 < 10; ++var9) {
-                  var21.pathX[var9] -= var5;
-                  var21.pathY[var9] -= var6;
+            Player var20 = Client.cachedPlayers[var7];
+            if (var20 != null) {
+               for(var8 = 0; var8 < 10; ++var8) {
+                  var20.pathX[var8] -= var5;
+                  var20.pathY[var8] -= var6;
                }
 
-               var21.x -= var5 * 128;
-               var21.y -= var6 * 128;
+               var20.x -= var5 * 128;
+               var20.y -= var6 * 128;
             }
          }
 
-         byte var20 = 0;
-         byte var18 = 104;
-         byte var22 = 1;
-         if(var5 < 0) {
-            var20 = 103;
-            var18 = -1;
-            var22 = -1;
-         }
-
-         byte var10 = 0;
-         byte var11 = 104;
-         byte var12 = 1;
-         if(var6 < 0) {
-            var10 = 103;
+         byte var21 = 0;
+         byte var10 = 104;
+         byte var11 = 1;
+         if (var5 < 0) {
+            var21 = 103;
+            var10 = -1;
             var11 = -1;
-            var12 = -1;
          }
 
-         int var14;
-         for(int var13 = var20; var18 != var13; var13 += var22) {
-            for(var14 = var10; var14 != var11; var14 += var12) {
-               int var15 = var13 + var5;
-               int var16 = var14 + var6;
+         byte var12 = 0;
+         byte var13 = 104;
+         byte var14 = 1;
+         if (var6 < 0) {
+            var12 = 103;
+            var13 = -1;
+            var14 = -1;
+         }
 
-               for(int var17 = 0; var17 < 4; ++var17) {
-                  if(var15 >= 0 && var16 >= 0 && var15 < 104 && var16 < 104) {
-                     Client.groundItemDeque[var17][var13][var14] = Client.groundItemDeque[var17][var15][var16];
+         int var15;
+         for(int var16 = var21; var10 != var16; var16 += var11) {
+            for(var15 = var12; var15 != var13; var15 += var14) {
+               int var17 = var16 + var5;
+               int var18 = var15 + var6;
+
+               for(int var19 = 0; var19 < 4; ++var19) {
+                  if (var17 >= 0 && var18 >= 0 && var17 < 104 && var18 < 104) {
+                     Client.groundItemDeque[var19][var16][var15] = Client.groundItemDeque[var19][var17][var18];
                   } else {
-                     Client.groundItemDeque[var17][var13][var14] = null;
+                     Client.groundItemDeque[var19][var16][var15] = null;
                   }
                }
             }
          }
 
-         for(PendingSpawn var19 = (PendingSpawn)Client.pendingSpawns.getFront(); var19 != null; var19 = (PendingSpawn)Client.pendingSpawns.getNext()) {
-            var19.x -= var5;
-            var19.y -= var6;
-            if(var19.x < 0 || var19.y < 0 || var19.x >= 104 || var19.y >= 104) {
-               var19.unlink();
+         for(PendingSpawn var22 = (PendingSpawn)Client.pendingSpawns.getFront(); var22 != null; var22 = (PendingSpawn)Client.pendingSpawns.getNext()) {
+            var22.x -= var5;
+            var22.y -= var6;
+            if (var22.x < 0 || var22.y < 0 || var22.x >= 104 || var22.y >= 104) {
+               var22.unlink();
             }
          }
 
-         if(Client.destinationX != 0) {
+         if (Client.destinationX != 0) {
             Client.destinationX -= var5;
             Client.destinationY -= var6;
          }
@@ -373,10 +370,10 @@ public class ClanMemberManager extends NameableContainer {
          Client.graphicsObjectDeque.clear();
          Client.projectiles.clear();
 
-         for(var14 = 0; var14 < 4; ++var14) {
-            Client.collisionMaps[var14].reset();
+         for(var15 = 0; var15 < 4; ++var15) {
+            Client.collisionMaps[var15].reset();
          }
-
       }
+
    }
 }

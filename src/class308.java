@@ -23,7 +23,7 @@ public class class308 implements Comparator {
       garbageValue = "607151868"
    )
    int method5706(Nameable var1, Nameable var2) {
-      return this.field3745?var1.vmethod5482(var2):var2.vmethod5482(var1);
+      return this.field3745 ? var1.vmethod5482(var2) : var2.vmethod5482(var1);
    }
 
    public boolean equals(Object var1) {

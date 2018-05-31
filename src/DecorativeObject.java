@@ -71,18 +71,13 @@ public final class DecorativeObject {
       longValue = -5118687135473253869L
    )
    @Export("hash")
-   public long hash;
+   public long hash = 0L;
    @ObfuscatedName("l")
    @ObfuscatedGetter(
       intValue = -1042594383
    )
    @Export("renderInfoBitPacked")
-   int renderInfoBitPacked;
-
-   DecorativeObject() {
-      this.hash = 0L;
-      this.renderInfoBitPacked = 0;
-   }
+   int renderInfoBitPacked = 0;
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -91,7 +86,7 @@ public final class DecorativeObject {
    )
    public static PacketNode method3115(ClientPacket var0, ISAACCipher var1) {
       PacketNode var2;
-      if(PacketNode.field2277 == 0) {
+      if (PacketNode.field2277 == 0) {
          var2 = new PacketNode();
       } else {
          var2 = PacketNode.packetBufferNodes[--PacketNode.field2277];
@@ -99,13 +94,13 @@ public final class DecorativeObject {
 
       var2.clientPacket = var0;
       var2.field2278 = var0.packetLength;
-      if(var2.field2278 == -1) {
+      if (var2.field2278 == -1) {
          var2.packetBuffer = new PacketBuffer(260);
-      } else if(var2.field2278 == -2) {
+      } else if (var2.field2278 == -2) {
          var2.packetBuffer = new PacketBuffer(10000);
-      } else if(var2.field2278 <= 18) {
+      } else if (var2.field2278 <= 18) {
          var2.packetBuffer = new PacketBuffer(20);
-      } else if(var2.field2278 <= 98) {
+      } else if (var2.field2278 <= 98) {
          var2.packetBuffer = new PacketBuffer(100);
       } else {
          var2.packetBuffer = new PacketBuffer(260);

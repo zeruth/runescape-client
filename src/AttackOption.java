@@ -45,7 +45,7 @@ public enum AttackOption implements Enumerated {
    @Export("id")
    final int id;
 
-   AttackOption(int var3) {
+   private AttackOption(int var3) {
       this.id = var3;
    }
 

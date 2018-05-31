@@ -15,10 +15,10 @@ public final class ISAACCipher {
    int valuesRemaining;
    @ObfuscatedName("f")
    @Export("randResult")
-   int[] randResult;
+   int[] randResult = new int[256];
    @ObfuscatedName("n")
    @Export("mm")
-   int[] mm;
+   int[] mm = new int[256];
    @ObfuscatedName("h")
    @ObfuscatedGetter(
       intValue = 970541073
@@ -36,9 +36,6 @@ public final class ISAACCipher {
    int field2408;
 
    public ISAACCipher(int[] var1) {
-      this.mm = new int[256];
-      this.randResult = new int[256];
-
       for(int var2 = 0; var2 < var1.length; ++var2) {
          this.randResult[var2] = var1[var2];
       }
@@ -53,7 +50,7 @@ public final class ISAACCipher {
    )
    @Export("nextInt")
    final int nextInt() {
-      if(0 == --this.valuesRemaining + 1) {
+      if (--this.valuesRemaining + 1 == 0) {
          this.generateMoreResults();
          this.valuesRemaining = 255;
       }
@@ -67,7 +64,7 @@ public final class ISAACCipher {
       garbageValue = "1220190858"
    )
    final int method3905() {
-      if(this.valuesRemaining == 0) {
+      if (this.valuesRemaining == 0) {
          this.generateMoreResults();
          this.valuesRemaining = 256;
       }
@@ -86,13 +83,13 @@ public final class ISAACCipher {
 
       for(int var1 = 0; var1 < 256; ++var1) {
          int var2 = this.mm[var1];
-         if((var1 & 2) == 0) {
-            if((var1 & 1) == 0) {
+         if ((var1 & 2) == 0) {
+            if ((var1 & 1) == 0) {
                this.field2410 ^= this.field2410 << 13;
             } else {
                this.field2410 ^= this.field2410 >>> 6;
             }
-         } else if((var1 & 1) == 0) {
+         } else if ((var1 & 1) == 0) {
             this.field2410 ^= this.field2410 << 2;
          } else {
             this.field2410 ^= this.field2410 >>> 16;
@@ -112,127 +109,127 @@ public final class ISAACCipher {
       garbageValue = "-1857553965"
    )
    final void method3919() {
-      int var9 = -1640531527;
-      int var8 = -1640531527;
-      int var7 = -1640531527;
-      int var6 = -1640531527;
-      int var5 = -1640531527;
-      int var4 = -1640531527;
-      int var3 = -1640531527;
+      int var1 = -1640531527;
       int var2 = -1640531527;
+      int var3 = -1640531527;
+      int var4 = -1640531527;
+      int var5 = -1640531527;
+      int var6 = -1640531527;
+      int var7 = -1640531527;
+      int var8 = -1640531527;
 
-      int var1;
-      for(var1 = 0; var1 < 4; ++var1) {
-         var2 ^= var3 << 11;
-         var5 += var2;
-         var3 += var4;
-         var3 ^= var4 >>> 2;
-         var6 += var3;
-         var4 += var5;
-         var4 ^= var5 << 8;
-         var7 += var4;
-         var5 += var6;
-         var5 ^= var6 >>> 16;
-         var8 += var5;
-         var6 += var7;
-         var6 ^= var7 << 10;
-         var9 += var6;
-         var7 += var8;
-         var7 ^= var8 >>> 4;
-         var2 += var7;
-         var8 += var9;
-         var8 ^= var9 << 8;
-         var3 += var8;
-         var9 += var2;
-         var9 ^= var2 >>> 9;
-         var4 += var9;
-         var2 += var3;
+      int var9;
+      for(var9 = 0; var9 < 4; ++var9) {
+         var8 ^= var7 << 11;
+         var5 += var8;
+         var7 += var6;
+         var7 ^= var6 >>> 2;
+         var4 += var7;
+         var6 += var5;
+         var6 ^= var5 << 8;
+         var3 += var6;
+         var5 += var4;
+         var5 ^= var4 >>> 16;
+         var2 += var5;
+         var4 += var3;
+         var4 ^= var3 << 10;
+         var1 += var4;
+         var3 += var2;
+         var3 ^= var2 >>> 4;
+         var8 += var3;
+         var2 += var1;
+         var2 ^= var1 << 8;
+         var7 += var2;
+         var1 += var8;
+         var1 ^= var8 >>> 9;
+         var6 += var1;
+         var8 += var7;
       }
 
-      for(var1 = 0; var1 < 256; var1 += 8) {
-         var2 += this.randResult[var1];
-         var3 += this.randResult[var1 + 1];
-         var4 += this.randResult[var1 + 2];
-         var5 += this.randResult[var1 + 3];
-         var6 += this.randResult[var1 + 4];
-         var7 += this.randResult[var1 + 5];
-         var8 += this.randResult[var1 + 6];
-         var9 += this.randResult[var1 + 7];
-         var2 ^= var3 << 11;
-         var5 += var2;
-         var3 += var4;
-         var3 ^= var4 >>> 2;
-         var6 += var3;
-         var4 += var5;
-         var4 ^= var5 << 8;
-         var7 += var4;
-         var5 += var6;
-         var5 ^= var6 >>> 16;
-         var8 += var5;
-         var6 += var7;
-         var6 ^= var7 << 10;
-         var9 += var6;
-         var7 += var8;
-         var7 ^= var8 >>> 4;
-         var2 += var7;
-         var8 += var9;
-         var8 ^= var9 << 8;
-         var3 += var8;
-         var9 += var2;
-         var9 ^= var2 >>> 9;
-         var4 += var9;
-         var2 += var3;
-         this.mm[var1] = var2;
-         this.mm[var1 + 1] = var3;
-         this.mm[var1 + 2] = var4;
-         this.mm[var1 + 3] = var5;
-         this.mm[var1 + 4] = var6;
-         this.mm[var1 + 5] = var7;
-         this.mm[var1 + 6] = var8;
-         this.mm[var1 + 7] = var9;
+      for(var9 = 0; var9 < 256; var9 += 8) {
+         var8 += this.randResult[var9];
+         var7 += this.randResult[var9 + 1];
+         var6 += this.randResult[var9 + 2];
+         var5 += this.randResult[var9 + 3];
+         var4 += this.randResult[var9 + 4];
+         var3 += this.randResult[var9 + 5];
+         var2 += this.randResult[var9 + 6];
+         var1 += this.randResult[var9 + 7];
+         var8 ^= var7 << 11;
+         var5 += var8;
+         var7 += var6;
+         var7 ^= var6 >>> 2;
+         var4 += var7;
+         var6 += var5;
+         var6 ^= var5 << 8;
+         var3 += var6;
+         var5 += var4;
+         var5 ^= var4 >>> 16;
+         var2 += var5;
+         var4 += var3;
+         var4 ^= var3 << 10;
+         var1 += var4;
+         var3 += var2;
+         var3 ^= var2 >>> 4;
+         var8 += var3;
+         var2 += var1;
+         var2 ^= var1 << 8;
+         var7 += var2;
+         var1 += var8;
+         var1 ^= var8 >>> 9;
+         var6 += var1;
+         var8 += var7;
+         this.mm[var9] = var8;
+         this.mm[var9 + 1] = var7;
+         this.mm[var9 + 2] = var6;
+         this.mm[var9 + 3] = var5;
+         this.mm[var9 + 4] = var4;
+         this.mm[var9 + 5] = var3;
+         this.mm[var9 + 6] = var2;
+         this.mm[var9 + 7] = var1;
       }
 
-      for(var1 = 0; var1 < 256; var1 += 8) {
-         var2 += this.mm[var1];
-         var3 += this.mm[var1 + 1];
-         var4 += this.mm[var1 + 2];
-         var5 += this.mm[var1 + 3];
-         var6 += this.mm[var1 + 4];
-         var7 += this.mm[var1 + 5];
-         var8 += this.mm[var1 + 6];
-         var9 += this.mm[var1 + 7];
-         var2 ^= var3 << 11;
-         var5 += var2;
-         var3 += var4;
-         var3 ^= var4 >>> 2;
-         var6 += var3;
-         var4 += var5;
-         var4 ^= var5 << 8;
-         var7 += var4;
-         var5 += var6;
-         var5 ^= var6 >>> 16;
-         var8 += var5;
-         var6 += var7;
-         var6 ^= var7 << 10;
-         var9 += var6;
-         var7 += var8;
-         var7 ^= var8 >>> 4;
-         var2 += var7;
-         var8 += var9;
-         var8 ^= var9 << 8;
-         var3 += var8;
-         var9 += var2;
-         var9 ^= var2 >>> 9;
-         var4 += var9;
-         var2 += var3;
-         this.mm[var1] = var2;
-         this.mm[var1 + 1] = var3;
-         this.mm[var1 + 2] = var4;
-         this.mm[var1 + 3] = var5;
-         this.mm[var1 + 4] = var6;
-         this.mm[var1 + 5] = var7;
-         this.mm[var1 + 6] = var8;
-         this.mm[var1 + 7] = var9;
+      for(var9 = 0; var9 < 256; var9 += 8) {
+         var8 += this.mm[var9];
+         var7 += this.mm[var9 + 1];
+         var6 += this.mm[var9 + 2];
+         var5 += this.mm[var9 + 3];
+         var4 += this.mm[var9 + 4];
+         var3 += this.mm[var9 + 5];
+         var2 += this.mm[var9 + 6];
+         var1 += this.mm[var9 + 7];
+         var8 ^= var7 << 11;
+         var5 += var8;
+         var7 += var6;
+         var7 ^= var6 >>> 2;
+         var4 += var7;
+         var6 += var5;
+         var6 ^= var5 << 8;
+         var3 += var6;
+         var5 += var4;
+         var5 ^= var4 >>> 16;
+         var2 += var5;
+         var4 += var3;
+         var4 ^= var3 << 10;
+         var1 += var4;
+         var3 += var2;
+         var3 ^= var2 >>> 4;
+         var8 += var3;
+         var2 += var1;
+         var2 ^= var1 << 8;
+         var7 += var2;
+         var1 += var8;
+         var1 ^= var8 >>> 9;
+         var6 += var1;
+         var8 += var7;
+         this.mm[var9] = var8;
+         this.mm[var9 + 1] = var7;
+         this.mm[var9 + 2] = var6;
+         this.mm[var9 + 3] = var5;
+         this.mm[var9 + 4] = var4;
+         this.mm[var9 + 5] = var3;
+         this.mm[var9 + 6] = var2;
+         this.mm[var9 + 7] = var1;
       }
 
       this.generateMoreResults();

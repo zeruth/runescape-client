@@ -35,13 +35,12 @@ public class FriendManager {
    @ObfuscatedGetter(
       intValue = 364671715
    )
-   int field994;
+   int field994 = 0;
 
    @ObfuscatedSignature(
       signature = "(Lla;)V"
    )
    FriendManager(JagexLoginType var1) {
-      this.field994 = 0;
       this.jagexLoginType = var1;
       this.friendContainer = new FriendContainer(var1);
       this.ignoreContainer = new class284(var1);
@@ -86,7 +85,7 @@ public class FriendManager {
          var6.method1095();
       }
 
-      if(WorldComparator.clanMemberManager != null) {
+      if (WorldComparator.clanMemberManager != null) {
          WorldComparator.clanMemberManager.method5518();
       }
 
@@ -99,12 +98,12 @@ public class FriendManager {
    )
    final void method1698() {
       for(class294 var1 = (class294)this.friendContainer.field3658.method4147(); var1 != null; var1 = (class294)this.friendContainer.field3658.method4146()) {
-         if((long)var1.field3676 < class166.method3456() / 1000L - 5L) {
-            if(var1.field3677 > 0) {
+         if ((long)var1.field3676 < class166.method3456() / 1000L - 5L) {
+            if (var1.field3677 > 0) {
                OwnWorldComparator.sendGameMessage(5, "", var1.field3675 + " has logged in.");
             }
 
-            if(var1.field3677 == 0) {
+            if (var1.field3677 == 0) {
                OwnWorldComparator.sendGameMessage(5, "", var1.field3675 + " has logged out.");
             }
 
@@ -132,7 +131,7 @@ public class FriendManager {
    )
    @Export("isFriended")
    final boolean isFriended(Name var1, boolean var2) {
-      return var1 == null?false:(var1.equals(MilliTimer.localPlayer.name)?true:this.friendContainer.method5457(var1, var2));
+      return var1 == null ? false : (var1.equals(MilliTimer.localPlayer.name) ? true : this.friendContainer.method5457(var1, var2));
    }
 
    @ObfuscatedName("l")
@@ -142,7 +141,7 @@ public class FriendManager {
    )
    @Export("isIgnored")
    final boolean isIgnored(Name var1) {
-      return var1 == null?false:this.ignoreContainer.isMember(var1);
+      return var1 == null ? false : this.ignoreContainer.isMember(var1);
    }
 
    @ObfuscatedName("d")
@@ -152,22 +151,23 @@ public class FriendManager {
    )
    @Export("addToFriendsList")
    final void addToFriendsList(String var1) {
-      if(var1 != null) {
+      if (var1 != null) {
          Name var2 = new Name(var1, this.jagexLoginType);
-         if(var2.isCleanNameValid()) {
-            if(this.isFriendsListFull()) {
+         if (var2.isCleanNameValid()) {
+            if (this.isFriendsListFull()) {
                CollisionData.method3448("Your friend list is full. Max of 200 for free users, and 400 for members");
-            } else if(MilliTimer.localPlayer.name.equals(var2)) {
+            } else if (MilliTimer.localPlayer.name.equals(var2)) {
                Huffman.method3498();
-            } else if(this.isFriended(var2, false)) {
+            } else if (this.isFriended(var2, false)) {
                Frames.method3094(var1);
-            } else if(this.isIgnored(var2)) {
+            } else if (this.isIgnored(var2)) {
                class11.method112(var1);
             } else {
                class138.method3158(var1);
             }
          }
       }
+
    }
 
    @ObfuscatedName("e")
@@ -187,22 +187,23 @@ public class FriendManager {
    )
    @Export("addToIgnoreList")
    final void addToIgnoreList(String var1) {
-      if(var1 != null) {
+      if (var1 != null) {
          Name var2 = new Name(var1, this.jagexLoginType);
-         if(var2.isCleanNameValid()) {
-            if(this.method1673()) {
+         if (var2.isCleanNameValid()) {
+            if (this.method1673()) {
                class37.method720();
-            } else if(MilliTimer.localPlayer.name.equals(var2)) {
-               CollisionData.method3448("You can\'t add yourself to your own ignore list");
-            } else if(this.isIgnored(var2)) {
+            } else if (MilliTimer.localPlayer.name.equals(var2)) {
+               CollisionData.method3448("You can't add yourself to your own ignore list");
+            } else if (this.isIgnored(var2)) {
                class11.method115(var1);
-            } else if(this.isFriended(var2, false)) {
+            } else if (this.isFriended(var2, false)) {
                CollisionData.method3448("Please remove " + var1 + " from your friend list first");
             } else {
                class74.method1845(var1);
             }
          }
       }
+
    }
 
    @ObfuscatedName("v")
@@ -221,10 +222,10 @@ public class FriendManager {
    )
    @Export("removeFriend")
    final void removeFriend(String var1) {
-      if(var1 != null) {
+      if (var1 != null) {
          Name var2 = new Name(var1, this.jagexLoginType);
-         if(var2.isCleanNameValid()) {
-            if(this.friendContainer.method5397(var2)) {
+         if (var2.isCleanNameValid()) {
+            if (this.friendContainer.method5397(var2)) {
                Client.field742 = Client.cycleCntr;
                PacketNode var3 = DecorativeObject.method3115(ClientPacket.field2250, Client.field739.field1250);
                var3.packetBuffer.putByte(Size.getLength(var1));
@@ -244,12 +245,12 @@ public class FriendManager {
                var7.method1095();
             }
 
-            if(WorldComparator.clanMemberManager != null) {
+            if (WorldComparator.clanMemberManager != null) {
                WorldComparator.clanMemberManager.method5518();
             }
-
          }
       }
+
    }
 
    @ObfuscatedName("ai")
@@ -258,10 +259,10 @@ public class FriendManager {
       garbageValue = "-1697776287"
    )
    final void method1675(String var1) {
-      if(var1 != null) {
+      if (var1 != null) {
          Name var2 = new Name(var1, this.jagexLoginType);
-         if(var2.isCleanNameValid()) {
-            if(this.ignoreContainer.method5397(var2)) {
+         if (var2.isCleanNameValid()) {
+            if (this.ignoreContainer.method5397(var2)) {
                Client.field742 = Client.cycleCntr;
                PacketNode var3 = DecorativeObject.method3115(ClientPacket.field2214, Client.field739.field1250);
                var3.packetBuffer.putByte(Size.getLength(var1));
@@ -270,12 +271,12 @@ public class FriendManager {
             }
 
             ClientPacket.method3460();
-            if(WorldComparator.clanMemberManager != null) {
+            if (WorldComparator.clanMemberManager != null) {
                WorldComparator.clanMemberManager.method5498();
             }
-
          }
       }
+
    }
 
    @ObfuscatedName("ad")

@@ -58,24 +58,21 @@ public final class GraphicsObject extends Renderable {
    @ObfuscatedGetter(
       intValue = -1488825937
    )
-   int field1039;
+   int field1039 = 0;
    @ObfuscatedName("j")
    @ObfuscatedGetter(
       intValue = -271875461
    )
-   int field1040;
+   int field1040 = 0;
    @ObfuscatedName("a")
    @Export("finished")
-   boolean finished;
+   boolean finished = false;
 
    @Hook(
       value = "onGraphicsObjectCreated",
       end = true
    )
    GraphicsObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-      this.field1039 = 0;
-      this.field1040 = 0;
-      this.finished = false;
       this.id = var1;
       this.level = var2;
       this.x = var3;
@@ -83,7 +80,7 @@ public final class GraphicsObject extends Renderable {
       this.height = var5;
       this.startCycle = var7 + var6;
       int var8 = ScriptState.getSpotAnimType(this.id).field3292;
-      if(var8 != -1) {
+      if (var8 != -1) {
          this.finished = false;
          this.field1038 = class137.getAnimation(var8);
       } else {
@@ -98,19 +95,19 @@ public final class GraphicsObject extends Renderable {
       garbageValue = "677069676"
    )
    final void method1812(int var1) {
-      if(!this.finished) {
+      if (!this.finished) {
          this.field1040 += var1;
 
          while(this.field1040 > this.field1038.frameLengths[this.field1039]) {
             this.field1040 -= this.field1038.frameLengths[this.field1039];
             ++this.field1039;
-            if(this.field1039 >= this.field1038.frameIDs.length) {
+            if (this.field1039 >= this.field1038.frameIDs.length) {
                this.finished = true;
                break;
             }
          }
-
       }
+
    }
 
    @ObfuscatedName("s")
@@ -121,13 +118,13 @@ public final class GraphicsObject extends Renderable {
    protected final Model getModel() {
       Spotanim var1 = ScriptState.getSpotAnimType(this.id);
       Model var2;
-      if(!this.finished) {
+      if (!this.finished) {
          var2 = var1.getModel(this.field1039);
       } else {
          var2 = var1.getModel(-1);
       }
 
-      return var2 == null?null:var2;
+      return var2 == null ? null : var2;
    }
 
    @ObfuscatedName("w")
@@ -137,11 +134,11 @@ public final class GraphicsObject extends Renderable {
    )
    static Script method1806(int var0) {
       Script var1 = (Script)Script.field1214.get((long)var0);
-      if(var1 != null) {
+      if (var1 != null) {
          return var1;
       } else {
          byte[] var2 = TotalQuantityComparator.indexScripts.getConfigData(var0, 0);
-         if(var2 == null) {
+         if (var2 == null) {
             return null;
          } else {
             var1 = class143.newScript(var2);

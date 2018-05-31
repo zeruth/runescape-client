@@ -11,42 +11,42 @@ public class JagexLoginType {
    @ObfuscatedSignature(
       signature = "Lla;"
    )
-   public static final JagexLoginType field3878;
+   public static final JagexLoginType field3878 = new JagexLoginType(0, 0, "", "");
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lla;"
    )
-   static final JagexLoginType field3875;
+   static final JagexLoginType field3875 = new JagexLoginType(5, 1, "", "");
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lla;"
    )
-   static final JagexLoginType field3877;
+   static final JagexLoginType field3877 = new JagexLoginType(3, 2, "", "");
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lla;"
    )
-   static final JagexLoginType field3884;
+   static final JagexLoginType field3884 = new JagexLoginType(4, 3, "", "");
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Lla;"
    )
-   static final JagexLoginType field3879;
+   static final JagexLoginType field3879 = new JagexLoginType(8, 4, "", "");
    @ObfuscatedName("n")
    @ObfuscatedSignature(
       signature = "Lla;"
    )
-   static final JagexLoginType field3880;
+   static final JagexLoginType field3880 = new JagexLoginType(1, 5, "", "");
    @ObfuscatedName("h")
    @ObfuscatedSignature(
       signature = "Lla;"
    )
-   static final JagexLoginType field3881;
+   static final JagexLoginType field3881 = new JagexLoginType(7, 6, "", "");
    @ObfuscatedName("x")
    @ObfuscatedSignature(
       signature = "Lla;"
    )
-   static final JagexLoginType field3882;
+   static final JagexLoginType field3882 = new JagexLoginType(6, 7, "", "");
    @ObfuscatedName("j")
    @ObfuscatedSignature(
       signature = "Lla;"
@@ -62,14 +62,6 @@ public class JagexLoginType {
    final String identifier;
 
    static {
-      field3878 = new JagexLoginType(0, 0, "", "");
-      field3875 = new JagexLoginType(5, 1, "", "");
-      field3877 = new JagexLoginType(3, 2, "", "");
-      field3884 = new JagexLoginType(4, 3, "", "");
-      field3879 = new JagexLoginType(8, 4, "", "");
-      field3880 = new JagexLoginType(1, 5, "", "");
-      field3881 = new JagexLoginType(7, 6, "", "");
-      field3882 = new JagexLoginType(6, 7, "", "");
       field3883 = new JagexLoginType(2, -1, "", "", true, new JagexLoginType[]{field3878, field3875, field3877, field3879, field3884});
    }
 

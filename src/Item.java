@@ -44,6 +44,7 @@ public final class Item extends Renderable {
       var3.field3165 = var1;
       var3.index = var2;
       Deque var4 = IndexStoreActionHandler.IndexStoreActionHandler_requestQueue;
+      Deque var5 = IndexStoreActionHandler.IndexStoreActionHandler_requestQueue;
       synchronized(IndexStoreActionHandler.IndexStoreActionHandler_requestQueue) {
          IndexStoreActionHandler.IndexStoreActionHandler_requestQueue.addFront(var3);
       }

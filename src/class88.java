@@ -7,23 +7,16 @@ public class class88 extends TaskDataNode {
    @ObfuscatedSignature(
       signature = "Lgz;"
    )
-   Deque field1255;
+   Deque field1255 = new Deque();
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lgz;"
    )
-   Deque field1256;
+   Deque field1256 = new Deque();
    @ObfuscatedName("b")
-   int field1257;
+   int field1257 = 0;
    @ObfuscatedName("f")
-   int field1258;
-
-   public class88() {
-      this.field1255 = new Deque();
-      this.field1256 = new Deque();
-      this.field1257 = 0;
-      this.field1258 = -1;
-   }
+   int field1258 = -1;
 
    @ObfuscatedName("w")
    @ObfuscatedSignature(
@@ -43,7 +36,7 @@ public class class88 extends TaskDataNode {
 
    @ObfuscatedName("q")
    void method2078() {
-      if(this.field1257 > 0) {
+      if (this.field1257 > 0) {
          for(class100 var1 = (class100)this.field1256.getFront(); var1 != null; var1 = (class100)this.field1256.getNext()) {
             var1.field1364 -= this.field1257;
          }
@@ -75,7 +68,7 @@ public class class88 extends TaskDataNode {
       var1.unlink();
       var1.method2291();
       Node var2 = this.field1256.head.next;
-      if(var2 == this.field1256.head) {
+      if (var2 == this.field1256.head) {
          this.field1258 = -1;
       } else {
          this.field1258 = ((class100)var2).field1364;
@@ -107,12 +100,12 @@ public class class88 extends TaskDataNode {
    @ObfuscatedName("s")
    public final synchronized void vmethod4424(int[] var1, int var2, int var3) {
       do {
-         if(this.field1258 < 0) {
+         if (this.field1258 < 0) {
             this.method2057(var1, var2, var3);
             return;
          }
 
-         if(var3 + this.field1257 < this.field1258) {
+         if (var3 + this.field1257 < this.field1258) {
             this.field1257 += var3;
             this.method2057(var1, var2, var3);
             return;
@@ -127,7 +120,7 @@ public class class88 extends TaskDataNode {
          class100 var5 = (class100)this.field1256.getFront();
          synchronized(var5) {
             int var7 = var5.method2298();
-            if(var7 < 0) {
+            if (var7 < 0) {
                var5.field1364 = 0;
                this.method2053(var5);
             } else {
@@ -150,12 +143,12 @@ public class class88 extends TaskDataNode {
    @ObfuscatedName("g")
    public final synchronized void vmethod4425(int var1) {
       do {
-         if(this.field1258 < 0) {
+         if (this.field1258 < 0) {
             this.method2059(var1);
             return;
          }
 
-         if(this.field1257 + var1 < this.field1258) {
+         if (this.field1257 + var1 < this.field1258) {
             this.field1257 += var1;
             this.method2059(var1);
             return;
@@ -169,7 +162,7 @@ public class class88 extends TaskDataNode {
          class100 var3 = (class100)this.field1256.getFront();
          synchronized(var3) {
             int var5 = var3.method2298();
-            if(var5 < 0) {
+            if (var5 < 0) {
                var3.field1364 = 0;
                this.method2053(var3);
             } else {

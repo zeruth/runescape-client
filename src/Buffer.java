@@ -10,7 +10,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class Buffer extends Node {
    @ObfuscatedName("q")
    @Export("crc32Table")
-   static int[] crc32Table;
+   static int[] crc32Table = new int[256];
    @ObfuscatedName("f")
    @Export("crc64Table")
    static long[] crc64Table;
@@ -30,37 +30,35 @@ public class Buffer extends Node {
    public int offset;
 
    static {
-      crc32Table = new int[256];
-
-      int var2;
+      int var0;
       for(int var1 = 0; var1 < 256; ++var1) {
-         int var0 = var1;
+         int var2 = var1;
 
-         for(var2 = 0; var2 < 8; ++var2) {
-            if((var0 & 1) == 1) {
-               var0 = var0 >>> 1 ^ -306674912;
+         for(var0 = 0; var0 < 8; ++var0) {
+            if ((var2 & 1) == 1) {
+               var2 = var2 >>> 1 ^ -306674912;
             } else {
-               var0 >>>= 1;
+               var2 >>>= 1;
             }
          }
 
-         crc32Table[var1] = var0;
+         crc32Table[var1] = var2;
       }
 
       crc64Table = new long[256];
 
-      for(var2 = 0; var2 < 256; ++var2) {
-         long var4 = (long)var2;
+      for(var0 = 0; var0 < 256; ++var0) {
+         long var4 = (long)var0;
 
          for(int var3 = 0; var3 < 8; ++var3) {
-            if(1L == (var4 & 1L)) {
+            if (1L == (var4 & 1L)) {
                var4 = var4 >>> 1 ^ -3932672073523589310L;
             } else {
                var4 >>>= 1;
             }
          }
 
-         crc64Table[var2] = var4;
+         crc64Table[var0] = var4;
       }
 
    }
@@ -81,7 +79,7 @@ public class Buffer extends Node {
       garbageValue = "48"
    )
    public void method3551() {
-      if(this.payload != null) {
+      if (this.payload != null) {
          method3677(this.payload);
       }
 
@@ -164,7 +162,7 @@ public class Buffer extends Node {
    )
    @Export("writeBooleanAsByte")
    public void writeBooleanAsByte(boolean var1) {
-      this.putByte(var1?1:0);
+      this.putByte(var1 ? 1 : 0);
    }
 
    @ObfuscatedName("g")
@@ -175,7 +173,7 @@ public class Buffer extends Node {
    @Export("putString")
    public void putString(String var1) {
       int var2 = var1.indexOf(0);
-      if(var2 >= 0) {
+      if (var2 >= 0) {
          throw new IllegalArgumentException("");
       } else {
          this.offset += Renderable.encodeStringCp1252(var1, 0, var1.length(), this.payload, this.offset);
@@ -191,7 +189,7 @@ public class Buffer extends Node {
    @Export("putJagString")
    public void putJagString(String var1) {
       int var2 = var1.indexOf(0);
-      if(var2 >= 0) {
+      if (var2 >= 0) {
          throw new IllegalArgumentException("");
       } else {
          this.payload[++this.offset - 1] = 0;
@@ -265,13 +263,16 @@ public class Buffer extends Node {
    )
    @Export("putShortSmart")
    public void putShortSmart(int var1) {
-      if(var1 >= 0 && var1 < 128) {
+      if (var1 >= 0 && var1 < 128) {
          this.putByte(var1);
-      } else if(var1 >= 0 && var1 < 32768) {
-         this.putShort(var1 + 32768);
       } else {
-         throw new IllegalArgumentException();
+         if (var1 < 0 || var1 >= 32768) {
+            throw new IllegalArgumentException();
+         }
+
+         this.putShort(var1 + '耀');
       }
+
    }
 
    @ObfuscatedName("v")
@@ -281,10 +282,10 @@ public class Buffer extends Node {
    )
    @Export("putVarInt")
    public void putVarInt(int var1) {
-      if((var1 & -128) != 0) {
-         if((var1 & -16384) != 0) {
-            if((var1 & -2097152) != 0) {
-               if((var1 & -268435456) != 0) {
+      if ((var1 & -128) != 0) {
+         if ((var1 & -16384) != 0) {
+            if ((var1 & -2097152) != 0) {
+               if ((var1 & -268435456) != 0) {
                   this.putByte(var1 >>> 28 | 128);
                }
 
@@ -340,7 +341,7 @@ public class Buffer extends Node {
    public int readShort() {
       this.offset += 2;
       int var1 = (this.payload[this.offset - 1] & 255) + ((this.payload[this.offset - 2] & 255) << 8);
-      if(var1 > 32767) {
+      if (var1 > 32767) {
          var1 -= 65536;
       }
 
@@ -397,7 +398,7 @@ public class Buffer extends Node {
    )
    @Export("getNullString")
    public String getNullString() {
-      if(this.payload[this.offset] == 0) {
+      if (this.payload[this.offset] == 0) {
          ++this.offset;
          return null;
       } else {
@@ -419,7 +420,7 @@ public class Buffer extends Node {
       }
 
       int var2 = this.offset - var1 - 1;
-      return var2 == 0?"":class165.getString(this.payload, var1, var2);
+      return var2 == 0 ? "" : class165.getString(this.payload, var1, var2);
    }
 
    @ObfuscatedName("ah")
@@ -430,7 +431,7 @@ public class Buffer extends Node {
    @Export("getJagString")
    public String getJagString() {
       byte var1 = this.payload[++this.offset - 1];
-      if(var1 != 0) {
+      if (var1 != 0) {
          throw new IllegalStateException("");
       } else {
          int var2 = this.offset;
@@ -440,7 +441,7 @@ public class Buffer extends Node {
          }
 
          int var3 = this.offset - var2 - 1;
-         return var3 == 0?"":class165.getString(this.payload, var2, var3);
+         return var3 == 0 ? "" : class165.getString(this.payload, var2, var3);
       }
    }
 
@@ -452,67 +453,67 @@ public class Buffer extends Node {
    @Export("getCESU8")
    public String getCESU8() {
       byte var1 = this.payload[++this.offset - 1];
-      if(var1 != 0) {
+      if (var1 != 0) {
          throw new IllegalStateException("");
       } else {
          int var2 = this.readVarInt();
-         if(var2 + this.offset > this.payload.length) {
+         if (var2 + this.offset > this.payload.length) {
             throw new IllegalStateException("");
          } else {
-            byte[] var4 = this.payload;
-            int var5 = this.offset;
-            char[] var6 = new char[var2];
-            int var7 = 0;
-            int var8 = var5;
+            byte[] var3 = this.payload;
+            int var4 = this.offset;
+            char[] var5 = new char[var2];
+            int var6 = 0;
+            int var7 = var4;
 
-            int var11;
-            for(int var9 = var5 + var2; var8 < var9; var6[var7++] = (char)var11) {
-               int var10 = var4[var8++] & 255;
-               if(var10 < 128) {
-                  if(var10 == 0) {
-                     var11 = 65533;
+            int var8;
+            for(int var9 = var4 + var2; var7 < var9; var5[var6++] = (char)var8) {
+               int var10 = var3[var7++] & 255;
+               if (var10 < 128) {
+                  if (var10 == 0) {
+                     var8 = 65533;
                   } else {
-                     var11 = var10;
+                     var8 = var10;
                   }
-               } else if(var10 < 192) {
-                  var11 = 65533;
-               } else if(var10 < 224) {
-                  if(var8 < var9 && (var4[var8] & 192) == 128) {
-                     var11 = (var10 & 31) << 6 | var4[var8++] & 63;
-                     if(var11 < 128) {
-                        var11 = 65533;
+               } else if (var10 < 192) {
+                  var8 = 65533;
+               } else if (var10 < 224) {
+                  if (var7 < var9 && (var3[var7] & 192) == 128) {
+                     var8 = (var10 & 31) << 6 | var3[var7++] & 63;
+                     if (var8 < 128) {
+                        var8 = 65533;
                      }
                   } else {
-                     var11 = 65533;
+                     var8 = 65533;
                   }
-               } else if(var10 < 240) {
-                  if(var8 + 1 < var9 && (var4[var8] & 192) == 128 && (var4[var8 + 1] & 192) == 128) {
-                     var11 = (var10 & 15) << 12 | (var4[var8++] & 63) << 6 | var4[var8++] & 63;
-                     if(var11 < 2048) {
-                        var11 = 65533;
+               } else if (var10 < 240) {
+                  if (var7 + 1 < var9 && (var3[var7] & 192) == 128 && (var3[var7 + 1] & 192) == 128) {
+                     var8 = (var10 & 15) << 12 | (var3[var7++] & 63) << 6 | var3[var7++] & 63;
+                     if (var8 < 2048) {
+                        var8 = 65533;
                      }
                   } else {
-                     var11 = 65533;
+                     var8 = 65533;
                   }
-               } else if(var10 < 248) {
-                  if(var8 + 2 < var9 && (var4[var8] & 192) == 128 && (var4[var8 + 1] & 192) == 128 && (var4[var8 + 2] & 192) == 128) {
-                     var11 = (var10 & 7) << 18 | (var4[var8++] & 63) << 12 | (var4[var8++] & 63) << 6 | var4[var8++] & 63;
-                     if(var11 >= 65536 && var11 <= 1114111) {
-                        var11 = 65533;
+               } else if (var10 < 248) {
+                  if (var7 + 2 < var9 && (var3[var7] & 192) == 128 && (var3[var7 + 1] & 192) == 128 && (var3[var7 + 2] & 192) == 128) {
+                     var8 = (var10 & 7) << 18 | (var3[var7++] & 63) << 12 | (var3[var7++] & 63) << 6 | var3[var7++] & 63;
+                     if (var8 >= 65536 && var8 <= 1114111) {
+                        var8 = 65533;
                      } else {
-                        var11 = 65533;
+                        var8 = 65533;
                      }
                   } else {
-                     var11 = 65533;
+                     var8 = 65533;
                   }
                } else {
-                  var11 = 65533;
+                  var8 = 65533;
                }
             }
 
-            String var3 = new String(var6, 0, var7);
+            String var11 = new String(var5, 0, var6);
             this.offset += var2;
-            return var3;
+            return var11;
          }
       }
    }
@@ -538,7 +539,7 @@ public class Buffer extends Node {
    @Export("readShortSmart")
    public int readShortSmart() {
       int var1 = this.payload[this.offset] & 255;
-      return var1 < 128?this.readUnsignedByte() - 64:this.readUnsignedShort() - 49152;
+      return var1 < 128 ? this.readUnsignedByte() - 64 : this.readUnsignedShort() - '쀀';
    }
 
    @ObfuscatedName("af")
@@ -549,7 +550,7 @@ public class Buffer extends Node {
    @Export("getUSmart")
    public int getUSmart() {
       int var1 = this.payload[this.offset] & 255;
-      return var1 < 128?this.readUnsignedByte():this.readUnsignedShort() - 32768;
+      return var1 < 128 ? this.readUnsignedByte() : this.readUnsignedShort() - '耀';
    }
 
    @ObfuscatedName("am")
@@ -576,7 +577,7 @@ public class Buffer extends Node {
    )
    @Export("getLargeSmart")
    public int getLargeSmart() {
-      return this.payload[this.offset] < 0?this.readInt() & Integer.MAX_VALUE:this.readUnsignedShort();
+      return this.payload[this.offset] < 0 ? this.readInt() & Integer.MAX_VALUE : this.readUnsignedShort();
    }
 
    @ObfuscatedName("aj")
@@ -585,11 +586,11 @@ public class Buffer extends Node {
       garbageValue = "-7960"
    )
    public int method3585() {
-      if(this.payload[this.offset] < 0) {
+      if (this.payload[this.offset] < 0) {
          return this.readInt() & Integer.MAX_VALUE;
       } else {
          int var1 = this.readUnsignedShort();
-         return var1 == 32767?-1:var1;
+         return var1 == 32767 ? -1 : var1;
       }
    }
 
@@ -920,7 +921,7 @@ public class Buffer extends Node {
    public int method3609() {
       this.offset += 2;
       int var1 = (this.payload[this.offset - 1] - 128 & 255) + ((this.payload[this.offset - 2] & 255) << 8);
-      if(var1 > 32767) {
+      if (var1 > 32767) {
          var1 -= 65536;
       }
 
@@ -935,7 +936,7 @@ public class Buffer extends Node {
    public int method3604() {
       this.offset += 2;
       int var1 = ((this.payload[this.offset - 1] & 255) << 8) + (this.payload[this.offset - 2] - 128 & 255);
-      if(var1 > 32767) {
+      if (var1 > 32767) {
          var1 -= 65536;
       }
 
@@ -1060,12 +1061,12 @@ public class Buffer extends Node {
    )
    public static class264 method3811(int var0) {
       class264 var1 = (class264)class264.field3345.get((long)var0);
-      if(var1 != null) {
+      if (var1 != null) {
          return var1;
       } else {
          byte[] var2 = class264.field3346.getConfigData(11, var0);
          var1 = new class264();
-         if(var2 != null) {
+         if (var2 != null) {
             var1.method4959(new Buffer(var2));
          }
 
@@ -1081,22 +1082,20 @@ public class Buffer extends Node {
       garbageValue = "850773741"
    )
    static synchronized void method3677(byte[] var0) {
-      if(var0.length == 100 && class183.field2371 < 1000) {
+      if (var0.length == 100 && class183.field2371 < 1000) {
          class183.field2369[++class183.field2371 - 1] = var0;
-      } else if(var0.length == 5000 && class183.field2367 < 250) {
+      } else if (var0.length == 5000 && class183.field2367 < 250) {
          class183.field2366[++class183.field2367 - 1] = var0;
-      } else if(var0.length == 30000 && class183.field2372 < 50) {
+      } else if (var0.length == 30000 && class183.field2372 < 50) {
          class183.field2368[++class183.field2372 - 1] = var0;
-      } else {
-         if(class183.field2373 != null) {
-            for(int var1 = 0; var1 < class78.field1123.length; ++var1) {
-               if(var0.length == class78.field1123[var1] && class183.field2370[var1] < class183.field2373[var1].length) {
-                  class183.field2373[var1][class183.field2370[var1]++] = var0;
-                  return;
-               }
+      } else if (class183.field2373 != null) {
+         for(int var1 = 0; var1 < class78.field1123.length; ++var1) {
+            if (var0.length == class78.field1123[var1] && class183.field2370[var1] < class183.field2373[var1].length) {
+               class183.field2373[var1][class183.field2370[var1]++] = var0;
+               return;
             }
          }
-
       }
+
    }
 }

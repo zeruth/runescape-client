@@ -21,7 +21,7 @@ public class class144 extends class283 {
       garbageValue = "888960326"
    )
    int method3189(ChatPlayer var1, ChatPlayer var2) {
-      return var2.rank != var1.rank?(this.field1917?var1.rank - var2.rank:var2.rank - var1.rank):this.method5320(var1, var2);
+      return var2.rank != var1.rank ? (this.field1917 ? var1.rank - var2.rank : var2.rank - var1.rank) : this.method5320(var1, var2);
    }
 
    public int compare(Object var1, Object var2) {
@@ -34,19 +34,19 @@ public class class144 extends class283 {
       garbageValue = "93"
    )
    static void method3193(Player var0, int var1, int var2) {
-      if(var0.animation == var1 && var1 != -1) {
+      if (var0.animation == var1 && var1 != -1) {
          int var3 = class137.getAnimation(var1).replyMode;
-         if(var3 == 1) {
+         if (var3 == 1) {
             var0.actionFrame = 0;
             var0.actionFrameCycle = 0;
             var0.actionAnimationDisable = var2;
             var0.field919 = 0;
          }
 
-         if(var3 == 2) {
+         if (var3 == 2) {
             var0.field919 = 0;
          }
-      } else if(var1 == -1 || var0.animation == -1 || class137.getAnimation(var1).forcedPriority >= class137.getAnimation(var0.animation).forcedPriority) {
+      } else if (var1 == -1 || var0.animation == -1 || class137.getAnimation(var1).forcedPriority >= class137.getAnimation(var0.animation).forcedPriority) {
          var0.animation = var1;
          var0.actionFrame = 0;
          var0.actionFrameCycle = 0;

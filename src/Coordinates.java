@@ -46,7 +46,7 @@ public class Coordinates {
    }
 
    public Coordinates(int var1) {
-      if(var1 == -1) {
+      if (var1 == -1) {
          this.plane = -1;
       } else {
          this.plane = var1 >> 28 & 3;
@@ -84,7 +84,7 @@ public class Coordinates {
       garbageValue = "-1581452973"
    )
    boolean method4468(Coordinates var1) {
-      return this.plane != var1.plane?false:(this.worldX != var1.worldX?false:this.worldY == var1.worldY);
+      return this.plane != var1.plane ? false : (this.worldX != var1.worldX ? false : this.worldY == var1.worldY);
    }
 
    @ObfuscatedName("x")
@@ -97,7 +97,7 @@ public class Coordinates {
    }
 
    public boolean equals(Object var1) {
-      return this == var1?true:(!(var1 instanceof Coordinates)?false:this.method4468((Coordinates)var1));
+      return this == var1 ? true : (!(var1 instanceof Coordinates) ? false : this.method4468((Coordinates)var1));
    }
 
    public int hashCode() {

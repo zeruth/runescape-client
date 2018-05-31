@@ -24,7 +24,7 @@ public class class10 extends class16 {
    )
    void method104(Buffer var1, Buffer var2) {
       int var3 = var2.readUnsignedByte();
-      if(var3 != class25.field227.field228) {
+      if (var3 != class25.field227.field228) {
          throw new IllegalStateException("");
       } else {
          super.field133 = var2.readUnsignedByte();
@@ -40,12 +40,12 @@ public class class10 extends class16 {
          super.field138 = new byte[super.field134][64][64];
          super.decorations = new WorldMapDecoration[super.field134][64][64][];
          var3 = var1.readUnsignedByte();
-         if(var3 != class24.field222.field219) {
+         if (var3 != class24.field222.field219) {
             throw new IllegalStateException("");
          } else {
             int var4 = var1.readUnsignedByte();
             int var5 = var1.readUnsignedByte();
-            if(var4 == super.field141 && var5 == super.field132) {
+            if (var4 == super.field141 && var5 == super.field132) {
                for(int var6 = 0; var6 < 64; ++var6) {
                   for(int var7 = 0; var7 < 64; ++var7) {
                      this.method165(var6, var7, var1);
@@ -64,7 +64,7 @@ public class class10 extends class16 {
    }
 
    public boolean equals(Object var1) {
-      if(!(var1 instanceof class10)) {
+      if (!(var1 instanceof class10)) {
          return false;
       } else {
          class10 var2 = (class10)var1;
@@ -80,9 +80,9 @@ public class class10 extends class16 {
    static String method101() {
       String var0 = "";
 
-      MessageNode var2;
-      for(Iterator var1 = class83.messages.iterator(); var1.hasNext(); var0 = var0 + var2.name + ':' + var2.value + '\n') {
-         var2 = (MessageNode)var1.next();
+      MessageNode var1;
+      for(Iterator var2 = class83.messages.iterator(); var2.hasNext(); var0 = var0 + var1.name + ':' + var1.value + '\n') {
+         var1 = (MessageNode)var2.next();
       }
 
       return var0;

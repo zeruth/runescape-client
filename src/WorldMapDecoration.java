@@ -58,7 +58,7 @@ public class WorldMapDecoration {
    )
    static final void method222(TaskDataNode var0) {
       var0.field1409 = false;
-      if(var0.data != null) {
+      if (var0.data != null) {
          var0.data.int1 = 0;
       }
 
@@ -74,82 +74,82 @@ public class WorldMapDecoration {
       garbageValue = "1362629320"
    )
    static void method221(int var0) {
-      if(var0 == -3) {
+      if (var0 == -3) {
          Resampler.method2307("Connection timed out.", "Please try using a different world.", "");
-      } else if(var0 == -2) {
+      } else if (var0 == -2) {
          Resampler.method2307("", "Error connecting to server.", "");
-      } else if(var0 == -1) {
+      } else if (var0 == -1) {
          Resampler.method2307("No response from server.", "Please try using a different world.", "");
-      } else if(var0 == 3) {
+      } else if (var0 == 3) {
          class78.loginIndex = 3;
-      } else if(var0 == 4) {
+      } else if (var0 == 4) {
          Resampler.method2307("Your account has been disabled.", "Please check your message-centre for details.", "");
-      } else if(var0 == 5) {
+      } else if (var0 == 5) {
          Resampler.method2307("Your account has not logged out from its last", "session or the server is too busy right now.", "Please try again in a few minutes.");
-      } else if(var0 == 6) {
+      } else if (var0 == 6) {
          Resampler.method2307("RuneScape has been updated!", "Please reload this page.", "");
-      } else if(var0 == 7) {
+      } else if (var0 == 7) {
          Resampler.method2307("This world is full.", "Please use a different world.", "");
-      } else if(var0 == 8) {
+      } else if (var0 == 8) {
          Resampler.method2307("Unable to connect.", "Login server offline.", "");
-      } else if(var0 == 9) {
+      } else if (var0 == 9) {
          Resampler.method2307("Login limit exceeded.", "Too many connections from your address.", "");
-      } else if(var0 == 10) {
+      } else if (var0 == 10) {
          Resampler.method2307("Unable to connect.", "Bad session id.", "");
-      } else if(var0 == 11) {
-         Resampler.method2307("We suspect someone knows your password.", "Press \'change your password\' on front page.", "");
-      } else if(var0 == 12) {
+      } else if (var0 == 11) {
+         Resampler.method2307("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
+      } else if (var0 == 12) {
          Resampler.method2307("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
-      } else if(var0 == 13) {
+      } else if (var0 == 13) {
          Resampler.method2307("Could not complete login.", "Please try using a different world.", "");
-      } else if(var0 == 14) {
+      } else if (var0 == 14) {
          Resampler.method2307("The server is being updated.", "Please wait 1 minute and try again.", "");
-      } else if(var0 == 16) {
+      } else if (var0 == 16) {
          Resampler.method2307("Too many login attempts.", "Please wait a few minutes before trying again.", "");
-      } else if(var0 == 17) {
+      } else if (var0 == 17) {
          Resampler.method2307("You are standing in a members-only area.", "To play on this world move to a free area first", "");
-      } else if(var0 == 18) {
-         Resampler.method2307("Account locked as we suspect it has been stolen.", "Press \'recover a locked account\' on front page.", "");
-      } else if(var0 == 19) {
+      } else if (var0 == 18) {
+         Resampler.method2307("Account locked as we suspect it has been stolen.", "Press 'recover a locked account' on front page.", "");
+      } else if (var0 == 19) {
          Resampler.method2307("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
-      } else if(var0 == 20) {
+      } else if (var0 == 20) {
          Resampler.method2307("Invalid loginserver requested.", "Please try using a different world.", "");
-      } else if(var0 == 22) {
+      } else if (var0 == 22) {
          Resampler.method2307("Malformed login packet.", "Please try again.", "");
-      } else if(var0 == 23) {
+      } else if (var0 == 23) {
          Resampler.method2307("No reply from loginserver.", "Please wait 1 minute and try again.", "");
-      } else if(var0 == 24) {
+      } else if (var0 == 24) {
          Resampler.method2307("Error loading your profile.", "Please contact customer support.", "");
-      } else if(var0 == 25) {
+      } else if (var0 == 25) {
          Resampler.method2307("Unexpected loginserver response.", "Please try using a different world.", "");
-      } else if(var0 == 26) {
+      } else if (var0 == 26) {
          Resampler.method2307("This computers address has been blocked", "as it was used to break our rules.", "");
-      } else if(var0 == 27) {
+      } else if (var0 == 27) {
          Resampler.method2307("", "Service unavailable.", "");
-      } else if(var0 == 31) {
+      } else if (var0 == 31) {
          Resampler.method2307("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
-      } else if(var0 == 32) {
-         Resampler.method2307("Your attempt to log into your account was", "unsuccessful.  Don\'t worry, you can sort", "this out by visiting the billing system.");
-      } else if(var0 == 37) {
+      } else if (var0 == 32) {
+         Resampler.method2307("Your attempt to log into your account was", "unsuccessful.  Don't worry, you can sort", "this out by visiting the billing system.");
+      } else if (var0 == 37) {
          Resampler.method2307("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
-      } else if(var0 == 38) {
+      } else if (var0 == 38) {
          Resampler.method2307("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
-      } else if(var0 == 55) {
+      } else if (var0 == 55) {
          class78.loginIndex = 8;
       } else {
-         if(var0 == 56) {
+         if (var0 == 56) {
             Resampler.method2307("Enter the 6-digit code generated by your", "authenticator app.", "");
             Resampler.setGameState(11);
             return;
          }
 
-         if(var0 == 57) {
+         if (var0 == 57) {
             Resampler.method2307("The code you entered was incorrect.", "Please try again.", "");
             Resampler.setGameState(11);
             return;
          }
 
-         if(var0 == 61) {
+         if (var0 == 61) {
             class78.loginIndex = 7;
          } else {
             Resampler.method2307("Unexpected server response", "Please try using a different world.", "");

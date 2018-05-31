@@ -56,7 +56,7 @@ public class MapLabel {
       int var4 = 1;
 
       for(int var5 = 0; var5 < 4; ++var5) {
-         if(World.field958[var5] != var0) {
+         if (World.field958[var5] != var0) {
             var2[var4] = World.field958[var5];
             var3[var4] = World.field969[var5];
             ++var4;

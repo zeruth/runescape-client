@@ -59,7 +59,7 @@ public enum Permission implements Enumerated {
    @ObfuscatedName("a")
    public final boolean field3136;
 
-   Permission(int var3, int var4, boolean var5, boolean var6, boolean var7) {
+   private Permission(int var3, int var4, boolean var5, boolean var6, boolean var7) {
       this.field3141 = var3;
       this.field3142 = var4;
       this.field3143 = var6;

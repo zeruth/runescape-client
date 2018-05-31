@@ -11,42 +11,34 @@ public class MapCacheArchiveNames {
       signature = "Lac;"
    )
    @Export("DETAILS")
-   public static final MapCacheArchiveNames DETAILS;
+   public static final MapCacheArchiveNames DETAILS = new MapCacheArchiveNames("details");
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Lac;"
    )
    @Export("COMPOSITE_MAP")
-   public static final MapCacheArchiveNames COMPOSITE_MAP;
+   public static final MapCacheArchiveNames COMPOSITE_MAP = new MapCacheArchiveNames("compositemap");
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Lac;"
    )
    @Export("COMPOSITE_TEXTURE")
-   public static final MapCacheArchiveNames COMPOSITE_TEXTURE;
+   public static final MapCacheArchiveNames COMPOSITE_TEXTURE = new MapCacheArchiveNames("compositetexture");
    @ObfuscatedName("b")
    @ObfuscatedSignature(
       signature = "Lac;"
    )
    @Export("AREA")
-   public static final MapCacheArchiveNames AREA;
+   public static final MapCacheArchiveNames AREA = new MapCacheArchiveNames("area");
    @ObfuscatedName("f")
    @ObfuscatedSignature(
       signature = "Lac;"
    )
    @Export("LABELS")
-   public static final MapCacheArchiveNames LABELS;
+   public static final MapCacheArchiveNames LABELS = new MapCacheArchiveNames("labels");
    @ObfuscatedName("n")
    @Export("name")
    public final String name;
-
-   static {
-      DETAILS = new MapCacheArchiveNames("details");
-      COMPOSITE_MAP = new MapCacheArchiveNames("compositemap");
-      COMPOSITE_TEXTURE = new MapCacheArchiveNames("compositetexture");
-      AREA = new MapCacheArchiveNames("area");
-      LABELS = new MapCacheArchiveNames("labels");
-   }
 
    MapCacheArchiveNames(String var1) {
       this.name = var1;

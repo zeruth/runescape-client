@@ -11,17 +11,17 @@ public class Size {
    @ObfuscatedSignature(
       signature = "Ls;"
    )
-   public static final Size field93;
+   public static final Size field93 = new Size("SMALL", 1, 0, 4);
    @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "Ls;"
    )
-   public static final Size field87;
+   public static final Size field87 = new Size("MEDIUM", 2, 1, 2);
    @ObfuscatedName("q")
    @ObfuscatedSignature(
       signature = "Ls;"
    )
-   public static final Size field89;
+   public static final Size field89 = new Size("LARGE", 0, 2, 0);
    @ObfuscatedName("l")
    @Export("floorSaturations")
    static int[] floorSaturations;
@@ -61,12 +61,6 @@ public class Size {
    )
    final int field98;
 
-   static {
-      field93 = new Size("SMALL", 1, 0, 4);
-      field87 = new Size("MEDIUM", 2, 1, 2);
-      field89 = new Size("LARGE", 0, 2, 0);
-   }
-
    Size(String var1, int var2, int var3, int var4) {
       this.field90 = var1;
       this.field88 = var2;
@@ -90,38 +84,41 @@ public class Size {
    )
    static int method122(int var0, int var1) {
       Overlay var2 = class148.getOverlayDefinition(var0);
-      if(var2 == null) {
+      if (var2 == null) {
          return var1;
-      } else if(var2.otherRgbColor >= 0) {
+      } else if (var2.otherRgbColor >= 0) {
          return var2.otherRgbColor | -16777216;
-      } else if(var2.texture >= 0) {
-         int var3 = class7.method87(Graphics3D.textureLoader.getAverageTextureRGB(var2.texture), 96);
-         return Graphics3D.colorPalette[var3] | -16777216;
-      } else if(var2.color == 16711935) {
-         return var1;
       } else {
-         int var4 = var2.hue;
-         int var5 = var2.saturation;
-         int var6 = var2.lightness;
-         if(var6 > 179) {
-            var5 /= 2;
-         }
+         int var3;
+         if (var2.texture >= 0) {
+            var3 = class7.method87(Graphics3D.textureLoader.getAverageTextureRGB(var2.texture), 96);
+            return Graphics3D.colorPalette[var3] | -16777216;
+         } else if (var2.color == 16711935) {
+            return var1;
+         } else {
+            var3 = var2.hue;
+            int var4 = var2.saturation;
+            int var5 = var2.lightness;
+            if (var5 > 179) {
+               var4 /= 2;
+            }
 
-         if(var6 > 192) {
-            var5 /= 2;
-         }
+            if (var5 > 192) {
+               var4 /= 2;
+            }
 
-         if(var6 > 217) {
-            var5 /= 2;
-         }
+            if (var5 > 217) {
+               var4 /= 2;
+            }
 
-         if(var6 > 243) {
-            var5 /= 2;
-         }
+            if (var5 > 243) {
+               var4 /= 2;
+            }
 
-         int var7 = (var5 / 32 << 7) + var6 / 2 + (var4 / 4 << 10);
-         int var8 = class7.method87(var7, 96);
-         return Graphics3D.colorPalette[var8] | -16777216;
+            int var6 = (var4 / 32 << 7) + var5 / 2 + (var3 / 4 << 10);
+            int var7 = class7.method87(var6, 96);
+            return Graphics3D.colorPalette[var7] | -16777216;
+         }
       }
    }
 
@@ -145,7 +142,7 @@ public class Size {
 
       for(int var3 = 0; var3 < var2.length; ++var3) {
          Size var4 = var2[var3];
-         if(var0 == var4.field92) {
+         if (var0 == var4.field92) {
             return var4;
          }
       }

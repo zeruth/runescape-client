@@ -57,7 +57,7 @@ public class class13 {
       class81.field1176 = 0;
       FileSystem.method4619(var0);
       FontName.method5521(var0);
-      if(var0.offset - var2 != var1) {
+      if (var0.offset - var2 != var1) {
          throw new RuntimeException(var0.offset - var2 + " " + var1);
       }
    }

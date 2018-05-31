@@ -22,19 +22,19 @@ public class class155 {
       signature = "Ldd;"
    )
    @Export("randomDat")
-   static CacheFile randomDat;
+   static CacheFile randomDat = null;
    @ObfuscatedName("s")
    @ObfuscatedSignature(
       signature = "Ldd;"
    )
    @Export("dat2File")
-   public static CacheFile dat2File;
+   public static CacheFile dat2File = null;
    @ObfuscatedName("p")
    @ObfuscatedSignature(
       signature = "Ldd;"
    )
    @Export("idx255File")
-   public static CacheFile idx255File;
+   public static CacheFile idx255File = null;
    @ObfuscatedName("g")
    @ObfuscatedSignature(
       signature = "[Ldd;"
@@ -46,12 +46,6 @@ public class class155 {
    public static String[] cacheLocations;
    @ObfuscatedName("e")
    public static String[] field1995;
-
-   static {
-      randomDat = null;
-      dat2File = null;
-      idx255File = null;
-   }
 
    @ObfuscatedName("g")
    @ObfuscatedSignature(

@@ -14,7 +14,7 @@ public class class278 {
       int var3 = var0.getFile(var1);
       int var4 = var0.getChild(var3, var2);
       IndexedSprite[] var5;
-      if(!class306.method5702(var0, var3, var4)) {
+      if (!class306.method5702(var0, var3, var4)) {
          var5 = null;
       } else {
          var5 = class142.method3182();

@@ -30,11 +30,11 @@ public class class177 {
    )
    public static void method3530() {
       try {
-         if(class217.field2486 == 1) {
+         if (class217.field2486 == 1) {
             int var0 = class217.field2485.method4228();
-            if(var0 > 0 && class217.field2485.method4354()) {
+            if (var0 > 0 && class217.field2485.method4354()) {
                var0 -= class308.field3746;
-               if(var0 < 0) {
+               if (var0 < 0) {
                   var0 = 0;
                }
 
@@ -44,7 +44,7 @@ public class class177 {
 
             class217.field2485.method4236();
             class217.field2485.method4231();
-            if(class26.field236 != null) {
+            if (class26.field236 != null) {
                class217.field2486 = 2;
             } else {
                class217.field2486 = 0;
@@ -53,8 +53,8 @@ public class class177 {
             Ignore.field3644 = null;
             class59.field557 = null;
          }
-      } catch (Exception var2) {
-         var2.printStackTrace();
+      } catch (Exception var1) {
+         var1.printStackTrace();
          class217.field2485.method4236();
          class217.field2486 = 0;
          Ignore.field3644 = null;
