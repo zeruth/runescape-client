@@ -584,7 +584,7 @@ public class class126 {
 
                return var3;
             } else if (var0 < 3700) {
-               return oginPacke.method3465(var0, var1, var2);
+               return LoginPacket.method3465(var0, var1, var2);
             } else {
                boolean var15;
                boolean var16;

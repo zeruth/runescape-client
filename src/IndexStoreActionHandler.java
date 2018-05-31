@@ -1,3 +1,5 @@
+import java.net.URL;
+
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -99,6 +101,36 @@ public class IndexStoreActionHandler implements Runnable {
    )
    @Export("loadWorlds")
    static boolean loadWorlds() {
-      // $FF: Couldn't be decompiled
-   }
+	      try {
+	         if(World.listFetcher == null) {
+	            World.listFetcher = class59.urlRequester.request(new URL(ScriptEvent.field521));
+	         } else if(World.listFetcher.isDone()) {
+	            byte[] var0 = World.listFetcher.getResponse();
+	            Buffer var1 = new Buffer(var0);
+	            var1.readInt();
+	            World.worldCount = var1.readUnsignedShort();
+	            class143.worldList = new World[World.worldCount];
+
+	            World var3;
+	            for(int var2 = 0; var2 < World.worldCount; var3.index = var2++) {
+	               var3 = class143.worldList[var2] = new World();
+	               var3.id = var1.readUnsignedShort();
+	               var3.mask = var1.readInt();
+	               var3.address = var1.readString();
+	               var3.activity = var1.readString();
+	               var3.location = var1.readUnsignedByte();
+	               var3.playerCount = var1.readShort();
+	            }
+
+	            UrlRequest.method3137(class143.worldList, 0, class143.worldList.length - 1, World.field958, World.field969);
+	            World.listFetcher = null;
+	            return true;
+	         }
+	      } catch (Exception var4) {
+	         var4.printStackTrace();
+	         World.listFetcher = null;
+	      }
+
+	      return false;
+	   }
 }
